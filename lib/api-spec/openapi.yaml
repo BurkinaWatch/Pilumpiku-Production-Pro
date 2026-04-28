@@ -1,0 +1,826 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: auth
+    description: Authentication operations
+  - name: projects
+    description: Film projects
+  - name: news
+    description: News articles
+  - name: services
+    description: Services
+  - name: partners
+    description: Partners
+  - name: settings
+    description: Site settings (founder, about, hero)
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  # ---------- Auth ----------
+  /auth/user:
+    get:
+      operationId: getCurrentAuthUser
+      tags: [auth]
+      summary: Get current authenticated user
+      responses:
+        "200":
+          description: Current user state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCurrentAuthUserResponse"
+  /mobile-auth/token-exchange:
+    post:
+      operationId: exchangeMobileAuthorizationCode
+      tags: [auth]
+      summary: Exchange OIDC authorization code for a session token (mobile)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExchangeMobileAuthorizationCodeBody"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExchangeMobileAuthorizationCodeResponse"
+  /mobile-auth/logout:
+    post:
+      operationId: logoutMobileSession
+      tags: [auth]
+      summary: Logout mobile session
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogoutMobileSessionResponse"
+
+  # ---------- Projects ----------
+  /projects:
+    get:
+      operationId: listProjects
+      tags: [projects]
+      summary: List all projects
+      responses:
+        "200":
+          description: Project list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+    post:
+      operationId: createProject
+      tags: [projects]
+      summary: Create a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProjectBody"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+  /projects/by-slug/{slug}:
+    get:
+      operationId: getProjectBySlug
+      tags: [projects]
+      summary: Get project by slug (public)
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404":
+          description: Not found
+  /projects/{id}:
+    get:
+      operationId: getProject
+      tags: [projects]
+      summary: Get a project
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+    patch:
+      operationId: updateProject
+      tags: [projects]
+      summary: Update a project
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProjectBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+    delete:
+      operationId: deleteProject
+      tags: [projects]
+      summary: Delete a project
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ---------- News ----------
+  /news:
+    get:
+      operationId: listNews
+      tags: [news]
+      responses:
+        "200":
+          description: News list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/NewsArticle"
+    post:
+      operationId: createNews
+      tags: [news]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateNewsBody"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticle"
+  /news/{id}:
+    get:
+      operationId: getNews
+      tags: [news]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: News article
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticle"
+    patch:
+      operationId: updateNews
+      tags: [news]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateNewsBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsArticle"
+    delete:
+      operationId: deleteNews
+      tags: [news]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ---------- Services ----------
+  /services:
+    get:
+      operationId: listServices
+      tags: [services]
+      responses:
+        "200":
+          description: Service list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Service"
+    post:
+      operationId: createService
+      tags: [services]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateServiceBody"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+  /services/{id}:
+    patch:
+      operationId: updateService
+      tags: [services]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateServiceBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+    delete:
+      operationId: deleteService
+      tags: [services]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ---------- Partners ----------
+  /partners:
+    get:
+      operationId: listPartners
+      tags: [partners]
+      responses:
+        "200":
+          description: Partner list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Partner"
+    post:
+      operationId: createPartner
+      tags: [partners]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePartnerBody"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+  /partners/{id}:
+    patch:
+      operationId: updatePartner
+      tags: [partners]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePartnerBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Partner"
+    delete:
+      operationId: deletePartner
+      tags: [partners]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ---------- Site settings (single row, key/value) ----------
+  /settings:
+    get:
+      operationId: getSiteSettings
+      tags: [settings]
+      responses:
+        "200":
+          description: Site settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSettings"
+    patch:
+      operationId: updateSiteSettings
+      tags: [settings]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateSiteSettingsBody"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSettings"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+
+    # ---------- Auth ----------
+    AuthUser:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: string
+        email:
+          type: ["string", "null"]
+        firstName:
+          type: ["string", "null"]
+        lastName:
+          type: ["string", "null"]
+        profileImageUrl:
+          type: ["string", "null"]
+        isAdmin:
+          type: boolean
+    GetCurrentAuthUserResponse:
+      type: object
+      required: [user]
+      properties:
+        user:
+          oneOf:
+            - $ref: "#/components/schemas/AuthUser"
+            - type: "null"
+    ExchangeMobileAuthorizationCodeBody:
+      type: object
+      required: [code, code_verifier, redirect_uri, state]
+      properties:
+        code:
+          type: string
+        code_verifier:
+          type: string
+        redirect_uri:
+          type: string
+        state:
+          type: string
+        nonce:
+          type: ["string", "null"]
+    ExchangeMobileAuthorizationCodeResponse:
+      type: object
+      required: [token]
+      properties:
+        token:
+          type: string
+    LogoutMobileSessionResponse:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+
+    # ---------- Project ----------
+    Project:
+      type: object
+      required:
+        - id
+        - slug
+        - titre
+        - categorie
+        - statut
+        - annee
+        - duree
+        - langue
+        - synopsis
+        - intention
+        - image
+        - sortOrder
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+        titre:
+          type: string
+        categorie:
+          type: string
+        statut:
+          type: string
+        annee:
+          type: integer
+        duree:
+          type: string
+        langue:
+          type: string
+        synopsis:
+          type: string
+        intention:
+          type: string
+        image:
+          type: string
+        sortOrder:
+          type: integer
+        featured:
+          type: boolean
+    CreateProjectBody:
+      type: object
+      required:
+        - slug
+        - titre
+        - categorie
+        - statut
+        - annee
+        - duree
+        - langue
+        - synopsis
+        - intention
+        - image
+      properties:
+        slug:
+          type: string
+        titre:
+          type: string
+        categorie:
+          type: string
+        statut:
+          type: string
+        annee:
+          type: integer
+        duree:
+          type: string
+        langue:
+          type: string
+        synopsis:
+          type: string
+        intention:
+          type: string
+        image:
+          type: string
+        sortOrder:
+          type: integer
+        featured:
+          type: boolean
+    UpdateProjectBody:
+      type: object
+      properties:
+        slug:
+          type: string
+        titre:
+          type: string
+        categorie:
+          type: string
+        statut:
+          type: string
+        annee:
+          type: integer
+        duree:
+          type: string
+        langue:
+          type: string
+        synopsis:
+          type: string
+        intention:
+          type: string
+        image:
+          type: string
+        sortOrder:
+          type: integer
+        featured:
+          type: boolean
+
+    # ---------- News ----------
+    NewsArticle:
+      type: object
+      required: [id, titre, categorie, dateLabel, excerpt, image, sortOrder]
+      properties:
+        id:
+          type: integer
+        titre:
+          type: string
+        categorie:
+          type: string
+        dateLabel:
+          type: string
+        excerpt:
+          type: string
+        image:
+          type: string
+        sortOrder:
+          type: integer
+    CreateNewsBody:
+      type: object
+      required: [titre, categorie, dateLabel, excerpt, image]
+      properties:
+        titre:
+          type: string
+        categorie:
+          type: string
+        dateLabel:
+          type: string
+        excerpt:
+          type: string
+        image:
+          type: string
+        sortOrder:
+          type: integer
+    UpdateNewsBody:
+      type: object
+      properties:
+        titre:
+          type: string
+        categorie:
+          type: string
+        dateLabel:
+          type: string
+        excerpt:
+          type: string
+        image:
+          type: string
+        sortOrder:
+          type: integer
+
+    # ---------- Services ----------
+    Service:
+      type: object
+      required: [id, titre, description, icon, sortOrder]
+      properties:
+        id:
+          type: integer
+        titre:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        sortOrder:
+          type: integer
+    CreateServiceBody:
+      type: object
+      required: [titre, description, icon]
+      properties:
+        titre:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        sortOrder:
+          type: integer
+    UpdateServiceBody:
+      type: object
+      properties:
+        titre:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        sortOrder:
+          type: integer
+
+    # ---------- Partners ----------
+    Partner:
+      type: object
+      required: [id, nom, description, sortOrder]
+      properties:
+        id:
+          type: integer
+        nom:
+          type: string
+        description:
+          type: string
+        sortOrder:
+          type: integer
+    CreatePartnerBody:
+      type: object
+      required: [nom, description]
+      properties:
+        nom:
+          type: string
+        description:
+          type: string
+        sortOrder:
+          type: integer
+    UpdatePartnerBody:
+      type: object
+      properties:
+        nom:
+          type: string
+        description:
+          type: string
+        sortOrder:
+          type: integer
+
+    # ---------- Site settings ----------
+    SiteSettings:
+      type: object
+      required:
+        - id
+        - heroBadge
+        - heroTitleLine1
+        - heroTitleLine2
+        - heroSubtitle
+        - quoteText
+        - quoteAuthor
+        - statsProjets
+        - statsPays
+        - statsFestivals
+        - aboutHistoire
+        - aboutVision
+        - founderName
+        - founderTitle
+        - founderBio
+        - founderImage
+        - contactEmail
+        - contactPhone
+        - contactAddress
+      properties:
+        id:
+          type: integer
+        heroBadge:
+          type: string
+        heroTitleLine1:
+          type: string
+        heroTitleLine2:
+          type: string
+        heroSubtitle:
+          type: string
+        quoteText:
+          type: string
+        quoteAuthor:
+          type: string
+        statsProjets:
+          type: string
+        statsPays:
+          type: string
+        statsFestivals:
+          type: string
+        aboutHistoire:
+          type: string
+        aboutVision:
+          type: string
+        founderName:
+          type: string
+        founderTitle:
+          type: string
+        founderBio:
+          type: string
+        founderImage:
+          type: string
+        contactEmail:
+          type: string
+        contactPhone:
+          type: string
+        contactAddress:
+          type: string
+    UpdateSiteSettingsBody:
+      type: object
+      properties:
+        heroBadge:
+          type: string
+        heroTitleLine1:
+          type: string
+        heroTitleLine2:
+          type: string
+        heroSubtitle:
+          type: string
+        quoteText:
+          type: string
+        quoteAuthor:
+          type: string
+        statsProjets:
+          type: string
+        statsPays:
+          type: string
+        statsFestivals:
+          type: string
+        aboutHistoire:
+          type: string
+        aboutVision:
+          type: string
+        founderName:
+          type: string
+        founderTitle:
+          type: string
+        founderBio:
+          type: string
+        founderImage:
+          type: string
+        contactEmail:
+          type: string
+        contactPhone:
+          type: string
+        contactAddress:
+          type: string

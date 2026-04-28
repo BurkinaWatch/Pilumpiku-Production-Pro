@@ -1,0 +1,407 @@
+ SITE WEB PILIMPIKU PRODUCTION 
+
+## LOGO & IDENTITÉ VISUELLE
+
+Le logo officiel de Pilimpiku Production est un **papillon monarque** (orange doré, brun chocolat, noir) inscrit dans un **cadre ovale**, avec les initiales **"PP"** gravées en filigrane dans les ailes.
+
+**Signification à exploiter dans le design :**
+> Le papillon = métamorphose, liberté, voyage des histoires africaines vers le monde.
+
+**Utilisation du logo dans le code :**
+```jsx
+// Placer le fichier logo dans /public/images/logo-pilimpiku.png
+// Utilisation dans la Navbar :
+<img src="/images/logo-pilimpiku.png" alt="Pilimpiku Production" className="h-14 w-auto" />
+```
+
+**Déclinaisons du logo selon le contexte :**
+- Navbar sur fond sombre → logo original (fond transparent)
+- Footer → version légèrement désaturée (opacity 0.85)
+- Favicon → papillon seul, sans cadre ovale, recadré carré
+
+---
+
+## PALETTE DE COULEURS — MISE À JOUR (tirée du logo)
+
+```css
+/* Couleurs extraites du logo papillon */
+--orange-aile: #E8921A       /* Orange vif des ailes */
+--brun-contour: #4A1F0A      /* Brun profond des bordures */
+--noir-corps: #1A0A00        /* Noir chaud du corps */
+--blanc-point: #FFFFFF       /* Points blancs sur les ailes */
+
+/* Couleurs cinéma africain */
+--noir-cinema: #0A0A0A
+--noir-doux: #111111
+--or-premium: #C9A84C
+--or-chaud: #E8921A          /* ← reprend l'orange du logo */
+--terre: #8B4513
+--ocre: #D4783A
+--rouge-profond: #7A1500
+--blanc-casse: #F5F0E8
+--gris-cinema: #2A2A2A
+```
+
+**Règle d'or :** L'orange du papillon (`#E8921A`) remplace le doré générique partout où il y a un accent de couleur. Cela crée une cohérence totale entre le logo et l'interface.
+
+---
+
+## ANIMATIONS LIÉES AU LOGO
+
+Ajouter ces micro-animations Framer Motion sur le logo :
+
+```jsx
+// 1. Battement d'ailes subtil au hover de la Navbar
+const wingAnimation = {
+  rest: { scaleX: 1 },
+  hover: {
+    scaleX: [1, 1.05, 0.97, 1.03, 1],
+    transition: { duration: 0.6, ease: "easeInOut" }
+  }
+}
+
+// 2. Apparition du logo au chargement (page Accueil hero)
+const logoEntrance = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1, y: 0,
+    transition: { duration: 1.2, ease: "easeOut" }
+  }
+}
+
+// 3. Particules optionnelles : 3-4 petits papillons dorés
+// qui traversent l'écran en diagonale sur la page d'accueil
+// (CSS keyframes, légers, opacity max 0.15)
+```
+
+---
+
+## CONTEXTE & IDENTITÉ
+
+Tu es un développeur senior spécialisé en web design cinématographique. Tu dois créer le site officiel de **Pilimpiku Production**, société de production cinématographique africaine basée à **Ouagadougou, Burkina Faso**.
+
+**Positionnement de la marque :**
+- Références visuelles : A24, MUBI, Arte Cinéma, Criterion Collection
+- Ton : prestige international + authenticité africaine contemporaine
+- Symbole : le papillon comme métaphore de la transformation des histoires
+- Promesse : *"Telling African Stories to the World"*
+
+---
+
+## STACK TECHNIQUE
+
+```
+Framework  : React + Vite
+Styling    : Tailwind CSS + CSS custom (effets avancés)
+Animations : Framer Motion
+Routing    : React Router DOM
+Fonts      : Cormorant Garamond (titres) + Inter (corps)
+Icons      : Lucide React
+Images     : Unsplash (thème cinéma / Afrique / nature)
+```
+
+**Contraintes techniques obligatoires :**
+- Responsive parfait (mobile-first)
+- Lazy loading sur toutes les images
+- SEO : `<title>`, `<meta description>`, Open Graph sur chaque page
+- Code modulaire (1 composant = 1 fichier)
+- Commentaires en français
+
+---
+
+## DIRECTION ARTISTIQUE — RÈGLES STRICTES
+
+### Typographie
+```
+Titres H1/H2    : Cormorant Garamond Bold 700, tracking large
+Sous-titres     : Cormorant Garamond Italic
+Corps texte     : Inter 300/400
+Labels/badges   : Inter Uppercase, letter-spacing: 0.2em
+```
+
+### Effets visuels obligatoires
+| Effet | Détail |
+|---|---|
+| Grain cinéma | Overlay SVG noise sur tout le site, opacity 0.04 |
+| Vignette | Dégradé radial sombre sur les bords des heroes |
+| Parallax | Sur images de fond, max 20% déplacement |
+| Hover projets | scale(1.03) + overlay orange-aile + titre remonte |
+| Transitions page | Fade noir 400ms entre chaque route |
+| Curseur custom | Cercle orange subtil sur desktop |
+| Papillons subtils | 2-3 silhouettes traversent le hero en diagonal, opacity 0.08 |
+
+---
+
+## ARCHITECTURE DU SITE
+
+```
+/              → Accueil
+/a-propos      → À Propos
+/projets       → Grille de projets
+/projets/:slug → Page projet individuelle
+/services      → Services
+/partenaires   → Réseau & Partenaires
+/actualites    → Actualités & Festivals
+/contact       → Contact
+```
+
+---
+
+## CONTENU PAGE PAR PAGE
+
+### 1. `/` — ACCUEIL
+
+**Hero (100vh) :**
+```
+[Background] Vidéo loop cinéma africain OU image plein écran
+             + overlay noir 50% + grain + silhouettes papillons
+
+[Badge doré]  OUAGADOUGOU · BURKINA FASO
+
+[H1 blanc]    Telling African Stories
+[H1 orange]   to the World.
+
+[Paragraphe]  Une société de production cinématographique engagée,
+              créative et tournée vers l'international.
+
+[Boutons]     ▶ Découvrir nos projets   (fond orange-aile)
+              ○ Collaborer avec nous    (outline blanc)
+
+[Bas du hero] Logo papillon centré + scroll indicator animé
+```
+
+**Compteurs animés :**
+```
+🎬 8+   Projets développés
+🌍 12+  Pays partenaires
+🏆 5+   Sélections en festivals
+```
+
+**Projets en vedette :** 3 cartes, bouton `Voir tous les projets →`
+
+**Citation :**
+> *"Le cinéma africain ne cherche plus à se faire accepter. Il impose sa vision."*
+> — Pilimpiku Production
+
+**Bandeau partenaires défilant**
+
+---
+
+### 2. `/a-propos` — À PROPOS
+
+- Hero : image tournage + overlay
+- "Notre Histoire" : texte 2 colonnes, photo fondatrice
+- "Notre Vision" : grande typographie fond texturé
+- Timeline des dates clés
+- 4 Valeurs : Authenticité · Excellence · Collaboration · Innovation
+
+**Fondatrice (placeholder) :**
+```
+Nom   : [Nom de la fondatrice]
+Titre : Fondatrice & Directrice Artistique
+Bio   : Cinéaste engagée, elle a fondé Pilimpiku Production avec
+        la conviction que les histoires africaines méritent une
+        scène mondiale. Forte d'une expérience dans la production
+        et la réalisation, elle dirige aujourd'hui une équipe
+        créative basée à Ouagadougou, Burkina Faso.
+```
+
+---
+
+### 3. `/projets` — NOS PROJETS
+
+**Filtres :** Tous | Fiction | Documentaire | Court-métrage | En développement | Produit
+
+**7 projets fictifs :**
+
+```javascript
+const projets = [
+  {
+    slug: "la-voix-du-sahel",
+    titre: "La Voix du Sahel",
+    categorie: "Fiction",
+    statut: "En développement",
+    annee: 2025,
+    duree: "90 min",
+    langue: "Mooré / Français",
+    synopsis: "Dans un village du Sahel, une jeune griotte défie les traditions pour préserver la mémoire de son peuple à travers la musique.",
+    intention: "Un film sur la transmission, la résistance culturelle et la puissance de la parole féminine."
+  },
+  {
+    slug: "ouaga-nuit",
+    titre: "Ouaga Nuit",
+    categorie: "Documentaire",
+    statut: "Post-production",
+    annee: 2024,
+    duree: "52 min",
+    langue: "Français / Dioula",
+    synopsis: "Portrait nocturne de Ouagadougou à travers les yeux de ceux qui font vivre la ville quand elle dort.",
+    intention: "Révéler une ville vibrante, complexe, loin des clichés."
+  },
+  {
+    slug: "les-enfants-du-fleuve",
+    titre: "Les Enfants du Fleuve",
+    categorie: "Fiction",
+    statut: "Produit",
+    annee: 2023,
+    duree: "105 min",
+    langue: "Français",
+    synopsis: "Deux frères séparés par le fleuve Mouhoun, symbole d'un Burkina Faso en mutation profonde.",
+    intention: "Explorer les fractures intergénérationnelles dans l'Afrique contemporaine."
+  },
+  {
+    slug: "metamorphose",
+    titre: "Métamorphose",
+    categorie: "Court-métrage",
+    statut: "Produit",
+    annee: 2023,
+    duree: "18 min",
+    langue: "Français",
+    synopsis: "Une jeune artiste de Ouagadougou cherche sa voie entre modernité et héritage culturel.",
+    intention: "Film d'ouverture symbolique — comme le papillon, une ode à la transformation."
+  },
+  {
+    slug: "le-dernier-griot",
+    titre: "Le Dernier Griot",
+    categorie: "Documentaire",
+    statut: "Produit",
+    annee: 2022,
+    duree: "45 min",
+    langue: "Dioula / Français",
+    synopsis: "Portrait d'un griot de 90 ans, gardien d'une mémoire orale menacée de disparaître.",
+    intention: "Urgence mémorielle : capturer ce qui ne peut plus attendre."
+  },
+  {
+    slug: "saison-seche",
+    titre: "Saison Sèche",
+    categorie: "Fiction",
+    statut: "En développement",
+    annee: 2025,
+    duree: "95 min",
+    langue: "Français / Fulfuldé",
+    synopsis: "Dans le nord du Burkina, une femme reconstruît sa vie après le déplacement forcé de son village.",
+    intention: "Un film sur la résilience, la terre et la dignité."
+  },
+  {
+    slug: "afro-futur",
+    titre: "Afro-Futur",
+    categorie: "Fiction",
+    statut: "En développement",
+    annee: 2026,
+    duree: "110 min",
+    langue: "Français / Anglais",
+    synopsis: "Ouagadougou 2075. Une ingénieure découvre que l'intelligence artificielle a effacé les langues africaines de la mémoire collective.",
+    intention: "Science-fiction africaine : imaginer l'avenir pour mieux défendre le présent."
+  }
+]
+```
+
+---
+
+### 4. Page `/projets/:slug`
+
+```
+[Hero plein écran — image + titre en overlay]
+
+[2 colonnes]
+Gauche :
+  Synopsis · Intention artistique · Galerie (lightbox)
+
+Droite (sticky) :
+  Fiche technique (durée, langue, format, statut, année)
+  Bouton : "Voir la bande-annonce" (modal vidéo mock)
+  Encart CTA : "Intéressé par ce projet ?"
+  → Bouton "Contacter l'équipe"
+
+[Bas] "Autres projets" — 3 cartes recommandées
+```
+
+---
+
+### 5. `/services`
+
+```
+🎬 Production complète
+🤝 Coproduction internationale
+📋 Développement de projets (écriture, pitch, dossiers)
+🎓 Formation & Accompagnement des cinéastes émergents
+```
+
+---
+
+### 6. `/partenaires`
+
+**Logos fictifs crédibles :**
+TV5 Monde · Arte · FESPACO · Canal+ Afrique · CNC (Aide aux Cinémas du Monde) · OIF · Hubert Bals Fund · CICAD
+
+---
+
+### 7. `/actualites`
+
+```
+Articles :
+- "Pilimpiku Production sélectionné au FESPACO 2025"
+- "'La Voix du Sahel' reçoit le soutien du Fonds Francophone"
+- "Rencontre au Marché du Film — Festival de Cannes 2024"
+- "Masterclass : Produire en Afrique de l'Ouest aujourd'hui"
+```
+
+---
+
+### 8. `/contact`
+
+```
+Infos :
+📍 Ouagadougou, Burkina Faso
+✉️ contact@pilimpiku-production.com
+📞 +226 XX XX XX XX
+
+Formulaire :
+- Nom · Email · Organisation
+- Type : Coproduction | Financement | Presse | Formation | Autre
+- Message
+- Bouton : "Envoyer"
+```
+
+---
+
+## COMPOSANTS GLOBAUX
+
+### Navbar
+```
+Gauche : Logo papillon + "PILIMPIKU" (Cormorant) + "Production" (petit, espacé)
+Centre : Accueil · Projets · À propos · Services · Contact
+Droite : Bouton "Collaborer" (fond orange-aile, hover brun)
+Scroll : backdrop-filter blur + fond #0A0A0A à 90%
+Mobile : burger animé → menu plein écran avec logo centré
+```
+
+### Footer
+```
+Logo + tagline "Telling African Stories to the World"
+3 colonnes : Navigation | Projets récents | Contact & Réseaux
+Bas : Copyright Pilimpiku Production 2025 + Instagram · LinkedIn · Vimeo
+Texture légère / grain en fond
+```
+
+---
+
+## INSTRUCTIONS D'IMPLÉMENTATION (ordre strict)
+
+```
+1. Créer la structure de fichiers
+2. Installer les dépendances (Framer Motion, React Router, Tailwind)
+3. Configurer Tailwind avec les couleurs custom du logo
+4. Créer Layout.jsx (Navbar + Footer + grain overlay)
+5. Page Accueil (hero + sections)
+6. Composant ProjectCard.jsx réutilisable
+7. Page Projets + filtres
+8. Page projet individuelle (layout 2 colonnes)
+9. Pages À propos, Services, Contact
+10. Ajouter animations Framer Motion
+11. SEO meta tags
+12. Test responsive complet
+```
+
+> 🦋 **Objectif final** : Quand un producteur international ouvre ce site, il voit le papillon, il lit *"Telling African Stories to the World"*, et il pense immédiatement : *"Ces gens font du vrai cinéma. Je veux travailler avec eux."*
+
