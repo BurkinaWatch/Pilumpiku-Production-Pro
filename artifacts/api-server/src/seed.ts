@@ -399,6 +399,51 @@ const NEWS = [
       "https://image.over-blog.com/97rW8Ioo95rqPQjTFtBpydziHuw=/940x320/smart/filters:no_upscale()/image%2F0818284%2F20180919%2Fob_a0e414_ofl-2018-dossier-de-presse-2-glisse.jpg",
     sortOrder: 100,
   },
+  {
+    titre: "Galerie Ciné-Équipements : une immersion dans l'univers cinématographique",
+    categorie: "Événement",
+    dateLabel: "Mars 2018",
+    excerpt:
+      "En marge de la 5e édition des Journées Cinématographiques de la Femme Africaine (JCFA), s'est ouverte le lundi 5 mars 2018 la première édition de la « Galerie Ciné-Équipements », une exposition-vente d'équipements cinematographiques tenue à l'ISIS (Institut Supérieur de l'Image et du Son) de Ouagadougou. Initiée par Mamounata Nikiéma, la galerie réunit outils de prise de vue, maquillage-costume et matériel de projection — offrant aux cinéphiles, professionnels et scolaires un espace de découverte inédit des outils du septième art.\n\nCet événement a réuni des exposants, des ateliers-découvertes, des visites guidées et des jeux-concours sur le cinéma burkinabè. La marraine Suzanne Kourouma, chef du département marché du film au FESPACO, a salué l'initiative : « À partir de ce soir, il y a quelque chose de grand qui commence à naître. »\n\n(Source : Faso24, 6 mars 2018)",
+    image: "/img/fespaco.jpg",
+    sortOrder: 105,
+  },
+  {
+    titre: "« Il n'y a aucune caméra conçue pour la peau noire » — Mamounata Nikiéma",
+    categorie: "Interview",
+    dateLabel: "Mars 2018",
+    excerpt:
+      "À l'occasion de la 1ère édition de la Galerie Ciné-Équipements aux JCFA 2018, Mamounata Nikiéma a accordé une interview au site Queen MAFA. Elle y explique la genèse de ce projet né lors d'une formation en entrepreneuriat culturel : « L'objectif, c'était de voir comment je pouvais apporter ma contribution à rendre nos sociétés autonomes. »\n\nMais c'est sa réflexion sur la technologie cinématographique qui a suscité le plus grand intérêt : « Il n'y a aucune caméra spécialement conçue pour la peau noire. Comme nous avons des techniciens, pourquoi ne pas y penser ? » Une interpellation forte adressée à l'industrie du cinéma mondial, et une invitation à repenser la technologie du cinéma depuis le Burkina Faso et l'Afrique.\n\n(Source : Queen MAFA, 6 mars 2018)",
+    image: "/img/mamounata-cnc.jpg",
+    sortOrder: 110,
+  },
+  {
+    titre: "1ère Galerie Ciné-Équipements : un espace de commercialisation des outils audiovisuels",
+    categorie: "Événement",
+    dateLabel: "Mars 2018",
+    excerpt:
+      "La 1ère édition de la Galerie Ciné-Équipements s'est tenue du 3 au 7 mars 2018 à Ouagadougou dans les locaux de l'ISIS, en partenariat avec le Ministère de la Culture et le FESPACO. Initiée par PILUMPIKU PRODUCTION, l'événement avait pour ambition de créer des espaces occasionnels de commercialisation de matériels de cinéma et de l'audiovisuel, de former les jeunes professionnels et d'ouvrir les scolaires à l'univers technique du 7e art.\n\n« C'est un espace ouvert aux professionnels du cinéma qui ont la possibilité de venir s'enquérir des nouvelles technologies, mais aussi ouvert au grand public notamment les scolaires pour les ateliers de découverte », a précisé la promotrice Mamounata Nikiéma. Le directeur de l'ISIS, Souleymane Ouédraogo, a salué l'initiative : « C'est le moment pour le grand public, les professionnels et les étudiants de découvrir quels sont les équipements utilisés dans l'audiovisuel. »\n\n(Source : Lefaso.net, 5 mars 2018)",
+    image: "/img/burkina-cinema-2.jpg",
+    sortOrder: 115,
+  },
+  {
+    titre: "Dans les coulisses des JCFA : la Galerie Ciné-Équipements de Mamounata Nikiéma",
+    categorie: "Reportage",
+    dateLabel: "Mars 2018",
+    excerpt:
+      "Le site ArtistesBF est allé dans les coulisses des JCFA pour découvrir la Galerie Ciné-Équipements, « une idée ingénieuse de la réalisatrice productrice Mamounata Nikiéma ». Grues, bobines magnétiques, téléobjectifs, appareils photo analogiques, matériel de projection, trépieds… tout était réuni pour permettre aux jeunes de comprendre l'histoire du cinéma et découvrir avec quel matériel on réalise un film.\n\nParmi les activités phares : « Minute retour », un espace où de jeunes cinéastes ayant des projets en développement pouvaient les présenter et recevoir les conseils du réalisateur Guy Désiré Yaméogo. « J'essaye de leur donner un certain nombre de clés pour leur permettre d'avancer. Je souhaite que cet événement grandisse, parce qu'ailleurs ça existe », a-t-il déclaré.\n\n(Source : ArtistesBF, 10 mars 2018)",
+    image: "/img/fespaco.jpg",
+    sortOrder: 120,
+  },
+  {
+    titre: "Pourquoi le cinéma de demain viendra de Corée du Sud",
+    categorie: "Actualité cinéma",
+    dateLabel: "Juillet 2016",
+    excerpt:
+      "Une des plus grandes usines de films au monde s'intéresse de très près au futur du cinéma en réalité virtuelle. Avec Samsung et Oculus comme soutien, la Corée du Sud pourrait bien devenir le Hollywood de la VR. Depuis les salles immersives ScreenX — trois écrans offrant une vision à 180° — jusqu'aux casques Gear VR, les studios coréens multiplient les innovations pour réinventer l'expérience cinématographique.\n\n« La réalité virtuelle est différente de la 3D. La 3D n'était pas un changement de paradigme. Alors que la VR signifie une véritable convergence de différents médias », explique Yelena Rachitsky d'Oculus. 80 % des possesseurs d'un Gear VR regardent quasi exclusivement du contenu vidéo chaque jour — preuve que la VR n'est pas qu'une lubie de gamers, mais un véritable marché multimédia grand public.\n\n(Source : Numerama, 27 juillet 2016)",
+    image: "/img/burkina-cinema-2.jpg",
+    sortOrder: 125,
+  },
 ];
 
 const SERVICES = [
