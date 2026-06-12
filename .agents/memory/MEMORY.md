@@ -1,0 +1,1 @@
+- [Railway + DB migration setup](railway-db-setup.md) — migrations copiées dans dist/ au build; chemin résolu via import.meta.url dans le bundle
