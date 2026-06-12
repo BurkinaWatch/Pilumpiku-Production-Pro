@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/Layout";
+import { IntroScreen } from "@/components/IntroScreen";
+import { useState } from "react";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -37,10 +39,23 @@ function Router() {
 }
 
 function App() {
+  const [showIntro, setShowIntro] = useState(() => {
+    if (typeof sessionStorage !== "undefined") {
+      return !sessionStorage.getItem("pilimpiku_intro_seen");
+    }
+    return false;
+  });
+
+  const handleIntroComplete = () => {
+    sessionStorage.setItem("pilimpiku_intro_seen", "1");
+    setShowIntro(false);
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
           <Router />
         </WouterRouter>
         <Toaster />
