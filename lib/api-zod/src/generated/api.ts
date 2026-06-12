@@ -68,6 +68,7 @@ export const ListProjectsResponseItem = zod.object({
   synopsis: zod.string(),
   intention: zod.string(),
   image: zod.string(),
+  galerie: zod.array(zod.string()).nullish(),
   sortOrder: zod.number(),
   featured: zod.boolean().optional(),
 });
@@ -110,6 +111,7 @@ export const GetProjectBySlugResponse = zod.object({
   synopsis: zod.string(),
   intention: zod.string(),
   image: zod.string(),
+  galerie: zod.array(zod.string()).nullish(),
   sortOrder: zod.number(),
   featured: zod.boolean().optional(),
 });
@@ -133,6 +135,7 @@ export const GetProjectResponse = zod.object({
   synopsis: zod.string(),
   intention: zod.string(),
   image: zod.string(),
+  galerie: zod.array(zod.string()).nullish(),
   sortOrder: zod.number(),
   featured: zod.boolean().optional(),
 });

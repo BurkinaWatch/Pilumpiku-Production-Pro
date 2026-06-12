@@ -6,6 +6,7 @@ import {
   partnersTable,
   siteSettingsTable,
 } from "@workspace/db";
+import { sql } from "drizzle-orm";
 import { logger } from "./lib/logger";
 
 const PROJECTS = [
@@ -76,16 +77,22 @@ const PROJECTS = [
   {
     slug: "pingda",
     titre: "Pingda",
-    categorie: "Court-métrage de fiction",
+    categorie: "Long-métrage de fiction",
     statut: "Produit · 2024",
     annee: 2024,
-    duree: "Court-métrage",
+    duree: "Long-métrage",
     langue: "Mooré, Français",
     synopsis:
-      "Premier projet de fiction de trois jeunes réalisatrices burkinabè — Aminata Diallo, Eve-Noëlle Djebolo et Kadiguetou Gansore — sur un scénario d'Abdoul Aziz Nikiéma.",
+      "Dans un monde en constante mutation numérique, Pingda est une jeune étudiante en fin de cycle d'économie qui doit subvenir aux besoins de ses parents démunis. Après des concours de la fonction publique infructueux et des demandes de stage sans réponse, elle est victime de harcèlement sexuel lorsqu'elle enchaîne les petits boulots.\n\nUn jour, elle poste une photo d'elle sur les réseaux sociaux en tenue traditionnelle « Faso-danfani ». Une dame la contacte en inbox pour commander le même tissu — et c'est là que tout commence. Pingda découvre alors le pouvoir du digital pour transformer un destin contraint en aventure entrepreneuriale.",
     intention:
-      "Pilumpiku Production accompagne l'émergence de la jeune création nationale en produisant ce drame collectif, fruit d'un atelier de mentorat porté par la maison de production.",
+      "PINGDA est né d'un partenariat entre le PNUD (Projet Transformation Digitale Inclusive) et le Fonds de Développement Culturel et Touristique du Burkina Faso (FDCT), dans le cadre d'une initiative de formation aux compétences numériques des femmes dans le secteur cinématographique.\n\n32 femmes ont été formées à divers métiers du digital dans le cinéma. Réunies sous le label « Le Collectif Amazones Production », elles ont concrétisé leur formation en réalisant ce long-métrage de fiction — une première collective et historique.\n\nFICHE TECHNIQUE\nRéalisation : Le Collectif Amazones Production\nImage : Esther M.C. Barry\nSon : Seydou G. Porgo\nMontage : Gaëtan Y. Somé / Mahouli Mayang\nPost-production : Studio Créatine\nMusique : Dondo Paré\nProduction Déléguée : Mamounata Nikiéma (Pilumpiku Production)\n\nRÉALISATRICES\nSalimata Ouedraogo · Oumoule Sahadatou Yago · Aicha Nonkane · Kadiguetou Gansore · Mariam Ouattara · Worokia Kayoulou · Rosalie W. Konkobo · Rachelle B. Somé · Kadi Traore · Natalie N. Tandia · Aminata Diallo · Nathalie Tandia · Eve-Noëllie Djebolo · Mahouli Mayang",
     image: "/img/pingda.jpg",
+    galerie: [
+      "/img/pingda-affiche.png",
+      "/img/pingda-tournage-1.jpg",
+      "/img/pingda-tournage-2.jpg",
+      "/img/pingda-tournage-3.jpg",
+    ],
     sortOrder: 20,
     featured: false,
   },
@@ -697,13 +704,27 @@ const SETTINGS = {
 async function seed() {
   logger.info("Starting seed...");
 
-  const [existingProject] = await db.select().from(projectsTable).limit(1);
-  if (!existingProject) {
-    await db.insert(projectsTable).values(PROJECTS);
-    logger.info({ count: PROJECTS.length }, "Seeded projects");
-  } else {
-    logger.info("Projects already seeded — skipping");
-  }
+  await db
+    .insert(projectsTable)
+    .values(PROJECTS)
+    .onConflictDoUpdate({
+      target: projectsTable.slug,
+      set: {
+        titre: sql`excluded.titre`,
+        categorie: sql`excluded.categorie`,
+        statut: sql`excluded.statut`,
+        annee: sql`excluded.annee`,
+        duree: sql`excluded.duree`,
+        langue: sql`excluded.langue`,
+        synopsis: sql`excluded.synopsis`,
+        intention: sql`excluded.intention`,
+        image: sql`excluded.image`,
+        galerie: sql`excluded.galerie`,
+        sortOrder: sql`excluded.sort_order`,
+        featured: sql`excluded.featured`,
+      },
+    });
+  logger.info({ count: PROJECTS.length }, "Seeded projects (upsert)");
 
   const [existingNews] = await db.select().from(newsTable).limit(1);
   if (!existingNews) {

@@ -8,6 +8,13 @@
       "when": 1781290368134,
       "tag": "0000_wandering_overlord",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1781350000000,
+      "tag": "0001_add_galerie_to_projects",
+      "breakpoints": true
     }
   ]
 }

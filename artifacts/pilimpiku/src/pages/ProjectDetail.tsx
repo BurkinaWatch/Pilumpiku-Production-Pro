@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useParams, Link } from "wouter";
 import { ProjectCard } from "@/components/ProjectCard";
 import NotFound from "./not-found";
-import { Play, X } from "lucide-react";
+import { Play, X, Images, Download } from "lucide-react";
 import { useState } from "react";
 import {
   useGetProjectBySlug,
@@ -15,6 +15,7 @@ export default function ProjectDetail() {
   const { data: project, isLoading, isError } = useGetProjectBySlug(slug ?? "");
   const { data: allProjects } = useListProjects();
   const [showTrailer, setShowTrailer] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useSeo({
     title: project?.titre ?? "Projet",
@@ -36,6 +37,9 @@ export default function ProjectDetail() {
   const otherProjects = (allProjects ?? [])
     .filter((p) => p.slug !== slug)
     .slice(0, 3);
+
+  const galerie = project.galerie ?? [];
+  const hasGalerie = galerie.length > 0;
 
   return (
     <div className="flex flex-col w-full bg-background min-h-screen">
@@ -71,7 +75,7 @@ export default function ProjectDetail() {
               {project.titre}
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-serif italic max-w-3xl">
-              {project.intention}
+              {project.intention.split("\n")[0]}
             </p>
           </motion.div>
         </div>
@@ -92,6 +96,20 @@ export default function ProjectDetail() {
                 </h2>
                 <p className="text-muted-foreground font-light text-lg leading-relaxed whitespace-pre-line">
                   {project.synopsis}
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="mb-16"
+              >
+                <h2 className="font-serif text-3xl text-foreground mb-6">
+                  Note d'intention
+                </h2>
+                <p className="text-muted-foreground font-light text-lg leading-relaxed whitespace-pre-line">
+                  {project.intention}
                 </p>
               </motion.div>
             </div>
@@ -152,6 +170,68 @@ export default function ProjectDetail() {
         </div>
       </section>
 
+      {hasGalerie && (
+        <section className="py-24 border-t border-border/20">
+          <div className="container mx-auto px-6 md:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="flex items-end justify-between mb-12">
+                <div>
+                  <p className="text-[0.65rem] uppercase tracking-widest text-primary mb-2">
+                    Dossier de Presse
+                  </p>
+                  <h2 className="font-serif text-4xl text-foreground flex items-center gap-3">
+                    <Images size={28} className="text-primary/60" />
+                    Galerie
+                  </h2>
+                </div>
+                <a
+                  href={`mailto:pilumpikuproduction@gmail.com?subject=Dossier de presse — ${project.titre}`}
+                  className="hidden md:flex items-center gap-2 uppercase tracking-widest text-xs text-muted-foreground hover:text-primary transition-colors cursor-none"
+                >
+                  <Download size={12} /> Demander le dossier complet
+                </a>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {galerie.map((src, i) => (
+                  <motion.button
+                    key={src}
+                    onClick={() => setLightboxIndex(i)}
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.1 * i }}
+                    className={`relative overflow-hidden rounded-sm cursor-none group ${
+                      i === 0 ? "col-span-2 row-span-2 aspect-[3/4]" : "aspect-square"
+                    }`}
+                  >
+                    <img
+                      src={src}
+                      alt={`${project.titre} — photo ${i + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  </motion.button>
+                ))}
+              </div>
+
+              <div className="mt-6 flex md:hidden">
+                <a
+                  href={`mailto:pilumpikuproduction@gmail.com?subject=Dossier de presse — ${project.titre}`}
+                  className="flex items-center gap-2 uppercase tracking-widest text-xs text-muted-foreground hover:text-primary transition-colors cursor-none"
+                >
+                  <Download size={12} /> Demander le dossier complet
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {otherProjects.length > 0 && (
         <section className="py-24 bg-[#0F0600] border-t border-border/20">
           <div className="container mx-auto px-6 md:px-12">
@@ -197,6 +277,64 @@ export default function ProjectDetail() {
                   Lecteur vidéo non disponible
                 </p>
               </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxIndex(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 cursor-none"
+          >
+            <button
+              onClick={() => setLightboxIndex(null)}
+              className="absolute top-4 right-4 z-10 bg-background/20 hover:bg-primary text-white p-2 rounded-full transition-colors cursor-none"
+            >
+              <X size={24} />
+            </button>
+
+            {lightboxIndex > 0 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex - 1); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-primary text-white px-3 py-4 rounded transition-colors cursor-none text-lg"
+              >
+                ‹
+              </button>
+            )}
+
+            {lightboxIndex < galerie.length - 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex + 1); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-primary text-white px-3 py-4 rounded transition-colors cursor-none text-lg"
+              >
+                ›
+              </button>
+            )}
+
+            <motion.img
+              key={lightboxIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              src={galerie[lightboxIndex]}
+              alt={`${project.titre} — photo ${lightboxIndex + 1}`}
+              className="max-h-[90vh] max-w-[90vw] object-contain rounded-sm shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {galerie.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setLightboxIndex(i); }}
+                  className={`w-1.5 h-1.5 rounded-full transition-colors cursor-none ${i === lightboxIndex ? "bg-primary" : "bg-white/30"}`}
+                />
+              ))}
             </div>
           </motion.div>
         )}

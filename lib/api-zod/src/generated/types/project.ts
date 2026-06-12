@@ -18,6 +18,7 @@ export interface Project {
   synopsis: string;
   intention: string;
   image: string;
+  galerie?: string[] | null;
   sortOrder: number;
   featured?: boolean;
 }
