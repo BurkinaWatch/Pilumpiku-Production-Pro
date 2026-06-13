@@ -119,7 +119,7 @@ export default function Contact() {
                   </h4>
                   <a
                     href={`mailto:${email}`}
-                    className="text-foreground font-serif text-xl hover:text-primary transition-colors cursor-none"
+                    className="text-foreground font-serif text-xl hover:text-primary transition-colors"
                     data-testid="link-contact-email"
                   >
                     {email}
@@ -169,7 +169,7 @@ export default function Contact() {
                         <FormControl>
                           <Input
                             placeholder="Votre nom"
-                            className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm cursor-none"
+                            className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm"
                             data-testid="input-contact-nom"
                             {...field}
                           />
@@ -190,7 +190,7 @@ export default function Contact() {
                           <Input
                             type="email"
                             placeholder="votre@email.com"
-                            className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm cursor-none"
+                            className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm"
                             data-testid="input-contact-email"
                             {...field}
                           />
@@ -213,7 +213,7 @@ export default function Contact() {
                         <FormControl>
                           <Input
                             placeholder="Société, Institution..."
-                            className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm cursor-none"
+                            className="bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm"
                             data-testid="input-contact-organisation"
                             {...field}
                           />
@@ -236,7 +236,7 @@ export default function Contact() {
                         >
                           <FormControl>
                             <SelectTrigger
-                              className="bg-background/50 border-border/50 focus:ring-primary rounded-sm cursor-none"
+                              className="bg-background/50 border-border/50 focus:ring-primary rounded-sm"
                               data-testid="select-contact-sujet"
                             >
                               <SelectValue placeholder="Sélectionner..." />
@@ -277,7 +277,7 @@ export default function Contact() {
                       <FormControl>
                         <Textarea
                           placeholder="Votre message..."
-                          className="min-h-[150px] bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm resize-none cursor-none"
+                          className="min-h-[150px] bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm resize-none"
                           data-testid="input-contact-message"
                           {...field}
                         />
@@ -289,7 +289,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground py-4 uppercase tracking-widest text-xs hover:bg-secondary transition-colors cursor-none rounded-sm"
+                  className="w-full bg-primary text-primary-foreground py-4 uppercase tracking-widest text-xs hover:bg-secondary transition-colors rounded-sm"
                   data-testid="button-contact-submit"
                 >
                   Envoyer le message

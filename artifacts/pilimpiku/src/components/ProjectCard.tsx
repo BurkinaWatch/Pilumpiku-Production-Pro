@@ -10,7 +10,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projets/${project.slug}`} data-testid={`link-project-${project.slug}`}>
       <motion.div
-        className="group relative overflow-hidden rounded-md cursor-none"
+        className="group relative overflow-hidden rounded-md"
         whileHover="hover"
       >
         <div className="aspect-[3/4] relative overflow-hidden">

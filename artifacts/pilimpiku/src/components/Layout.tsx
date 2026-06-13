@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
-import { Cursor } from "./Cursor";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ReactNode } from "react";
@@ -25,7 +24,6 @@ export function Layout({ children }: { children: ReactNode }) {
         </svg>
       </div>
 
-      <Cursor />
       <Navbar />
 
       <main className="flex-1 flex flex-col">

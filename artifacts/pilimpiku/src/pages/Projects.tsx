@@ -66,7 +66,7 @@ export default function Projects() {
               key={cat}
               onClick={() => setActiveFilter(cat)}
               data-testid={`button-filter-${cat}`}
-              className={`px-4 py-2 text-xs uppercase tracking-widest rounded-sm transition-all duration-300 border cursor-none ${
+              className={`px-4 py-2 text-xs uppercase tracking-widest rounded-sm transition-all duration-300 border ${
                 activeFilter === cat
                   ? "bg-primary border-primary text-primary-foreground"
                   : "bg-transparent border-border/50 text-muted-foreground hover:border-primary/50 hover:text-foreground"

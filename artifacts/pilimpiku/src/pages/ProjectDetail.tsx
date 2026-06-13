@@ -154,14 +154,14 @@ export default function ProjectDetail() {
                   <button
                     onClick={() => setShowTrailer(true)}
                     data-testid="button-show-trailer"
-                    className="w-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2 cursor-none"
+                    className="w-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2"
                   >
                     <Play size={14} /> Voir la bande-annonce
                   </button>
                 )}
                   <Link
                     href="/contact"
-                    className="w-full text-center bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors cursor-none"
+                    className="w-full text-center bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors"
                   >
                     Contacter l'équipe
                   </Link>
@@ -192,7 +192,7 @@ export default function ProjectDetail() {
                 </div>
                 <a
                   href={`mailto:pilumpikuproduction@gmail.com?subject=Dossier de presse — ${project.titre}`}
-                  className="hidden md:flex items-center gap-2 uppercase tracking-widest text-xs text-muted-foreground hover:text-primary transition-colors cursor-none"
+                  className="hidden md:flex items-center gap-2 uppercase tracking-widest text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Download size={12} /> Demander le dossier complet
                 </a>
@@ -206,7 +206,7 @@ export default function ProjectDetail() {
                     initial={{ opacity: 0, scale: 0.97 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.1 * i }}
-                    className={`relative overflow-hidden rounded-sm cursor-none group ${
+                    className={`relative overflow-hidden rounded-sm group ${
                       i === 0 ? "col-span-2 row-span-2 aspect-[3/4]" : "aspect-square"
                     }`}
                   >
@@ -224,7 +224,7 @@ export default function ProjectDetail() {
               <div className="mt-6 flex md:hidden">
                 <a
                   href={`mailto:pilumpikuproduction@gmail.com?subject=Dossier de presse — ${project.titre}`}
-                  className="flex items-center gap-2 uppercase tracking-widest text-xs text-muted-foreground hover:text-primary transition-colors cursor-none"
+                  className="flex items-center gap-2 uppercase tracking-widest text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Download size={12} /> Demander le dossier complet
                 </a>
@@ -243,7 +243,7 @@ export default function ProjectDetail() {
               </h2>
               <Link
                 href="/projets"
-                className="uppercase tracking-widest text-xs text-primary hover:text-secondary transition-colors cursor-none"
+                className="uppercase tracking-widest text-xs text-primary hover:text-secondary transition-colors"
               >
                 Voir tout →
               </Link>
@@ -269,7 +269,7 @@ export default function ProjectDetail() {
               <button
                 onClick={() => setShowTrailer(false)}
                 data-testid="button-close-trailer"
-                className="absolute top-4 right-4 z-10 bg-background/50 hover:bg-primary text-foreground hover:text-primary-foreground p-2 rounded-full backdrop-blur-md transition-colors cursor-none"
+                className="absolute top-4 right-4 z-10 bg-background/50 hover:bg-primary text-foreground hover:text-primary-foreground p-2 rounded-full backdrop-blur-md transition-colors"
               >
                 <X size={24} />
               </button>
@@ -301,11 +301,11 @@ export default function ProjectDetail() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxIndex(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 cursor-none"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
           >
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute top-4 right-4 z-10 bg-background/20 hover:bg-primary text-white p-2 rounded-full transition-colors cursor-none"
+              className="absolute top-4 right-4 z-10 bg-background/20 hover:bg-primary text-white p-2 rounded-full transition-colors"
             >
               <X size={24} />
             </button>
@@ -313,7 +313,7 @@ export default function ProjectDetail() {
             {lightboxIndex > 0 && (
               <button
                 onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex - 1); }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-primary text-white px-3 py-4 rounded transition-colors cursor-none text-lg"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-primary text-white px-3 py-4 rounded transition-colors text-lg"
               >
                 ‹
               </button>
@@ -322,7 +322,7 @@ export default function ProjectDetail() {
             {lightboxIndex < galerie.length - 1 && (
               <button
                 onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex + 1); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-primary text-white px-3 py-4 rounded transition-colors cursor-none text-lg"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-primary text-white px-3 py-4 rounded transition-colors text-lg"
               >
                 ›
               </button>
@@ -344,7 +344,7 @@ export default function ProjectDetail() {
                 <button
                   key={i}
                   onClick={(e) => { e.stopPropagation(); setLightboxIndex(i); }}
-                  className={`w-1.5 h-1.5 rounded-full transition-colors cursor-none ${i === lightboxIndex ? "bg-primary" : "bg-white/30"}`}
+                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === lightboxIndex ? "bg-primary" : "bg-white/30"}`}
                 />
               ))}
             </div>

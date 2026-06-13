@@ -37,7 +37,7 @@ export default function News() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group cursor-none border border-border/50 bg-card overflow-hidden rounded-sm"
+              className="group border border-border/50 bg-card overflow-hidden rounded-sm"
               data-testid={`card-news-${item.id}`}
             >
               <div className="aspect-[16/9] overflow-hidden relative">
