@@ -145,10 +145,10 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23E98616'/%3E%3C/svg%3E") 8 8, auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 13C11.5 9.5 6 6 3 9C1 11.5 4 15 14 13Z' fill='%23E98616'/%3E%3Cpath d='M14 13C16.5 9.5 22 6 25 9C27 11.5 24 15 14 13Z' fill='%23E98616'/%3E%3Cpath d='M14 15C11 15 5 18 6 21.5C7 24 11 23 14 15Z' fill='%23E98616' opacity='.7'/%3E%3Cpath d='M14 15C17 15 23 18 22 21.5C21 24 17 23 14 15Z' fill='%23E98616' opacity='.7'/%3E%3Cellipse cx='14' cy='14' rx='1' ry='4.5' fill='%234a1500'/%3E%3C/svg%3E") 14 14, auto;
   }
   a, button, [role="button"], input, textarea, select, label {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='8' fill='none' stroke='%23E98616' stroke-width='2'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%23E98616'/%3E%3C/svg%3E") 10 10, pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 13C11 9 5 5 2 8.5C0 11.5 4 15.5 14 13Z' fill='%23E98616'/%3E%3Cpath d='M14 13C17 9 23 5 26 8.5C28 11.5 24 15.5 14 13Z' fill='%23E98616'/%3E%3Cpath d='M14 15C10.5 15 4 18.5 5.5 22C6.5 24.5 11 23.5 14 15Z' fill='%23E98616' opacity='.7'/%3E%3Cpath d='M14 15C17.5 15 24 18.5 22.5 22C21.5 24.5 17 23.5 14 15Z' fill='%23E98616' opacity='.7'/%3E%3Cellipse cx='14' cy='14' rx='1' ry='4.5' fill='%234a1500'/%3E%3C/svg%3E") 14 14, pointer;
   }
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
