@@ -171,15 +171,19 @@ const PROJECTS = [
     slug: "etincelles",
     titre: "Étincelles",
     categorie: "Long-métrage documentaire",
-    statut: "Coproduction · 2019 · Prix Nokouè 2020",
+    statut: "Produit · 2019 · Prix Nokouè d'argent 2020",
     annee: 2019,
-    duree: "62 min",
+    duree: "60 min",
     langue: "Français",
     synopsis:
-      "Mailo est le village natal de Bawa Kadadé Riba, né en 1975. Chrétien d'un père musulman, il ne reconnaît plus son village, divisé par des tensions religieuses avec, comme ligne de démarcation, le goudron : les musulmans d'un côté, les chrétiens de l'autre. Pourtant, tous sont une même famille. Tout le monde connaît le problème mais personne n'en parle. Alors, pour délier les langues et provoquer la parole autour du vivre ensemble, Bawa retourne au village avec un projet : construire sa maison du côté musulman.",
+      "Mailo est le village natal de Bawa Kadade Riba, né en 1975. Chrétien d'un père musulman, il ne reconnaît plus son village, divisé par des tensions religieuses avec, comme ligne de démarcation, le goudron : les musulmans d'un côté, les chrétiens de l'autre. Pourtant, tous sont une même famille. Tout le monde connaît le problème, mais personne n'en parle.\n\nAlors, pour délier les langues et provoquer la parole autour du vivre ensemble, Bawa retourne au village avec un projet : construire sa maison du côté musulman.",
     intention:
-      "Production déléguée The Kingdom (France), coproduction Pilumpiku Production. Image Michel K. Zongo, montage Amina Weïra & Julien Sallé. Soutien du Fonds Jeune Création Francophone, accompagnement post-production à Montréal avec Téléfilm Canada. Sélections : États Généraux du Film Documentaire de Lussas (2019), Saint-Louis Docs, FIFIDHO Niamey, Ânûû-rû Âboro (Nouvelle-Calédonie). Prix Nokouè d'argent au festival Lagunimages de Cotonou (2020).",
+      "Un film personnel et engagé sur le vivre-ensemble et la réconciliation, tourné dans le village natal du réalisateur au Burkina Faso.\n\nFICHE TECHNIQUE\nRéalisation : Bawa Kadade Riba\nImage : Michel K. Zongo\nSon : Moumouni Jupiter Soudre & Abdoulaye Adamoun Mato\nMontage : Amina Weïra, Julien Sallé\nMonteur en ligne : Dario De Bettin\nProduction déléguée : The Kingdom (France)\nCoproduction : Pilumpiku Production\nSoutien : Fonds Jeune Création Francophone, CNC\n\nSÉLECTIONS & PRIX\nÉtats Généraux du Film Documentaire de Lussas (2019)\nSaint-Louis Docs\nFIFIDHO Niamey\nÂnûû-rû Âboro (Nouvelle-Calédonie)\nPrix Nokouè d'argent — Festival Lagunimages de Cotonou (2020)",
     image: "/img/etincelles.webp",
+    galerie: [
+      "/img/etincelles-affiche.jpg",
+      "/img/etincelles-photo.jpg",
+    ],
     sortOrder: 33,
     featured: false,
   },
