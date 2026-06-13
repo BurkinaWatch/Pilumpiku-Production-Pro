@@ -145,6 +145,10 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23E98616'/%3E%3C/svg%3E") 8 8, auto;
+  }
+  a, button, [role="button"], input, textarea, select, label {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='8' fill='none' stroke='%23E98616' stroke-width='2'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%23E98616'/%3E%3C/svg%3E") 10 10, pointer;
   }
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
