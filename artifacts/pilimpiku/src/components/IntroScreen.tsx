@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 
 interface IntroScreenProps {
   onComplete: () => void;
@@ -7,12 +8,36 @@ interface IntroScreenProps {
 
 export function IntroScreen({ onComplete }: IntroScreenProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [showSkip, setShowSkip] = useState(false);
   const [exiting, setExiting] = useState(false);
+  const [soundBlocked, setSoundBlocked] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
   const dismiss = () => {
     if (exiting) return;
     setExiting(true);
+    audioRef.current?.pause();
+  };
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isMuted) {
+      audio.muted = false;
+      audio.play().catch(() => {});
+      setIsMuted(false);
+    } else {
+      audio.muted = true;
+      setIsMuted(true);
+    }
+  };
+
+  const enableSound = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.play().catch(() => {});
+    setSoundBlocked(false);
   };
 
   useEffect(() => {
@@ -28,6 +53,22 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
     return () => video.removeEventListener("ended", handleEnded);
   }, []);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.85;
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        setSoundBlocked(true);
+      });
+    }
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }, []);
+
   return (
     <AnimatePresence onExitComplete={onComplete}>
       {!exiting && (
@@ -39,18 +80,22 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          {/* Video */}
+          <audio
+            ref={audioRef}
+            src="/audio/generique.mp3"
+            preload="none"
+          />
+
           <video
             ref={videoRef}
             src="/video/generique.mp4"
             autoPlay
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* Subtle vignette overlay */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -59,7 +104,6 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
             }}
           />
 
-          {/* Top: Logo */}
           <motion.div
             className="absolute top-8 left-1/2 -translate-x-1/2 flex items-center gap-3"
             initial={{ opacity: 0, y: -12 }}
@@ -81,7 +125,37 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
             </div>
           </motion.div>
 
-          {/* Bottom: Skip button */}
+          <AnimatePresence>
+            {soundBlocked && (
+              <motion.button
+                key="sound-enable"
+                onClick={enableSound}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
+                className="absolute top-8 right-10 flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-300 text-xs tracking-widest uppercase"
+              >
+                <VolumeX size={14} />
+                <span>Activer le son</span>
+              </motion.button>
+            )}
+            {!soundBlocked && (
+              <motion.button
+                key="sound-toggle"
+                onClick={toggleMute}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, delay: 1.2 }}
+                className="absolute top-8 right-10 text-white/40 hover:text-white/80 transition-colors duration-300"
+                title={isMuted ? "Activer le son" : "Couper le son"}
+              >
+                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+              </motion.button>
+            )}
+          </AnimatePresence>
+
           <AnimatePresence>
             {showSkip && (
               <motion.button
