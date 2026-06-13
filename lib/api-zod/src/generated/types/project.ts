@@ -19,6 +19,7 @@ export interface Project {
   intention: string;
   image: string;
   galerie?: string[] | null;
+  trailerUrl?: string | null;
   sortOrder: number;
   featured?: boolean;
 }

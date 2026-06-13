@@ -15,6 +15,13 @@
       "when": 1781350000000,
       "tag": "0001_add_galerie_to_projects",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781390100000,
+      "tag": "0002_add_trailer_url_to_projects",
+      "breakpoints": true
     }
   ]
 }

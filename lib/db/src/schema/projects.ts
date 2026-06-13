@@ -13,6 +13,7 @@ export const projectsTable = pgTable("projects", {
   intention: text("intention").notNull(),
   image: text("image").notNull(),
   galerie: json("galerie").$type<string[]>(),
+  trailerUrl: text("trailer_url"),
   sortOrder: integer("sort_order").notNull().default(0),
   featured: boolean("featured").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

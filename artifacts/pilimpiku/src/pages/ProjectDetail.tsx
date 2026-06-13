@@ -150,6 +150,7 @@ export default function ProjectDetail() {
                 </div>
 
                 <div className="flex flex-col gap-4">
+                  {project.trailerUrl && (
                   <button
                     onClick={() => setShowTrailer(true)}
                     data-testid="button-show-trailer"
@@ -157,6 +158,7 @@ export default function ProjectDetail() {
                   >
                     <Play size={14} /> Voir la bande-annonce
                   </button>
+                )}
                   <Link
                     href="/contact"
                     className="w-full text-center bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors cursor-none"
@@ -271,12 +273,22 @@ export default function ProjectDetail() {
               >
                 <X size={24} />
               </button>
-              <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground/50">
-                <Play size={64} className="mb-4 opacity-50" />
-                <p className="font-serif italic">
-                  Lecteur vidéo non disponible
-                </p>
-              </div>
+              {project.trailerUrl ? (
+                <iframe
+                  src={project.trailerUrl.replace("vimeo.com/", "player.vimeo.com/video/") + "?autoplay=1&color=c9a84c&title=0&byline=0&portrait=0"}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                  title={`Bande-annonce — ${project.titre}`}
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground/50">
+                  <Play size={64} className="mb-4 opacity-50" />
+                  <p className="font-serif italic">
+                    Lecteur vidéo non disponible
+                  </p>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
