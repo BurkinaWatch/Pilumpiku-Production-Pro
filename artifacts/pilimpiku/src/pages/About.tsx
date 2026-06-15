@@ -24,32 +24,6 @@ En octobre 2017, elle est lauréate du programme B-Faso Creative lancé par l'or
 
 Figure majeure du paysage cinématographique ouest-africain, elle est élue en mai 2022 présidente de la Fédération Nationale des Ciné-Clubs et Associations cinématographiques du Burkina Faso (FNCA), puis présidente de la Confédération AES du Cinéma. Elle est Chevalier de l'Ordre du Mérite des Arts, des Lettres et de la Communication du Burkina Faso.`;
 
-const ACTIVITES = [
-  {
-    icon: "🎬",
-    titre: "Production documentaire",
-    description:
-      "Pilumpiku produit et coproduit des films documentaires d'auteur avec des partenaires burkinabè, africains et européens. La société accompagne les cinéastes de l'écriture du projet jusqu'à la diffusion internationale, avec un attachement particulier aux récits qui portent des voix peu entendues.",
-  },
-  {
-    icon: "📺",
-    titre: "Sulunsuku",
-    description:
-      "Lancée en 2018, Sulunsuku est une plateforme audiovisuelle burkinabè qui agrège et met en valeur des contenus locaux. Elle vise à élargir l'accès aux œuvres africaines et à créer un marché pour le cinéma du continent au-delà des circuits de diffusion traditionnels.",
-  },
-  {
-    icon: "🌟",
-    titre: "Sobatè",
-    description:
-      "Festival de cinéma en plein air organisé à Ouagadougou, Sobatè rapproche le grand écran des habitants des quartiers populaires de la capitale. Il s'inscrit dans la mission de Pilumpiku de démocratiser l'accès à la culture cinématographique et de renforcer le lien entre les films et leurs publics naturels.",
-  },
-  {
-    icon: "📚",
-    titre: "Formation & Ateliers",
-    description:
-      "Pilumpiku organise des ateliers d'écriture de scénarios, des résidences de développement et des sessions de formation à la production. La société a notamment initié la Galerie Ciné-Équipements en 2018 et participe activement au Ouaga Film Lab, carrefour de la jeune création documentaire africaine.",
-  },
-];
 
 const DISTINCTIONS = [
   { annee: "2026", texte: "Sélection en première mondiale à Visions du Réel — « Djeliya, mémoire du Mandé »" },
@@ -165,41 +139,6 @@ export default function About() {
             "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même."
           </motion.blockquote>
           <cite className="uppercase tracking-[0.3em] text-xs text-primary not-italic">— Mamounata Nikiéma</cite>
-        </div>
-      </section>
-
-      {/* Activités */}
-      <section className="py-24 relative z-10">
-        <div className="container mx-auto px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">Nos Activités</h2>
-            <p className="text-muted-foreground font-light max-w-lg">
-              Au-delà de la production, Pilumpiku œuvre à construire un écosystème cinématographique durable en Afrique de l'Ouest.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {ACTIVITES.map((activite, i) => (
-              <motion.div
-                key={activite.titre}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-card border border-border/40 p-8 relative overflow-hidden group hover:border-primary/40 transition-colors duration-500"
-              >
-                <div className="absolute top-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-700" />
-                <span className="text-3xl mb-4 block">{activite.icon}</span>
-                <h3 className="font-serif text-xl text-foreground mb-3">{activite.titre}</h3>
-                <p className="text-muted-foreground font-light leading-relaxed text-sm">{activite.description}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
