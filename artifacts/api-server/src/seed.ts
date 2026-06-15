@@ -697,7 +697,7 @@ const SETTINGS = {
   heroTitleLine1: "Le cinéma comme",
   heroTitleLine2: "métamorphose",
   heroSubtitle:
-    "Société de production cinématographique fondée en 2011 à Ouagadougou par Mamounata Nikiéma. Nous accompagnons des écritures documentaires qui interrogent les transformations sociales, politiques et culturelles de l'Afrique contemporaine — et donnent toute leur place aux voix des femmes et des jeunesses africaines.",
+    "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.",
   quoteText:
     "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.",
   quoteAuthor: "Mamounata Nikiéma",

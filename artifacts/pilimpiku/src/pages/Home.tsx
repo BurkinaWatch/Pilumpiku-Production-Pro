@@ -39,7 +39,7 @@ export default function Home() {
   const heroBadge = settings?.heroBadge ?? "Ouagadougou · Burkina Faso";
   const heroSubtitle =
     settings?.heroSubtitle ??
-    "Une société de production cinématographique engagée, créative et tournée vers l'international.";
+    "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.";
   const quoteText = settings?.quoteText ?? "";
   const quoteAuthor = settings?.quoteAuthor ?? "— Pilumpiku Production";
   const statsProjets = settings?.statsProjets ?? "11+";
