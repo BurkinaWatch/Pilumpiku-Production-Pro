@@ -239,57 +239,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Filmographie sélective */}
-      <section className="py-20 bg-card border-t border-border/20">
-        <div className="container mx-auto px-6 md:px-12">
-          <motion.h3
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-serif text-3xl text-foreground mb-12"
-          >
-            Filmographie sélective
-          </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
-            {[
-              { annee: "2026", titre: "Djeliya, mémoire du Mandé", role: "Productrice", note: "Visions du Réel — Première mondiale" },
-              { annee: "2025", titre: "Katseiden alla (Sous les regards)", role: "Productrice", note: "Coproduction finlandaise" },
-              { annee: "2025", titre: "Loin de moi la colère", role: "Productrice", note: "Joël Akafou" },
-              { annee: "2024", titre: "Pingda", role: "Productrice", note: "" },
-              { annee: "2022", titre: "Intacte", role: "Réalisatrice & Productrice", note: "Court-métrage documentaire" },
-              { annee: "2021", titre: "Sur les traces d'un migrant", role: "Productrice", note: "Grand Prix FESPACO 2021" },
-              { annee: "2020", titre: "L'Odyssée d'Omar", role: "Réalisatrice & Productrice", note: "Diffusé sur Tënk, Vues d'Afrique" },
-              { annee: "2018", titre: "Au fantôme du père", role: "Productrice", note: "Marie-Laurentine Bayala" },
-              { annee: "2015", titre: "Lumière d'octobre", role: "Réalisatrice", note: "Insurrection burkinabè 2014" },
-              { annee: "2011", titre: "Une journée avec…", role: "Réalisatrice", note: "Série documentaire TV" },
-            ].map((film, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex gap-4 items-start py-4 border-b border-border/20 group hover:border-primary/30 transition-colors"
-              >
-                <span className="font-serif text-primary text-sm min-w-[3rem]">{film.annee}</span>
-                <div className="flex-1">
-                  <p className="text-foreground font-light text-sm">{film.titre}</p>
-                  <div className="flex items-center gap-3 mt-0.5">
-                    <span className="text-xs text-muted-foreground/60 uppercase tracking-wider">{film.role}</span>
-                    {film.note && (
-                      <>
-                        <span className="text-primary/30">·</span>
-                        <span className="text-xs text-primary/70 italic">{film.note}</span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }
