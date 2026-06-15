@@ -168,6 +168,68 @@ export default function About() {
         </div>
       </section>
 
+      {/* Activités */}
+      <section className="py-24 relative z-10">
+        <div className="container mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">Nos Activités</h2>
+            <p className="text-muted-foreground font-light max-w-lg">
+              Au-delà de la production, Pilumpiku œuvre à construire un écosystème cinématographique durable en Afrique de l'Ouest.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {ACTIVITES.map((activite, i) => (
+              <motion.div
+                key={activite.titre}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-card border border-border/40 p-8 relative overflow-hidden group hover:border-primary/40 transition-colors duration-500"
+              >
+                <div className="absolute top-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-700" />
+                <span className="text-3xl mb-4 block">{activite.icon}</span>
+                <h3 className="font-serif text-xl text-foreground mb-3">{activite.titre}</h3>
+                <p className="text-muted-foreground font-light leading-relaxed text-sm">{activite.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partenariats */}
+      <section className="py-16 bg-card border-y border-border/20">
+        <div className="container mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h3 className="font-serif text-2xl text-foreground mb-2">Partenariats & Coproductions</h3>
+            <p className="text-muted-foreground font-light text-sm max-w-lg mx-auto">
+              Pilumpiku collabore avec des structures de production en Côte d'Ivoire, Niger, Sénégal, Mali, Togo, Cameroun, Gabon, Finlande, France et au-delà.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-widest text-muted-foreground/60"
+          >
+            {["Burkina Faso", "Côte d'Ivoire", "Sénégal", "Mali", "Togo", "Niger", "Cameroun", "Gabon", "Finlande", "France", "Belgique", "Canada"].map((pays) => (
+              <span key={pays} className="border border-border/30 px-4 py-2">{pays}</span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Fondatrice */}
       <section className="py-24 relative z-10">
         <div className="container mx-auto px-6 md:px-12">
