@@ -39,18 +39,18 @@ export function Footer() {
               <li><a href="mailto:pilumpikuproduction@gmail.com" className="hover:text-primary transition-colors">pilumpikuproduction@gmail.com</a></li>
               <li>+226 70 14 92 33 / +226 78 70 12 32</li>
             </ul>
-            <div className="flex items-center gap-4">
-              <a href="https://www.instagram.com/mamounatan?igsh=MTZoaWZpYXdsaHE1Mw==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-                <Instagram size={18} />
+            <div className="flex items-center gap-3">
+              <a href="https://www.instagram.com/mamounatan?igsh=MTZoaWZpYXdsaHE1Mw==" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-foreground/10 border border-foreground/20 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+                <Instagram size={20} />
               </a>
-              <a href="https://www.facebook.com/pilumpikuproduction" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-                <Facebook size={18} />
+              <a href="https://www.facebook.com/pilumpikuproduction" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-foreground/10 border border-foreground/20 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+                <Facebook size={20} />
               </a>
-              <a href="https://bf.linkedin.com/in/pilumpiku-production-8b97642b5" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-                <Linkedin size={18} />
+              <a href="https://bf.linkedin.com/in/pilumpiku-production-8b97642b5" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-foreground/10 border border-foreground/20 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+                <Linkedin size={20} />
               </a>
-              <a href="https://www.youtube.com/@pilumpikuproduction7508" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-                <Video size={18} />
+              <a href="https://www.youtube.com/@pilumpikuproduction7508" target="_blank" rel="noopener noreferrer" className="w-11 h-11 bg-foreground/10 border border-foreground/20 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
+                <Video size={20} />
               </a>
             </div>
           </div>
