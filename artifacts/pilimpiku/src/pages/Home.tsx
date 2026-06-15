@@ -42,9 +42,9 @@ export default function Home() {
     "Une société de production cinématographique engagée, créative et tournée vers l'international.";
   const quoteText = settings?.quoteText ?? "";
   const quoteAuthor = settings?.quoteAuthor ?? "— Pilumpiku Production";
-  const statsProjets = settings?.statsProjets ?? "8+";
-  const statsPays = settings?.statsPays ?? "12+";
-  const statsFestivals = settings?.statsFestivals ?? "5+";
+  const statsProjets = settings?.statsProjets ?? "11+";
+  const statsPays = settings?.statsPays ?? "15+";
+  const statsFestivals = settings?.statsFestivals ?? "20+";
 
   return (
     <div className="flex flex-col w-full">
