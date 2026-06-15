@@ -6,7 +6,7 @@ import {
   partnersTable,
   siteSettingsTable,
 } from "@workspace/db";
-import { sql } from "drizzle-orm";
+import { sql, eq } from "drizzle-orm";
 import { logger } from "./lib/logger";
 
 const PROJECTS = [
@@ -773,7 +773,8 @@ async function seed() {
     await db.insert(siteSettingsTable).values(SETTINGS);
     logger.info("Seeded site settings");
   } else {
-    logger.info("Site settings already seeded — skipping");
+    await db.update(siteSettingsTable).set(SETTINGS).where(eq(siteSettingsTable.id, existingSettings.id));
+    logger.info("Updated site settings");
   }
 
   logger.info("Seed complete.");
