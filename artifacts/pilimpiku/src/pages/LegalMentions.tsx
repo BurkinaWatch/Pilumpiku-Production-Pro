@@ -80,33 +80,7 @@ export default function LegalMentions() {
             </p>
           </Section>
 
-          <Section title="3. Hébergement du site">
-            <p>
-              Ce site est hébergé par la société{" "}
-              <span className="text-foreground font-medium">Replit, Inc.</span>
-            </p>
-            <p>
-              <span className="text-foreground font-medium">Adresse :</span>{" "}
-              620 Folsom St, Suite 100, San Francisco, CA 94107, États-Unis d'Amérique
-            </p>
-            <p>
-              <span className="text-foreground font-medium">Site web :</span>{" "}
-              <a
-                href="https://replit.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                https://replit.com
-              </a>
-            </p>
-            <p className="text-xs text-muted-foreground/70">
-              L'hébergeur est une entité tierce ; Pilimpiku Production ne saurait être tenue responsable
-              des interruptions techniques ou pannes imputables à l'infrastructure d'hébergement.
-            </p>
-          </Section>
-
-          <Section title="4. Propriété intellectuelle">
+          <Section title="3. Propriété intellectuelle">
             <p>
               L'ensemble des éléments constituant ce site — textes, images, photographies, vidéos,
               graphismes, logos, sons, logiciels et toute autre donnée — est protégé par les
@@ -128,7 +102,7 @@ export default function LegalMentions() {
             </p>
           </Section>
 
-          <Section title="5. Responsabilité éditoriale">
+          <Section title="4. Responsabilité éditoriale">
             <p>
               Pilimpiku Production s'efforce de fournir des informations exactes et à jour sur
               ce site. Toutefois, elle ne saurait garantir l'exactitude, la complétude ni la
@@ -143,7 +117,7 @@ export default function LegalMentions() {
             </p>
           </Section>
 
-          <Section title="6. Protection des données personnelles">
+          <Section title="5. Protection des données personnelles">
             <p>
               La collecte et le traitement des données personnelles des utilisateurs de ce site
               sont régis par la Loi n°010-2004/AN du 20 avril 2004 relative à la protection des
@@ -160,7 +134,7 @@ export default function LegalMentions() {
             </p>
           </Section>
 
-          <Section title="7. Droit applicable et juridiction compétente">
+          <Section title="6. Droit applicable et juridiction compétente">
             <p>
               Le présent site et ses mentions légales sont régis par le droit burkinabé.
               Tout litige relatif à l'utilisation de ce site, à son contenu ou aux présentes
@@ -174,7 +148,7 @@ export default function LegalMentions() {
             </p>
           </Section>
 
-          <Section title="8. Contact">
+          <Section title="7. Contact">
             <p>
               Pour toute question relative aux présentes mentions légales ou à l'utilisation
               de ce site, vous pouvez nous contacter à l'adresse suivante :
