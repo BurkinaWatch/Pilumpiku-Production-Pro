@@ -59,8 +59,8 @@ export function Footer() {
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Pilumpiku Production. Tous droits réservés.</p>
           <div className="flex gap-6 items-center">
-            <Link href="#" className="hover:text-foreground transition-colors">Mentions légales</Link>
-            <Link href="#" className="hover:text-foreground transition-colors">Politique de confidentialité</Link>
+            <Link href="/mentions-legales" className="hover:text-foreground transition-colors">Mentions légales</Link>
+            <Link href="/politique-de-confidentialite" className="hover:text-foreground transition-colors">Politique de confidentialité</Link>
             <Link
               href="/admin"
               className="text-muted-foreground/60 hover:text-primary transition-colors text-xs uppercase tracking-widest"

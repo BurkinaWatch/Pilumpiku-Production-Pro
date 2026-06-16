@@ -15,6 +15,8 @@ import Partners from "@/pages/Partners";
 import News from "@/pages/News";
 import Contact from "@/pages/Contact";
 import Admin from "@/pages/Admin";
+import LegalMentions from "@/pages/LegalMentions";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ function Router() {
         <Route path="/actualites" component={News} />
         <Route path="/contact" component={Contact} />
         <Route path="/admin" component={Admin} />
+        <Route path="/mentions-legales" component={LegalMentions} />
+        <Route path="/politique-de-confidentialite" component={PrivacyPolicy} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
