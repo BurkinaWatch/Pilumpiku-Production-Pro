@@ -15,7 +15,7 @@ paths = [ "/" ]
 localPort = 25338
 
 [services.development]
-run = "pnpm --filter @workspace/pilimpiku run dev"
+run = "pnpm install --frozen-lockfile && pnpm --filter @workspace/pilimpiku run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/pilimpiku", "run", "build" ]
