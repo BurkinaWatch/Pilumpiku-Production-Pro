@@ -196,6 +196,7 @@ const PROJECTS = [
     annee: 2016,
     duree: "13 min",
     langue: "Français",
+    trailerUrl: "https://vimeo.com/158689172",
     synopsis:
       "Djata se tue à la tâche pour combler sa famille. Elle sert dans la soumission son mari Ossana, préoccupé à remporter la compétition de lutte traditionnelle. Pendant le combat, il perd face à son adversaire.\n\nAu même moment, Djata fend la foule et terrasse dans la surprise le lutteur qui vient de défaire son mari. Elle se cambre et demande à se battre avec Batiga, le champion en titre.",
     intention:
