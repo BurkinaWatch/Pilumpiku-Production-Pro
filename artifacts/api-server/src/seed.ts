@@ -18,6 +18,7 @@ const PROJECTS = [
     annee: 2026,
     duree: "1h 58",
     langue: "Bambara, Dioula, Malinké",
+    trailerUrl: "https://vimeo.com/1184807616",
     synopsis:
       "Sékou Timité a une ambition : suivre la voie d'un père qu'il n'a jamais connu pour devenir un « Djeli », un griot — ces gardiens de la mémoire orale en Afrique de l'Ouest. Seul de la fratrie à s'intéresser à l'art en désuétude du griot, il laisse sa famille et son village malien derrière lui et part se confronter au monde sur les routes du légendaire Empire mandingue.\n\nTiraillé entre ses envies de grandeur, les besoins matériels de sa famille et le temps long de l'apprentissage, il se confronte aux obstacles d'un présent parfois chaotique et croise sur son chemin les plus grands griots de la région ou de simples individus en prise avec le quotidien. Son voyage initiatique devient le portrait poétique d'une Afrique de l'Ouest à la recherche de sa mémoire commune.",
     intention:
