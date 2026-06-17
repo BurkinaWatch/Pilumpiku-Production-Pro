@@ -6,6 +6,7 @@ import { Layout } from "@/components/Layout";
 import { IntroScreen } from "@/components/IntroScreen";
 import { useState } from "react";
 
+import { Cursor } from "@/components/Cursor";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Projects from "@/pages/Projects";
@@ -58,6 +59,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <Cursor />
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
           <Router />
