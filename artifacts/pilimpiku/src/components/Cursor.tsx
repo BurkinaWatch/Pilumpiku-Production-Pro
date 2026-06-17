@@ -8,8 +8,23 @@ export function Cursor() {
   const lastX = useRef(0);
   const lastY = useRef(0);
   const lastT = useRef(0);
-  const flapTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const isFlapping = useRef(false);
+  const cycleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const cycleStarted = useRef(false);
+
+  const startCycle = (el: HTMLDivElement) => {
+    if (cycleStarted.current) return;
+    cycleStarted.current = true;
+
+    const tick = () => {
+      el.setAttribute("data-flap", "1");
+      cycleTimer.current = setTimeout(() => {
+        el.removeAttribute("data-flap");
+        cycleTimer.current = setTimeout(tick, 2000);
+      }, 5000);
+    };
+
+    tick();
+  };
 
   useEffect(() => {
     const el = elRef.current;
@@ -35,23 +50,17 @@ export function Cursor() {
         });
       }
 
-      if (speed > 0.25 && !isFlapping.current) {
-        isFlapping.current = true;
-        el.setAttribute("data-flap", "1");
+      if (speed > 0.25) {
+        startCycle(el);
       }
-
-      clearTimeout(flapTimer.current);
-      flapTimer.current = setTimeout(() => {
-        isFlapping.current = false;
-        el.removeAttribute("data-flap");
-      }, 5000);
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
     return () => {
       window.removeEventListener("mousemove", onMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      clearTimeout(flapTimer.current);
+      clearTimeout(cycleTimer.current);
+      cycleStarted.current = false;
     };
   }, []);
 
