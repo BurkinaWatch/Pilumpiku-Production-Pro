@@ -116,6 +116,16 @@ import __bannerUrl from 'node:url';
 globalThis.require = __bannerCrReq(import.meta.url);
 globalThis.__filename = __bannerUrl.fileURLToPath(import.meta.url);
 globalThis.__dirname = __bannerPath.dirname(globalThis.__filename);
+
+process.on('uncaughtException', (err) => {
+  process.stderr.write('[UNCAUGHT] ' + (err && err.stack ? err.stack : String(err)) + '\\n');
+  process.exit(1);
+});
+process.on('unhandledRejection', (reason) => {
+  process.stderr.write('[UNHANDLED] ' + (reason && reason.stack ? reason.stack : String(reason)) + '\\n');
+  process.exit(1);
+});
+process.stdout.write('[startup] process launched\\n');
     `,
     },
   });
