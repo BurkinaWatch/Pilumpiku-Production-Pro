@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { FloatingSocial } from "./FloatingSocial";
 import { ReactNode } from "react";
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -42,6 +43,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </main>
 
       <Footer />
+      <FloatingSocial />
     </div>
   );
 }
