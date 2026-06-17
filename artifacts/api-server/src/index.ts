@@ -1,6 +1,7 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 import { runMigrations } from "@workspace/db/migrate";
+import { seed } from "./seed";
 
 const rawPort = process.env["PORT"];
 
@@ -21,6 +22,13 @@ async function main() {
     await runMigrations();
   } catch (err) {
     logger.error({ err }, "Database migration failed");
+    process.exit(1);
+  }
+
+  try {
+    await seed();
+  } catch (err) {
+    logger.error({ err }, "Database seed failed");
     process.exit(1);
   }
 

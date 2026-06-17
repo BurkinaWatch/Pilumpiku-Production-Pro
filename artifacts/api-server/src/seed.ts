@@ -718,7 +718,7 @@ const SETTINGS = {
   contactAddress: "S/C BP 68 Ouagadougou 01, Burkina Faso",
 };
 
-async function seed() {
+export async function seed() {
   logger.info("Starting seed...");
 
   await db
@@ -778,10 +778,4 @@ async function seed() {
   }
 
   logger.info("Seed complete.");
-  process.exit(0);
 }
-
-seed().catch((err) => {
-  logger.error({ err }, "Seed failed");
-  process.exit(1);
-});
