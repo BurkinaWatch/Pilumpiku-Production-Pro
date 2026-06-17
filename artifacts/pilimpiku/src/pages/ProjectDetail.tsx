@@ -41,17 +41,19 @@ export default function ProjectDetail() {
   const galerie = project.galerie ?? [];
   const hasGalerie = galerie.length > 0;
 
-  const trailerEmbedSrc = (() => {
-    if (!project.trailerUrl) return null;
+  const { trailerEmbedSrc, trailerPassword } = (() => {
+    if (!project.trailerUrl) return { trailerEmbedSrc: null, trailerPassword: null };
     try {
       const url = new URL(project.trailerUrl);
       const password = url.searchParams.get("vimeo_password");
       const videoId = url.pathname.replace(/^\//, "");
       const params = new URLSearchParams({ autoplay: "1", color: "c9a84c", title: "0", byline: "0", portrait: "0" });
-      if (password) params.set("password", password);
-      return `https://player.vimeo.com/video/${videoId}?${params.toString()}`;
+      return {
+        trailerEmbedSrc: `https://player.vimeo.com/video/${videoId}?${params.toString()}`,
+        trailerPassword: password,
+      };
     } catch {
-      return null;
+      return { trailerEmbedSrc: null, trailerPassword: null };
     }
   })();
 
@@ -288,13 +290,21 @@ export default function ProjectDetail() {
                 <X size={24} />
               </button>
               {trailerEmbedSrc ? (
-                <iframe
-                  src={trailerEmbedSrc}
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full border-0"
-                  title={`Bande-annonce — ${project.titre}`}
-                />
+                <>
+                  <iframe
+                    src={trailerEmbedSrc}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                    title={`Bande-annonce — ${project.titre}`}
+                  />
+                  {trailerPassword && (
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-background/90 backdrop-blur-sm border border-border/50 rounded px-4 py-2 text-sm">
+                      <span className="text-muted-foreground uppercase tracking-widest text-[0.6rem]">Mot de passe</span>
+                      <span className="font-mono text-primary font-medium select-all">{trailerPassword}</span>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground/50">
                   <Play size={64} className="mb-4 opacity-50" />
