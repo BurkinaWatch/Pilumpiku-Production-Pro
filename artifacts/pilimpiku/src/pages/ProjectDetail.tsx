@@ -41,6 +41,20 @@ export default function ProjectDetail() {
   const galerie = project.galerie ?? [];
   const hasGalerie = galerie.length > 0;
 
+  const trailerEmbedSrc = (() => {
+    if (!project.trailerUrl) return null;
+    try {
+      const url = new URL(project.trailerUrl);
+      const password = url.searchParams.get("vimeo_password");
+      const videoId = url.pathname.replace(/^\//, "");
+      const params = new URLSearchParams({ autoplay: "1", color: "c9a84c", title: "0", byline: "0", portrait: "0" });
+      if (password) params.set("password", password);
+      return `https://player.vimeo.com/video/${videoId}?${params.toString()}`;
+    } catch {
+      return null;
+    }
+  })();
+
   return (
     <div className="flex flex-col w-full bg-background min-h-screen">
       <section className="relative h-[80vh] flex items-end pb-24 overflow-hidden">
@@ -273,9 +287,9 @@ export default function ProjectDetail() {
               >
                 <X size={24} />
               </button>
-              {project.trailerUrl ? (
+              {trailerEmbedSrc ? (
                 <iframe
-                  src={project.trailerUrl.replace("vimeo.com/", "player.vimeo.com/video/") + "?autoplay=1&color=c9a84c&title=0&byline=0&portrait=0"}
+                  src={trailerEmbedSrc}
                   allow="autoplay; fullscreen; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full border-0"
