@@ -44,7 +44,7 @@ export function Cursor() {
       flapTimer.current = setTimeout(() => {
         isFlapping.current = false;
         el.removeAttribute("data-flap");
-      }, 180);
+      }, 2000);
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
