@@ -45,6 +45,14 @@ export default function ProjectDetail() {
     if (!project.trailerUrl) return { trailerEmbedSrc: null, trailerPassword: null };
     try {
       const url = new URL(project.trailerUrl);
+      const isYoutube = url.hostname.includes("youtube.com") || url.hostname.includes("youtu.be");
+      if (isYoutube) {
+        const videoId = url.searchParams.get("v") ?? url.pathname.replace(/^\//, "");
+        return {
+          trailerEmbedSrc: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`,
+          trailerPassword: null,
+        };
+      }
       const password = url.searchParams.get("vimeo_password");
       const videoId = url.pathname.replace(/^\//, "");
       const params = new URLSearchParams({ autoplay: "1", color: "c9a84c", title: "0", byline: "0", portrait: "0" });

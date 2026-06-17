@@ -143,6 +143,7 @@ const PROJECTS = [
   },
   {
     slug: "traces-d-un-migrant",
+    trailerUrl: "https://www.youtube.com/watch?v=-_jtJ2ILHXs",
     titre: "Sur les traces d'un migrant",
     categorie: "Long-métrage documentaire",
     statut: "Coproduction · Grand Prix Président FESPACO 2021",
