@@ -55,10 +55,10 @@ export function Navbar() {
   const navLinks = [
     { name: "Accueil", path: "/" },
     { name: "Projets", path: "/projets" },
-    { name: "À propos", path: "/a-propos" },
     { name: "Services", path: "/services" },
     { name: "Actualités", path: "/actualites" },
     { name: "Partenaires", path: "/partenaires" },
+    { name: "À propos", path: "/a-propos" },
     { name: "Contact", path: "/contact" },
   ];
 
