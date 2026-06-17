@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
 
   if (fs.existsSync(frontendDistPath)) {
     app.use(express.static(frontendDistPath));
-    app.get("*", (_req, res) => {
+    app.get("/{*splat}", (_req, res) => {
       res.sendFile(path.join(frontendDistPath, "index.html"));
     });
     logger.info({ frontendDistPath }, "Serving frontend static files");
