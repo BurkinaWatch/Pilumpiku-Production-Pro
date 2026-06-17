@@ -28,17 +28,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
 
-        <div className="absolute top-4 left-4 right-4 flex flex-wrap gap-2">
-          <span className="text-[0.65rem] uppercase tracking-widest bg-background/50 backdrop-blur-sm px-2 py-1 rounded border border-border/50 text-foreground">
+        <div className="absolute top-3 left-3 right-3 flex flex-wrap gap-1.5">
+          <span className="text-[0.6rem] uppercase tracking-widest bg-background/50 backdrop-blur-sm px-2 py-1 rounded border border-border/50 text-foreground">
             {project.categorie}
           </span>
-          <span className="text-[0.65rem] uppercase tracking-widest bg-primary/20 backdrop-blur-sm px-2 py-1 rounded border border-primary/30 text-primary">
+          <span className="text-[0.6rem] uppercase tracking-widest bg-primary/20 backdrop-blur-sm px-2 py-1 rounded border border-primary/30 text-primary">
             {project.statut}
           </span>
         </div>
 
         <motion.div
-          className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end"
+          className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 flex flex-col justify-end"
           variants={{
             hover: { y: -10 },
           }}
@@ -48,7 +48,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <span>{project.annee}</span>
             <span>{project.duree}</span>
           </div>
-          <h3 className="font-serif text-3xl mb-2 text-foreground">
+          <h3 className="font-serif text-2xl sm:text-3xl mb-2 text-foreground">
             {project.titre}
           </h3>
 

@@ -43,6 +43,15 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { name: "Accueil", path: "/" },
     { name: "Projets", path: "/projets" },
@@ -60,22 +69,22 @@ export function Navbar() {
           "fixed top-0 w-full z-40 transition-all duration-500 ease-in-out border-b border-transparent",
           isScrolled
             ? "bg-[#1A0A00]/90 backdrop-blur-md border-border/50 py-3"
-            : "bg-transparent py-6",
+            : "bg-transparent py-4 md:py-6",
         )}
       >
-        <div className="container mx-auto px-6 md:px-8 xl:px-12 flex items-center justify-between gap-6">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 xl:px-12 flex items-center justify-between gap-4 md:gap-6">
           <a
             href="/"
             onClick={(e) => handleNavClick(e, "/")}
-            className="flex items-center gap-3 z-50 shrink-0"
+            className="flex items-center gap-2 md:gap-3 z-50 shrink-0"
             data-testid="link-logo-home"
           >
-            <ButterflyLogo className="w-12 h-12 md:w-14 md:h-14" />
+            <ButterflyLogo className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" />
             <div>
-              <div className="font-serif text-xl tracking-widest leading-none">
+              <div className="font-serif text-base md:text-xl tracking-widest leading-none">
                 PILUMPIKU
               </div>
-              <div className="text-primary text-[0.55rem] tracking-[0.3em] uppercase">
+              <div className="text-primary text-[0.5rem] md:text-[0.55rem] tracking-[0.3em] uppercase">
                 Production
               </div>
             </div>
@@ -124,12 +133,12 @@ export function Navbar() {
           </nav>
 
           <button
-            className="lg:hidden z-50 text-foreground"
+            className="lg:hidden z-50 text-foreground p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             data-testid="button-mobile-menu-toggle"
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
@@ -140,10 +149,10 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg flex items-center justify-center overflow-y-auto"
           >
-            <nav className="text-center">
-              <ul className="space-y-8 text-2xl font-serif">
+            <nav className="text-center py-16">
+              <ul className="space-y-5 sm:space-y-7 text-xl sm:text-2xl font-serif">
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     <a
@@ -174,6 +183,15 @@ export function Navbar() {
                   </li>
                 )}
               </ul>
+              <div className="mt-10">
+                <a
+                  href="/contact"
+                  onClick={(e) => handleNavClick(e, "/contact")}
+                  className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-sm uppercase tracking-widest text-xs hover:bg-secondary transition-colors"
+                >
+                  Collaborer
+                </a>
+              </div>
             </nav>
           </motion.div>
         )}

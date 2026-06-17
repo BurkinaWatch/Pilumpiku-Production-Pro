@@ -105,7 +105,7 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
           />
 
           <motion.div
-            className="absolute top-8 left-1/2 -translate-x-1/2 flex items-center gap-3"
+            className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 flex items-center gap-3"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
@@ -113,13 +113,13 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
             <img
               src="/img/logo.jpg"
               alt="Pilimpiku"
-              className="w-10 h-10 object-contain rounded-md"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain rounded-md"
             />
             <div className="text-white">
-              <p className="font-semibold tracking-[0.2em] text-sm uppercase leading-none">
+              <p className="font-semibold tracking-[0.2em] text-xs sm:text-sm uppercase leading-none">
                 Pilimpiku
               </p>
-              <p className="text-[10px] tracking-[0.3em] uppercase opacity-70 leading-none mt-0.5">
+              <p className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase opacity-70 leading-none mt-0.5">
                 Production
               </p>
             </div>
@@ -134,10 +134,10 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, delay: 0.8 }}
-                className="absolute top-8 right-10 flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-300 text-xs tracking-widest uppercase"
+                className="absolute top-4 sm:top-8 right-4 sm:right-10 flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-300 text-xs tracking-widest uppercase"
               >
                 <VolumeX size={14} />
-                <span>Activer le son</span>
+                <span className="hidden sm:inline">Activer le son</span>
               </motion.button>
             )}
             {!soundBlocked && (
@@ -148,7 +148,7 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, delay: 1.2 }}
-                className="absolute top-8 right-10 text-white/40 hover:text-white/80 transition-colors duration-300"
+                className="absolute top-4 sm:top-8 right-4 sm:right-10 text-white/40 hover:text-white/80 transition-colors duration-300 p-1"
                 title={isMuted ? "Activer le son" : "Couper le son"}
               >
                 {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
@@ -165,10 +165,10 @@ export function IntroScreen({ onComplete }: IntroScreenProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="absolute bottom-10 right-10 group flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 text-sm tracking-widest uppercase"
+                className="absolute bottom-6 sm:bottom-10 right-4 sm:right-10 group flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 text-xs sm:text-sm tracking-widest uppercase"
               >
                 <span>Passer</span>
-                <span className="inline-block w-8 h-px bg-current transition-all duration-300 group-hover:w-12" />
+                <span className="inline-block w-6 sm:w-8 h-px bg-current transition-all duration-300 group-hover:w-10 sm:group-hover:w-12" />
               </motion.button>
             )}
           </AnimatePresence>

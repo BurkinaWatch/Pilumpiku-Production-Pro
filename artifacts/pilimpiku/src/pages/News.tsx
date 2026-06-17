@@ -11,14 +11,14 @@ export default function News() {
   const { data: news, isLoading } = useListNews();
 
   return (
-    <div className="flex flex-col w-full bg-background pt-32 pb-24 min-h-screen">
-      <div className="container mx-auto px-6 md:px-12">
+    <div className="flex flex-col w-full bg-background pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
-          <h1 className="font-serif text-5xl md:text-7xl mb-6 text-foreground">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 text-foreground">
             Actualités
           </h1>
         </motion.div>
@@ -29,7 +29,7 @@ export default function News() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {(news ?? []).map((item, i) => (
             <motion.article
               key={item.id}
@@ -49,8 +49,8 @@ export default function News() {
                 />
                 <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-500" />
               </div>
-              <div className="p-8">
-                <div className="flex justify-between items-center mb-4">
+              <div className="p-5 sm:p-8">
+                <div className="flex justify-between items-center mb-3 sm:mb-4 gap-2 flex-wrap">
                   <span className="text-[0.65rem] uppercase tracking-widest text-primary border border-primary/30 px-2 py-1 rounded-sm bg-primary/10">
                     {item.categorie}
                   </span>
@@ -58,7 +58,7 @@ export default function News() {
                     {item.dateLabel}
                   </span>
                 </div>
-                <h3 className="font-serif text-2xl text-foreground mb-4 group-hover:text-primary transition-colors">
+                <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-3 sm:mb-4 group-hover:text-primary transition-colors">
                   {item.titre}
                 </h3>
                 <p className="text-muted-foreground font-light text-sm">

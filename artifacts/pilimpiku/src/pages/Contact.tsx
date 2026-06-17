@@ -67,31 +67,31 @@ export default function Contact() {
   const address = settings?.contactAddress ?? "Ouagadougou, Burkina Faso";
 
   return (
-    <div className="flex flex-col w-full bg-background pt-32 pb-24 min-h-screen">
-      <div className="container mx-auto px-6 md:px-12">
+    <div className="flex flex-col w-full bg-background pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
-          <h1 className="font-serif text-5xl md:text-7xl mb-6 text-foreground">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 text-foreground">
             Collaborer
           </h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="lg:col-span-5"
           >
-            <p className="text-xl text-muted-foreground font-light mb-12">
+            <p className="text-lg sm:text-xl text-muted-foreground font-light mb-8 sm:mb-12">
               Que vous soyez un auteur avec un projet, un partenaire financier
               potentiel, ou un média, nous sommes à l'écoute.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-primary/20 rounded-full flex items-center justify-center text-primary shrink-0">
                   <MapPin size={18} />
@@ -101,7 +101,7 @@ export default function Contact() {
                     Siège
                   </h4>
                   <p
-                    className="text-foreground font-serif text-xl"
+                    className="text-foreground font-serif text-lg sm:text-xl"
                     data-testid="text-contact-address"
                   >
                     {address}
@@ -113,13 +113,13 @@ export default function Contact() {
                 <div className="w-10 h-10 border border-primary/20 rounded-full flex items-center justify-center text-primary shrink-0">
                   <Mail size={18} />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h4 className="uppercase tracking-widest text-xs text-muted-foreground mb-1">
                     Email
                   </h4>
                   <a
                     href={`mailto:${email}`}
-                    className="text-foreground font-serif text-xl hover:text-primary transition-colors"
+                    className="text-foreground font-serif text-base sm:text-xl hover:text-primary transition-colors break-all"
                     data-testid="link-contact-email"
                   >
                     {email}
@@ -136,7 +136,7 @@ export default function Contact() {
                     Téléphone
                   </h4>
                   <p
-                    className="text-foreground font-serif text-xl"
+                    className="text-foreground font-serif text-lg sm:text-xl"
                     data-testid="text-contact-phone"
                   >
                     {phone}
@@ -150,14 +150,14 @@ export default function Contact() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="lg:col-span-7 bg-card border border-border/50 p-8 md:p-12"
+            className="lg:col-span-7 bg-card border border-border/50 p-5 sm:p-8 md:p-12"
           >
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
+                className="space-y-5 sm:space-y-6"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <FormField
                     control={form.control}
                     name="nom"
@@ -201,7 +201,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <FormField
                     control={form.control}
                     name="organisation"
@@ -277,7 +277,7 @@ export default function Contact() {
                       <FormControl>
                         <Textarea
                           placeholder="Votre message..."
-                          className="min-h-[150px] bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm resize-none"
+                          className="min-h-[140px] bg-background/50 border-border/50 focus-visible:ring-primary rounded-sm resize-none"
                           data-testid="input-contact-message"
                           {...field}
                         />
@@ -289,7 +289,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground py-4 uppercase tracking-widest text-xs hover:bg-secondary transition-colors rounded-sm"
+                  className="w-full bg-primary text-primary-foreground py-3 sm:py-4 uppercase tracking-widest text-xs hover:bg-secondary transition-colors rounded-sm"
                   data-testid="button-contact-submit"
                 >
                   Envoyer le message

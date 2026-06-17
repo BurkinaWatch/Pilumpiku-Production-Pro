@@ -39,14 +39,14 @@ export default function Projects() {
   });
 
   return (
-    <div className="flex flex-col w-full bg-background pt-32 pb-24 min-h-screen">
-      <div className="container mx-auto px-6 md:px-12">
+    <div className="flex flex-col w-full bg-background pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h1 className="font-serif text-5xl md:text-7xl mb-6 text-foreground">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 text-foreground">
             Nos Projets
           </h1>
           <p className="text-muted-foreground font-light max-w-2xl mx-auto">
@@ -59,14 +59,14 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10 sm:mb-16"
         >
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
               data-testid={`button-filter-${cat}`}
-              className={`px-4 py-2 text-xs uppercase tracking-widest rounded-sm transition-all duration-300 border ${
+              className={`px-3 sm:px-4 py-2 text-xs uppercase tracking-widest rounded-sm transition-all duration-300 border ${
                 activeFilter === cat
                   ? "bg-primary border-primary text-primary-foreground"
                   : "bg-transparent border-border/50 text-muted-foreground hover:border-primary/50 hover:text-foreground"
@@ -79,7 +79,7 @@ export default function Projects() {
 
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (

@@ -55,10 +55,10 @@ export default function About() {
   const founderImage = settings?.founderImage || "/img/mamounata-spla.jpg";
 
   return (
-    <div className="flex flex-col w-full bg-background pt-24">
+    <div className="flex flex-col w-full bg-background pt-20 sm:pt-24">
 
       {/* Hero */}
-      <section className="relative h-[65vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[44vh] sm:h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/img/fespaco.jpg"
@@ -68,12 +68,12 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/55 to-background" />
         </div>
-        <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12 text-center py-12">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="uppercase tracking-widest text-xs text-primary mb-6"
+            className="uppercase tracking-widest text-xs text-primary mb-4 sm:mb-6"
           >
             Pilumpiku Production · Ouagadougou, Burkina Faso
           </motion.p>
@@ -81,7 +81,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-serif text-5xl md:text-7xl mb-6 text-foreground"
+            className="font-serif text-4xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 text-foreground"
           >
             Notre Histoire
           </motion.h1>
@@ -89,7 +89,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="text-muted-foreground font-light text-lg max-w-xl mx-auto"
+            className="text-muted-foreground font-light text-base sm:text-lg max-w-xl mx-auto"
           >
             Une maison de production engagée pour un cinéma africain qui se raconte lui-même.
           </motion.p>
@@ -97,9 +97,9 @@ export default function About() {
       </section>
 
       {/* Histoire & Vision */}
-      <section className="py-24 relative z-10">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <section className="py-16 sm:py-24 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -115,11 +115,11 @@ export default function About() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-card p-12 border border-border/50 relative overflow-hidden"
+              className="bg-card p-6 sm:p-10 md:p-12 border border-border/50 relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
               <h2 className="font-serif text-3xl mb-6 text-foreground">Notre Vision</h2>
-              <p className="text-xl font-serif italic text-muted-foreground leading-relaxed whitespace-pre-line" data-testid="text-about-vision">
+              <p className="text-lg sm:text-xl font-serif italic text-muted-foreground leading-relaxed whitespace-pre-line" data-testid="text-about-vision">
                 {vision}
               </p>
             </motion.div>
@@ -128,13 +128,13 @@ export default function About() {
       </section>
 
       {/* Citation */}
-      <section className="py-20 bg-[#0F0600] border-y border-border/20">
-        <div className="container mx-auto px-6 md:px-12 text-center">
+      <section className="py-14 sm:py-20 bg-[#0F0600] border-y border-border/20">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12 text-center">
           <motion.blockquote
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif italic text-2xl md:text-4xl text-foreground leading-tight max-w-4xl mx-auto mb-6"
+            className="font-serif italic text-xl sm:text-2xl md:text-4xl text-foreground leading-tight max-w-4xl mx-auto mb-6"
           >
             "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même."
           </motion.blockquote>
@@ -143,26 +143,26 @@ export default function About() {
       </section>
 
       {/* Fondatrice */}
-      <section className="py-24 relative z-10">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="py-16 sm:py-24 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-10 sm:mb-16"
           >
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-2">La Fondatrice</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-foreground mb-2">La Fondatrice</h2>
             <div className="w-16 h-0.5 bg-primary mt-4" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-[3/4] relative overflow-hidden">
+              <div className="aspect-[3/4] relative overflow-hidden max-w-sm mx-auto md:max-w-none">
                 <img
                   src={founderImage}
                   alt={founderName}
@@ -171,8 +171,8 @@ export default function About() {
                 />
                 <div className="absolute inset-0 border border-primary/20 m-4 pointer-events-none" />
               </div>
-              <div className="mt-6 bg-card border border-border/40 p-6">
-                <h3 className="font-serif text-2xl text-foreground mb-1">{founderName}</h3>
+              <div className="mt-4 sm:mt-6 bg-card border border-border/40 p-4 sm:p-6 max-w-sm mx-auto md:max-w-none">
+                <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-1">{founderName}</h3>
                 <p className="uppercase tracking-widest text-xs text-primary">{founderTitle}</p>
               </div>
             </motion.div>
@@ -182,7 +182,7 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-muted-foreground font-light leading-relaxed whitespace-pre-line mb-12">
+              <p className="text-muted-foreground font-light leading-relaxed whitespace-pre-line mb-10 sm:mb-12">
                 {founderBio}
               </p>
 
@@ -213,15 +213,15 @@ export default function About() {
       </section>
 
       {/* Partenariats */}
-      <section className="py-16 bg-card border-y border-border/20">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="py-12 sm:py-16 bg-card border-y border-border/20">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-8 sm:mb-10"
           >
-            <h3 className="font-serif text-2xl text-foreground mb-2">Partenariats & Coproductions</h3>
+            <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-2">Partenariats & Coproductions</h3>
             <p className="text-muted-foreground font-light text-sm max-w-lg mx-auto">
               Pilumpiku collabore avec des structures de production en Côte d'Ivoire, Niger, Sénégal, Mali, Togo, Cameroun, Gabon, Finlande, France et au-delà.
             </p>
@@ -230,10 +230,10 @@ export default function About() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-widest text-muted-foreground/60"
+            className="flex flex-wrap justify-center gap-3 text-xs uppercase tracking-widest text-muted-foreground/60"
           >
             {["Burkina Faso", "Côte d'Ivoire", "Sénégal", "Mali", "Togo", "Niger", "Cameroun", "Gabon", "Finlande", "France", "Belgique", "Canada"].map((pays) => (
-              <span key={pays} className="border border-border/30 px-4 py-2">{pays}</span>
+              <span key={pays} className="border border-border/30 px-3 py-2">{pays}</span>
             ))}
           </motion.div>
         </div>

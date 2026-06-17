@@ -17,7 +17,7 @@ export function AnimatedCounter({ end, suffix = "", label }: AnimatedCounterProp
       let start = 0;
       const duration = 2000;
       const increment = end / (duration / 16);
-      
+
       const timer = setInterval(() => {
         start += increment;
         if (start >= end) {
@@ -35,7 +35,7 @@ export function AnimatedCounter({ end, suffix = "", label }: AnimatedCounterProp
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-serif text-6xl md:text-8xl text-primary mb-4">
+      <div className="font-serif text-5xl sm:text-6xl md:text-8xl text-primary mb-4">
         {count}{suffix}
       </div>
       <div className="uppercase tracking-[0.3em] text-xs text-muted-foreground">

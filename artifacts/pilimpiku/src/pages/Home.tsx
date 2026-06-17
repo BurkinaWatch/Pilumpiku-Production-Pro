@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100dvh] min-h-[560px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/img/djeliya-photo-2.png"
@@ -84,12 +84,12 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="container relative z-20 mx-auto px-6 md:px-12 text-center flex flex-col items-center">
+        <div className="container relative z-20 mx-auto px-4 sm:px-6 md:px-12 text-center flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-block border border-primary/50 text-primary uppercase tracking-[0.2em] text-[0.65rem] px-4 py-2 rounded-sm mb-8"
+            className="inline-block border border-primary/50 text-primary uppercase tracking-[0.2em] text-[0.65rem] px-4 py-2 rounded-sm mb-6 sm:mb-8"
             data-testid="text-hero-badge"
           >
             {heroBadge}
@@ -99,7 +99,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight mb-6 max-w-5xl"
+            className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight mb-5 sm:mb-6 max-w-5xl"
             data-testid="text-hero-title"
           >
             {settings?.heroTitleLine1 ?? "Telling African Stories"}{" "}
@@ -112,7 +112,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl font-light mb-12"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl font-light mb-10 sm:mb-12 px-2"
             data-testid="text-hero-subtitle"
           >
             {heroSubtitle}
@@ -122,18 +122,18 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-6"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto"
           >
             <Link
               href="/projets"
-              className="bg-primary text-primary-foreground px-8 py-4 rounded-sm uppercase tracking-widest text-xs hover:bg-secondary transition-colors duration-300"
+              className="bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-sm uppercase tracking-widest text-xs hover:bg-secondary transition-colors duration-300 text-center"
               data-testid="link-discover-projects"
             >
               Découvrir nos projets
             </Link>
             <Link
               href="/contact"
-              className="border border-foreground/30 text-foreground px-8 py-4 rounded-sm uppercase tracking-widest text-xs hover:bg-foreground hover:text-background transition-colors duration-300"
+              className="border border-foreground/30 text-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-sm uppercase tracking-widest text-xs hover:bg-foreground hover:text-background transition-colors duration-300 text-center"
               data-testid="link-collaborate"
             >
               Collaborer avec nous
@@ -144,16 +144,16 @@ export default function Home() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-muted-foreground opacity-50"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-muted-foreground opacity-50"
         >
-          <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-current to-transparent" />
+          <div className="w-[1px] h-12 sm:h-16 bg-gradient-to-b from-transparent via-current to-transparent" />
         </motion.div>
       </section>
 
       {/* Counters */}
-      <section className="py-24 bg-background relative z-20 border-b border-border/20">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+      <section className="py-16 sm:py-24 bg-background relative z-20 border-b border-border/20">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-8">
             <AnimatedCounter
               end={parseStatNumber(statsProjets)}
               suffix={statSuffix(statsProjets)}
@@ -174,11 +174,11 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-32 bg-background relative z-20">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <section className="py-16 sm:py-24 lg:py-32 bg-background relative z-20">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6">
             <div>
-              <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-foreground mb-4">
                 Projets Récents
               </h2>
               <p className="text-muted-foreground font-light max-w-md">
@@ -195,7 +195,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {featuredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -205,7 +205,7 @@ export default function Home() {
 
       {/* Quote */}
       {quoteText && (
-        <section className="py-40 bg-[#0F0600] relative overflow-hidden border-y border-border/20">
+        <section className="py-20 sm:py-32 lg:py-40 bg-[#0F0600] relative overflow-hidden border-y border-border/20">
           <div
             className="absolute inset-0 opacity-20"
             style={{
@@ -213,8 +213,8 @@ export default function Home() {
                 "radial-gradient(circle at 50% 50%, var(--tw-colors-primary) 0%, transparent 50%)",
             }}
           />
-          <div className="container mx-auto px-6 md:px-12 text-center relative z-10">
-            <blockquote className="font-serif italic text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight max-w-5xl mx-auto mb-8">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12 text-center relative z-10">
+            <blockquote className="font-serif italic text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight max-w-5xl mx-auto mb-8">
               "{quoteText}"
             </blockquote>
             <cite className="uppercase tracking-[0.3em] text-sm text-primary not-italic">
@@ -226,8 +226,8 @@ export default function Home() {
 
       {/* Marquee Partners */}
       {partners.length > 0 && (
-        <section className="py-16 bg-background border-b border-border/20 overflow-hidden relative z-20">
-          <div className="container mx-auto px-6 md:px-12 mb-8 text-center">
+        <section className="py-12 sm:py-16 bg-background border-b border-border/20 overflow-hidden relative z-20">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12 mb-6 sm:mb-8 text-center">
             <h3 className="uppercase tracking-widest text-xs text-muted-foreground">
               Ils nous font confiance
             </h3>
@@ -236,10 +236,10 @@ export default function Home() {
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="flex gap-16 items-center text-xl md:text-3xl font-serif text-foreground/40 pr-16"
+              className="flex gap-12 sm:gap-16 items-center text-lg sm:text-xl md:text-3xl font-serif text-foreground/40 pr-12 sm:pr-16"
             >
               {[...partners, ...partners].map((partner, i) => (
-                <div key={i} className="flex items-center gap-16">
+                <div key={i} className="flex items-center gap-12 sm:gap-16">
                   <span>{partner}</span>
                   <span className="text-primary/30 text-sm">✦</span>
                 </div>
