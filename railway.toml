@@ -2,8 +2,8 @@
 buildCommand = "pnpm install --no-frozen-lockfile && BASE_PATH=/ pnpm --filter @workspace/pilimpiku run build && pnpm --filter @workspace/api-server run build:prod"
 
 [deploy]
-startCommand = "NODE_ENV=production node --enable-source-maps ./artifacts/api-server/dist/index.mjs"
+startCommand = "echo '[railway] cwd:' $(pwd) && echo '[railway] dist:' && ls ./artifacts/api-server/dist/ 2>&1 && NODE_ENV=production node ./artifacts/api-server/dist/index.mjs"
 healthcheckPath = "/api/health"
-healthcheckTimeout = 120
+healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
