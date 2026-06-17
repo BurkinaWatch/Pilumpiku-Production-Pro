@@ -65,7 +65,7 @@ export function Cursor() {
         width: 28,
         height: 28,
         pointerEvents: "none",
-        zIndex: 9999,
+        zIndex: 100000,
         willChange: "transform",
       }}
     >
