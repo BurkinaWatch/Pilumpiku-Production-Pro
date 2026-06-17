@@ -143,6 +143,23 @@ const PROJECTS = [
     featured: false,
   },
   {
+    slug: "the-coach",
+    trailerUrl: "https://www.aljazeera.com/video/africa-direct/2022/4/12/the-coach-confidence-building-in-burkina-faso",
+    titre: "The Coach",
+    categorie: "Court-métrage documentaire",
+    statut: "Al Jazeera Africa Direct · 2022",
+    annee: 2022,
+    duree: "Court-métrage",
+    langue: "Français, Anglais",
+    synopsis:
+      "Ragnimwendé Eldaa Koama entraîne de jeunes entrepreneurs du Burkina Faso à la communication, à la confiance en soi et à l'art de rêver grand.\n\nRagnimwendé Eldaa Koama est une leader qui croit en l'amélioration de soi et dans la capacité des jeunes à trouver leur propre confiance pour réussir. Dans « The Coach », on la voit à l'œuvre, coachant certains des nombreux jeunes entrepreneurs du Burkina Faso. La communication, la prise de parole en public et la confiance en soi sont essentielles à la réussite. Face au fort taux de chômage à Ouagadougou, beaucoup de jeunes choisissent l'entrepreneuriat et sont avides d'apprendre de cette coach dynamique et entrepreneuse.",
+    intention:
+      "Réalisé par Mamounata Nikiéma, « The Coach » est produit dans le cadre de la série documentaire « Africa Direct » d'Al Jazeera, consacrée aux voix et aux histoires du continent africain racontées par des cinéastes africains.\n\nMamounata Nikiéma est réalisatrice, productrice, formatrice en écriture documentaire et blogueuse basée au Burkina Faso. Elle est au cœur des réseaux cinématographiques de son pays. Lors du FESPACO 2021, elle a été décorée Chevalier de l'Ordre du Mérite des Arts, des Lettres et de la Communication pour la « Cinématographie ».",
+    image: "/img/mamounata-spla.jpg",
+    sortOrder: 23,
+    featured: false,
+  },
+  {
     slug: "traces-d-un-migrant",
     trailerUrl: "https://www.youtube.com/watch?v=-_jtJ2ILHXs",
     titre: "Sur les traces d'un migrant",

@@ -41,30 +41,28 @@ export default function ProjectDetail() {
   const galerie = project.galerie ?? [];
   const hasGalerie = galerie.length > 0;
 
-  const { trailerEmbedSrc, trailerPassword } = (() => {
-    if (!project.trailerUrl) return { trailerEmbedSrc: null, trailerPassword: null };
+  const { trailerEmbedSrc, trailerPassword, trailerExternalUrl } = (() => {
+    if (!project.trailerUrl) return { trailerEmbedSrc: null, trailerPassword: null, trailerExternalUrl: null };
     try {
       const url = new URL(project.trailerUrl);
       const isYoutube = url.hostname.includes("youtube.com") || url.hostname.includes("youtu.be");
+      const isVimeo = url.hostname.includes("vimeo.com");
       if (isYoutube) {
         const videoId = url.searchParams.get("v") ?? url.pathname.replace(/^\//, "");
-        return {
-          trailerEmbedSrc: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`,
-          trailerPassword: null,
-        };
+        return { trailerEmbedSrc: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`, trailerPassword: null, trailerExternalUrl: null };
       }
-      const password = url.searchParams.get("vimeo_password");
-      const pathParts = url.pathname.replace(/^\//, "").split("/");
-      const videoId = pathParts[0];
-      const privateHash = pathParts[1] ?? null;
-      const params = new URLSearchParams({ autoplay: "1", color: "c9a84c", title: "0", byline: "0", portrait: "0" });
-      if (privateHash) params.set("h", privateHash);
-      return {
-        trailerEmbedSrc: `https://player.vimeo.com/video/${videoId}?${params.toString()}`,
-        trailerPassword: password,
-      };
+      if (isVimeo) {
+        const password = url.searchParams.get("vimeo_password");
+        const pathParts = url.pathname.replace(/^\//, "").split("/");
+        const videoId = pathParts[0];
+        const privateHash = pathParts[1] ?? null;
+        const params = new URLSearchParams({ autoplay: "1", color: "c9a84c", title: "0", byline: "0", portrait: "0" });
+        if (privateHash) params.set("h", privateHash);
+        return { trailerEmbedSrc: `https://player.vimeo.com/video/${videoId}?${params.toString()}`, trailerPassword: password, trailerExternalUrl: null };
+      }
+      return { trailerEmbedSrc: null, trailerPassword: null, trailerExternalUrl: project.trailerUrl };
     } catch {
-      return { trailerEmbedSrc: null, trailerPassword: null };
+      return { trailerEmbedSrc: null, trailerPassword: null, trailerExternalUrl: null };
     }
   })();
 
@@ -177,15 +175,24 @@ export default function ProjectDetail() {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  {project.trailerUrl && (
-                  <button
-                    onClick={() => setShowTrailer(true)}
-                    data-testid="button-show-trailer"
-                    className="w-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Play size={14} /> Voir la bande-annonce
-                  </button>
-                )}
+                  {trailerExternalUrl ? (
+                    <a
+                      href={trailerExternalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Play size={14} /> Voir le film
+                    </a>
+                  ) : project.trailerUrl ? (
+                    <button
+                      onClick={() => setShowTrailer(true)}
+                      data-testid="button-show-trailer"
+                      className="w-full bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Play size={14} /> Voir la bande-annonce
+                    </button>
+                  ) : null}
                   <Link
                     href="/contact"
                     className="w-full text-center bg-transparent border border-border text-foreground hover:bg-foreground hover:text-background px-6 py-4 rounded-sm uppercase tracking-widest text-xs transition-colors"
