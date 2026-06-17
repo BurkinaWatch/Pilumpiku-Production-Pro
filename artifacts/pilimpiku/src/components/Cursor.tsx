@@ -86,6 +86,9 @@ export function Cursor() {
           <path d="M14 15C17 15 23 18 22 21.5C21 24 17 23 14 15Z" fill="#E98616" fillOpacity="0.72" />
         </g>
         <ellipse cx="14" cy="14" rx="1" ry="4.5" fill="#3a1000" />
+        <circle cx="14" cy="8.5" r="1.8" fill="#3a1000" />
+        <circle cx="13.2" cy="7.5" r="0.5" fill="#E98616" />
+        <circle cx="14.8" cy="7.5" r="0.5" fill="#E98616" />
       </svg>
     </div>
   );
