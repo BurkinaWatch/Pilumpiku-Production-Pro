@@ -18,6 +18,17 @@ if (Number.isNaN(port) || port <= 0) {
 }
 
 async function main() {
+  await new Promise<void>((resolve, reject) => {
+    app.listen(port, (err?: Error) => {
+      if (err) {
+        reject(err);
+      } else {
+        logger.info({ port }, "Server listening");
+        resolve();
+      }
+    });
+  });
+
   try {
     await runMigrations();
   } catch (err) {
@@ -32,14 +43,10 @@ async function main() {
     process.exit(1);
   }
 
-  app.listen(port, (err) => {
-    if (err) {
-      logger.error({ err }, "Error listening on port");
-      process.exit(1);
-    }
-
-    logger.info({ port }, "Server listening");
-  });
+  logger.info("Server ready");
 }
 
-main();
+main().catch((err) => {
+  logger.error({ err }, "Fatal error during startup");
+  process.exit(1);
+});
