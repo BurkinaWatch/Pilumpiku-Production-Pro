@@ -54,8 +54,11 @@ export default function ProjectDetail() {
         };
       }
       const password = url.searchParams.get("vimeo_password");
-      const videoId = url.pathname.replace(/^\//, "");
+      const pathParts = url.pathname.replace(/^\//, "").split("/");
+      const videoId = pathParts[0];
+      const privateHash = pathParts[1] ?? null;
       const params = new URLSearchParams({ autoplay: "1", color: "c9a84c", title: "0", byline: "0", portrait: "0" });
+      if (privateHash) params.set("h", privateHash);
       return {
         trailerEmbedSrc: `https://player.vimeo.com/video/${videoId}?${params.toString()}`,
         trailerPassword: password,

@@ -84,6 +84,7 @@ const PROJECTS = [
   },
   {
     slug: "pingda",
+    trailerUrl: "https://vimeo.com/910066543/4e2cdcceaf",
     titre: "Pingda",
     categorie: "Long-métrage de fiction",
     statut: "Produit · 2024",
