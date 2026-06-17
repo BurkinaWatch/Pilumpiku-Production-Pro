@@ -28,7 +28,7 @@ export function Cursor() {
       pendingX.current = e.clientX;
       pendingY.current = e.clientY;
 
-      if (!rafRef.current) {
+      if (rafRef.current === undefined) {
         rafRef.current = requestAnimationFrame(() => {
           el.style.transform = `translate(${pendingX.current - 14}px, ${pendingY.current - 14}px)`;
           rafRef.current = undefined;
