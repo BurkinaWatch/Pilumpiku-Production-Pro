@@ -16,9 +16,9 @@ export async function runMigrations() {
     process.env.MIGRATIONS_PATH ??
     path.resolve(path.dirname(fileURLToPath(import.meta.url)), "migrations");
 
-  console.log(`Running database migrations from: ${migrationsFolder}`);
+  process.stdout.write(`[migrate] Running migrations from: ${migrationsFolder}\n`);
   await migrate(db, { migrationsFolder });
-  console.log("Migrations complete.");
+  process.stdout.write("[migrate] Migrations complete.\n");
 
   await pool.end();
 }

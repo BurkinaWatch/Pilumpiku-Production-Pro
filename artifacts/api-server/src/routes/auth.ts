@@ -1,5 +1,6 @@
 import * as oidc from "openid-client";
 import { Router, type IRouter, type Request, type Response } from "express";
+import { logger } from "../lib/logger";
 import {
   GetCurrentAuthUserResponse,
   ExchangeMobileAuthorizationCodeBody,
@@ -146,7 +147,8 @@ router.get("/callback", async (req: Request, res: Response) => {
       expectedState,
       idTokenExpected: true,
     });
-  } catch {
+  } catch (err) {
+    logger.warn({ err }, "OIDC authorization code grant failed");
     res.redirect("/api/login");
     return;
   }
@@ -160,6 +162,7 @@ router.get("/callback", async (req: Request, res: Response) => {
 
   const claims = tokens.claims();
   if (!claims) {
+    logger.warn("OIDC callback: no claims in ID token");
     res.redirect("/api/login");
     return;
   }
