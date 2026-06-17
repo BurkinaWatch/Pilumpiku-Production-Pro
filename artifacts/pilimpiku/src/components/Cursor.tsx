@@ -26,11 +26,24 @@ export function Cursor() {
     tick();
   };
 
+  const moveTo = (el: HTMLDivElement, x: number, y: number) => {
+    pendingX.current = x;
+    pendingY.current = y;
+
+    if (rafRef.current === undefined) {
+      rafRef.current = requestAnimationFrame(() => {
+        el.style.opacity = "1";
+        el.style.transform = `translate(${pendingX.current - 14}px, ${pendingY.current - 14}px)`;
+        rafRef.current = undefined;
+      });
+    }
+  };
+
   useEffect(() => {
     const el = elRef.current;
     if (!el) return;
 
-    const onMove = (e: MouseEvent) => {
+    const onMouseMove = (e: MouseEvent) => {
       const now = performance.now();
       const dx = e.clientX - lastX.current;
       const dy = e.clientY - lastY.current;
@@ -40,24 +53,49 @@ export function Cursor() {
       lastX.current = e.clientX;
       lastY.current = e.clientY;
       lastT.current = now;
-      pendingX.current = e.clientX;
-      pendingY.current = e.clientY;
 
-      if (rafRef.current === undefined) {
-        rafRef.current = requestAnimationFrame(() => {
-          el.style.transform = `translate(${pendingX.current - 14}px, ${pendingY.current - 14}px)`;
-          rafRef.current = undefined;
-        });
-      }
+      moveTo(el, e.clientX, e.clientY);
 
-      if (speed > 0.25) {
-        startCycle(el);
-      }
+      if (speed > 0.25) startCycle(el);
     };
 
-    window.addEventListener("mousemove", onMove, { passive: true });
+    const onTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (!touch) return;
+
+      const now = performance.now();
+      const dx = touch.clientX - lastX.current;
+      const dy = touch.clientY - lastY.current;
+      const dt = now - lastT.current || 1;
+      const speed = Math.sqrt(dx * dx + dy * dy) / dt;
+
+      lastX.current = touch.clientX;
+      lastY.current = touch.clientY;
+      lastT.current = now;
+
+      moveTo(el, touch.clientX, touch.clientY);
+
+      if (speed > 0.25) startCycle(el);
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (!touch) return;
+      lastX.current = touch.clientX;
+      lastY.current = touch.clientY;
+      lastT.current = performance.now();
+      moveTo(el, touch.clientX, touch.clientY);
+      startCycle(el);
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+
     return () => {
-      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       clearTimeout(cycleTimer.current);
       cycleStarted.current = false;
@@ -76,6 +114,7 @@ export function Cursor() {
         pointerEvents: "none",
         zIndex: 100000,
         willChange: "transform",
+        opacity: 0,
       }}
     >
       <svg
