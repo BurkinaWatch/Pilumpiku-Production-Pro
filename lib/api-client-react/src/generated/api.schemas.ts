@@ -57,6 +57,10 @@ export interface Project {
   image: string;
   sortOrder: number;
   featured?: boolean;
+  /** @nullable */
+  galerie?: string[] | null;
+  /** @nullable */
+  trailerUrl?: string | null;
 }
 
 export interface CreateProjectBody {

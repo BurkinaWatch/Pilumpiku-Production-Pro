@@ -2,13 +2,13 @@ import { useEffect, useRef } from "react";
 
 export function Cursor() {
   const elRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
   const pendingX = useRef(0);
   const pendingY = useRef(0);
   const lastX = useRef(0);
   const lastY = useRef(0);
   const lastT = useRef(0);
-  const flapTimer = useRef<ReturnType<typeof setTimeout>>();
+  const flapTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const isFlapping = useRef(false);
 
   useEffect(() => {
