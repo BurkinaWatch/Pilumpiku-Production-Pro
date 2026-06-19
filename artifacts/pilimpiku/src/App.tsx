@@ -16,6 +16,7 @@ import Partners from "@/pages/Partners";
 import News from "@/pages/News";
 import Contact from "@/pages/Contact";
 import LaboPiiulgu from "@/pages/LaboPiiulgu";
+import Sulunsuku from "@/pages/Sulunsuku";
 import Admin from "@/pages/Admin";
 import LegalMentions from "@/pages/LegalMentions";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -34,6 +35,7 @@ function Router() {
         <Route path="/services" component={Services} />
         <Route path="/partenaires" component={Partners} />
         <Route path="/actualites" component={News} />
+        <Route path="/sulunsuku" component={Sulunsuku} />
         <Route path="/labo-piiulgu" component={LaboPiiulgu} />
         <Route path="/contact" component={Contact} />
         <Route path="/admin" component={Admin} />
