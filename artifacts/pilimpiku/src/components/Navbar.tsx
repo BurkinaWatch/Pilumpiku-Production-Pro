@@ -57,6 +57,7 @@ export function Navbar() {
     { name: "Projets", path: "/projets" },
     { name: "Services", path: "/services" },
     { name: "Actualités", path: "/actualites" },
+    { name: "Labo Piiulgu", path: "/labo-piiulgu" },
     { name: "Partenaires", path: "/partenaires" },
     { name: "À propos", path: "/a-propos" },
     { name: "Contact", path: "/contact" },
