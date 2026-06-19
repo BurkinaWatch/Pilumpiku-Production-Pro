@@ -49,6 +49,17 @@ const programmes = [
       "Un collectif de producteurs basé sur le principe de la tontine africaine appliqué au cinéma. Ensemble, les membres garantissent des budgets réguliers et préservent leur indépendance créative.",
     details: ["Force collective — Budget garanti", "Production régulière", "Votre indépendance créative préservée", "Contact pour rejoindre le collectif"],
   },
+  {
+    id: "picth",
+    icon: BookOpen,
+    label: "Piiulgu Pic Th",
+    couleur: "from-[#4A8BA0]/20 to-transparent",
+    bordure: "border-[#4A8BA0]/40",
+    accentColor: "#5BA3BB",
+    description:
+      "Maîtrisez l'art du pitch en anglais et conquérez les marchés internationaux. Un programme de formation spécialisé pour préparer les cinéastes burkinabè à présenter leurs projets sur les grandes scènes mondiales.",
+    details: ["Pitch en anglais pour marchés internationaux", "Techniques de présentation de projets", "Préparation aux marchés & co-productions", "En partenariat avec le Salon CinémalEch"],
+  },
 ];
 
 const evenements = [
@@ -118,6 +129,66 @@ const evenements = [
     type: "Espace",
     date: null,
   },
+  {
+    src: "/img/labo/afterwork-esther-barry.jpg",
+    alt: "Afterwork Cinéma – Esther BARRY, Directrice de la Photographie",
+    type: "Afterwork",
+    date: "Octobre 2025",
+  },
+  {
+    src: "/img/labo/espace-audience.jpg",
+    alt: "Participants à un événement Labo Piiulgu",
+    type: "Espace",
+    date: null,
+  },
+  {
+    src: "/img/labo/conference-strategie-serie.jpg",
+    alt: "Conférence – Stratégies de production et coproduction d'une série",
+    type: "Conférence",
+    date: "Novembre 2025",
+  },
+  {
+    src: "/img/labo/conference-speaker.jpg",
+    alt: "Intervenant lors d'une conférence Labo Piiulgu",
+    type: "Conférence",
+    date: null,
+  },
+  {
+    src: "/img/labo/afterwork-mamadou-gnanou.jpg",
+    alt: "Afterwork Cinéma – Mamadou M. GNANOU, Producteur / Réalisateur",
+    type: "Afterwork",
+    date: "Novembre 2025",
+  },
+  {
+    src: "/img/labo/espace-conference-nuit.jpg",
+    alt: "Soirée de conférence à l'Espace Piiulgu",
+    type: "Espace",
+    date: null,
+  },
+  {
+    src: "/img/labo/piiulgu-pic-th.jpg",
+    alt: "Piiulgu Pic Th – Maîtrisez l'art du pitch en anglais",
+    type: "Pic Th",
+    date: null,
+  },
+  {
+    src: "/img/labo/afterwork-laure-guire.jpg",
+    alt: "Afterwork Cinéma – Laure Azoumi GUIRE, Actrice & Metteuse en scène",
+    type: "Afterwork",
+    date: "Mars 2026",
+  },
+  {
+    src: "/img/labo/espace-coworking.jpg",
+    alt: "Espace Coworking Labo Piiulgu – Vue extérieure",
+    type: "Espace",
+    date: null,
+  },
+  {
+    src: "/img/labo/espace-labo-interieur.jpg",
+    alt: "Intérieur du Labo Piiulgu – Séance de travail",
+    type: "Espace",
+    date: null,
+  },
 ];
 
 const typeBadgeColors: Record<string, string> = {
@@ -125,6 +196,7 @@ const typeBadgeColors: Record<string, string> = {
   "Be to Be": "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30",
   Conférence: "bg-[#D4783A]/20 text-[#D4783A] border-[#D4783A]/30",
   Tontine: "bg-[#E8921A]/20 text-[#E8921A] border-[#E8921A]/30",
+  "Pic Th": "bg-[#5BA3BB]/20 text-[#5BA3BB] border-[#5BA3BB]/30",
   Espace: "bg-white/10 text-white/60 border-white/20",
 };
 
