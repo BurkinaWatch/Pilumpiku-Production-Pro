@@ -6,7 +6,7 @@ import { Menu, X, ShieldCheck, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@workspace/replit-auth-web";
 
-type ServiceItem = { name: string; path: string };
+type ServiceItem = { name: string; path: string; description?: string; external?: boolean };
 
 type ProductCategory =
   | {
@@ -58,21 +58,87 @@ const productCategories: ProductCategory[] = [
     kind: "sectioned",
     sections: [
       {
-        title: "Magazine & Actualités",
+        title: "Magazine Avant-Première",
         items: [
-          { name: "Avant-Première — magazine en ligne", path: "/sulunsuku#avant-premiere" },
-          { name: "Portraits de professionnels", path: "/sulunsuku#portraits" },
-          { name: "Couverture de festivals", path: "/sulunsuku#festivals" },
-          { name: "Éclairages & analyses", path: "/sulunsuku#eclairages" },
+          {
+            name: "En Salle",
+            path: "https://sulunsuku.net/?cat=11",
+            description: "Films africains actuellement à l'affiche",
+            external: true,
+          },
+          {
+            name: "Festivals",
+            path: "https://sulunsuku.net/?cat=12",
+            description: "Couverture FESPACO, Visions du Réel et au-delà",
+            external: true,
+          },
+          {
+            name: "Eclairage",
+            path: "https://sulunsuku.net/?cat=19",
+            description: "Portraits de professionnels du cinéma africain",
+            external: true,
+          },
+          {
+            name: "Clap",
+            path: "https://sulunsuku.net/?cat=10",
+            description: "Coulisses et journées sur les plateaux de tournage",
+            external: true,
+          },
+          {
+            name: "Regard",
+            path: "https://sulunsuku.net/?cat=14",
+            description: "Critiques et perspectives sur les œuvres",
+            external: true,
+          },
+          {
+            name: "Avis du cinéphile",
+            path: "https://sulunsuku.net/?cat=24",
+            description: "La parole aux spectateurs passionnés",
+            external: true,
+          },
+          {
+            name: "Hommages",
+            path: "https://sulunsuku.net/?cat=20",
+            description: "Tributs aux figures du 7e art africain",
+            external: true,
+          },
+          {
+            name: "Zoom Sur",
+            path: "https://sulunsuku.net/?cat=22",
+            description: "Focus thématiques sur le cinéma du continent",
+            external: true,
+          },
+          {
+            name: "Vie de Star",
+            path: "https://sulunsuku.net/?cat=23",
+            description: "Actualité des artistes et cinéastes africains",
+            external: true,
+          },
         ],
       },
       {
         title: "Communauté & Ressources",
         items: [
-          { name: "Répertoire des Professionnels africains", path: "/sulunsuku#repertoire" },
-          { name: "Boutique en ligne", path: "/sulunsuku#boutique" },
-          { name: "Master class vidéo", path: "/sulunsuku#masterclass" },
-          { name: "Promotion des œuvres africaines", path: "/sulunsuku#promotion" },
+          {
+            name: "Répertoire des Professionnels africains",
+            path: "/sulunsuku#repertoire",
+            description: "Annuaire des acteurs de l'industrie cinématographique",
+          },
+          {
+            name: "Boutique en ligne",
+            path: "/sulunsuku#boutique",
+            description: "Films, livres et supports audiovisuels africains",
+          },
+          {
+            name: "Master class vidéo",
+            path: "/sulunsuku#masterclass",
+            description: "Formations et ateliers animés par des professionnels",
+          },
+          {
+            name: "Promotion des œuvres africaines",
+            path: "/sulunsuku#promotion",
+            description: "Accompagner la visibilité du cinéma du continent",
+          },
         ],
       },
     ],
@@ -138,6 +204,11 @@ export function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (e.button !== 0 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+    if (path.startsWith("http://") || path.startsWith("https://")) {
+      setOpenDropdown(null);
+      setIsMobileMenuOpen(false);
+      return;
+    }
     e.preventDefault();
     navigate(path);
   };
@@ -260,7 +331,7 @@ export function Navbar() {
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.18 }}
                         className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-[#1A0A00]/95 backdrop-blur-md border border-border/40 rounded-sm shadow-2xl overflow-hidden z-50"
-                        style={{ width: cat.kind === "sectioned" ? "18rem" : "17rem" }}
+                        style={{ width: cat.name === "Sulunsuku" ? "22rem" : cat.kind === "sectioned" ? "18rem" : "17rem" }}
                       >
                         {/* Category header */}
                         <div className="px-4 py-3 border-b border-border/30">
@@ -281,9 +352,16 @@ export function Navbar() {
                                 <a
                                   href={service.path}
                                   onClick={(e) => handleNavClick(e, service.path)}
+                                  target={service.external ? "_blank" : undefined}
+                                  rel={service.external ? "noopener noreferrer" : undefined}
                                   className="block px-4 py-2.5 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
                                 >
                                   {service.name}
+                                  {service.description && (
+                                    <span className="block text-[0.6rem] text-muted-foreground/50 mt-0.5 font-light leading-snug">
+                                      {service.description}
+                                    </span>
+                                  )}
                                 </a>
                               </li>
                             ))}
@@ -307,9 +385,16 @@ export function Navbar() {
                                       <a
                                         href={item.path}
                                         onClick={(e) => handleNavClick(e, item.path)}
+                                        target={item.external ? "_blank" : undefined}
+                                        rel={item.external ? "noopener noreferrer" : undefined}
                                         className="block px-4 py-2 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
                                       >
                                         {item.name}
+                                        {item.description && (
+                                          <span className="block text-[0.6rem] text-muted-foreground/50 mt-0.5 font-light leading-snug">
+                                            {item.description}
+                                          </span>
+                                        )}
                                       </a>
                                     </li>
                                   ))}
@@ -439,6 +524,8 @@ export function Navbar() {
                                   <a
                                     href={service.path}
                                     onClick={(e) => handleNavClick(e, service.path)}
+                                    target={service.external ? "_blank" : undefined}
+                                    rel={service.external ? "noopener noreferrer" : undefined}
                                     className="block text-xs text-muted-foreground hover:text-primary transition-colors py-1 leading-relaxed"
                                   >
                                     — {service.name}
@@ -461,6 +548,8 @@ export function Navbar() {
                                         <a
                                           href={item.path}
                                           onClick={(e) => handleNavClick(e, item.path)}
+                                          target={item.external ? "_blank" : undefined}
+                                          rel={item.external ? "noopener noreferrer" : undefined}
                                           className="block text-xs text-muted-foreground hover:text-primary transition-colors py-1 leading-relaxed"
                                         >
                                           — {item.name}
