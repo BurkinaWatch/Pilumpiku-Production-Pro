@@ -5,11 +5,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 export async function runMigrations() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL must be set before running migrations.");
+  const connectionString =
+    process.env.RAILWAY_DATABASE_URL || process.env.DATABASE_URL;
+
+  if (!connectionString) {
+    throw new Error(
+      "RAILWAY_DATABASE_URL or DATABASE_URL must be set before running migrations.",
+    );
   }
 
-  const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+  const pool = new pg.Pool({ connectionString });
   const db = drizzle(pool);
 
   const migrationsFolder =
