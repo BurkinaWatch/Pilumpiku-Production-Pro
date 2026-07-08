@@ -58,87 +58,21 @@ const productCategories: ProductCategory[] = [
     kind: "sectioned",
     sections: [
       {
-        title: "Magazine Avant-Première",
+        title: "Magazine & Actualités",
         items: [
-          {
-            name: "En Salle",
-            path: "https://sulunsuku.net/?cat=11",
-            description: "Films africains actuellement à l'affiche",
-            external: true,
-          },
-          {
-            name: "Festivals",
-            path: "https://sulunsuku.net/?cat=12",
-            description: "Couverture FESPACO, Visions du Réel et au-delà",
-            external: true,
-          },
-          {
-            name: "Eclairage",
-            path: "https://sulunsuku.net/?cat=19",
-            description: "Portraits de professionnels du cinéma africain",
-            external: true,
-          },
-          {
-            name: "Clap",
-            path: "https://sulunsuku.net/?cat=10",
-            description: "Coulisses et journées sur les plateaux de tournage",
-            external: true,
-          },
-          {
-            name: "Regard",
-            path: "https://sulunsuku.net/?cat=14",
-            description: "Critiques et perspectives sur les œuvres",
-            external: true,
-          },
-          {
-            name: "Avis du cinéphile",
-            path: "https://sulunsuku.net/?cat=24",
-            description: "La parole aux spectateurs passionnés",
-            external: true,
-          },
-          {
-            name: "Hommages",
-            path: "https://sulunsuku.net/?cat=20",
-            description: "Tributs aux figures du 7e art africain",
-            external: true,
-          },
-          {
-            name: "Zoom Sur",
-            path: "https://sulunsuku.net/?cat=22",
-            description: "Focus thématiques sur le cinéma du continent",
-            external: true,
-          },
-          {
-            name: "Vie de Star",
-            path: "https://sulunsuku.net/?cat=23",
-            description: "Actualité des artistes et cinéastes africains",
-            external: true,
-          },
+          { name: "Avant-Première — magazine en ligne", path: "/sulunsuku#avant-premiere" },
+          { name: "Portraits de professionnels", path: "/sulunsuku#portraits" },
+          { name: "Couverture de festivals", path: "/sulunsuku#festivals" },
+          { name: "Éclairages & analyses", path: "/sulunsuku#eclairages" },
         ],
       },
       {
         title: "Communauté & Ressources",
         items: [
-          {
-            name: "Répertoire des Professionnels africains",
-            path: "/sulunsuku#repertoire",
-            description: "Annuaire des acteurs de l'industrie cinématographique",
-          },
-          {
-            name: "Boutique en ligne",
-            path: "/sulunsuku#boutique",
-            description: "Films, livres et supports audiovisuels africains",
-          },
-          {
-            name: "Master class vidéo",
-            path: "/sulunsuku#masterclass",
-            description: "Formations et ateliers animés par des professionnels",
-          },
-          {
-            name: "Promotion des œuvres africaines",
-            path: "/sulunsuku#promotion",
-            description: "Accompagner la visibilité du cinéma du continent",
-          },
+          { name: "Répertoire des Professionnels africains", path: "/sulunsuku#repertoire" },
+          { name: "Boutique en ligne", path: "/sulunsuku#boutique" },
+          { name: "Master class vidéo", path: "/sulunsuku#masterclass" },
+          { name: "Promotion des œuvres africaines", path: "/sulunsuku#promotion" },
         ],
       },
     ],
@@ -331,7 +265,7 @@ export function Navbar() {
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.18 }}
                         className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-[#1A0A00]/95 backdrop-blur-md border border-border/40 rounded-sm shadow-2xl overflow-hidden z-50"
-                        style={{ width: cat.name === "Sulunsuku" ? "22rem" : cat.kind === "sectioned" ? "18rem" : "17rem" }}
+                        style={{ width: cat.kind === "sectioned" ? "18rem" : "17rem" }}
                       >
                         {/* Category header */}
                         <div className="px-4 py-3 border-b border-border/30">
