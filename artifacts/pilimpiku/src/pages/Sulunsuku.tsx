@@ -181,12 +181,18 @@ export default function Sulunsuku() {
   const [isMuted, setIsMuted] = useState(true);
   const [videoReady, setVideoReady] = useState(false);
   const [pressOpen, setPressOpen] = useState(false);
-  const [generiqueActive, setGeneriqueActive] = useState(true);
+  const [generiqueActive, setGeneriqueActive] = useState(
+    () => !sessionStorage.getItem("sulunsuku_generique_played"),
+  );
   const [generiqueReady, setGeneriqueReady] = useState(false);
 
-  const skipGenerique = () => setGeneriqueActive(false);
+  const skipGenerique = () => {
+    sessionStorage.setItem("sulunsuku_generique_played", "1");
+    setGeneriqueActive(false);
+  };
 
   useEffect(() => {
+    if (!generiqueActive) return;
     const video = generiqueRef.current;
     if (!video) return;
     video.muted = false;
@@ -264,13 +270,13 @@ export default function Sulunsuku() {
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 2, duration: 0.8 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
               onClick={skipGenerique}
-              className="absolute bottom-8 right-8 flex items-center gap-2 text-white/50 hover:text-white/90 text-xs uppercase tracking-[0.25em] transition-colors duration-300 group"
+              className="absolute bottom-8 right-8 flex items-center gap-3 bg-white/15 hover:bg-white/25 border border-white/50 hover:border-white text-white text-sm uppercase tracking-[0.2em] px-5 py-3 backdrop-blur-sm transition-all duration-200"
               aria-label="Passer le générique"
             >
               <span>Passer</span>
-              <span className="inline-block w-8 h-px bg-white/40 group-hover:bg-white/80 transition-colors duration-300" />
+              <ChevronDown size={14} className="rotate-[-90deg]" />
             </motion.button>
           </motion.div>
         )}
