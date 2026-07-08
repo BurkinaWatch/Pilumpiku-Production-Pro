@@ -208,8 +208,8 @@ export function Navbar() {
         className={cn(
           "fixed top-0 w-full z-40 transition-all duration-500 ease-in-out border-b border-transparent",
           isScrolled
-            ? "bg-[#1A0A00]/90 backdrop-blur-md border-border/50 py-3"
-            : "bg-transparent py-4 md:py-6",
+            ? "bg-[#1A0A00]/90 backdrop-blur-md border-border/50 py-3.5"
+            : "bg-transparent py-5 md:py-7",
         )}
       >
         <div
@@ -223,12 +223,12 @@ export function Navbar() {
             className="flex items-center gap-2 md:gap-3 z-50 shrink-0"
             data-testid="link-logo-home"
           >
-            <ButterflyLogo className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14" />
+            <ButterflyLogo className="w-11 h-11 md:w-13 md:h-13 lg:w-15 lg:h-15" />
             <div>
-              <div className="font-serif text-base md:text-xl tracking-widest leading-none">
+              <div className="font-serif text-lg md:text-2xl tracking-widest leading-none">
                 PILUMPIKU
               </div>
-              <div className="text-primary text-[0.5rem] md:text-[0.55rem] tracking-[0.3em] uppercase">
+              <div className="text-primary text-[0.6rem] md:text-[0.65rem] tracking-[0.3em] uppercase">
                 Production
               </div>
             </div>
@@ -236,7 +236,7 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 min-w-0">
-            <ul className="flex items-center gap-3 xl:gap-5 text-[0.65rem] xl:text-[0.7rem] uppercase tracking-[0.18em] xl:tracking-widest whitespace-nowrap">
+            <ul className="flex items-center gap-3 xl:gap-5 text-xs xl:text-[0.78rem] uppercase tracking-[0.13em] xl:tracking-[0.16em] whitespace-nowrap">
 
               {/* Accueil */}
               <li>
@@ -291,7 +291,7 @@ export function Navbar() {
                           <a
                             href={cat.path}
                             onClick={(e) => handleNavClick(e, cat.path)}
-                            className="font-serif text-[0.75rem] text-primary tracking-wider hover:text-primary/80 transition-colors"
+                            className="font-serif text-sm text-primary tracking-wider hover:text-primary/80 transition-colors"
                           >
                             {cat.fullName}
                           </a>
@@ -307,7 +307,7 @@ export function Navbar() {
                                   onClick={(e) => handleNavClick(e, service.path)}
                                   target={service.external ? "_blank" : undefined}
                                   rel={service.external ? "noopener noreferrer" : undefined}
-                                  className="block px-4 py-2.5 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
+                                  className="block px-4 py-2.5 text-[0.75rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
                                 >
                                   {service.name}
                                   {service.description && (
@@ -328,7 +328,7 @@ export function Navbar() {
                               <div key={section.title}>
                                 {i > 0 && <div className="mx-4 border-t border-border/20 my-1" />}
                                 <div className="px-4 pt-2.5 pb-1">
-                                  <span className="text-[0.55rem] uppercase tracking-[0.2em] text-primary/60 font-medium">
+                                  <span className="text-[0.65rem] uppercase tracking-[0.2em] text-primary/60 font-medium">
                                     {section.title}
                                   </span>
                                 </div>
@@ -340,7 +340,7 @@ export function Navbar() {
                                         onClick={(e) => handleNavClick(e, item.path)}
                                         target={item.external ? "_blank" : undefined}
                                         rel={item.external ? "noopener noreferrer" : undefined}
-                                        className="block px-4 py-2 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
+                                        className="block px-4 py-2 text-[0.75rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
                                       >
                                         {item.name}
                                         {item.description && (
@@ -385,7 +385,7 @@ export function Navbar() {
                 <a
                   href="/admin"
                   onClick={(e) => handleNavClick(e, "/admin")}
-                  className="border border-primary/40 text-primary px-3 py-2 rounded-sm uppercase tracking-widest text-[0.65rem] hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center gap-1.5 whitespace-nowrap"
+                  className="border border-primary/40 text-primary px-3 py-2 rounded-sm uppercase tracking-widest text-xs hover:bg-primary hover:text-primary-foreground transition-colors duration-300 flex items-center gap-1.5 whitespace-nowrap"
                   data-testid="link-admin-nav"
                 >
                   <ShieldCheck size={12} /> Admin
@@ -394,7 +394,7 @@ export function Navbar() {
               <a
                 href="/contact"
                 onClick={(e) => handleNavClick(e, "/contact")}
-                className="bg-primary text-primary-foreground px-4 xl:px-6 py-2 rounded-sm uppercase tracking-widest text-[0.65rem] xl:text-xs hover:bg-secondary transition-colors duration-300 whitespace-nowrap"
+                className="bg-primary text-primary-foreground px-4 xl:px-6 py-2.5 rounded-sm uppercase tracking-widest text-xs xl:text-[0.78rem] hover:bg-secondary transition-colors duration-300 whitespace-nowrap"
                 data-testid="link-collaborer-nav"
               >
                 Collaborer
