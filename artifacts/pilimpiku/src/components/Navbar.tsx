@@ -55,12 +55,26 @@ const productCategories: ProductCategory[] = [
     name: "Sulunsuku",
     fullName: "Plateforme digitale Sulunsuku",
     path: "/sulunsuku",
-    kind: "flat",
-    services: [
-      { name: "Magazine en ligne Avant-Première", path: "/sulunsuku#magazine" },
-      { name: "Répertoire des Professionnels", path: "/sulunsuku#repertoire" },
-      { name: "Boutique en ligne", path: "/sulunsuku#boutique" },
-      { name: "Diffusion master class & promotion des œuvres", path: "/sulunsuku#masterclass" },
+    kind: "sectioned",
+    sections: [
+      {
+        title: "Magazine & Actualités",
+        items: [
+          { name: "Avant-Première — magazine en ligne", path: "/sulunsuku#avant-premiere" },
+          { name: "Portraits de professionnels", path: "/sulunsuku#portraits" },
+          { name: "Couverture de festivals", path: "/sulunsuku#festivals" },
+          { name: "Éclairages & analyses", path: "/sulunsuku#eclairages" },
+        ],
+      },
+      {
+        title: "Communauté & Ressources",
+        items: [
+          { name: "Répertoire des Professionnels africains", path: "/sulunsuku#repertoire" },
+          { name: "Boutique en ligne", path: "/sulunsuku#boutique" },
+          { name: "Master class vidéo", path: "/sulunsuku#masterclass" },
+          { name: "Promotion des œuvres africaines", path: "/sulunsuku#promotion" },
+        ],
+      },
     ],
   },
   {
