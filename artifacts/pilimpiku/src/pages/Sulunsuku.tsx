@@ -176,12 +176,31 @@ export default function Sulunsuku() {
   });
 
   const videoRef = useRef<HTMLVideoElement>(null);
+  const generiqueRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [videoReady, setVideoReady] = useState(false);
   const [pressOpen, setPressOpen] = useState(false);
+  const [generiqueActive, setGeneriqueActive] = useState(true);
+  const [generiqueReady, setGeneriqueReady] = useState(false);
+
+  const skipGenerique = () => setGeneriqueActive(false);
 
   useEffect(() => {
+    const video = generiqueRef.current;
+    if (!video) return;
+    video.muted = false;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        video.muted = true;
+        video.play().catch(() => {});
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (generiqueActive) return;
     const video = videoRef.current;
     if (!video) return;
     video.muted = true;
@@ -189,7 +208,7 @@ export default function Sulunsuku() {
     if (playPromise !== undefined) {
       playPromise.catch(() => setIsPlaying(false));
     }
-  }, []);
+  }, [generiqueActive]);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -212,6 +231,50 @@ export default function Sulunsuku() {
 
   return (
     <div className="flex flex-col w-full bg-background min-h-screen">
+
+      {/* ─── Générique ───────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {generiqueActive && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[70] bg-black flex items-center justify-center overflow-hidden"
+          >
+            <video
+              ref={generiqueRef}
+              src="/video/Sulunsuku_generique.mp4"
+              playsInline
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${generiqueReady ? "opacity-100" : "opacity-0"}`}
+              onCanPlay={() => setGeneriqueReady(true)}
+              onEnded={skipGenerique}
+            />
+            {!generiqueReady && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center"
+                >
+                  <div className="font-serif text-4xl text-white/20 tracking-widest">Sulun<span className="italic text-primary/40">suku</span></div>
+                </motion.div>
+              </div>
+            )}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2, duration: 0.8 }}
+              onClick={skipGenerique}
+              className="absolute bottom-8 right-8 flex items-center gap-2 text-white/50 hover:text-white/90 text-xs uppercase tracking-[0.25em] transition-colors duration-300 group"
+              aria-label="Passer le générique"
+            >
+              <span>Passer</span>
+              <span className="inline-block w-8 h-px bg-white/40 group-hover:bg-white/80 transition-colors duration-300" />
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ─── Hero Cinématique ────────────────────────────────────────── */}
       <section className="relative w-full h-screen min-h-[600px] flex items-end overflow-hidden">
