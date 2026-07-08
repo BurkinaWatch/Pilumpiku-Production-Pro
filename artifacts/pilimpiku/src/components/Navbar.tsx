@@ -144,7 +144,26 @@ export function Navbar() {
       return;
     }
     e.preventDefault();
-    navigate(path);
+    setOpenDropdown(null);
+    setIsMobileMenuOpen(false);
+
+    const hashIdx = path.indexOf("#");
+    if (hashIdx !== -1) {
+      const routePart = path.slice(0, hashIdx);
+      const anchor = path.slice(hashIdx + 1);
+      const scrollToAnchor = () => {
+        const el = document.getElementById(anchor);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      };
+      if (location === routePart || routePart === "") {
+        scrollToAnchor();
+      } else {
+        navigate(routePart);
+        setTimeout(scrollToAnchor, 350);
+      }
+    } else {
+      navigate(path);
+    }
   };
 
   const toggleDropdown = (name: string) => {
