@@ -6,6 +6,7 @@ import newsRouter from "./news";
 import servicesRouter from "./services";
 import partnersRouter from "./partners";
 import settingsRouter from "./settings";
+import inscriptionsRouter from "./inscriptions";
 
 const router: IRouter = Router();
 
@@ -16,5 +17,6 @@ router.use(newsRouter);
 router.use(servicesRouter);
 router.use(partnersRouter);
 router.use(settingsRouter);
+router.use(inscriptionsRouter);
 
 export default router;

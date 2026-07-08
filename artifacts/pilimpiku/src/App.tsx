@@ -18,6 +18,12 @@ import Contact from "@/pages/Contact";
 import LaboPiiulgu from "@/pages/LaboPiiulgu";
 import Sulunsuku from "@/pages/Sulunsuku";
 import SalonCinematech from "@/pages/SalonCinematech";
+import Coworking from "@/pages/labo/Coworking";
+import Scenario from "@/pages/labo/Scenario";
+import CoachingProduction from "@/pages/labo/CoachingProduction";
+import CoachingEntrepreneuriat from "@/pages/labo/CoachingEntrepreneuriat";
+import B2B from "@/pages/labo/B2B";
+import Afterworks from "@/pages/labo/Afterworks";
 import Admin from "@/pages/Admin";
 import LegalMentions from "@/pages/LegalMentions";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -39,6 +45,12 @@ function Router() {
         <Route path="/sulunsuku" component={Sulunsuku} />
         <Route path="/salon-cinematech" component={SalonCinematech} />
         <Route path="/labo-piiulgu" component={LaboPiiulgu} />
+        <Route path="/labo-piiulgu/coworking" component={Coworking} />
+        <Route path="/labo-piiulgu/scenario" component={Scenario} />
+        <Route path="/labo-piiulgu/coaching-production" component={CoachingProduction} />
+        <Route path="/labo-piiulgu/coaching-entrepreneuriat" component={CoachingEntrepreneuriat} />
+        <Route path="/labo-piiulgu/b2b" component={B2B} />
+        <Route path="/labo-piiulgu/afterworks" component={Afterworks} />
         <Route path="/contact" component={Contact} />
         <Route path="/admin" component={Admin} />
         <Route path="/mentions-legales" component={LegalMentions} />

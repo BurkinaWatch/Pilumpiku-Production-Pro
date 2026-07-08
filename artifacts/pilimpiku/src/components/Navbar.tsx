@@ -95,12 +95,12 @@ const productCategories: ProductCategory[] = [
     path: "/labo-piiulgu",
     kind: "flat",
     services: [
-      { name: "Espace de Coworking Piiulgu", path: "/labo-piiulgu#coworking" },
-      { name: "Accompagnement en écriture de scénario", path: "/labo-piiulgu#scenario" },
-      { name: "Coaching & mentorats sur la production", path: "/labo-piiulgu#coaching" },
-      { name: "Coaching entrepreneuriat créatif & ICC", path: "/labo-piiulgu#entrepreneuriat" },
-      { name: "B to B — projets ICC SOASGA", path: "/labo-piiulgu#b2b" },
-      { name: "Afterworks Cinéma", path: "/labo-piiulgu#afterworks" },
+      { name: "Espace de Coworking Piiulgu", path: "/labo-piiulgu/coworking" },
+      { name: "Accompagnement en écriture de scénario", path: "/labo-piiulgu/scenario" },
+      { name: "Coaching & mentorats sur la production", path: "/labo-piiulgu/coaching-production" },
+      { name: "Coaching entrepreneuriat créatif & ICC", path: "/labo-piiulgu/coaching-entrepreneuriat" },
+      { name: "B to B — projets ICC SOASGA", path: "/labo-piiulgu/b2b" },
+      { name: "Afterworks Cinéma", path: "/labo-piiulgu/afterworks" },
     ],
   },
 ];
