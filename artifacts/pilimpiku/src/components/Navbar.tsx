@@ -7,29 +7,55 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@workspace/replit-auth-web";
 
 type ServiceItem = { name: string; path: string };
-type ProductCategory = {
-  name: string;
-  fullName: string;
-  path: string;
-  services: ServiceItem[];
-};
+
+type ProductCategory =
+  | {
+      name: string;
+      fullName: string;
+      path: string;
+      kind: "flat";
+      services: ServiceItem[];
+    }
+  | {
+      name: string;
+      fullName: string;
+      path: string;
+      kind: "sectioned";
+      sections: { title: string; items: ServiceItem[] }[];
+    };
 
 const productCategories: ProductCategory[] = [
   {
     name: "Productions",
     fullName: "Productions Cinéma et Audiovisuel",
-    path: "/services",
-    services: [
-      { name: "Écriture & développement de scénarios", path: "/services#ecriture" },
-      { name: "Production — films, fictions, séries", path: "/services#production" },
-      { name: "Postproduction & promotion", path: "/services#postproduction" },
-      { name: "Production exécutive internationale", path: "/services#executif" },
+    path: "/projets",
+    kind: "sectioned",
+    sections: [
+      {
+        title: "Par format",
+        items: [
+          { name: "Longs métrages", path: "/projets?filter=Longs+métrages" },
+          { name: "Courts métrages", path: "/projets?filter=Courts+métrages" },
+          { name: "Séries télévisées", path: "/projets?filter=Série+télévisée+documentaire" },
+          { name: "Documentaires", path: "/projets?filter=Documentaire" },
+          { name: "Plateformes & Festivals", path: "/projets?filter=Plateforme" },
+        ],
+      },
+      {
+        title: "Par statut",
+        items: [
+          { name: "En développement", path: "/projets?filter=En+développement" },
+          { name: "En production", path: "/projets?filter=Produit" },
+          { name: "Post-production", path: "/projets?filter=Post-production" },
+        ],
+      },
     ],
   },
   {
     name: "Sulunsuku",
     fullName: "Plateforme digitale Sulunsuku",
     path: "/sulunsuku",
+    kind: "flat",
     services: [
       { name: "Magazine en ligne Avant-Première", path: "/sulunsuku#magazine" },
       { name: "Répertoire des Professionnels", path: "/sulunsuku#repertoire" },
@@ -41,6 +67,7 @@ const productCategories: ProductCategory[] = [
     name: "CinémaTECH",
     fullName: "Salon CinémaTECH",
     path: "/salon-cinematech",
+    kind: "flat",
     services: [
       { name: "Exposition-vente de matériels", path: "/salon-cinematech#exposition" },
       { name: "Symposium technologie & innovation", path: "/salon-cinematech#symposium" },
@@ -52,6 +79,7 @@ const productCategories: ProductCategory[] = [
     name: "Labo Piiulgu",
     fullName: "Labo Piiulgu",
     path: "/labo-piiulgu",
+    kind: "flat",
     services: [
       { name: "Espace de Coworking Piiulgu", path: "/labo-piiulgu#coworking" },
       { name: "Accompagnement en écriture de scénario", path: "/labo-piiulgu#scenario" },
@@ -82,19 +110,23 @@ export function Navbar() {
   const isAdmin = !!user?.isAdmin;
   const navRef = useRef<HTMLDivElement>(null);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    path: string,
-  ) => {
-    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
-    e.preventDefault();
+  const navigate = (path: string) => {
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
-    if (location !== path) {
+    const [pathname, search] = path.split("?");
+    if (location !== pathname) {
+      setLocation(path);
+    } else if (search) {
       setLocation(path);
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+    e.preventDefault();
+    navigate(path);
   };
 
   const toggleDropdown = (name: string) => {
@@ -131,7 +163,7 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   const isProductActive = (cat: ProductCategory) =>
-    location === cat.path || location.startsWith(cat.path + "#");
+    location === cat.path || location.startsWith(cat.path + "?") || location.startsWith(cat.path + "#");
 
   return (
     <>
@@ -184,21 +216,6 @@ export function Navbar() {
                 </a>
               </li>
 
-              {/* Projets */}
-              <li>
-                <a
-                  href="/projets"
-                  onClick={(e) => handleNavClick(e, "/projets")}
-                  className={cn(
-                    "hover:text-primary transition-colors duration-300",
-                    location === "/projets" ? "text-primary" : "text-muted-foreground",
-                  )}
-                  data-testid="link-nav-projets"
-                >
-                  Projets
-                </a>
-              </li>
-
               {/* Product category dropdowns */}
               {productCategories.map((cat) => (
                 <li key={cat.name} className="relative">
@@ -229,7 +246,8 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-72 bg-[#1A0A00]/95 backdrop-blur-md border border-border/40 rounded-sm shadow-2xl overflow-hidden z-50"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-[#1A0A00]/95 backdrop-blur-md border border-border/40 rounded-sm shadow-2xl overflow-hidden z-50"
+                        style={{ width: cat.kind === "sectioned" ? "18rem" : "17rem" }}
                       >
                         {/* Category header */}
                         <div className="px-4 py-3 border-b border-border/30">
@@ -241,27 +259,59 @@ export function Navbar() {
                             {cat.fullName}
                           </a>
                         </div>
-                        {/* Services list */}
-                        <ul className="py-1">
-                          {cat.services.map((service) => (
-                            <li key={service.name}>
-                              <a
-                                href={service.path}
-                                onClick={(e) => handleNavClick(e, service.path)}
-                                className="block px-4 py-2.5 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
-                              >
-                                {service.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+
+                        {/* Flat services */}
+                        {cat.kind === "flat" && (
+                          <ul className="py-1">
+                            {cat.services.map((service) => (
+                              <li key={service.name}>
+                                <a
+                                  href={service.path}
+                                  onClick={(e) => handleNavClick(e, service.path)}
+                                  className="block px-4 py-2.5 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
+                                >
+                                  {service.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {/* Sectioned services */}
+                        {cat.kind === "sectioned" && (
+                          <div className="py-1">
+                            {cat.sections.map((section, i) => (
+                              <div key={section.title}>
+                                {i > 0 && <div className="mx-4 border-t border-border/20 my-1" />}
+                                <div className="px-4 pt-2.5 pb-1">
+                                  <span className="text-[0.55rem] uppercase tracking-[0.2em] text-primary/60 font-medium">
+                                    {section.title}
+                                  </span>
+                                </div>
+                                <ul>
+                                  {section.items.map((item) => (
+                                    <li key={item.name}>
+                                      <a
+                                        href={item.path}
+                                        onClick={(e) => handleNavClick(e, item.path)}
+                                        className="block px-4 py-2 text-[0.65rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
+                                      >
+                                        {item.name}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </li>
               ))}
 
-              {/* Simple links */}
+              {/* Simple links (excluding Accueil & Projets which are already shown) */}
               {simpleNavLinks.slice(2).map((link) => (
                 <li key={link.path}>
                   <a
@@ -324,7 +374,7 @@ export function Navbar() {
           >
             <nav className="min-h-full flex flex-col justify-center px-8 py-24">
 
-              {/* Simple links — top */}
+              {/* Accueil */}
               <ul className="space-y-4 text-xl font-serif text-center mb-8">
                 <li>
                   <a
@@ -336,30 +386,17 @@ export function Navbar() {
                     Accueil
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="/projets"
-                    onClick={(e) => handleNavClick(e, "/projets")}
-                    className={cn("hover:text-primary transition-colors", location === "/projets" ? "text-primary" : "text-foreground")}
-                    data-testid="link-mobile-projets"
-                  >
-                    Projets
-                  </a>
-                </li>
               </ul>
 
-              {/* Divider */}
               <div className="border-t border-border/30 my-4" />
 
               {/* Product categories — expandable */}
-              <ul className="space-y-2 mb-4">
+              <ul className="space-y-1 mb-4">
                 {productCategories.map((cat) => (
                   <li key={cat.name} className="border-b border-border/20 last:border-0">
                     <button
                       onClick={() =>
-                        setOpenMobileCategory((prev) =>
-                          prev === cat.name ? null : cat.name,
-                        )
+                        setOpenMobileCategory((prev) => prev === cat.name ? null : cat.name)
                       }
                       className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-widest text-foreground hover:text-primary transition-colors"
                     >
@@ -372,34 +409,63 @@ export function Navbar() {
                         )}
                       />
                     </button>
+
                     <AnimatePresence>
                       {openMobileCategory === cat.name && (
-                        <motion.ul
+                        <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="overflow-hidden pl-3 pb-3 space-y-2"
+                          className="overflow-hidden pl-3 pb-3"
                         >
-                          {cat.services.map((service) => (
-                            <li key={service.name}>
-                              <a
-                                href={service.path}
-                                onClick={(e) => handleNavClick(e, service.path)}
-                                className="block text-xs text-muted-foreground hover:text-primary transition-colors py-1 leading-relaxed"
-                              >
-                                — {service.name}
-                              </a>
-                            </li>
-                          ))}
-                        </motion.ul>
+                          {cat.kind === "flat" && (
+                            <ul className="space-y-2">
+                              {cat.services.map((service) => (
+                                <li key={service.name}>
+                                  <a
+                                    href={service.path}
+                                    onClick={(e) => handleNavClick(e, service.path)}
+                                    className="block text-xs text-muted-foreground hover:text-primary transition-colors py-1 leading-relaxed"
+                                  >
+                                    — {service.name}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
+                          {cat.kind === "sectioned" && (
+                            <div className="space-y-3">
+                              {cat.sections.map((section) => (
+                                <div key={section.title}>
+                                  <p className="text-[0.55rem] uppercase tracking-[0.2em] text-primary/60 mb-1.5 font-medium">
+                                    {section.title}
+                                  </p>
+                                  <ul className="space-y-1">
+                                    {section.items.map((item) => (
+                                      <li key={item.name}>
+                                        <a
+                                          href={item.path}
+                                          onClick={(e) => handleNavClick(e, item.path)}
+                                          className="block text-xs text-muted-foreground hover:text-primary transition-colors py-1 leading-relaxed"
+                                        >
+                                          — {item.name}
+                                        </a>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </motion.div>
                       )}
                     </AnimatePresence>
                   </li>
                 ))}
               </ul>
 
-              {/* Divider */}
               <div className="border-t border-border/30 my-4" />
 
               {/* Remaining simple links */}

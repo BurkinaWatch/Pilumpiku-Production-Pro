@@ -1,15 +1,19 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearch } from "wouter";
 import { useSeo } from "@/hooks/use-seo";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectCard } from "@/components/ProjectCard";
 import { useListProjects } from "@workspace/api-client-react";
 
-const STATIC_FILTERS = ["Tous", "En développement", "Produit", "Post-production"];
-
 const STATUS_PREFIXES: Record<string, string[]> = {
   "En développement": ["en développement", "développement"],
   "Produit": ["produit", "production", "coproduction", "réalisation"],
   "Post-production": ["post-production"],
+};
+
+const FORMAT_GROUPS: Record<string, string[]> = {
+  "Longs métrages": ["Long-métrage documentaire", "Long-métrage de fiction"],
+  "Courts métrages": ["Court-métrage documentaire", "Court-métrage de fiction"],
 };
 
 export default function Projects() {
@@ -19,22 +23,50 @@ export default function Projects() {
       "Découvrez les films, documentaires et fictions de Pilumpiku Production.",
   });
 
+  const search = useSearch();
   const { data: projects, isLoading } = useListProjects();
-  const [activeFilter, setActiveFilter] = useState("Tous");
+
+  const initialFilter = useMemo(() => {
+    const params = new URLSearchParams(search);
+    return params.get("filter") ?? "Tous";
+  }, [search]);
+
+  const [activeFilter, setActiveFilter] = useState(initialFilter);
+
+  useEffect(() => {
+    setActiveFilter(initialFilter);
+  }, [initialFilter]);
 
   const categories = useMemo(() => {
     const cats = new Set<string>();
-    (projects ?? []).forEach((p) => cats.add(p.categorie));
-    return ["Tous", ...Array.from(cats), ...STATIC_FILTERS.slice(1)];
+    (projects ?? []).forEach((p: any) => cats.add(p.categorie));
+    return [
+      "Tous",
+      "Longs métrages",
+      "Courts métrages",
+      ...Array.from(cats).filter(
+        (c) =>
+          !["Long-métrage documentaire", "Long-métrage de fiction",
+            "Court-métrage documentaire", "Court-métrage de fiction"].includes(c)
+      ),
+      "En développement",
+      "Produit",
+      "Post-production",
+    ];
   }, [projects]);
 
-  const filteredProjects = (projects ?? []).filter((p) => {
+  const filteredProjects = (projects ?? []).filter((p: any) => {
     if (activeFilter === "Tous") return true;
+
+    const formatGroup = FORMAT_GROUPS[activeFilter];
+    if (formatGroup) return formatGroup.includes(p.categorie);
+
     const prefixes = STATUS_PREFIXES[activeFilter];
     if (prefixes) {
       const statut = (p.statut ?? "").toLowerCase();
       return prefixes.some((prefix) => statut.startsWith(prefix));
     }
+
     return p.categorie === activeFilter;
   });
 
@@ -59,7 +91,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10 sm:mb-16"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-16"
         >
           {categories.map((cat) => (
             <button
@@ -82,7 +114,7 @@ export default function Projects() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project: any) => (
               <motion.div
                 key={project.id}
                 layout
