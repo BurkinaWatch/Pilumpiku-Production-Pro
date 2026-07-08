@@ -3,6 +3,7 @@ import { useAuth } from "@workspace/replit-auth-web";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Lock, LogOut, ShieldAlert } from "lucide-react";
+import { DashboardAdmin } from "@/components/admin/DashboardAdmin";
 import { ProjectsAdmin } from "@/components/admin/ProjectsAdmin";
 import { NewsAdmin } from "@/components/admin/NewsAdmin";
 import { ServicesAdmin } from "@/components/admin/ServicesAdmin";
@@ -80,14 +81,16 @@ export default function Admin() {
           </Button>
         </div>
 
-        <Tabs defaultValue="projects" className="w-full">
-          <TabsList className="mb-8 grid grid-cols-2 md:grid-cols-5 w-full">
+        <Tabs defaultValue="dashboard" className="w-full">
+          <TabsList className="mb-8 grid grid-cols-3 md:grid-cols-6 w-full">
+            <TabsTrigger value="dashboard" data-testid="tab-dashboard">Vue d'ensemble</TabsTrigger>
             <TabsTrigger value="projects" data-testid="tab-projects">Projets</TabsTrigger>
             <TabsTrigger value="news" data-testid="tab-news">Actualités</TabsTrigger>
             <TabsTrigger value="services" data-testid="tab-services">Services</TabsTrigger>
             <TabsTrigger value="partners" data-testid="tab-partners">Partenaires</TabsTrigger>
-            <TabsTrigger value="settings" data-testid="tab-settings">Site</TabsTrigger>
+            <TabsTrigger value="settings" data-testid="tab-settings">Paramètres</TabsTrigger>
           </TabsList>
+          <TabsContent value="dashboard"><DashboardAdmin /></TabsContent>
           <TabsContent value="projects"><ProjectsAdmin /></TabsContent>
           <TabsContent value="news"><NewsAdmin /></TabsContent>
           <TabsContent value="services"><ServicesAdmin /></TabsContent>
