@@ -1,6 +1,7 @@
 import { useSeo } from "@/hooks/use-seo";
 import { motion } from "framer-motion";
-import { useGetSiteSettings } from "@workspace/api-client-react";
+import { useGetSiteSettings, useListPartners } from "@workspace/api-client-react";
+import { useState } from "react";
 
 const HISTOIRE_FALLBACK = `Pilumpiku Production a été fondée en janvier 2011 à Ouagadougou par la réalisatrice et productrice Mamounata Nikiéma, diplômée d'un Master 2 en réalisation documentaire de l'Université Gaston Berger de Saint-Louis, au Sénégal.
 
@@ -38,6 +39,70 @@ const DISTINCTIONS = [
   { annee: "2011", texte: "Fondation de Pilumpiku Production à Ouagadougou" },
 ];
 
+const PARTNER_LOGOS: Record<string, string> = {
+  "FESPACO": "/logos/fespaco.png",
+  "Africalia": "/logos/africalia.png",
+  "CNC France": "/logos/cnc.png",
+  "TV5 Monde": "/logos/tv5monde.png",
+  "Téléfilm Canada": "/logos/telefilm.png",
+  "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
+  "Tënk": "/logos/tenk.png",
+  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "Fonds Jeune Création Francophone": "/logos/oif.png",
+  "Université Gaston Berger": "/logos/ugb.webp",
+  "Durban FilmMart": "/logos/durban.jpg",
+  "Les Films de la pluie": "/logos/filmsdelapluie.png",
+};
+
+function PartnerCard({ partner, index }: { partner: { id: number; nom: string; description: string }; index: number }) {
+  const [logoError, setLogoError] = useState(false);
+  const logoSrc = PARTNER_LOGOS[partner.nom];
+  const hasLogo = !!logoSrc && !logoError;
+
+  return (
+    <motion.div
+      key={partner.id}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.04, duration: 0.4 }}
+      className="bg-card border border-border/40 flex flex-col items-center justify-start text-center hover:border-primary/50 hover:bg-card/70 transition-all duration-300 group overflow-hidden"
+      data-testid={`card-partner-${partner.id}`}
+    >
+      {hasLogo ? (
+        <>
+          <div className="w-full bg-white flex items-center justify-center px-6 py-5 min-h-[100px]">
+            <img
+              src={logoSrc}
+              alt={partner.nom}
+              className="max-h-14 max-w-[140px] w-auto object-contain"
+              onError={() => setLogoError(true)}
+            />
+          </div>
+          <div className="px-5 py-4 flex flex-col items-center flex-1">
+            <h3 className="font-serif text-base text-foreground mb-1.5 group-hover:text-primary transition-colors leading-snug">
+              {partner.nom}
+            </h3>
+            <p className="text-xs text-muted-foreground font-light leading-relaxed">
+              {partner.description}
+            </p>
+          </div>
+        </>
+      ) : (
+        <div className="px-6 py-8 flex flex-col items-center justify-center flex-1 min-h-[160px]">
+          <div className="w-10 h-px bg-primary/60 mb-5" />
+          <h3 className="font-serif text-lg text-foreground mb-2.5 group-hover:text-primary transition-colors leading-snug">
+            {partner.nom}
+          </h3>
+          <p className="text-xs text-muted-foreground font-light leading-relaxed">
+            {partner.description}
+          </p>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 export default function About() {
   useSeo({
     title: "À Propos",
@@ -46,6 +111,7 @@ export default function About() {
   });
 
   const { data: settings } = useGetSiteSettings();
+  const { data: partners, isLoading: partnersLoading } = useListPartners();
 
   const histoire = settings?.aboutHistoire || HISTOIRE_FALLBACK;
   const vision = settings?.aboutVision || VISION_FALLBACK;
@@ -53,6 +119,9 @@ export default function About() {
   const founderTitle = settings?.founderTitle || "Fondatrice · Réalisatrice & Productrice · Présidente FNCA";
   const founderBio = settings?.founderBio || FOUNDER_BIO_FALLBACK;
   const founderImage = settings?.founderImage || "/img/mamounata-spla.jpg";
+
+  const withLogos = (partners ?? []).filter((p) => PARTNER_LOGOS[p.nom]);
+  const withoutLogos = (partners ?? []).filter((p) => !PARTNER_LOGOS[p.nom]);
 
   return (
     <div className="flex flex-col w-full bg-background pt-20 sm:pt-24">
@@ -212,7 +281,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Partenariats */}
+      {/* Partenariats — pays */}
       <section className="py-12 sm:py-16 bg-card border-y border-border/20">
         <div className="container mx-auto px-4 sm:px-6 md:px-12">
           <motion.div
@@ -236,6 +305,54 @@ export default function About() {
               <span key={pays} className="border border-border/30 px-3 py-2">{pays}</span>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Réseau & Partenaires */}
+      <section className="py-16 sm:py-24 pb-24">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center mb-16 sm:mb-20"
+          >
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl mb-6 text-foreground">
+              Réseau & Partenaires
+            </h2>
+            <p className="text-lg text-muted-foreground font-light leading-relaxed">
+              Le cinéma est un art collectif. Au-delà du plateau, il requiert
+              l'engagement d'institutions, de fonds et de diffuseurs visionnaires.
+              Nous sommes fiers de collaborer avec des partenaires prestigieux qui
+              partagent notre ambition pour les récits africains.
+            </p>
+          </motion.div>
+
+          {partnersLoading && (
+            <div className="text-center py-20 text-muted-foreground">Chargement…</div>
+          )}
+
+          {!partnersLoading && (partners ?? []).length > 0 && (
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+                {withLogos.map((partner, i) => (
+                  <PartnerCard key={partner.id} partner={partner} index={i} />
+                ))}
+              </div>
+
+              {withoutLogos.length > 0 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {withoutLogos.map((partner, i) => (
+                    <PartnerCard
+                      key={partner.id}
+                      partner={partner}
+                      index={withLogos.length + i}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </section>
 
