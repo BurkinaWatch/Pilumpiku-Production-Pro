@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/Layout";
 import { IntroScreen } from "@/components/IntroScreen";
+import { InstallPrompt } from "@/components/InstallPrompt";
 import { lazy, Suspense, useState } from "react";
 
 import { Cursor } from "@/components/Cursor";
@@ -102,6 +103,7 @@ function App() {
           {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
           <Router />
         </WouterRouter>
+        <InstallPrompt />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
