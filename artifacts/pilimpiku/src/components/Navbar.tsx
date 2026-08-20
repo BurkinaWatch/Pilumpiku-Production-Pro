@@ -256,25 +256,37 @@ export function Navbar() {
               {/* Product category dropdowns */}
               {productCategories.map((cat) => (
                 <li key={cat.name} className="relative">
-                  <button
-                    onClick={() => toggleDropdown(cat.name)}
-                    aria-expanded={openDropdown === cat.name}
+                  <div
                     className={cn(
-                      "flex items-center gap-1 hover:text-primary transition-colors duration-300 cursor-pointer",
+                      "flex items-center gap-1 transition-colors duration-300",
                       isProductActive(cat) || openDropdown === cat.name
                         ? "text-primary"
                         : "text-muted-foreground",
                     )}
                   >
-                    {cat.name}
-                    <ChevronDown
-                      size={10}
-                      className={cn(
-                        "transition-transform duration-200",
-                        openDropdown === cat.name ? "rotate-180" : "",
-                      )}
-                    />
-                  </button>
+                    <a
+                      href={cat.path}
+                      onClick={(e) => handleNavClick(e, cat.path)}
+                      className="hover:text-primary transition-colors duration-300"
+                      data-testid={`link-nav-category-${cat.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    >
+                      {cat.name}
+                    </a>
+                    <button
+                      onClick={() => toggleDropdown(cat.name)}
+                      aria-expanded={openDropdown === cat.name}
+                      aria-label={`Afficher les sous-rubriques de ${cat.fullName}`}
+                      className="p-0.5 hover:text-primary transition-colors duration-300 cursor-pointer"
+                    >
+                      <ChevronDown
+                        size={10}
+                        className={cn(
+                          "transition-transform duration-200",
+                          openDropdown === cat.name ? "rotate-180" : "",
+                        )}
+                      />
+                    </button>
+                  </div>
 
                   <AnimatePresence>
                     {openDropdown === cat.name && (
@@ -445,13 +457,26 @@ export function Navbar() {
               <ul className="space-y-1 mb-4">
                 {productCategories.map((cat) => (
                   <li key={cat.name} className="border-b border-border/20 last:border-0">
-                    <button
-                      onClick={() =>
-                        setOpenMobileCategory((prev) => prev === cat.name ? null : cat.name)
-                      }
-                      className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-widest text-foreground hover:text-primary transition-colors"
-                    >
-                      <span>{cat.fullName}</span>
+                    <div className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-widest">
+                      <a
+                        href={cat.path}
+                        onClick={(e) => handleNavClick(e, cat.path)}
+                        className={cn(
+                          "text-foreground hover:text-primary transition-colors",
+                          isProductActive(cat) ? "text-primary" : "",
+                        )}
+                        data-testid={`link-mobile-category-${cat.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      >
+                        {cat.fullName}
+                      </a>
+                      <button
+                        onClick={() =>
+                          setOpenMobileCategory((prev) => prev === cat.name ? null : cat.name)
+                        }
+                        aria-expanded={openMobileCategory === cat.name}
+                        aria-label={`Afficher les sous-rubriques de ${cat.fullName}`}
+                        className="p-2 text-foreground hover:text-primary transition-colors"
+                      >
                       <ChevronDown
                         size={14}
                         className={cn(
@@ -459,7 +484,8 @@ export function Navbar() {
                           openMobileCategory === cat.name ? "rotate-180 text-primary" : "",
                         )}
                       />
-                    </button>
+                      </button>
+                    </div>
 
                     <AnimatePresence>
                       {openMobileCategory === cat.name && (
