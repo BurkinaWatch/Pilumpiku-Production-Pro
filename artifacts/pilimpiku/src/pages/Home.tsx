@@ -36,7 +36,6 @@ export default function Home() {
     3,
   );
   const partners = (partnersData ?? []).map((p) => p.nom);
-  const heroBadge = settings?.heroBadge ?? "Ouagadougou · Burkina Faso";
   const heroSubtitle =
     settings?.heroSubtitle ??
     "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.";
@@ -85,16 +84,6 @@ export default function Home() {
         </div>
 
         <div className="container relative z-20 mx-auto px-4 sm:px-6 md:px-12 text-center flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-block border border-primary/50 text-primary uppercase tracking-[0.2em] text-[0.65rem] px-4 py-2 rounded-sm mb-6 sm:mb-8"
-            data-testid="text-hero-badge"
-          >
-            {heroBadge}
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
