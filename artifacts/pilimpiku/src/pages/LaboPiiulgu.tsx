@@ -252,6 +252,60 @@ const evenementsRecents = [
     type: "Be to Be",
     date: "Octobre 2025",
   },
+  {
+    src: "/img/labo/afterwork-esther-barry-2025.jpg",
+    alt: "Afterwork Cinéma — Esther Barry, directrice de la photographie",
+    type: "Afterwork",
+    date: "Octobre 2025",
+  },
+  {
+    src: "/img/labo/espace-piiulgu-atelier-2025.jpg",
+    alt: "Participants réunis lors d'un atelier à l'Espace Piiulgu",
+    type: "Espace",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/espace-piiulgu-conference-2025.jpg",
+    alt: "Échange et conférence au Labo Piiulgu",
+    type: "Conférence",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/conference-strategie-serie-2025.jpg",
+    alt: "Conférence sur les stratégies de production et coproduction d'une série",
+    type: "Conférence",
+    date: "Novembre 2025",
+  },
+  {
+    src: "/img/labo/espace-piiulgu-session-2025.jpg",
+    alt: "Session de travail et de présentation à l'Espace Piiulgu",
+    type: "Espace",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/afterwork-mamadou-gnanou-2025.jpg",
+    alt: "Afterwork Cinéma — Mamadou M. Gnanou, producteur et réalisateur",
+    type: "Afterwork",
+    date: "Novembre 2025",
+  },
+  {
+    src: "/img/labo/piiulgu-pic-th-2025.jpg",
+    alt: "Piiulgu Pic Th — maîtriser l'art du pitch en anglais",
+    type: "Pic Th",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/afterwork-laure-guire-2026.jpg",
+    alt: "Afterwork Cinéma — Laure Azoumi Guire, actrice et metteuse en scène",
+    type: "Afterwork",
+    date: "Mars 2026",
+  },
+  {
+    src: "/img/labo/conference-vincent-koala-2025.jpg",
+    alt: "Conférence thématique — Vincent Koala, Jeunesse & Innovation dans les ICC",
+    type: "Conférence",
+    date: "2025",
+  },
 ];
 
 const evenements = [...evenementsRecents, ...evenementsArchives];
