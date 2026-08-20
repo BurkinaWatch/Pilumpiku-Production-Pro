@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useSeo } from "@/hooks/use-seo";
-import { Monitor, Package, Lightbulb, Users, Trophy, ChevronDown, Mail, Phone } from "lucide-react";
+import { Package, Lightbulb, Users, Trophy, ChevronDown, Mail, Phone } from "lucide-react";
 
 const programmes = [
   {
@@ -98,31 +98,47 @@ export default function SalonCinematech() {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-4xl"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 max-w-[60px] bg-primary/60" />
-              <span className="text-primary text-xs uppercase tracking-[0.3em] font-light">
-                Pilumpiku Production · Ouagadougou
-              </span>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.7fr)] gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-4xl"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px flex-1 max-w-[60px] bg-primary/60" />
+                <span className="text-primary text-xs uppercase tracking-[0.3em] font-light">
+                  Pilumpiku Production · Ouagadougou
+                </span>
+              </div>
 
-            <h1 className="font-serif text-5xl sm:text-7xl md:text-9xl text-foreground leading-none mb-6">
-              Salon
-              <br />
-              <span className="text-primary italic">CinémaTECH</span>
-            </h1>
+              <h1 className="font-serif text-5xl sm:text-7xl md:text-9xl text-foreground leading-none mb-6">
+                Salon
+                <br />
+                <span className="text-primary italic">CinémaTECH</span>
+              </h1>
 
-            <p className="text-muted-foreground text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
-              Le rendez-vous burkinabè dédié à la technologie, à l'innovation
-              et aux métiers du cinéma et de l'audiovisuel. Exposition,
-              symposium, ateliers et compétition réunis en un même lieu.
-            </p>
-          </motion.div>
+              <p className="text-muted-foreground text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
+                Le rendez-vous burkinabè dédié à la technologie, à l'innovation
+                et aux métiers du cinéma et de l'audiovisuel. Exposition,
+                symposium, ateliers et compétition réunis en un même lieu.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              <div className="absolute inset-8 rounded-full bg-primary/10 blur-3xl" />
+              <img
+                src="/img/logo-salon-cinematech.png"
+                alt="Salon CinémaTECH — Salon de la technologie du cinéma et de l'audiovisuel"
+                className="relative w-full max-w-[360px] object-contain drop-shadow-[0_0_28px_rgba(232,146,26,0.16)]"
+              />
+            </motion.div>
+          </div>
 
           <motion.button
             onClick={scrollToContent}
@@ -215,15 +231,15 @@ export default function SalonCinematech() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
               className="relative"
             >
-              <div className="relative overflow-hidden rounded-sm bg-card border border-border/50 p-10 sm:p-14 flex flex-col items-center justify-center text-center min-h-[340px]">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
-                <Monitor size={64} className="text-primary/40 mb-6" />
-                <p className="font-serif text-2xl sm:text-3xl text-foreground leading-snug mb-4">
-                  «&nbsp;L'outil au service<br/>
-                  <span className="text-primary italic">de la création&nbsp;»</span>
-                </p>
-                <p className="text-muted-foreground text-xs font-light uppercase tracking-widest">
-                  Pilumpiku Production · Ouagadougou, Burkina Faso
+              <div className="relative overflow-hidden rounded-sm bg-card border border-border/50 p-4 sm:p-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+                <img
+                  src="/img/affiche-cine-equip.png"
+                  alt="Affiche de la première édition de la Galerie Ciné Équipements, organisée en 2018"
+                  className="relative mx-auto w-full max-w-[430px] max-h-[560px] object-contain"
+                />
+                <p className="relative mt-4 text-center text-muted-foreground text-xs font-light uppercase tracking-widest">
+                  Première édition · 2018
                 </p>
               </div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-primary/20 rounded-sm -z-10" />
