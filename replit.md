@@ -46,3 +46,9 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Replit Development Setup
+
+- The managed API workflow runs database migrations and seeds the development database automatically at startup.
+- Local development prioritizes Replit's managed `DATABASE_URL`. `RAILWAY_DATABASE_URL` remains a fallback for Railway deployments.
+- Start the API workflow before the web workflow; the web app calls its API through the `/api` proxy path.

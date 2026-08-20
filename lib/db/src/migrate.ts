@@ -6,11 +6,11 @@ import { fileURLToPath } from "url";
 
 export async function runMigrations() {
   const connectionString =
-    process.env.RAILWAY_DATABASE_URL || process.env.DATABASE_URL;
+    process.env.DATABASE_URL || process.env.RAILWAY_DATABASE_URL;
 
   if (!connectionString) {
     throw new Error(
-      "RAILWAY_DATABASE_URL or DATABASE_URL must be set before running migrations.",
+      "DATABASE_URL or RAILWAY_DATABASE_URL must be set before running migrations.",
     );
   }
 
