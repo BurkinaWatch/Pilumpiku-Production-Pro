@@ -67,6 +67,21 @@ const PROJECTS = [
     featured: true,
   },
   {
+    slug: "lhomme-qui-plante-les-baobabs",
+    titre: "L’Homme qui plante les baobabs",
+    categorie: "Documentaire",
+    statut: "Produit également par Pilumpiku Production",
+    annee: 2026,
+    duree: "—",
+    langue: "—",
+    synopsis: "Documentaire réalisé par Michel K. Zongo.",
+    intention:
+      "Réalisation : Michel K. Zongo.\n\nProduit également par Pilumpiku Production.",
+    image: "/img/burkina-cinema.jpg",
+    sortOrder: 16,
+    featured: false,
+  },
+  {
     slug: "vieux-pere",
     titre: "Vieux-Père (Old Father)",
     categorie: "Long-métrage documentaire",
@@ -715,8 +730,8 @@ const PARTNERS = [
 
 const SETTINGS = {
   heroBadge: "Pilumpiku Productions · Ouagadougou",
-  heroTitleLine1: "Le cinéma comme",
-  heroTitleLine2: "métamorphose",
+  heroTitleLine1: "Un nouveau regard pour une",
+  heroTitleLine2: "nouvelle Afrique",
   heroSubtitle:
     "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.",
   quoteText:

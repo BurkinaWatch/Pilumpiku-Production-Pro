@@ -102,9 +102,9 @@ export default function Home() {
             className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight mb-5 sm:mb-6 max-w-5xl"
             data-testid="text-hero-title"
           >
-            {settings?.heroTitleLine1 ?? "Telling African Stories"}{" "}
+            {settings?.heroTitleLine1 ?? "Un nouveau regard pour une"}{" "}
             <span className="text-primary italic">
-              {settings?.heroTitleLine2 ?? "to the World."}
+              {settings?.heroTitleLine2 ?? "nouvelle Afrique"}
             </span>
           </motion.h1>
 

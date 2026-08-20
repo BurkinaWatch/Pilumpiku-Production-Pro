@@ -1,12 +1,28 @@
 import { useSeo } from "@/hooks/use-seo";
 import { motion } from "framer-motion";
-import * as Icons from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import {
+  Camera,
+  Film,
+  Globe,
+  GraduationCap,
+  MapPin,
+  Send,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
 import { useListServices } from "@workspace/api-client-react";
 
+const serviceIcons: Record<string, LucideIcon> = {
+  Camera,
+  Film,
+  Globe,
+  GraduationCap,
+  MapPin,
+  Send,
+};
+
 function getIcon(name: string): LucideIcon {
-  const map = Icons as unknown as Record<string, LucideIcon>;
-  return map[name] ?? Icons.Sparkles;
+  return serviceIcons[name] ?? Sparkles;
 }
 
 export default function Services() {

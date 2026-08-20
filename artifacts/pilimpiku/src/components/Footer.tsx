@@ -18,7 +18,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-muted-foreground font-serif italic text-lg sm:text-xl max-w-sm">
-              "Raconter l'Afrique au monde"
+              "Un nouveau regard pour une nouvelle Afrique"
             </p>
           </div>
 
