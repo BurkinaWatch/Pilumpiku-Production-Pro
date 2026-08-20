@@ -62,7 +62,7 @@ const programmes = [
   },
 ];
 
-const evenements = [
+const evenementsArchives = [
   {
     src: "/img/labo/afterwork-claver-zongo.jpg",
     alt: "Afterwork – Claver ZONGO, Producer Manager",
@@ -190,6 +190,71 @@ const evenements = [
     date: null,
   },
 ];
+
+const evenementsRecents = [
+  {
+    src: "/img/labo/afterwork-producer-manager-2025.jpg",
+    alt: "Afterwork autour du métier de Producer Manager",
+    type: "Afterwork",
+    date: "Avril 2025",
+  },
+  {
+    src: "/img/labo/afterwork-claver-zongo-2025.jpg",
+    alt: "Afterwork avec Claver Zongo, Producer Manager",
+    type: "Afterwork",
+    date: "Avril 2025",
+  },
+  {
+    src: "/img/labo/rendez-vous-b2b-icc-soasga-2025.jpg",
+    alt: "Rendez-vous Be to Be ICC SOÃSGA en entrepreneuriat créatif",
+    type: "Be to Be",
+    date: "Juillet 2025",
+  },
+  {
+    src: "/img/labo/afterwork-son-mixage-juillet-2025.jpg",
+    alt: "Afterwork Cinéma, focus métiers : son et mixage",
+    type: "Afterwork",
+    date: "Juillet 2025",
+  },
+  {
+    src: "/img/labo/afterwork-gueswende-porgo-2025.jpg",
+    alt: "Afterwork Son et Mixage avec Gueswende Seydou Porgo",
+    type: "Afterwork",
+    date: "Juillet 2025",
+  },
+  {
+    src: "/img/labo/tontine-cinema-2025.jpg",
+    alt: "Tontine Cinéma, le collectif des producteurs",
+    type: "Tontine",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/espace-piiulgu-rencontre.jpg",
+    alt: "Temps d'échange collectif à l'Espace Piiulgu",
+    type: "Espace",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/afterwork-annick-kandolo-2025.jpg",
+    alt: "Afterwork avec Annick Rachel Kandolo, journaliste et critique de cinéma",
+    type: "Afterwork",
+    date: "Septembre 2025",
+  },
+  {
+    src: "/img/labo/espace-piiulgu-interview.jpg",
+    alt: "Entretien enregistré à l'Espace Piiulgu",
+    type: "Espace",
+    date: "2025",
+  },
+  {
+    src: "/img/labo/rendez-vous-b2b-mamounata-nikiema-2025.jpg",
+    alt: "Rendez-vous Be to Be avec Mamounata Nikiema",
+    type: "Be to Be",
+    date: "Octobre 2025",
+  },
+];
+
+const evenements = [...evenementsRecents, ...evenementsArchives];
 
 const typeBadgeColors: Record<string, string> = {
   Afterwork: "bg-[#E8921A]/20 text-[#E8921A] border-[#E8921A]/30",
@@ -352,24 +417,100 @@ export default function LaboPiiulgu() {
             viewport={{ once: true }}
             className="mb-12 sm:mb-16"
           >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-10 bg-primary/60" />
+              <span className="text-primary text-[0.65rem] uppercase tracking-[0.3em]">
+                Carnet vivant
+              </span>
+            </div>
             <h2 className="font-serif text-3xl sm:text-5xl text-foreground mb-3">
-              Galerie des événements
+              La vie du Labo
             </h2>
-            <p className="text-muted-foreground font-light">
-              Retour sur les éditions passées du Labo Piiulgu. D'autres photos à venir.
+            <p className="text-muted-foreground font-light max-w-2xl">
+              Des rencontres qui circulent d&apos;une voix à l&apos;autre : métiers,
+              échanges, accompagnements et élans collectifs au cœur de Piiulgu.
             </p>
           </motion.div>
 
+          <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <motion.button
+              type="button"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              onClick={() => openLightbox(0)}
+              className="group relative overflow-hidden rounded-[2.5rem_0.75rem_2.5rem_0.75rem] border border-primary/20 bg-card text-left"
+            >
+              <img
+                src={evenements[0].src}
+                alt={evenements[0].alt}
+                className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute left-5 right-5 bottom-5 sm:left-7 sm:right-7 sm:bottom-7">
+                <span className={`inline-block text-[0.6rem] uppercase tracking-wider px-2 py-0.5 border rounded-sm mb-3 ${typeBadgeColors[evenements[0].type]}`}>
+                  {evenements[0].type}
+                </span>
+                <p className="font-serif text-2xl sm:text-3xl text-white leading-tight">
+                  Métiers, voix &amp; trajectoires
+                </p>
+                <p className="text-white/70 text-xs sm:text-sm mt-2">
+                  Cliquez pour découvrir l&apos;affiche en grand format
+                </p>
+              </div>
+            </motion.button>
+
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-6">
+              {[1, 2].map((i) => {
+                const ev = evenements[i];
+                return (
+                  <motion.button
+                    key={ev.src}
+                    type="button"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    onClick={() => openLightbox(i)}
+                    className={`group relative overflow-hidden border border-border/50 bg-card text-left ${
+                      i === 1
+                        ? "rounded-[0.75rem_2rem_0.75rem_2rem]"
+                        : "rounded-[2rem_0.75rem_2rem_0.75rem]"
+                    }`}
+                  >
+                    <img
+                      src={ev.src}
+                      alt={ev.alt}
+                      className="w-full h-full min-h-[180px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+                    <span className={`absolute left-3 bottom-3 text-[0.55rem] uppercase tracking-wider px-2 py-0.5 border rounded-sm ${typeBadgeColors[ev.type]}`}>
+                      {ev.type}
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4">
-            {evenements.map((ev, i) => (
+            {evenements.slice(3).map((ev, i) => {
+              const eventIndex = i + 3;
+              const organicShape = eventIndex % 3 === 0
+                ? "rounded-[1.75rem_0.5rem_1.75rem_0.5rem]"
+                : eventIndex % 3 === 1
+                  ? "rounded-[0.5rem_1.75rem_0.5rem_1.75rem]"
+                  : "rounded-[1rem]";
+
+              return (
               <motion.div
-                key={i}
+                key={ev.src}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: (i % 4) * 0.07 }}
-                className="break-inside-avoid mb-3 sm:mb-4 group relative overflow-hidden rounded-sm cursor-pointer"
-                onClick={() => openLightbox(i)}
+                className={`break-inside-avoid mb-3 sm:mb-4 group relative overflow-hidden cursor-pointer ${organicShape}`}
+                onClick={() => openLightbox(eventIndex)}
               >
                 <img
                   src={ev.src}
@@ -388,7 +529,8 @@ export default function LaboPiiulgu() {
                   )}
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
