@@ -6,7 +6,7 @@ import {
   partnersTable,
   siteSettingsTable,
 } from "@workspace/db";
-import { sql, eq } from "drizzle-orm";
+import { sql, eq, inArray } from "drizzle-orm";
 import { logger } from "./lib/logger";
 
 const PROJECTS = [
@@ -82,22 +82,6 @@ const PROJECTS = [
     featured: false,
   },
   {
-    slug: "vieux-pere",
-    titre: "Vieux-Père (Old Father)",
-    categorie: "Long-métrage documentaire",
-    statut: "Production exécutive Burkina · Sélection FIFP Cannes",
-    annee: 2024,
-    duree: "1h 12",
-    langue: "Français",
-    synopsis:
-      "Amado Komi, surnommé « Vieux-Père », semble condamné à une jeunesse éternelle : à trente-cinq ans, il mesure un mètre trente-sept et a le corps d'un enfant de dix ans. Star au Burkina Faso grâce à ses rôles d'enfant acteur, il découvre lors d'une tournée en France la maladie rare dont il souffre. Le traitement hormonal qui s'ensuit lui permettra, à presque 40 ans, de vivre une métamorphose totale qui l'amènera à redéfinir son identité.",
-    intention:
-      "Réalisé par Marine de Royer (Keren Production / Canal+ International). Pilumpiku Production assure la production exécutive au Burkina Faso aux côtés de Pierre Claver Zongo. Avant-première au Canal Olympia Idrissa Ouédraogo (Pissy, Ouagadougou) en mai 2024. Sélectionné au Festival International du Film Pan Africain de Cannes (FIFP), projeté le 24 octobre.",
-    image: "/img/vieux-pere.jpg",
-    sortOrder: 18,
-    featured: true,
-  },
-  {
     slug: "pingda",
     trailerUrl: "https://vimeo.com/910066543/4e2cdcceaf",
     titre: "Pingda",
@@ -140,22 +124,6 @@ const PROJECTS = [
     trailerUrl: "https://vimeo.com/528871426",
     sortOrder: 22,
     featured: true,
-  },
-  {
-    slug: "intacte",
-    titre: "Intacte",
-    categorie: "Court-métrage documentaire",
-    statut: "Réalisation Mamounata Nikiéma · 2022",
-    annee: 2022,
-    duree: "34 min",
-    langue: "Français",
-    synopsis:
-      "Court-métrage documentaire écrit par Inoussa Baguian et réalisé par Mamounata Nikiéma. Un regard intime sur les corps, les héritages et la transmission.",
-    intention:
-      "En tant que réalisatrice, Mamounata Nikiéma signe ici une œuvre personnelle qui prolonge sa réflexion d'autrice sur les histoires intimes et collectives portées par les femmes du Burkina Faso.",
-    image: "/img/intacte.jpg",
-    sortOrder: 25,
-    featured: false,
   },
   {
     slug: "the-coach",
@@ -294,6 +262,8 @@ const PROJECTS = [
     featured: false,
   },
 ];
+
+const REMOVED_PROJECT_SLUGS = ["vieux-pere", "intacte"];
 
 const NEWS = [
   {
@@ -756,6 +726,10 @@ const SETTINGS = {
 
 export async function seed() {
   logger.info("Starting seed...");
+
+  await db
+    .delete(projectsTable)
+    .where(inArray(projectsTable.slug, REMOVED_PROJECT_SLUGS));
 
   await db
     .insert(projectsTable)
