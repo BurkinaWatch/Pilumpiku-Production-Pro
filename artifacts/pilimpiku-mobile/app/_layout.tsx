@@ -14,11 +14,12 @@ import {
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { setBaseUrl } from '@workspace/api-client-react';
+import { resolveBaseUrl } from '@/lib/content';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 const apiDomain = process.env.EXPO_PUBLIC_DOMAIN;
-setBaseUrl(apiDomain ? 'https://' + apiDomain : null);
+setBaseUrl(resolveBaseUrl(apiDomain) || null);
 
 const queryClient = new QueryClient();
 

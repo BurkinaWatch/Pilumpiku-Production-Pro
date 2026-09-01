@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useColors } from '@/hooks/useColors';
 import { BrandHeader } from '@/components/BrandHeader';
+import { resolveBaseUrl } from '@/lib/content';
 
 const SERVICES = [
   { icon: 'home-outline' as const, title: 'Espace de Coworking', text: 'Un espace équipé pour écrire, créer, produire et rencontrer la communauté.' },
@@ -16,8 +17,8 @@ export default function LaboScreen() {
   const colors = useColors();
 
   const openWebPage = (path: string) => {
-    const domain = process.env.EXPO_PUBLIC_DOMAIN;
-    if (domain) Linking.openURL('https://' + domain + path);
+    const domain = resolveBaseUrl(process.env.EXPO_PUBLIC_DOMAIN);
+    if (domain) Linking.openURL(domain + path);
   };
 
   return (
