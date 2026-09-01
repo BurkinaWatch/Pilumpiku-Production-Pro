@@ -24,7 +24,7 @@ export function BrandHeader({ showBack = false }: { showBack?: boolean }) {
           </Pressable>
         ) : null}
         <View style={styles.brand}>
-          <Image source={require('@/assets/images/icon.png')} style={styles.logo} contentFit="contain" />
+          <Image source={require('@/assets/images/logo.jpg')} style={styles.logo} contentFit="contain" />
           <View>
             <Text style={[styles.name, { color: colors.foreground }]}>PILUMPIKU</Text>
             <Text style={[styles.subtitle, { color: colors.primary }]}>PRODUCTION</Text>
