@@ -47,3 +47,8 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Local Android build toolchains and caches
+.android-sdk/
+.gradle-mobile/
+.tmp-mobile/

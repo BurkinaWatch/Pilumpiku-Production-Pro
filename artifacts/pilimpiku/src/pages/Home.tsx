@@ -9,6 +9,81 @@ import {
   useListPartners,
 } from "@workspace/api-client-react";
 
+const PARTNER_LOGOS: Record<string, string> = {
+  FESPACO: "/logos/fespaco.png",
+  Africalia: "/logos/africalia.png",
+  "Confédération AES du Cinéma": "/logos/aes.png",
+  "Sunuy Films": "/logos/sunuy.png",
+  "FDCT-PAIC Burkina Faso": "/logos/fdct.png",
+  "Durban FilmMart": "/logos/durban.jpg",
+  "Université Gaston Berger": "/logos/ugb.webp",
+  "CNC France": "/logos/cnc.png",
+  "Visions du Réel — Nyon": "/logos/vdr.jpg",
+  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "TV5 Monde": "/logos/tv5monde.png",
+  "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
+  "Les Films de la pluie": "/logos/filmsdelapluie.png",
+  "Tënk": "/logos/tenk.png",
+  "Téléfilm Canada": "/logos/telefilm.png",
+};
+
+const PARTNER_MARKS: Record<string, string> = {
+  "FNCA Burkina Faso": "FNCA",
+  "Confédération AES du Cinéma": "AES",
+  "Ouaga Film Lab": "OFL",
+  "Lully Grâce Production": "LGP",
+  "Sunuy Films": "SUNUY",
+  "DS Productions": "DS",
+  "Ladybirds Films": "LB",
+  "FDCT-PAIC Burkina Faso": "FDCT",
+  "FONSIC — Côte d'Ivoire": "FONSIC",
+  "FOPICA — Sénégal": "FOPICA",
+  "CNCM — Mali": "CNCM",
+  "Aide aux Cinémas du Monde": "ACM",
+  "Fonds Jeune Création Francophone": "FJCF",
+  "Red Sea Fund": "RSF",
+  "The Kingdom": "TK",
+  STEPS: "STEPS",
+  "Generation Africa": "GA",
+};
+
+function getPartnerMark(name: string): string {
+  if (PARTNER_MARKS[name]) return PARTNER_MARKS[name];
+
+  return name
+    .split(/[\s—–-]+/)
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+}
+
+function PartnerLogo({ name }: { name: string }) {
+  const logo = PARTNER_LOGOS[name];
+
+  return (
+    <div
+      className="h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm bg-white/95 px-3 sm:px-5 flex items-center justify-center shadow-sm"
+      role="img"
+      aria-label={name}
+    >
+      {logo ? (
+        <img
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="max-h-10 sm:max-h-12 md:max-h-14 max-w-full w-auto object-contain"
+        />
+      ) : (
+        <span className="font-serif text-sm sm:text-base md:text-lg tracking-[0.12em] text-[#2B1305] text-center">
+          {getPartnerMark(name)}
+        </span>
+      )}
+    </div>
+  );
+}
+
 function parseStatNumber(s: string): number {
   const m = s.match(/\d+/);
   return m ? parseInt(m[0], 10) : 0;
@@ -229,7 +304,7 @@ export default function Home() {
             >
               {[...partners, ...partners].map((partner, i) => (
                 <div key={i} className="flex items-center gap-12 sm:gap-16">
-                  <span>{partner}</span>
+                  <PartnerLogo name={partner} />
                   <span className="text-primary/30 text-sm">✦</span>
                 </div>
               ))}
