@@ -42,6 +42,9 @@ const DISTINCTIONS = [
 const PARTNER_LOGOS: Record<string, string> = {
   "FESPACO": "/logos/fespaco.png",
   "Africalia": "/logos/africalia.png",
+  "Confédération AES du Cinéma": "/logos/aes.png",
+  "Sunuy Films": "/logos/sunuy.png",
+  "FDCT-PAIC Burkina Faso": "/logos/fdct.png",
   "CNC France": "/logos/cnc.png",
   "TV5 Monde": "/logos/tv5monde.png",
   "Téléfilm Canada": "/logos/telefilm.png",
