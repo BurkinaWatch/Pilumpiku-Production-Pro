@@ -714,6 +714,30 @@ const PARTNERS = [
       "Initiative panafricaine de coproduction documentaire portée par STEPS ; a soutenu « Sur les traces d'un migrant » de Delphine Yerbanga (Pilumpiku).",
     sortOrder: 290,
   },
+  {
+    nom: "Les Ateliers Yennenga",
+    description:
+      "Plateforme panafricaine de formation et de développement de projets cinématographiques basée à Ouagadougou.",
+    sortOrder: 300,
+  },
+  {
+    nom: "DOK Co-Pro Market",
+    description:
+      "Marché international de coproduction dédié au documentaire, organisé dans le cadre de DOK Leipzig.",
+    sortOrder: 310,
+  },
+  {
+    nom: "La Fabrique Cinéma",
+    description:
+      "Programme de l'Institut français et du Festival de Cannes qui accompagne les jeunes cinéastes internationaux.",
+    sortOrder: 320,
+  },
+  {
+    nom: "EAVE",
+    description:
+      "European Audiovisual Entrepreneurs, programme européen de formation et de développement pour les producteurs.",
+    sortOrder: 330,
+  },
 ];
 
 const SETTINGS = {
@@ -788,10 +812,14 @@ export async function seed() {
     logger.info("Services already seeded — skipping");
   }
 
-  const [existingPartner] = await db.select().from(partnersTable).limit(1);
-  if (!existingPartner) {
-    await db.insert(partnersTable).values(PARTNERS);
-    logger.info({ count: PARTNERS.length }, "Seeded partners");
+  const existingPartners = await db
+    .select({ nom: partnersTable.nom })
+    .from(partnersTable);
+  const existingPartnerNames = new Set(existingPartners.map(({ nom }) => nom));
+  const missingPartners = PARTNERS.filter(({ nom }) => !existingPartnerNames.has(nom));
+  if (missingPartners.length > 0) {
+    await db.insert(partnersTable).values(missingPartners);
+    logger.info({ count: missingPartners.length }, "Seeded missing partners");
   } else {
     logger.info("Partners already seeded — skipping");
   }

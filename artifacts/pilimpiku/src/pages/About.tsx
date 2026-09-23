@@ -47,8 +47,14 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Tënk": "/logos/tenk.png",
   "Fonds Image de la Francophonie": "/logos/oif.png",
   "Fonds Jeune Création Francophone": "/logos/oif.png",
+  "FONSIC — Côte d'Ivoire": "/logos/fonsic.jpg",
+  "Aide aux Cinémas du Monde": "/logos/aide-aux-cinemas-du-monde.png",
   "Université Gaston Berger": "/logos/ugb.webp",
-  "Durban FilmMart": "/logos/durban.jpg",
+  "Durban FilmMart": "/logos/dfmi.png",
+  "Les Ateliers Yennenga": "/logos/ateliers-yennenga.png",
+  "DOK Co-Pro Market": "/logos/dok-co-pro-market.jpg",
+  "La Fabrique Cinéma": "/logos/la-fabrique-cinema.png",
+  "EAVE": "/logos/eave.png",
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
 };
 
