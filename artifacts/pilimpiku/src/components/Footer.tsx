@@ -35,7 +35,6 @@ export function Footer() {
           <div>
             <h4 className="font-serif text-lg text-foreground mb-4 sm:mb-6">Contact & Réseaux</h4>
             <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-muted-foreground text-sm">
-              <li>S/C BP 68 Ouagadougou 01, Burkina Faso</li>
               <li><a href="mailto:pilumpikuproduction@gmail.com" className="hover:text-primary transition-colors break-all">pilumpikuproduction@gmail.com</a></li>
               <li>+226  78 70 12 32</li>
             </ul>
