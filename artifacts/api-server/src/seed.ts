@@ -707,8 +707,8 @@ const SETTINGS = {
   quoteText:
     "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.",
   quoteAuthor: "Mamounata Nikiéma",
-  statsProjets: "11",
-  statsPays: "15+",
+  statsProjets: "15",
+  statsPays: "50+",
   statsFestivals: "20+",
   aboutHistoire:
     "Pilumpiku Productions a été fondée en 2011 à Ouagadougou par la réalisatrice et productrice Mamounata Nikiéma, alors jeune diplômée d'un Master 2 en réalisation documentaire de l'Université Gaston Berger de Saint-Louis (Sénégal).\n\nLe nom — pilumpiku, le papillon en mooré — n'a rien d'anodin. Il dit la chrysalide, la mue, l'envol. Il dit l'engagement d'une maison de production qui croit que le cinéma peut accompagner les métamorphoses d'une société, en montrant ce qui change, ce qui résiste, ce qui doit naître.\n\nDepuis Ouagadougou, Pilumpiku produit et coproduit des films documentaires d'auteur, anime la plateforme audiovisuelle Sulunsuku (lancée en 2018) et programme le festival de cinéma en plein air Sobatè, qui rapproche le grand écran des publics populaires des quartiers de la capitale.",

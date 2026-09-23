@@ -226,7 +226,7 @@ export default function Home() {
             <AnimatedCounter
               end={parseStatNumber(statsPays)}
               suffix={statSuffix(statsPays)}
-              label="Pays partenaires"
+              label="Partenaires"
             />
             <AnimatedCounter
               end={parseStatNumber(statsFestivals)}
