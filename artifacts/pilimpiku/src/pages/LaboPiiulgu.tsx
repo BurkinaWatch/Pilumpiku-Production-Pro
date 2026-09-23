@@ -383,6 +383,9 @@ export default function LaboPiiulgu() {
             <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl text-foreground leading-none mb-6 whitespace-nowrap">
               Labo <span className="text-primary italic">Piiulgu</span>
             </h1>
+            <p className="font-serif text-2xl sm:text-3xl italic text-primary/90 mb-5">
+              Le grenier de la créativité
+            </p>
             <p className="text-muted-foreground text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
               Un espace de développement professionnel dédié aux acteurs
               des industries créatives et culturelles au Burkina Faso.
