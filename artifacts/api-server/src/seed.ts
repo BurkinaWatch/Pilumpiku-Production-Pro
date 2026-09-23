@@ -77,7 +77,7 @@ const PROJECTS = [
     synopsis: "Documentaire réalisé par Michel K. Zongo.",
     intention:
       "Réalisation : Michel K. Zongo.\n\nProduit également par Pilumpiku Production.",
-    image: "/img/burkina-cinema.jpg",
+    image: "/img/lhomme-qui-plante-les-baobabs.png",
     sortOrder: 16,
     featured: false,
   },
