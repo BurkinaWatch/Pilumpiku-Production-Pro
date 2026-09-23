@@ -1,9 +1,22 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSeo } from "@/hooks/use-seo";
-import { X, MapPin, Phone, Mail, Users, Mic2, BookOpen, HandCoins } from "lucide-react";
+import { X, MapPin, Phone, Mail, Users, Mic2, BookOpen, HandCoins, type LucideIcon } from "lucide-react";
 
-const programmes = [
+type Programme = {
+  id: string;
+  icon: LucideIcon;
+  label: string;
+  sousLabel?: string;
+  couleur: string;
+  bordure: string;
+  accentColor: string;
+  description: string;
+  details: string[];
+  image?: string;
+};
+
+const programmes: Programme[] = [
   {
     id: "afterwork",
     icon: Mic2,
@@ -26,6 +39,18 @@ const programmes = [
     description:
       "Des séances individuelles d'accompagnement en entrepreneuriat créatif. Prenez rendez-vous pour un coaching personnalisé autour de votre projet dans les industries créatives et culturelles (ICC).",
     details: ["Accompagnement en Entrepreneuriat Créatif", "Sessions de 2 heures — 14H30 / 16H30", "Reservation avec adresse mail", "Sur rendez-vous uniquement"],
+  },
+  {
+    id: "coworking",
+    icon: Users,
+    label: "Espace de coworking",
+    couleur: "from-[#5BA3BB]/20 to-transparent",
+    bordure: "border-[#5BA3BB]/40",
+    accentColor: "#5BA3BB",
+    description:
+      "Vous êtes un professionnel du cinéma et de l'audiovisuel, ou des industries culturelles et créatives, vous cherchez un lieu où la créativité rencontre le professionnalisme? Ne cherchez plus! Notre tout nouvel espace est conçu pour répondre à tous vos besoins entrepreneuriaux. Inscrivez-vous pour réserver votre place pour travailler en toute tranquillité.",
+    details: [],
+    image: "/img/labo/espace-coworking-illustration.jpeg",
   },
   {
     id: "conference",
@@ -400,7 +425,7 @@ export default function LaboPiiulgu() {
               Nos programmes
             </h2>
             <p className="text-muted-foreground font-light max-w-xl">
-              Quatre dispositifs complémentaires pour accompagner les professionnels
+              Cinq dispositifs complémentaires pour accompagner les professionnels
               des ICC à chaque étape de leur parcours.
             </p>
           </motion.div>
@@ -415,11 +440,21 @@ export default function LaboPiiulgu() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className={`relative overflow-hidden bg-card border ${prog.bordure} p-7 sm:p-9 group hover:border-opacity-80 transition-all duration-300`}
+                  className={`relative overflow-hidden bg-card border ${prog.bordure} p-7 sm:p-9 group hover:border-opacity-80 transition-all duration-300 ${prog.image ? "md:col-span-2" : ""}`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${prog.couleur} opacity-60 pointer-events-none`} />
 
                   <div className="relative z-10">
+                    {prog.image && (
+                      <div className="relative z-10 -mx-7 -mt-7 mb-7 sm:-mx-9 sm:-mt-9 sm:mb-9">
+                        <img
+                          src={prog.image}
+                          alt={prog.label}
+                          className="w-full aspect-[16/7] object-cover"
+                        />
+                      </div>
+                    )}
+
                     <div
                       className="w-12 h-12 rounded-sm flex items-center justify-center mb-6 border"
                       style={{
@@ -444,14 +479,16 @@ export default function LaboPiiulgu() {
                       {prog.description}
                     </p>
 
-                    <ul className="space-y-2">
-                      {prog.details.map((d, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <span className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full" style={{ background: prog.accentColor }} />
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
+                    {prog.details.length > 0 && (
+                      <ul className="space-y-2">
+                        {prog.details.map((d, j) => (
+                          <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full" style={{ background: prog.accentColor }} />
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </motion.div>
               );
