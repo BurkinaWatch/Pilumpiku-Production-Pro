@@ -1,2 +1,3 @@
 - [Railway + DB migration setup](railway-db-setup.md) — migrations copiées dans dist/ au build; chemin résolu via import.meta.url dans le bundle
 - [Expo Android packaging](expo-android-packaging.md) — l’aperçu Expo fonctionne sur Replit, mais le paquet Android final suit un flux manuel séparé
+- [GitHub publishing](github-publishing.md) — l’intégration GitHub peut publier via son SDK quand le remote HTTPS local refuse l’authentification
