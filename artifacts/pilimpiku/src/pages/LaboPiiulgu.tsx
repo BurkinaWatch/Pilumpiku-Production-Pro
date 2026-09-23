@@ -77,7 +77,7 @@ const programmes: Programme[] = [
   {
     id: "picth",
     icon: BookOpen,
-    label: "Piiulgu Pic Th",
+    label: "Piiulgu Pitch",
     couleur: "from-[#4A8BA0]/20 to-transparent",
     bordure: "border-[#4A8BA0]/40",
     accentColor: "#5BA3BB",
@@ -192,8 +192,8 @@ const evenementsArchives = [
   },
   {
     src: "/img/labo/piiulgu-pic-th.jpg",
-    alt: "Piiulgu Pic Th – Maîtrisez l'art du pitch en anglais",
-    type: "Pic Th",
+    alt: "Piiulgu Pitch – Maîtrisez l'art du pitch en anglais",
+    type: "Pitch",
     date: null,
   },
   {
@@ -315,8 +315,8 @@ const evenementsRecents = [
   },
   {
     src: "/img/labo/piiulgu-pic-th-2025.jpg",
-    alt: "Piiulgu Pic Th — maîtriser l'art du pitch en anglais",
-    type: "Pic Th",
+    alt: "Piiulgu Pitch — maîtriser l'art du pitch en anglais",
+    type: "Pitch",
     date: "2025",
   },
   {
@@ -340,7 +340,7 @@ const typeBadgeColors: Record<string, string> = {
   "Be to Be": "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30",
   Conférence: "bg-[#D4783A]/20 text-[#D4783A] border-[#D4783A]/30",
   Tontine: "bg-[#E8921A]/20 text-[#E8921A] border-[#E8921A]/30",
-  "Pic Th": "bg-[#5BA3BB]/20 text-[#5BA3BB] border-[#5BA3BB]/30",
+  Pitch: "bg-[#5BA3BB]/20 text-[#5BA3BB] border-[#5BA3BB]/30",
   Espace: "bg-white/10 text-white/60 border-white/20",
 };
 

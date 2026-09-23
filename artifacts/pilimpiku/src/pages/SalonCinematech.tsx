@@ -221,7 +221,7 @@ export default function SalonCinematech() {
                   En partenariat étroit avec le <strong className="text-foreground font-normal">Labo Piiulgu</strong>,
                   le Salon CinémaTECH structure une filière locale capable de rivaliser
                   sur les marchés internationaux, notamment grâce au programme
-                  <em> Piiulgu Pic Th</em> de pitch en anglais.
+                  <em> Piiulgu Pitch</em> de pitch en anglais.
                 </p>
               </div>
             </motion.div>
