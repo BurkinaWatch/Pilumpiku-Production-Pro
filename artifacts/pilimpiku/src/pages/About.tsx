@@ -7,8 +7,6 @@ const HISTOIRE_FALLBACK = `Pilumpiku Production est une société de production 
 
 Pilumpiku Production dispose d’un vaste catalogue de documentaires, de films de fiction et de séries primés, réalisés dans le cadre de coproductions internationales. Consciente des défis auxquels sont confrontés les créateurs, Pilumpiku Production a créé en 2019 Sulunsuku, une plateforme numérique dédiée à la promotion du cinéma et au marketing, puis LABO PIIULGU en 2024, afin d’accompagner les professionnels dans le développement de leurs activités créatives.`;
 
-const VISION_FALLBACK = `Faire du documentaire un espace d'écoute, de mémoire et de transmission. Mettre à l'honneur les voix des femmes, des jeunes et des oubliés de l'histoire officielle. Soutenir l'émergence d'une nouvelle génération de cinéastes burkinabè et sahéliens, libres dans leurs formes et exigeants dans leurs récits.`;
-
 const FOUNDER_BIO_FALLBACK = `Née en 1979 au Burkina Faso, Mamounata Nikiéma obtient son baccalauréat littéraire en 2001, puis se tourne vers le cinéma documentaire après une formation en communication à l'Université de Ouagadougou. En 2008, elle obtient un Master 2 en réalisation documentaire de création à l'Université Gaston Berger de Saint-Louis (Sénégal), dans le cadre du programme Africadoc.
 
 De 2009 à 2014, elle assure la fonction de Secrétaire Générale de l'association Africadoc Burkina, contribuant au développement du documentaire de création au Burkina Faso. En 2011, elle fonde Pilumpiku Production à Ouagadougou.
@@ -113,7 +111,6 @@ export default function About() {
   const { data: partners, isLoading: partnersLoading } = useListPartners();
 
   const histoire = settings?.aboutHistoire || HISTOIRE_FALLBACK;
-  const vision = settings?.aboutVision || VISION_FALLBACK;
   const founderName = settings?.founderName || "Mamounata Nikiéma";
   const founderTitle = settings?.founderTitle || "Fondatrice · Réalisatrice & Productrice · Présidente FNCA";
   const founderBio = settings?.founderBio || FOUNDER_BIO_FALLBACK;
@@ -173,24 +170,12 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-serif text-3xl mb-6 text-primary">Les Racines</h2>
+              <h2 className="font-serif text-3xl mb-6 text-primary">PRESENTATION DE PILUMPIKU PRODUCTION</h2>
               <p className="text-muted-foreground font-light leading-relaxed whitespace-pre-line" data-testid="text-about-histoire">
                 {histoire}
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-card p-6 sm:p-10 md:p-12 border border-border/50 relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-              <h2 className="font-serif text-3xl mb-6 text-foreground">Notre Vision</h2>
-              <p className="text-lg sm:text-xl font-serif italic text-muted-foreground leading-relaxed whitespace-pre-line" data-testid="text-about-vision">
-                {vision}
-              </p>
-            </motion.div>
           </div>
         </div>
       </section>
