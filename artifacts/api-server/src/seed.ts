@@ -595,6 +595,12 @@ const PARTNERS = [
     sortOrder: 90,
   },
   {
+    nom: "Miradas Doc — Tenerife",
+    description:
+      "Rencontres internationales de cinéma documentaire de Tenerife, espace de formation et de coproduction.",
+    sortOrder: 95,
+  },
+  {
     nom: "Lully Grâce Production",
     description:
       "Société de production ivoirienne (Franck Vlehi, Laurent Bitty), coproductrice de Djeliya, mémoire du Mandé.",

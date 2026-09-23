@@ -45,7 +45,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Téléfilm Canada": "/logos/telefilm.png",
   "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
   "Tënk": "/logos/tenk.png",
-  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
   "Fonds Jeune Création Francophone": "/logos/oif.png",
   "FONSIC — Côte d'Ivoire": "/logos/fonsic.jpg",
   "Aide aux Cinémas du Monde": "/logos/aide-aux-cinemas-du-monde.png",
@@ -55,6 +55,11 @@ const PARTNER_LOGOS: Record<string, string> = {
   "DOK Co-Pro Market": "/logos/dok-co-pro-market.jpg",
   "La Fabrique Cinéma": "/logos/la-fabrique-cinema.png",
   "EAVE": "/logos/eave.png",
+  "Lully Grâce Production": "/logos/lully-grace.png",
+  "FOPICA — Sénégal": "/logos/fopica.jpg",
+  "SENTOO": "/logos/sentoo.png",
+  "Red Sea Fund": "/logos/red-sea-fund.png",
+  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
 };
 
