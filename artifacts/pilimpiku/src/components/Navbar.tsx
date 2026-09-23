@@ -436,14 +436,18 @@ export function Navbar() {
             className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg overflow-y-auto"
           >
             <nav className="min-h-full flex flex-col justify-center px-8 py-24">
+              <div className="w-full max-w-2xl mx-auto">
 
               {/* Accueil */}
-              <ul className="space-y-4 text-xl font-serif text-center mb-8">
+              <ul className="mb-6">
                 <li>
                   <a
                     href="/"
                     onClick={(e) => handleNavClick(e, "/")}
-                    className={cn("hover:text-primary transition-colors", location === "/" ? "text-primary" : "text-foreground")}
+                    className={cn(
+                      "block w-full py-3 text-left text-xl font-serif hover:text-primary transition-colors",
+                      location === "/" ? "text-primary" : "text-foreground",
+                    )}
                     data-testid="link-mobile-accueil"
                   >
                     Accueil
@@ -454,15 +458,15 @@ export function Navbar() {
               <div className="border-t border-border/30 my-4" />
 
               {/* Product categories — expandable */}
-              <ul className="space-y-1 mb-4">
+              <ul className="mb-6">
                 {productCategories.map((cat) => (
                   <li key={cat.name} className="border-b border-border/20 last:border-0">
-                    <div className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-widest">
+                    <div className="w-full flex items-center justify-between gap-2 py-3 uppercase">
                       <a
                         href={cat.path}
                         onClick={(e) => handleNavClick(e, cat.path)}
                         className={cn(
-                          "text-foreground hover:text-primary transition-colors",
+                          "min-w-0 flex-1 whitespace-nowrap text-[11px] leading-none tracking-[0.1em] text-foreground hover:text-primary transition-colors",
                           isProductActive(cat) ? "text-primary" : "",
                         )}
                         data-testid={`link-mobile-category-${cat.name.toLowerCase().replace(/\s+/g, "-")}`}
@@ -550,14 +554,14 @@ export function Navbar() {
               <div className="border-t border-border/30 my-4" />
 
               {/* Remaining simple links */}
-              <ul className="space-y-4 text-xl font-serif text-center">
+              <ul className="space-y-1 text-xl font-serif">
                 {simpleNavLinks.slice(2).map((link) => (
-                  <li key={link.path}>
+                  <li key={link.path} className="w-full">
                     <a
                       href={link.path}
                       onClick={(e) => handleNavClick(e, link.path)}
                       className={cn(
-                        "hover:text-primary transition-colors",
+                        "block w-full py-2 text-left hover:text-primary transition-colors",
                         location === link.path ? "text-primary" : "text-foreground",
                       )}
                       data-testid={`link-mobile-${link.path.slice(1)}`}
@@ -567,11 +571,11 @@ export function Navbar() {
                   </li>
                 ))}
                 {isAdmin && (
-                  <li>
+                  <li className="w-full">
                     <a
                       href="/admin"
                       onClick={(e) => handleNavClick(e, "/admin")}
-                      className="text-primary"
+                      className="block w-full py-2 text-left text-primary"
                       data-testid="link-mobile-admin"
                     >
                       Admin
@@ -580,7 +584,7 @@ export function Navbar() {
                 )}
               </ul>
 
-              <div className="mt-10 text-center">
+              <div className="mt-8 text-center">
                 <a
                   href="/contact"
                   onClick={(e) => handleNavClick(e, "/contact")}
@@ -588,6 +592,7 @@ export function Navbar() {
                 >
                   Collaborer
                 </a>
+              </div>
               </div>
             </nav>
           </motion.div>

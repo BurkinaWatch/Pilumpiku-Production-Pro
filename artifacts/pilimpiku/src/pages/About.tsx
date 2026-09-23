@@ -3,40 +3,35 @@ import { motion } from "framer-motion";
 import { useGetSiteSettings, useListPartners } from "@workspace/api-client-react";
 import { useState } from "react";
 
-const HISTOIRE_FALLBACK = `Pilumpiku Production a été fondée en janvier 2011 à Ouagadougou par la réalisatrice et productrice Mamounata Nikiéma, diplômée d'un Master 2 en réalisation documentaire de l'Université Gaston Berger de Saint-Louis, au Sénégal.
+const HISTOIRE_FALLBACK = `Pilumpiku Production est une société de production cinématographique basée au Burkina Faso, spécialisée dans la production et la promotion de films documentaires et de fiction, ainsi que dans les activités de formation, promotion. Notre objectif est de mettre en lumière des sujets singuliers mais universels, qui préservent la dignité humaine, capables d’interroger le monde tout en célébrant l’identité africaine.
 
-Le nom — pilumpiku, qui signifie « papillon » en mooré — n'est pas anodin. Il dit la chrysalide, la mue, l'envol : l'engagement d'une maison de production qui croit que le cinéma accompagne les métamorphoses d'une société, en révélant ce qui change, ce qui résiste, ce qui doit naître.
+Pilumpiku Production dispose d’un vaste catalogue de documentaires, de films de fiction et de séries primés, réalisés dans le cadre de coproductions internationales. Consciente des défis auxquels sont confrontés les créateurs, Pilumpiku Production a créé en 2019 Sulunsuku, une plateforme numérique dédiée à la promotion du cinéma et au marketing, puis LABO PIIULGU en 2024, afin d’accompagner les professionnels dans le développement de leurs activités créatives.`;
 
-Depuis Ouagadougou, Pilumpiku produit et coproduit des films documentaires d'auteur avec des partenaires de toute l'Afrique et d'Europe. La société anime également la plateforme audiovisuelle Sulunsuku (lancée en 2018) et programme le festival de cinéma en plein air Sobatè, qui rapproche le grand écran des publics des quartiers populaires de la capitale.
-
-Devise : "A New Vision for a New Africa"`;
-
-const VISION_FALLBACK = `Faire du documentaire un espace d'écoute, de mémoire et de transmission. Mettre à l'honneur les voix des femmes, des jeunes et des oubliés de l'histoire officielle. Soutenir l'émergence d'une nouvelle génération de cinéastes burkinabè et sahéliens, libres dans leurs formes et exigeants dans leurs récits.`;
-
-const FOUNDER_BIO_FALLBACK = `Née en 1979 au Burkina Faso, Mamounata Nikiéma obtient son baccalauréat littéraire en 2001, puis se tourne vers le cinéma documentaire après une formation en communication à l'Université de Ouagadougou. En 2008, elle obtient un Master 2 en réalisation documentaire de création à l'Université Gaston Berger de Saint-Louis (Sénégal), dans le cadre du programme Africadoc.
-
-De 2009 à 2014, elle assure la fonction de Secrétaire Générale de l'association Africadoc Burkina, contribuant au développement du documentaire de création au Burkina Faso. En 2011, elle fonde Pilumpiku Production à Ouagadougou.
-
-Comme réalisatrice, elle signe notamment « L'Odyssée d'Omar » (2020, long-métrage documentaire, coproduit avec Les Films de la Pluie, diffusé sur Tënk) et « Intacte » (2022, court-métrage documentaire). Elle avait auparavant réalisé « Lumière d'octobre » (2015), documentaire de 75 minutes sur l'insurrection burkinabè de 2014, ainsi que la série documentaire « Une journée avec… » (2011).
-
-Comme productrice, elle accompagne une filmographie exigeante : « Au fantôme du père » de Marie-Laurentine Bayala (2018), « Sur les traces d'un migrant » de Delphine Yerbanga (2021, Grand Prix du Président du Faso au FESPACO), « Pingda » (2024), « Loin de moi la colère » de Joël Akafou (2025), la coproduction finlandaise « Katseiden alla » de Jenni Kivistö et Jussi Rastas (2025), et « Djeliya, mémoire du Mandé » de Boubacar Sangaré, sélectionné en première mondiale à Visions du Réel 2026.
-
-En octobre 2017, elle est lauréate du programme B-Faso Creative lancé par l'organisation Africalia. La même année, elle remporte le Prix Nomadis Images au Ouaga Producers Lab. En novembre 2018, elle reçoit le Prix du Public au Festival des Identités Culturelles de Ouagadougou.
-
-Figure majeure du paysage cinématographique ouest-africain, elle est élue en mai 2022 présidente de la Fédération Nationale des Ciné-Clubs et Associations cinématographiques du Burkina Faso (FNCA), puis présidente de la Confédération AES du Cinéma. Elle est Chevalier de l'Ordre du Mérite des Arts, des Lettres et de la Communication du Burkina Faso.`;
+const FOUNDER_BIO_FALLBACK = `Spécialisée en réalisation documentaire de création et en Communication Pour le Développement (CPD), Mamounata Nikièma mène de front sa carrière de réalisatrice (depuis 2007) et celle de productrice (Pilumpiku Produdction depuis 2011). Elle est très impliquée dans les réseaux de cinéastes burkinabè (Africadoc Burkina, Guilde des scénaristes, Association des producteurs du Burkina Faso, Fédération Nationale du Cinéma et de l'Audiovisuel...), et a participé activement depuis plusieurs années au Fespaco, au sein de l'Espace Junior jusqu'en 2017. Depuis 2014 elle est également formatrice lors des résidences d’écriture documentaire de Bobo-Dioulasso et consultante, mentor dans les laboratoires de développement et de coproduction. En 2018 elle lance l'évènementiel Ciné-équipement et la plateforme digitale sur le cinéma Sulunsuku (www.sulunsuku.com ) en janvier 2019. Lors du Fespaco 2021 elle a été décorée du titre de Chevalier de l’Ordre de Mérite, des Arts, des Lettres et de la Communication avec Agrafe ‘’Cinématograpghie’’.`;
 
 
 const DISTINCTIONS = [
-  { annee: "2026", texte: "Sélection en première mondiale à Visions du Réel — « Djeliya, mémoire du Mandé »" },
-  { annee: "2025", texte: "Coproduction internationale avec la Finlande — « Katseiden alla »" },
-  { annee: "2022", texte: "Présidente de la Fédération Nationale des Ciné-Clubs du Burkina Faso (FNCA)" },
-  { annee: "2022", texte: "Présidente de la Confédération AES du Cinéma" },
-  { annee: "2021", texte: "Grand Prix du Président du Faso au FESPACO — « Sur les traces d'un migrant »" },
-  { annee: "2018", texte: "Prix du Public — Festival des Identités Culturelles de Ouagadougou" },
-  { annee: "2018", texte: "Chevalier de l'Ordre du Mérite des Arts, des Lettres et de la Communication" },
-  { annee: "2017", texte: "Prix Nomadis Images — Ouaga Producers Lab" },
-  { annee: "2017", texte: "Lauréate du programme B-Faso Creative (Africalia)" },
-  { annee: "2011", texte: "Fondation de Pilumpiku Production à Ouagadougou" },
+  { annee: "2026", texte: "Participation au programme (2 mois) Open Doors Producers-Festival Locarno2026/Film Industry/Prix EAVE Marketing Workshop" },
+  { annee: "2024", texte: "Certificat du programme (6 mois) Goldman Sachs, 10 000 Women/Entrepreneuriat" },
+  { annee: "2024", texte: "Certificat du programme (14 semaines) ‘’Bootcamp d’emtrepreneuriat des femmes africaines- Banque Africaine de Développement" },
+  { annee: "2024", texte: "Participation au programme (8 semaines) de développement des compétences- SDP-ICC de Africalia & Culture Funding Watch/Entrepneuriat" },
+  { annee: "2023", texte: "Certificat du Programme ASPIRE-Programme (6 mois) de croissance des entreprises en collaboration avec Standford Seed" },
+  { annee: "2023", texte: "Participation au Programme des producteurs internationaux EURODOC/CNC-FRANCE" },
+  { annee: "2022", texte: "Programme La Fabrique Cinéma de l’Institut Français de CANNES-Festival de Cannes/CNC France" },
+  { annee: "2021", texte: "Programme DEENTAL AT CANNES-Festival de Cannes/CNC France" },
+  { annee: "2020", texte: "Rencontres de coproduction/Déclic-Ciclic-France" },
+  { annee: "2020", texte: "Rough cut Lab/Visions du Réel- Nyon-Suisse" },
+  { annee: "2020", texte: "Rencontres de coproduction/Miradas Doc-Tennerife-Espagne" },
+  { annee: "2019", texte: "Rencontres de coproduction/SENTOO-Marrakech-Ateliers de l'Atlas" },
+  { annee: "2018", texte: "Formation en entrepreneuriat culturel (B-Faso Creative – Africalia- Prix Incitant)" },
+  { annee: "2018", texte: "Atelier Produire au Sud Agadir (Maroc) et JCC (Tunis)– Prix Bourse Dév. CNCM" },
+  { annee: "2017", texte: "Stage sur un tournage (Ouaga Film Lab II – Prix Nomadis Image Tunisie)" },
+  { annee: "2016", texte: "Programme Hélio (Haute école des Arts de Zurich/ Institut Imagine)" },
+  { annee: "2015", texte: "Atelier American Film showcase / Institut Imagine" },
+  { annee: "2013", texte: "Université d'été de la Fémis" },
+  { annee: "2012", texte: "Formation audiovisuel et droits de l'homme (Amnesty international)" },
+  { annee: "2010", texte: "Formation aux fondamentaux de la production (Africadoc/ Focus Niger)" },
+  { annee: "2007", texte: "Prix scénario court métrage avec le projet ‘’Les Bénéficiaires’’" },
 ];
 
 const PARTNER_LOGOS: Record<string, string> = {
@@ -50,10 +45,21 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Téléfilm Canada": "/logos/telefilm.png",
   "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
   "Tënk": "/logos/tenk.png",
-  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
   "Fonds Jeune Création Francophone": "/logos/oif.png",
+  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
+  "Aide aux Cinémas du Monde": "/logos/aide-aux-cinemas-du-monde.png",
   "Université Gaston Berger": "/logos/ugb.webp",
-  "Durban FilmMart": "/logos/durban.jpg",
+  "Durban FilmMart": "/logos/dfmi.png",
+  "Les Ateliers Yennenga": "/logos/ateliers-yennenga.png",
+  "DOK Co-Pro Market": "/logos/dok-co-pro-market.jpg",
+  "La Fabrique Cinéma": "/logos/la-fabrique-cinema.png",
+  "EAVE": "/logos/eave.png",
+  "Lully Grâce Production": "/logos/lully-grace.png",
+  "FOPICA — Sénégal": "/logos/fopica.jpg",
+  "SENTOO": "/logos/sentoo.png",
+  "Red Sea Fund": "/logos/red-sea-fund.png",
+  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
 };
 
@@ -74,11 +80,11 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
     >
       {hasLogo ? (
         <>
-          <div className="w-full bg-white flex items-center justify-center px-6 py-5 min-h-[100px]">
+          <div className="w-full aspect-[4/3] bg-[#e9dfd2] border-b border-border/30 flex items-center justify-center p-2.5 sm:p-3">
             <img
               src={logoSrc}
               alt={partner.nom}
-              className="max-h-14 max-w-[140px] w-auto object-contain"
+              className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
               onError={() => setLogoError(true)}
             />
           </div>
@@ -117,7 +123,6 @@ export default function About() {
   const { data: partners, isLoading: partnersLoading } = useListPartners();
 
   const histoire = settings?.aboutHistoire || HISTOIRE_FALLBACK;
-  const vision = settings?.aboutVision || VISION_FALLBACK;
   const founderName = settings?.founderName || "Mamounata Nikiéma";
   const founderTitle = settings?.founderTitle || "Fondatrice · Réalisatrice & Productrice · Présidente FNCA";
   const founderBio = settings?.founderBio || FOUNDER_BIO_FALLBACK;
@@ -177,24 +182,12 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-serif text-3xl mb-6 text-primary">Les Racines</h2>
+              <h2 className="font-serif text-3xl mb-6 text-primary">PRESENTATION DE PILUMPIKU PRODUCTION</h2>
               <p className="text-muted-foreground font-light leading-relaxed whitespace-pre-line" data-testid="text-about-histoire">
                 {histoire}
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-card p-6 sm:p-10 md:p-12 border border-border/50 relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-              <h2 className="font-serif text-3xl mb-6 text-foreground">Notre Vision</h2>
-              <p className="text-lg sm:text-xl font-serif italic text-muted-foreground leading-relaxed whitespace-pre-line" data-testid="text-about-vision">
-                {vision}
-              </p>
-            </motion.div>
           </div>
         </div>
       </section>

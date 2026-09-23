@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Pilimpiku Mobile",
+    "slug": "pilimpiku-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "scheme": "pilimpiku-mobile",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/aef5ad0d-f627-4516-a84b-efb959d3333b",
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aef5ad0d-f627-4516-a84b-efb959d3333b"
+      }
+    },
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A0A00"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pilumpiku.mobile"
+    },
+    "android": {
+      "package": "com.pilumpiku.mobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundColor": "#1A0A00"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/logo.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      "expo-updates"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

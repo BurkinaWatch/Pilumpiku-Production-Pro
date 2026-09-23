@@ -318,6 +318,9 @@ export default function Sulunsuku() {
             <h1 className="font-serif text-7xl sm:text-9xl md:text-[10rem] lg:text-[12rem] text-foreground leading-none tracking-tight mb-4">
               Sulun<span className="text-primary italic">suku</span>
             </h1>
+            <p className="font-serif text-xl sm:text-2xl italic text-primary/90 max-w-2xl mb-4">
+              La plateforme de valorisation de l’expertise dans le cinéma et l’audiovisuel
+            </p>
             <p className="text-muted-foreground text-base sm:text-lg font-light max-w-lg leading-relaxed">
               Entreprise spécialisée dans la réalisation de films documentaires, au service du 7<sup>e</sup> art burkinabè et africain.
             </p>

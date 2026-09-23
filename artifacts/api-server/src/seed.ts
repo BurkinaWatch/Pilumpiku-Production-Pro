@@ -70,15 +70,31 @@ const PROJECTS = [
     slug: "lhomme-qui-plante-les-baobabs",
     titre: "L’Homme qui plante les baobabs",
     categorie: "Documentaire",
-    statut: "Produit également par Pilumpiku Production",
+    statut: "Co-produit par Pilumpiku Production",
     annee: 2026,
     duree: "—",
     langue: "—",
     synopsis: "Documentaire réalisé par Michel K. Zongo.",
     intention:
       "Réalisation : Michel K. Zongo.\n\nProduit également par Pilumpiku Production.",
-    image: "/img/burkina-cinema.jpg",
+    image: "/img/lhomme-qui-plante-les-baobabs.png",
     sortOrder: 16,
+    featured: false,
+  },
+  {
+    slug: "in-transit",
+    titre: "In Transit",
+    categorie: "Documentaire",
+    statut: "Production déléguée · Pilumpiku Production · 2025",
+    annee: 2025,
+    duree: "60 min",
+    langue: "—",
+    synopsis:
+      "In Transit suit le voyage de Tomisin Aderuku du Nigeria au Burkina Faso en tant que cinéaste en devenir. À travers ses rencontres avec Saada Sincere, footballeur local, Ndiaga, acteur sénégalais, et M. Oke, coiffeur yoruba, le film explore les défis, les rêves et la résilience des migrants et des populations locales, ainsi que la force de la communauté, de l’hospitalité et des aspirations partagées.",
+    intention:
+      "Un documentaire réalisé par Tomisin Aderuku et produit par Mamounata Nikiéma, avec une production déléguée au Burkina Faso par Pilumpiku Production.",
+    image: "/img/in-transit.png",
+    sortOrder: 18,
     featured: false,
   },
   {
@@ -215,18 +231,36 @@ const PROJECTS = [
   },
   {
     slug: "une-journee-avec",
-    titre: "Une journée avec…",
-    categorie: "Série télévisée documentaire",
-    statut: "Réalisation Mamounata Nikiéma · 2011",
+    trailerUrl: "https://www.film-documentaire.fr/4DACTION/w_fiche_film/35251",
+    titre: "Une journée avec Ato",
+    categorie: "Documentaire",
+    statut: "Coproduction Pilumpiku Production · 2011",
     annee: 2011,
-    duree: "13 min / épisode",
+    duree: "13 minutes",
     langue: "Français",
     synopsis:
-      "Série documentaire courte de 13 minutes par épisode, dont un épisode est réalisé par Mamounata Nikiéma. Portraits du quotidien et figures du Burkina Faso.",
+      "Documentaire réalisé par Simplice Ganou en 2011. Une journée avec Ato est un portrait documentaire de 13 minutes.",
     intention:
-      "Premier travail de réalisation télévisuelle de Mamounata Nikiéma, à l'origine de l'aventure qui mènera à la création de Pilumpiku Production.",
-    image: "/img/burkina-cinema-2.jpg",
+      "Coproduction : Ardèche Images Production, Les Films du Tambour de Soie, Impluvium Productions, DS Productions, Maggia Images sarl et Pilumpiku Production.",
+    image: "/img/une-journee-avec-ato.png",
     sortOrder: 40,
+    featured: false,
+  },
+  {
+    slug: "une-journee-avec-aicha",
+    trailerUrl: "https://www.film-documentaire.fr/4DACTION/w_fiche_film/35250",
+    titre: "Une journée avec Aïcha",
+    categorie: "Documentaire",
+    statut: "Coproduction Pilumpiku Production · 2011",
+    annee: 2011,
+    duree: "13 minutes",
+    langue: "Français",
+    synopsis:
+      "Documentaire réalisé par Mamounata Nikièma en 2011. Une journée avec Aïcha est un portrait documentaire de 13 minutes.",
+    intention:
+      "Coproduction : Ardèche Images Production, Les Films du Tambour de Soie, Impluvium Productions, DS Productions, Maggia Images sarl et Pilumpiku Production.",
+    image: "/img/une-journee-avec-35250.png",
+    sortOrder: 41,
     featured: false,
   },
   {
@@ -245,25 +279,9 @@ const PROJECTS = [
     sortOrder: 70,
     featured: false,
   },
-  {
-    slug: "sobate-festival",
-    titre: "Sobatè — festival de cinéma en plein air",
-    categorie: "Festival",
-    statut: "Actif",
-    annee: 2019,
-    duree: "Édition annuelle",
-    langue: "Multilingue",
-    synopsis:
-      "Festival de cinéma en plein air programmé par Pilumpiku Productions dans les quartiers populaires de Ouagadougou. Projections gratuites, débats, rencontres avec les auteurs : faire revenir le grand écran là où il a disparu.",
-    intention:
-      "Démocratiser radicalement l'accès au cinéma. Rappeler que le film est d'abord une expérience collective, sous les étoiles.",
-    image: "/img/fespaco.jpg",
-    sortOrder: 80,
-    featured: false,
-  },
 ];
 
-const REMOVED_PROJECT_SLUGS = ["vieux-pere", "intacte"];
+const REMOVED_PROJECT_SLUGS = ["vieux-pere", "intacte", "sobate-festival"];
 
 const NEWS = [
   {
@@ -577,6 +595,12 @@ const PARTNERS = [
     sortOrder: 90,
   },
   {
+    nom: "Miradas Doc — Tenerife",
+    description:
+      "Rencontres internationales de cinéma documentaire de Tenerife, espace de formation et de coproduction.",
+    sortOrder: 95,
+  },
+  {
     nom: "Lully Grâce Production",
     description:
       "Société de production ivoirienne (Franck Vlehi, Laurent Bitty), coproductrice de Djeliya, mémoire du Mandé.",
@@ -696,6 +720,30 @@ const PARTNERS = [
       "Initiative panafricaine de coproduction documentaire portée par STEPS ; a soutenu « Sur les traces d'un migrant » de Delphine Yerbanga (Pilumpiku).",
     sortOrder: 290,
   },
+  {
+    nom: "Les Ateliers Yennenga",
+    description:
+      "Plateforme panafricaine de formation et de développement de projets cinématographiques basée à Ouagadougou.",
+    sortOrder: 300,
+  },
+  {
+    nom: "DOK Co-Pro Market",
+    description:
+      "Marché international de coproduction dédié au documentaire, organisé dans le cadre de DOK Leipzig.",
+    sortOrder: 310,
+  },
+  {
+    nom: "La Fabrique Cinéma",
+    description:
+      "Programme de l'Institut français et du Festival de Cannes qui accompagne les jeunes cinéastes internationaux.",
+    sortOrder: 320,
+  },
+  {
+    nom: "EAVE",
+    description:
+      "European Audiovisual Entrepreneurs, programme européen de formation et de développement pour les producteurs.",
+    sortOrder: 330,
+  },
 ];
 
 const SETTINGS = {
@@ -707,20 +755,20 @@ const SETTINGS = {
   quoteText:
     "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.",
   quoteAuthor: "Mamounata Nikiéma",
-  statsProjets: "11",
-  statsPays: "15+",
+  statsProjets: "15",
+  statsPays: "50+",
   statsFestivals: "20+",
   aboutHistoire:
-    "Pilumpiku Productions a été fondée en 2011 à Ouagadougou par la réalisatrice et productrice Mamounata Nikiéma, alors jeune diplômée d'un Master 2 en réalisation documentaire de l'Université Gaston Berger de Saint-Louis (Sénégal).\n\nLe nom — pilumpiku, le papillon en mooré — n'a rien d'anodin. Il dit la chrysalide, la mue, l'envol. Il dit l'engagement d'une maison de production qui croit que le cinéma peut accompagner les métamorphoses d'une société, en montrant ce qui change, ce qui résiste, ce qui doit naître.\n\nDepuis Ouagadougou, Pilumpiku produit et coproduit des films documentaires d'auteur, anime la plateforme audiovisuelle Sulunsuku (lancée en 2018) et programme le festival de cinéma en plein air Sobatè, qui rapproche le grand écran des publics populaires des quartiers de la capitale.",
+    "Pilumpiku Production est une société de production cinématographique basée au Burkina Faso, spécialisée dans la production et la promotion de films documentaires et de fiction, ainsi que dans les activités de formation, promotion. Notre objectif est de mettre en lumière des sujets singuliers mais universels, qui préservent la dignité humaine, capables d’interroger le monde tout en célébrant l’identité africaine.\n\nPilumpiku Production dispose d’un vaste catalogue de documentaires, de films de fiction et de séries primés, réalisés dans le cadre de coproductions internationales. Consciente des défis auxquels sont confrontés les créateurs, Pilumpiku Production a créé en 2019 Sulunsuku, une plateforme numérique dédiée à la promotion du cinéma et au marketing, puis LABO PIIULGU en 2024, afin d’accompagner les professionnels dans le développement de leurs activités créatives.",
   aboutVision:
     "Faire du documentaire un espace d'écoute, de mémoire et de transmission. Mettre à l'honneur les voix des femmes, des jeunes et des oubliés de l'histoire officielle. Soutenir l'émergence d'une nouvelle génération de cinéastes burkinabè et sahéliens, libres dans leurs formes et exigeants dans leurs récits.",
   founderName: "Mamounata Nikiéma",
   founderTitle: "Fondatrice · Réalisatrice & Productrice · Présidente FNCA",
   founderBio:
-    "Née en 1979, Mamounata Nikiéma obtient son baccalauréat en 2001, puis un Master 2 en réalisation documentaire à l'Université Gaston Berger de Saint-Louis (Sénégal) en 2008.\n\nEn 2011, elle fonde à Ouagadougou Pilumpiku Production et signe la même année son premier travail de réalisation pour la télévision dans la série « Une journée avec… ». Elle réalise ensuite le long-métrage documentaire « L'Odyssée d'Omar » (2020, coproduit avec Les Films de la pluie, diffusé sur Tënk) puis le court-métrage « Intacte » (2022).\n\nComme productrice, elle accompagne « Au fantôme du père » de Marie-Laurentine Bayala (2018), « Sur les traces d'un migrant » de Delphine Yerbanga (2021, Grand Prix du Président du Faso au FESPACO), « Pingda » (2024), « Loin de moi la colère » de Joël Akafou (2025), la coproduction finlandaise « Katseiden alla » (2025), et « Djeliya, mémoire du Mandé » de Boubacar Sangaré, sélectionné en première mondiale au festival Visions du Réel 2026.\n\nReconnue très tôt pour son travail de productrice, elle remporte en septembre 2017 le Prix Nomadis Images au Ouaga Producers Lab, premier atelier dédié aux productrices et producteurs burkinabè.\n\nFigure majeure du paysage culturel ouest-africain, elle a été élue en mai 2022 présidente de la Fédération Nationale des Ciné-Clubs et Associations cinématographiques (FNCA), puis présidente de la Confédération AES du Cinéma. Elle est Chevalier de l'Ordre du Mérite des Arts, des Lettres et de la Communication du Burkina Faso.\n\nÀ travers Pilumpiku, la plateforme Sulunsuku et le festival Sobatè, elle œuvre sans relâche à élargir les publics du cinéma africain et à former la relève.",
+    "Spécialisée en réalisation documentaire de création et en Communication Pour le Développement (CPD), Mamounata Nikièma mène de front sa carrière de réalisatrice (depuis 2007) et celle de productrice (Pilumpiku Produdction depuis 2011). Elle est très impliquée dans les réseaux de cinéastes burkinabè (Africadoc Burkina, Guilde des scénaristes, Association des producteurs du Burkina Faso, Fédération Nationale du Cinéma et de l'Audiovisuel...), et a participé activement depuis plusieurs années au Fespaco, au sein de l'Espace Junior jusqu'en 2017. Depuis 2014 elle est également formatrice lors des résidences d’écriture documentaire de Bobo-Dioulasso et consultante, mentor dans les laboratoires de développement et de coproduction. En 2018 elle lance l'évènementiel Ciné-équipement et la plateforme digitale sur le cinéma Sulunsuku (www.sulunsuku.com ) en janvier 2019. Lors du Fespaco 2021 elle a été décorée du titre de Chevalier de l’Ordre de Mérite, des Arts, des Lettres et de la Communication avec Agrafe ‘’Cinématograpghie’’.",
   founderImage: "/img/mamounata-spla.jpg",
   contactEmail: "pilumpikuproduction@gmail.com",
-  contactPhone: "+226 70 14 92 33 / +226 78 70 12 32",
+  contactPhone: "+226  78 70 12 32",
   contactAddress: "S/C BP 68 Ouagadougou 01, Burkina Faso",
 };
 
@@ -770,10 +818,14 @@ export async function seed() {
     logger.info("Services already seeded — skipping");
   }
 
-  const [existingPartner] = await db.select().from(partnersTable).limit(1);
-  if (!existingPartner) {
-    await db.insert(partnersTable).values(PARTNERS);
-    logger.info({ count: PARTNERS.length }, "Seeded partners");
+  const existingPartners = await db
+    .select({ nom: partnersTable.nom })
+    .from(partnersTable);
+  const existingPartnerNames = new Set(existingPartners.map(({ nom }) => nom));
+  const missingPartners = PARTNERS.filter(({ nom }) => !existingPartnerNames.has(nom));
+  if (missingPartners.length > 0) {
+    await db.insert(partnersTable).values(missingPartners);
+    logger.info({ count: missingPartners.length }, "Seeded missing partners");
   } else {
     logger.info("Partners already seeded — skipping");
   }

@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/pilimpiku-mobile/"
+title = "Pilimpiku Mobile"
+description = "Application mobile Android et iOS de Pilumpiku Production, donnant accès aux projets, actualités et espaces du Labo Piiulgu depuis une interface native, sans modifier le site web existant."
+version = "1.0.0"
+id = "artifacts/pilimpiku-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/pilimpiku-mobile/" ]
+localPort = 19503
+
+[services.development]
+run = "pnpm --filter @workspace/pilimpiku-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pilimpiku-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/pilimpiku-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "19503"
+BASE_PATH = "/pilimpiku-mobile/"

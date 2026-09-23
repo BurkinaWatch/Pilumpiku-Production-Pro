@@ -15,16 +15,22 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
   "FDCT-PAIC Burkina Faso": "/logos/fdct.png",
-  "Durban FilmMart": "/logos/durban.jpg",
+  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
+  "Durban FilmMart": "/logos/dfmi.png",
   "Université Gaston Berger": "/logos/ugb.webp",
   "CNC France": "/logos/cnc.png",
   "Visions du Réel — Nyon": "/logos/vdr.jpg",
-  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
   "TV5 Monde": "/logos/tv5monde.png",
   "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
   "Tënk": "/logos/tenk.png",
   "Téléfilm Canada": "/logos/telefilm.png",
+  "Lully Grâce Production": "/logos/lully-grace.png",
+  "FOPICA — Sénégal": "/logos/fopica.jpg",
+  "SENTOO": "/logos/sentoo.png",
+  "Red Sea Fund": "/logos/red-sea-fund.png",
+  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
 };
 
 const PARTNER_MARKS: Record<string, string> = {
@@ -64,7 +70,7 @@ function PartnerLogo({ name }: { name: string }) {
 
   return (
     <div
-      className="h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm bg-white/95 px-3 sm:px-5 flex items-center justify-center shadow-sm"
+      className="h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm bg-[#e9dfd2] border border-primary/15 p-2 sm:p-3 flex items-center justify-center shadow-sm"
       role="img"
       aria-label={name}
     >
@@ -73,7 +79,7 @@ function PartnerLogo({ name }: { name: string }) {
           src={logo}
           alt=""
           aria-hidden="true"
-          className="max-h-10 sm:max-h-12 md:max-h-14 max-w-full w-auto object-contain"
+          className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
         />
       ) : (
         <span className="font-serif text-sm sm:text-base md:text-lg tracking-[0.12em] text-[#2B1305] text-center">
@@ -226,7 +232,7 @@ export default function Home() {
             <AnimatedCounter
               end={parseStatNumber(statsPays)}
               suffix={statSuffix(statsPays)}
-              label="Pays partenaires"
+              label="Partenaires"
             />
             <AnimatedCounter
               end={parseStatNumber(statsFestivals)}

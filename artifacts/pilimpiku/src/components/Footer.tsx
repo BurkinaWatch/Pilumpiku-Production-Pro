@@ -35,9 +35,8 @@ export function Footer() {
           <div>
             <h4 className="font-serif text-lg text-foreground mb-4 sm:mb-6">Contact & Réseaux</h4>
             <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-muted-foreground text-sm">
-              <li>S/C BP 68 Ouagadougou 01, Burkina Faso</li>
               <li><a href="mailto:pilumpikuproduction@gmail.com" className="hover:text-primary transition-colors break-all">pilumpikuproduction@gmail.com</a></li>
-              <li>+226 70 14 92 33 / +226 78 70 12 32</li>
+              <li>+226  78 70 12 32</li>
             </ul>
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               <a href="https://www.instagram.com/mamounatan?igsh=MTZoaWZpYXdsaHE1Mw==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-foreground/10 border border-foreground/20 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">

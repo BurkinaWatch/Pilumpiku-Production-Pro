@@ -1,0 +1,116 @@
+Le projet contient déjà deux versions dans le même dépôt :
+
+1. une version web principale, centrale et de référence ;
+2. une application mobile Expo/React Native existante.
+
+La version web est prioritaire. Elle ne doit absolument pas être modifiée, altérée, migrée, refactorisée ou remplacée, quelle qu’en soit la raison.
+
+Je te demande uniquement de compiler et d’exporter l’application mobile existante en APK Android.
+
+PROTECTION ABSOLUE DE LA VERSION WEB :
+
+- Identifie d’abord le dossier exact de la version web principale.
+- Considère tous les fichiers de cette version web comme intouchables.
+- Ne modifie aucun fichier de la version web.
+- Ne modifie pas ses composants, ses routes, ses styles, ses images, ses données ou sa configuration.
+- Ne modifie pas son `package.json`.
+- Ne modifie pas son workflow.
+- Ne modifie pas son serveur.
+- Ne modifie pas le backend utilisé par la version web.
+- Ne déplace aucun fichier partagé avec la version web.
+- Ne remplace pas la version web par la version mobile.
+- Ne refactorise pas le dépôt pour faciliter le build mobile.
+- Ne change aucune dépendance globale si cela risque d’altérer le fonctionnement de la version web.
+- Ne lance aucune migration qui pourrait toucher l’application web.
+- Ne lance aucun script destructif sur le dépôt.
+
+Si une modification de la version web ou d’un fichier partagé est nécessaire pour générer l’APK, arrête-toi et signale le problème. Ne fais pas cette modification automatiquement.
+
+Avant et après le build, vérifie que la version web est inchangée. La commande `git diff` ne doit montrer aucune modification dans le dossier de la version web.
+
+APPLICATION MOBILE :
+
+L’application mobile existe déjà. Ne crée pas une nouvelle application.
+
+- Ne lance pas `create-expo-app`.
+- Ne lance pas `expo init`.
+- Ne crée pas de nouvel artifact mobile.
+- Ne duplique pas l’application web.
+- Ne crée pas un nouveau projet Expo.
+- Ne change pas l’identité visuelle ou le contenu existant de l’application mobile.
+- Utilise exclusivement le dossier mobile déjà présent dans le dépôt.
+- Utilise son `package.json`, son `app.json` ou `app.config`, son workflow et son dossier Android existant.
+- Conserve le package Android existant.
+- Ne lance jamais `expo prebuild --clean`.
+
+PROCÉDURE :
+
+1. Inspecte le dépôt en lecture seule et identifie :
+   - le dossier de la version web principale ;
+   - le dossier de l’application mobile existante ;
+   - le package mobile ;
+   - le fichier `app.json` ou `app.config`;
+   - le dossier `android/`;
+   - le workflow mobile existant.
+
+2. Travaille uniquement dans le dossier de l’application mobile.
+
+3. Si le dossier `android/` existe déjà, utilise-le directement. Ne régénère pas les fichiers natifs.
+
+4. Si le dossier `android/` n’existe pas, génère les fichiers natifs de l’application mobile existante avec :
+
+   `pnpm exec expo prebuild --no-install`
+
+   N’utilise pas l’option `--clean`.
+
+5. Modifie uniquement, si nécessaire, les métadonnées Android de l’application mobile :
+   - version ;
+   - `versionCode` ;
+   - configuration de signature mobile.
+
+   Ne modifie aucun fichier de la version web.
+
+6. Configure le build Android local :
+   - utilise un JDK compatible avec Gradle, idéalement OpenJDK 17 ;
+   - vérifie `ANDROID_HOME` ou `ANDROID_SDK_ROOT` ;
+   - crée `android/local.properties` si nécessaire ;
+   - n’utilise pas Expo EAS ;
+   - n’utilise pas le mode `--offline` si les plugins Gradle manquent du cache.
+
+7. Compile l’application mobile depuis son dossier Android :
+
+   `./gradlew assembleRelease --no-daemon --console=plain`
+
+   Si le projet le permet, utilise les architectures ARM 32 bits et ARM 64 bits :
+
+   `./gradlew assembleRelease -PreactNativeArchitectures=armeabi-v7a,arm64-v8a --no-daemon --console=plain`
+
+   Si le wrapper Gradle ne fonctionne pas mais que la commande `gradle` locale est disponible, utilise cette commande. Ne remplace pas le build local par Expo EAS.
+
+8. Copie uniquement l’APK mobile généré vers le dossier `dist/`, par exemple :
+
+   `dist/application-mobile-release.apk`
+
+9. Vérifie l’APK avec :
+   - `aapt dump badging` ;
+   - `apksigner verify --verbose` ;
+   - `zipalign` ;
+   - `unzip -l`.
+
+10. Redémarre uniquement le workflow de l’application mobile existante. Ne crée pas de nouveau workflow.
+
+11. Vérifie de nouveau l’état de la version web :
+   - aucun fichier web modifié ;
+   - aucune modification de ses dépendances ;
+   - aucune modification de son workflow ;
+   - aucun changement dans `git diff` concernant la version web.
+
+12. Présente le fichier APK final afin qu’il soit téléchargeable directement.
+
+CONDITION D’ARRÊT :
+
+Si le build mobile exige de modifier la version web principale, un fichier partagé avec elle, son backend ou sa configuration, ne fais pas cette modification. Arrête-toi et explique précisément pourquoi le build ne peut pas continuer sans toucher à la version web.
+
+OBJECTIF FINAL :
+
+Exporter l’application mobile déjà existante en APK Android installable, tout en garantissant que la version web principale reste strictement identique avant et après l’opération.

@@ -9,7 +9,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <div className="min-h-screen flex flex-col relative pt-2">
       {/* Noise Overlay */}
       <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.04]">
         <svg className="w-full h-full">

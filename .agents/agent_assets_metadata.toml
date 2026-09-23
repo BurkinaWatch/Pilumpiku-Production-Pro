@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "0dz074evTgbYswl30L-FY"
+uri = "file://artifacts/pilimpiku-mobile/dist/pilimpiku-mobile-release.apk"
+type = "unspecified"
+title = "Télécharger Pilimpiku Mobile — APK corrigée"
+description = "APK Android corrigée avec connexion à l’API de production. SHA-256 : 7714141b3e3acdcb51824bc9799b5bba07b06a6e3547514d1f03adc4f93cb180"
+logical_id = "9363494a-e44a-4572-9dae-a062163cfd62"
+content_hash = "sha256:7714141b3e3acdcb51824bc9799b5bba07b06a6e3547514d1f03adc4f93cb180"
+size = 100065791
+mtime_ms = 1788302874213
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:c8f32f50-715b-49e2-b079-b193b2d5440e/9363494a-e44a-4572-9dae-a062163cfd62/0f168b04-9643-49d9-a6db-9e669410d1cd"
+storage_version_token = "1788303581775774"
+content_type = "application/octet-stream"

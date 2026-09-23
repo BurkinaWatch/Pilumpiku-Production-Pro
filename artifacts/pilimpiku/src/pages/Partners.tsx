@@ -14,10 +14,21 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Téléfilm Canada": "/logos/telefilm.png",
   "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
   "Tënk": "/logos/tenk.png",
-  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
   "Fonds Jeune Création Francophone": "/logos/oif.png",
+  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
+  "Aide aux Cinémas du Monde": "/logos/aide-aux-cinemas-du-monde.png",
   "Université Gaston Berger": "/logos/ugb.webp",
-  "Durban FilmMart": "/logos/durban.jpg",
+  "Durban FilmMart": "/logos/dfmi.png",
+  "Les Ateliers Yennenga": "/logos/ateliers-yennenga.png",
+  "DOK Co-Pro Market": "/logos/dok-co-pro-market.jpg",
+  "La Fabrique Cinéma": "/logos/la-fabrique-cinema.png",
+  "EAVE": "/logos/eave.png",
+  "Lully Grâce Production": "/logos/lully-grace.png",
+  "FOPICA — Sénégal": "/logos/fopica.jpg",
+  "SENTOO": "/logos/sentoo.png",
+  "Red Sea Fund": "/logos/red-sea-fund.png",
+  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
 };
 
@@ -38,11 +49,11 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
     >
       {hasLogo ? (
         <>
-          <div className="w-full bg-white flex items-center justify-center px-6 py-5 min-h-[100px]">
+          <div className="w-full aspect-[4/3] bg-[#e9dfd2] border-b border-border/30 flex items-center justify-center p-2.5 sm:p-3">
             <img
               src={logoSrc}
               alt={partner.nom}
-              className="max-h-14 max-w-[140px] w-auto object-contain"
+              className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
               onError={() => setLogoError(true)}
             />
           </div>
