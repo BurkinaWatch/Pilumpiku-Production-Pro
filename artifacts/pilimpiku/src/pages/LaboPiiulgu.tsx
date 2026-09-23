@@ -355,10 +355,8 @@ export default function LaboPiiulgu() {
                 Espace Piiulgu · Kologh-Naaba
               </span>
             </div>
-            <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl text-foreground leading-none mb-6">
-              Labo
-              <br />
-              <span className="text-primary italic">Piiulgu</span>
+            <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl text-foreground leading-none mb-6 whitespace-nowrap">
+              Labo <span className="text-primary italic">Piiulgu</span>
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
               Un espace de développement professionnel dédié aux acteurs
