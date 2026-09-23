@@ -82,6 +82,22 @@ const PROJECTS = [
     featured: false,
   },
   {
+    slug: "in-transit",
+    titre: "In Transit",
+    categorie: "Documentaire",
+    statut: "Production déléguée · Pilumpiku Production · 2025",
+    annee: 2025,
+    duree: "60 min",
+    langue: "—",
+    synopsis:
+      "In Transit suit le voyage de Tomisin Aderuku du Nigeria au Burkina Faso en tant que cinéaste en devenir. À travers ses rencontres avec Saada Sincere, footballeur local, Ndiaga, acteur sénégalais, et M. Oke, coiffeur yoruba, le film explore les défis, les rêves et la résilience des migrants et des populations locales, ainsi que la force de la communauté, de l’hospitalité et des aspirations partagées.",
+    intention:
+      "Un documentaire réalisé par Tomisin Aderuku et produit par Mamounata Nikiéma, avec une production déléguée au Burkina Faso par Pilumpiku Production.",
+    image: "/img/in-transit.png",
+    sortOrder: 18,
+    featured: false,
+  },
+  {
     slug: "pingda",
     trailerUrl: "https://vimeo.com/910066543/4e2cdcceaf",
     titre: "Pingda",
