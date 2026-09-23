@@ -245,25 +245,9 @@ const PROJECTS = [
     sortOrder: 70,
     featured: false,
   },
-  {
-    slug: "sobate-festival",
-    titre: "Sobatè — festival de cinéma en plein air",
-    categorie: "Festival",
-    statut: "Actif",
-    annee: 2019,
-    duree: "Édition annuelle",
-    langue: "Multilingue",
-    synopsis:
-      "Festival de cinéma en plein air programmé par Pilumpiku Productions dans les quartiers populaires de Ouagadougou. Projections gratuites, débats, rencontres avec les auteurs : faire revenir le grand écran là où il a disparu.",
-    intention:
-      "Démocratiser radicalement l'accès au cinéma. Rappeler que le film est d'abord une expérience collective, sous les étoiles.",
-    image: "/img/fespaco.jpg",
-    sortOrder: 80,
-    featured: false,
-  },
 ];
 
-const REMOVED_PROJECT_SLUGS = ["vieux-pere", "intacte"];
+const REMOVED_PROJECT_SLUGS = ["vieux-pere", "intacte", "sobate-festival"];
 
 const NEWS = [
   {
