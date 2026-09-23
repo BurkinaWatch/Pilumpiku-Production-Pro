@@ -21,7 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useGetSiteSettings } from "@workspace/api-client-react";
 
 const formSchema = z.object({
@@ -64,7 +64,6 @@ export default function Contact() {
 
   const email = settings?.contactEmail ?? "contact@pilumpiku.bf";
   const phone = settings?.contactPhone ?? "+226 00 00 00 00";
-  const address = settings?.contactAddress ?? "Ouagadougou, Burkina Faso";
 
   return (
     <div className="flex flex-col w-full bg-background pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen">
@@ -92,23 +91,6 @@ export default function Contact() {
             </p>
 
             <div className="space-y-6 sm:space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-primary/20 rounded-full flex items-center justify-center text-primary shrink-0">
-                  <MapPin size={18} />
-                </div>
-                <div>
-                  <h4 className="uppercase tracking-widest text-xs text-muted-foreground mb-1">
-                    Siège
-                  </h4>
-                  <p
-                    className="text-foreground font-serif text-lg sm:text-xl"
-                    data-testid="text-contact-address"
-                  >
-                    {address}
-                  </p>
-                </div>
-              </div>
-
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-primary/20 rounded-full flex items-center justify-center text-primary shrink-0">
                   <Mail size={18} />
