@@ -112,10 +112,12 @@ export default function SalonCinematech() {
                 </span>
               </div>
 
-              <h1 className="font-serif text-5xl sm:text-7xl md:text-9xl text-foreground leading-none mb-6">
-                Salon
-                <br />
-                <span className="text-primary italic">CinémaTECH</span>
+              <h1 className="mb-6">
+                <img
+                  src="/img/logo-salon-cinematech.png"
+                  alt="Salon CinémaTECH — Salon de la technologie du cinéma et de l'audiovisuel"
+                  className="w-full max-w-[520px] object-contain object-left"
+                />
               </h1>
 
               <p className="text-muted-foreground text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
