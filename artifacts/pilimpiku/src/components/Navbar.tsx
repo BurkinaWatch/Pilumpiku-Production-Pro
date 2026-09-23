@@ -457,12 +457,12 @@ export function Navbar() {
               <ul className="space-y-1 mb-4">
                 {productCategories.map((cat) => (
                   <li key={cat.name} className="border-b border-border/20 last:border-0">
-                    <div className="w-full flex items-center justify-between py-3 text-sm uppercase tracking-widest">
+                    <div className="w-full flex items-center justify-between gap-2 py-3 uppercase">
                       <a
                         href={cat.path}
                         onClick={(e) => handleNavClick(e, cat.path)}
                         className={cn(
-                          "text-foreground hover:text-primary transition-colors",
+                          "min-w-0 flex-1 whitespace-nowrap text-[11px] leading-none tracking-[0.1em] text-foreground hover:text-primary transition-colors",
                           isProductActive(cat) ? "text-primary" : "",
                         )}
                         data-testid={`link-mobile-category-${cat.name.toLowerCase().replace(/\s+/g, "-")}`}
