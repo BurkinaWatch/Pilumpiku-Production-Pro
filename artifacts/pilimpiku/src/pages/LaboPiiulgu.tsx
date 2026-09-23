@@ -13,7 +13,7 @@ const programmes = [
     accentColor: "#E8921A",
     description:
       "Chaque mois, Labo Piiulgu accueille un(e) professionnel(le) du cinéma et de l'audiovisuel pour un échange informel autour de son métier. Networking, partage d'expérience et ambiance conviviale.",
-    details: ["Focus métiers (son & mixage, production, réalisation…)", "Invités professionnels du secteur", "Format 1 heure — 17H30 / 18H30", "Réservation : 2 500 F CFA"],
+    details: ["Focus métiers (son & mixage, production, réalisation…)", "Invités professionnels du secteur", "Format 1 heure — 17H30 / 18H30", "Reservation avec adresse mail"],
   },
   {
     id: "b2b",
@@ -25,7 +25,7 @@ const programmes = [
     accentColor: "#C9A84C",
     description:
       "Des séances individuelles d'accompagnement en entrepreneuriat créatif. Prenez rendez-vous pour un coaching personnalisé autour de votre projet dans les industries créatives et culturelles (ICC).",
-    details: ["Accompagnement en Entrepreneuriat Créatif", "Sessions de 2 heures — 14H30 / 16H30", "10 000 F CFA / séance", "Sur rendez-vous uniquement"],
+    details: ["Accompagnement en Entrepreneuriat Créatif", "Sessions de 2 heures — 14H30 / 16H30", "Reservation avec adresse mail", "Sur rendez-vous uniquement"],
   },
   {
     id: "conference",
