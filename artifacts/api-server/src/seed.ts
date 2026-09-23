@@ -70,7 +70,7 @@ const PROJECTS = [
     slug: "lhomme-qui-plante-les-baobabs",
     titre: "L’Homme qui plante les baobabs",
     categorie: "Documentaire",
-    statut: "Produit également par Pilumpiku Production",
+    statut: "Co-produit par Pilumpiku Production",
     annee: 2026,
     duree: "—",
     langue: "—",
