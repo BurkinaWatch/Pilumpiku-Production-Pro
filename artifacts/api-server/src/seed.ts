@@ -247,6 +247,23 @@ const PROJECTS = [
     featured: false,
   },
   {
+    slug: "une-journee-avec-aicha",
+    trailerUrl: "https://www.film-documentaire.fr/4DACTION/w_fiche_film/35250",
+    titre: "Une journée avec Aïcha",
+    categorie: "Documentaire",
+    statut: "Coproduction Pilumpiku Production · 2011",
+    annee: 2011,
+    duree: "13 minutes",
+    langue: "Français",
+    synopsis:
+      "Documentaire réalisé par Mamounata Nikièma en 2011. Une journée avec Aïcha est un portrait documentaire de 13 minutes.",
+    intention:
+      "Coproduction : Ardèche Images Production, Les Films du Tambour de Soie, Impluvium Productions, DS Productions, Maggia Images sarl et Pilumpiku Production.",
+    image: "/img/une-journee-avec-35250.png",
+    sortOrder: 41,
+    featured: false,
+  },
+  {
     slug: "sulunsuku",
     titre: "Sulunsuku — plateforme audiovisuelle",
     categorie: "Plateforme",
