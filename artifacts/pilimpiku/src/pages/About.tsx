@@ -3,13 +3,9 @@ import { motion } from "framer-motion";
 import { useGetSiteSettings, useListPartners } from "@workspace/api-client-react";
 import { useState } from "react";
 
-const HISTOIRE_FALLBACK = `Pilumpiku Production a été fondée en janvier 2011 à Ouagadougou par la réalisatrice et productrice Mamounata Nikiéma, diplômée d'un Master 2 en réalisation documentaire de l'Université Gaston Berger de Saint-Louis, au Sénégal.
+const HISTOIRE_FALLBACK = `Pilumpiku Production est une société de production cinématographique basée au Burkina Faso, spécialisée dans la production et la promotion de films documentaires et de fiction, ainsi que dans les activités de formation, promotion. Notre objectif est de mettre en lumière des sujets singuliers mais universels, qui préservent la dignité humaine, capables d’interroger le monde tout en célébrant l’identité africaine.
 
-Le nom — pilumpiku, qui signifie « papillon » en mooré — n'est pas anodin. Il dit la chrysalide, la mue, l'envol : l'engagement d'une maison de production qui croit que le cinéma accompagne les métamorphoses d'une société, en révélant ce qui change, ce qui résiste, ce qui doit naître.
-
-Depuis Ouagadougou, Pilumpiku produit et coproduit des films documentaires d'auteur avec des partenaires de toute l'Afrique et d'Europe. La société anime également la plateforme audiovisuelle Sulunsuku (lancée en 2018) et programme le festival de cinéma en plein air Sobatè, qui rapproche le grand écran des publics des quartiers populaires de la capitale.
-
-Devise : "A New Vision for a New Africa"`;
+Pilumpiku Production dispose d’un vaste catalogue de documentaires, de films de fiction et de séries primés, réalisés dans le cadre de coproductions internationales. Consciente des défis auxquels sont confrontés les créateurs, Pilumpiku Production a créé en 2019 Sulunsuku, une plateforme numérique dédiée à la promotion du cinéma et au marketing, puis LABO PIIULGU en 2024, afin d’accompagner les professionnels dans le développement de leurs activités créatives.`;
 
 const VISION_FALLBACK = `Faire du documentaire un espace d'écoute, de mémoire et de transmission. Mettre à l'honneur les voix des femmes, des jeunes et des oubliés de l'histoire officielle. Soutenir l'émergence d'une nouvelle génération de cinéastes burkinabè et sahéliens, libres dans leurs formes et exigeants dans leurs récits.`;
 
