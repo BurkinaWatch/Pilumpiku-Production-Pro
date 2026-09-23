@@ -19,12 +19,17 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Université Gaston Berger": "/logos/ugb.webp",
   "CNC France": "/logos/cnc.png",
   "Visions du Réel — Nyon": "/logos/vdr.jpg",
-  "Fonds Image de la Francophonie": "/logos/oif.png",
+  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
   "TV5 Monde": "/logos/tv5monde.png",
   "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
   "Tënk": "/logos/tenk.png",
   "Téléfilm Canada": "/logos/telefilm.png",
+  "Lully Grâce Production": "/logos/lully-grace.png",
+  "FOPICA — Sénégal": "/logos/fopica.jpg",
+  "SENTOO": "/logos/sentoo.png",
+  "Red Sea Fund": "/logos/red-sea-fund.png",
+  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
 };
 
 const PARTNER_MARKS: Record<string, string> = {
