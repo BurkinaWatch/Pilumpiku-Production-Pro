@@ -49,11 +49,11 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
     >
       {hasLogo ? (
         <>
-          <div className="w-full bg-white flex items-center justify-center px-6 py-5 min-h-[100px]">
+          <div className="w-full aspect-[4/3] bg-[#e9dfd2] border-b border-border/30 flex items-center justify-center p-2.5 sm:p-3">
             <img
               src={logoSrc}
               alt={partner.nom}
-              className="max-h-14 max-w-[140px] w-auto object-contain"
+              className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
               onError={() => setLogoError(true)}
             />
           </div>

@@ -70,7 +70,7 @@ function PartnerLogo({ name }: { name: string }) {
 
   return (
     <div
-      className="h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm bg-white/95 px-3 sm:px-5 flex items-center justify-center shadow-sm"
+      className="h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm bg-[#e9dfd2] border border-primary/15 p-2 sm:p-3 flex items-center justify-center shadow-sm"
       role="img"
       aria-label={name}
     >
@@ -79,7 +79,7 @@ function PartnerLogo({ name }: { name: string }) {
           src={logo}
           alt=""
           aria-hidden="true"
-          className="max-h-10 sm:max-h-12 md:max-h-14 max-w-full w-auto object-contain"
+          className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
         />
       ) : (
         <span className="font-serif text-sm sm:text-base md:text-lg tracking-[0.12em] text-[#2B1305] text-center">
