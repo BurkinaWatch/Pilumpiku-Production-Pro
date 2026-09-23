@@ -11,16 +11,27 @@ const FOUNDER_BIO_FALLBACK = `Spécialisée en réalisation documentaire de cré
 
 
 const DISTINCTIONS = [
-  { annee: "2026", texte: "Sélection en première mondiale à Visions du Réel — « Djeliya, mémoire du Mandé »" },
-  { annee: "2025", texte: "Coproduction internationale avec la Finlande — « Katseiden alla »" },
-  { annee: "2022", texte: "Présidente de la Fédération Nationale des Ciné-Clubs du Burkina Faso (FNCA)" },
-  { annee: "2022", texte: "Présidente de la Confédération AES du Cinéma" },
-  { annee: "2021", texte: "Grand Prix du Président du Faso au FESPACO — « Sur les traces d'un migrant »" },
-  { annee: "2018", texte: "Prix du Public — Festival des Identités Culturelles de Ouagadougou" },
-  { annee: "2018", texte: "Chevalier de l'Ordre du Mérite des Arts, des Lettres et de la Communication" },
-  { annee: "2017", texte: "Prix Nomadis Images — Ouaga Producers Lab" },
-  { annee: "2017", texte: "Lauréate du programme B-Faso Creative (Africalia)" },
-  { annee: "2011", texte: "Fondation de Pilumpiku Production à Ouagadougou" },
+  { annee: "2026", texte: "Participation au programme (2 mois) Open Doors Producers-Festival Locarno2026/Film Industry/Prix EAVE Marketing Workshop" },
+  { annee: "2024", texte: "Certificat du programme (6 mois) Goldman Sachs, 10 000 Women/Entrepreneuriat" },
+  { annee: "2024", texte: "Certificat du programme (14 semaines) ‘’Bootcamp d’emtrepreneuriat des femmes africaines- Banque Africaine de Développement" },
+  { annee: "2024", texte: "Participation au programme (8 semaines) de développement des compétences- SDP-ICC de Africalia & Culture Funding Watch/Entrepneuriat" },
+  { annee: "2023", texte: "Certificat du Programme ASPIRE-Programme (6 mois) de croissance des entreprises en collaboration avec Standford Seed" },
+  { annee: "2023", texte: "Participation au Programme des producteurs internationaux EURODOC/CNC-FRANCE" },
+  { annee: "2022", texte: "Programme La Fabrique Cinéma de l’Institut Français de CANNES-Festival de Cannes/CNC France" },
+  { annee: "2021", texte: "Programme DEENTAL AT CANNES-Festival de Cannes/CNC France" },
+  { annee: "2020", texte: "Rencontres de coproduction/Déclic-Ciclic-France" },
+  { annee: "2020", texte: "Rough cut Lab/Visions du Réel- Nyon-Suisse" },
+  { annee: "2020", texte: "Rencontres de coproduction/Miradas Doc-Tennerife-Espagne" },
+  { annee: "2019", texte: "Rencontres de coproduction/SENTOO-Marrakech-Ateliers de l'Atlas" },
+  { annee: "2018", texte: "Formation en entrepreneuriat culturel (B-Faso Creative – Africalia- Prix Incitant)" },
+  { annee: "2018", texte: "Atelier Produire au Sud Agadir (Maroc) et JCC (Tunis)– Prix Bourse Dév. CNCM" },
+  { annee: "2017", texte: "Stage sur un tournage (Ouaga Film Lab II – Prix Nomadis Image Tunisie)" },
+  { annee: "2016", texte: "Programme Hélio (Haute école des Arts de Zurich/ Institut Imagine)" },
+  { annee: "2015", texte: "Atelier American Film showcase / Institut Imagine" },
+  { annee: "2013", texte: "Université d'été de la Fémis" },
+  { annee: "2012", texte: "Formation audiovisuel et droits de l'homme (Amnesty international)" },
+  { annee: "2010", texte: "Formation aux fondamentaux de la production (Africadoc/ Focus Niger)" },
+  { annee: "2007", texte: "Prix scénario court métrage avec le projet ‘’Les Bénéficiaires’’" },
 ];
 
 const PARTNER_LOGOS: Record<string, string> = {
