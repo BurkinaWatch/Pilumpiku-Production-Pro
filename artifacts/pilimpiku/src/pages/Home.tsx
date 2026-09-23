@@ -15,6 +15,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
   "FDCT-PAIC Burkina Faso": "/logos/fdct.png",
+  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
   "Durban FilmMart": "/logos/dfmi.png",
   "Université Gaston Berger": "/logos/ugb.webp",
   "CNC France": "/logos/cnc.png",

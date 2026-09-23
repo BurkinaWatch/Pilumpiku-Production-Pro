@@ -47,7 +47,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Tënk": "/logos/tenk.png",
   "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
   "Fonds Jeune Création Francophone": "/logos/oif.png",
-  "FONSIC — Côte d'Ivoire": "/logos/fonsic.jpg",
+  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
   "Aide aux Cinémas du Monde": "/logos/aide-aux-cinemas-du-monde.png",
   "Université Gaston Berger": "/logos/ugb.webp",
   "Durban FilmMart": "/logos/dfmi.png",
