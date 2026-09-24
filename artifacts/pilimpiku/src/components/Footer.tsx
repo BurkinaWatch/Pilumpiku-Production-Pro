@@ -63,9 +63,10 @@ export function Footer() {
             <Link
               href="/admin"
               className="text-muted-foreground/35 hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0400] transition-colors text-[10px] uppercase tracking-[0.14em]"
+              aria-label="Administration"
               data-testid="link-admin-footer"
             >
-              Admin
+              ADM
             </Link>
           </div>
         </div>
