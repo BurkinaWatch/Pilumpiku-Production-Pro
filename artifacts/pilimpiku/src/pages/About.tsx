@@ -63,7 +63,37 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
 };
 
-function PartnerCard({ partner, index }: { partner: { id: number; nom: string; description: string }; index: number }) {
+type DisplayPartner = {
+  id: number | string;
+  nom: string;
+  description: string;
+};
+
+const OFFICIAL_PARTNER_ORDER = [
+  "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
+  "ABCA",
+  "FESPACO",
+  "ISIS",
+  "FNCA Burkina Faso",
+  "FDCT-PAIC Burkina Faso",
+];
+
+const OFFICIAL_INSTITUTION_DETAILS: Record<string, Omit<DisplayPartner, "id">> = {
+  "Ministère de la Communication, de la Culture, des Arts et du Tourisme": {
+    nom: "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
+    description: "Institution de tutelle et partenaire public de la filière culturelle et cinématographique au Burkina Faso.",
+  },
+  ABCA: {
+    nom: "ABCA",
+    description: "Organisation professionnelle de référence pour le cinéma et l'audiovisuel burkinabè.",
+  },
+  ISIS: {
+    nom: "ISIS",
+    description: "Institut supérieur de l'image et du son, structure burkinabè de formation aux métiers du cinéma et de l'audiovisuel.",
+  },
+};
+
+function PartnerCard({ partner, index }: { partner: DisplayPartner; index: number }) {
   const [logoError, setLogoError] = useState(false);
   const logoSrc = PARTNER_LOGOS[partner.nom];
   const hasLogo = !!logoSrc && !logoError;
@@ -128,8 +158,19 @@ export default function About() {
   const founderBio = settings?.founderBio || FOUNDER_BIO_FALLBACK;
   const founderImage = settings?.founderImage || "/img/mamounata-spla.jpg";
 
-  const withLogos = (partners ?? []).filter((p) => PARTNER_LOGOS[p.nom]);
-  const withoutLogos = (partners ?? []).filter((p) => !PARTNER_LOGOS[p.nom]);
+  const partnersByName = new Map<string, DisplayPartner>();
+  (partners ?? []).forEach((partner) => partnersByName.set(partner.nom, partner));
+  const officialPartners: DisplayPartner[] = OFFICIAL_PARTNER_ORDER.flatMap<DisplayPartner>((name, index) => {
+    const partner = partnersByName.get(name);
+    if (partner) return [partner];
+
+    const fallback = OFFICIAL_INSTITUTION_DETAILS[name];
+    return fallback ? [{ id: `official-${index}`, ...fallback }] : [];
+  });
+  const officialNames = new Set(officialPartners.map((partner) => partner.nom));
+  const otherPartners = (partners ?? []).filter((partner) => !officialNames.has(partner.nom));
+  const otherWithLogos = otherPartners.filter((partner) => PARTNER_LOGOS[partner.nom]);
+  const otherWithoutLogos = otherPartners.filter((partner) => !PARTNER_LOGOS[partner.nom]);
 
   return (
     <div className="flex flex-col w-full bg-background pt-20 sm:pt-24">
@@ -138,10 +179,11 @@ export default function About() {
       <section className="relative min-h-[44vh] sm:h-[65vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/img/fespaco.jpg"
-            alt="FESPACO — Festival Panafricain du Cinéma de Ouagadougou"
+            src="/img/about-butterfly-cinema.jpg"
+            alt="Papillon cuivré et bleu posé sur une bobine de film, devant une caméra de cinéma"
             className="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/55 to-background" />
         </div>
@@ -277,35 +319,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Partenariats — pays */}
-      <section className="py-12 sm:py-16 bg-card border-y border-border/20">
-        <div className="container mx-auto px-4 sm:px-6 md:px-12">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-10"
-          >
-            <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-2">Partenariats & Coproductions</h3>
-            <p className="text-muted-foreground font-light text-sm max-w-lg mx-auto">
-              Pilumpiku collabore avec des structures de production en Côte d'Ivoire, Niger, Sénégal, Mali, Togo, Cameroun, Gabon, Finlande, France et au-delà.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-3 text-xs uppercase tracking-widest text-muted-foreground/60"
-          >
-            {["Burkina Faso", "Côte d'Ivoire", "Sénégal", "Mali", "Togo", "Niger", "Cameroun", "Gabon", "Finlande", "France", "Belgique", "Canada"].map((pays) => (
-              <span key={pays} className="border border-border/30 px-3 py-2">{pays}</span>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Réseau & Partenaires */}
-      <section className="py-16 sm:py-24 pb-24">
+      <section id="reseau-partenaires" className="py-16 sm:py-24 pb-24">
         <div className="container mx-auto px-4 sm:px-6 md:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -324,31 +339,75 @@ export default function About() {
             </p>
           </motion.div>
 
-          {partnersLoading && (
-            <div className="text-center py-20 text-muted-foreground">Chargement…</div>
-          )}
+          <div className="space-y-16 sm:space-y-24">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="max-w-3xl mb-8 sm:mb-10"
+              >
+                <p className="uppercase tracking-[0.25em] text-xs text-primary mb-3">Institutions burkinabè</p>
+                <h3 className="font-serif text-3xl sm:text-4xl text-foreground mb-3">
+                  Institutions officielles burkinabè
+                </h3>
+                <p className="text-muted-foreground font-light leading-relaxed">
+                  Ministère, organismes professionnels, festival national et structures de formation qui structurent la filière cinématographique au Burkina Faso.
+                </p>
+              </motion.div>
 
-          {!partnersLoading && (partners ?? []).length > 0 && (
-            <>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
-                {withLogos.map((partner, i) => (
-                  <PartnerCard key={partner.id} partner={partner} index={i} />
-                ))}
-              </div>
-
-              {withoutLogos.length > 0 && (
+              {partnersLoading ? (
+                <div className="text-center py-12 text-muted-foreground">Chargement…</div>
+              ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {withoutLogos.map((partner, i) => (
-                    <PartnerCard
-                      key={partner.id}
-                      partner={partner}
-                      index={withLogos.length + i}
-                    />
+                  {officialPartners.map((partner, i) => (
+                    <PartnerCard key={partner.id} partner={partner} index={i} />
                   ))}
                 </div>
               )}
-            </>
-          )}
+            </div>
+
+            <div className="border-t border-border/30 pt-16 sm:pt-24">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="max-w-3xl mb-8 sm:mb-10"
+              >
+                <p className="uppercase tracking-[0.25em] text-xs text-primary mb-3">Écosystème de collaboration</p>
+                <h3 className="font-serif text-3xl sm:text-4xl text-foreground mb-3">
+                  Partenaires, fonds & réseaux
+                </h3>
+                <p className="text-muted-foreground font-light leading-relaxed">
+                  Fonds, diffuseurs, marchés, programmes de formation et sociétés de production qui rendent les projets possibles.
+                </p>
+              </motion.div>
+
+              {partnersLoading ? (
+                <div className="text-center py-12 text-muted-foreground">Chargement…</div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+                    {otherWithLogos.map((partner, i) => (
+                      <PartnerCard key={partner.id} partner={partner} index={i} />
+                    ))}
+                  </div>
+
+                  {otherWithoutLogos.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {otherWithoutLogos.map((partner, i) => (
+                        <PartnerCard
+                          key={partner.id}
+                          partner={partner}
+                          index={otherWithLogos.length + i}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
