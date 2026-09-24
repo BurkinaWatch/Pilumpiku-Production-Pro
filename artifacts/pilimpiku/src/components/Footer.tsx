@@ -62,7 +62,7 @@ export function Footer() {
             <Link href="/politique-de-confidentialite" className="hover:text-foreground transition-colors">Politique de confidentialité</Link>
             <Link
               href="/admin"
-              className="text-muted-foreground/60 hover:text-primary transition-colors text-xs uppercase tracking-widest"
+              className="text-muted-foreground/35 hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0400] transition-colors text-[10px] uppercase tracking-[0.14em]"
               data-testid="link-admin-footer"
             >
               Admin
