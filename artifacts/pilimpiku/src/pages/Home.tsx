@@ -8,30 +8,7 @@ import {
   useGetSiteSettings,
   useListPartners,
 } from "@workspace/api-client-react";
-
-const PARTNER_LOGOS: Record<string, string> = {
-  FESPACO: "/logos/fespaco.png",
-  Africalia: "/logos/africalia.png",
-  "Confédération AES du Cinéma": "/logos/aes.png",
-  "Sunuy Films": "/logos/sunuy.png",
-  "FDCT-PAIC Burkina Faso": "/logos/fdct.png",
-  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
-  "Durban FilmMart": "/logos/dfmi.png",
-  "Université Gaston Berger": "/logos/ugb.webp",
-  "CNC France": "/logos/cnc.png",
-  "Visions du Réel — Nyon": "/logos/vdr.jpg",
-  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
-  "TV5 Monde": "/logos/tv5monde.png",
-  "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
-  "Les Films de la pluie": "/logos/filmsdelapluie.png",
-  "Tënk": "/logos/tenk.png",
-  "Téléfilm Canada": "/logos/telefilm.png",
-  "Lully Grâce Production": "/logos/lully-grace.png",
-  "FOPICA — Sénégal": "/logos/fopica.jpg",
-  "SENTOO": "/logos/sentoo.png",
-  "Red Sea Fund": "/logos/red-sea-fund.png",
-  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
-};
+import { getAboutPartnerNames, PARTNER_LOGOS } from "@/lib/partner-directory";
 
 const PARTNER_MARKS: Record<string, string> = {
   "FNCA Burkina Faso": "FNCA",
@@ -116,7 +93,7 @@ export default function Home() {
     0,
     3,
   );
-  const partners = (partnersData ?? []).map((p) => p.nom);
+  const partners = partnersData ? getAboutPartnerNames(partnersData) : [];
   const heroSubtitle =
     settings?.heroSubtitle ??
     "Comme le papillon qui sort de sa chrysalide, le cinéma est pour nous un acte de transformation : celle des regards, celle des sociétés, celle d'un continent qui se raconte enfin lui-même.";

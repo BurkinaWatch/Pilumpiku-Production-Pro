@@ -2,6 +2,11 @@ import { useSeo } from "@/hooks/use-seo";
 import { motion } from "framer-motion";
 import { useGetSiteSettings, useListPartners } from "@workspace/api-client-react";
 import { useState } from "react";
+import {
+  OFFICIAL_INSTITUTION_DETAILS,
+  OFFICIAL_PARTNER_ORDER,
+  PARTNER_LOGOS,
+} from "@/lib/partner-directory";
 
 const HISTOIRE_FALLBACK = `Pilumpiku Production est une société de production cinématographique basée au Burkina Faso, spécialisée dans la production et la promotion de films documentaires et de fiction, ainsi que dans les activités de formation, promotion. Notre objectif est de mettre en lumière des sujets singuliers mais universels, qui préservent la dignité humaine, capables d’interroger le monde tout en célébrant l’identité africaine.
 
@@ -34,63 +39,10 @@ const DISTINCTIONS = [
   { annee: "2007", texte: "Prix scénario court métrage avec le projet ‘’Les Bénéficiaires’’" },
 ];
 
-const PARTNER_LOGOS: Record<string, string> = {
-  "FESPACO": "/logos/fespaco.png",
-  "Africalia": "/logos/africalia.png",
-  "Confédération AES du Cinéma": "/logos/aes.png",
-  "Sunuy Films": "/logos/sunuy.png",
-  "FDCT-PAIC Burkina Faso": "/logos/fdct.png",
-  "CNC France": "/logos/cnc.png",
-  "TV5 Monde": "/logos/tv5monde.png",
-  "Téléfilm Canada": "/logos/telefilm.png",
-  "Hot Docs Blue Ice Fund": "/logos/hotdocs.png",
-  "Tënk": "/logos/tenk.png",
-  "Fonds Image de la Francophonie": "/logos/fonds-image-francophonie.png",
-  "Fonds Jeune Création Francophone": "/logos/oif.png",
-  "FONSIC — Côte d'Ivoire": "/logos/fonsic.png",
-  "Aide aux Cinémas du Monde": "/logos/aide-aux-cinemas-du-monde.png",
-  "Université Gaston Berger": "/logos/ugb.webp",
-  "Durban FilmMart": "/logos/dfmi.png",
-  "Les Ateliers Yennenga": "/logos/ateliers-yennenga.png",
-  "DOK Co-Pro Market": "/logos/dok-co-pro-market.jpg",
-  "La Fabrique Cinéma": "/logos/la-fabrique-cinema.png",
-  "EAVE": "/logos/eave.png",
-  "Lully Grâce Production": "/logos/lully-grace.png",
-  "FOPICA — Sénégal": "/logos/fopica.jpg",
-  "SENTOO": "/logos/sentoo.png",
-  "Red Sea Fund": "/logos/red-sea-fund.png",
-  "Miradas Doc — Tenerife": "/logos/miradas-doc.png",
-  "Les Films de la pluie": "/logos/filmsdelapluie.png",
-};
-
 type DisplayPartner = {
   id: number | string;
   nom: string;
   description: string;
-};
-
-const OFFICIAL_PARTNER_ORDER = [
-  "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
-  "ABCA",
-  "FESPACO",
-  "ISIS",
-  "FNCA Burkina Faso",
-  "FDCT-PAIC Burkina Faso",
-];
-
-const OFFICIAL_INSTITUTION_DETAILS: Record<string, Omit<DisplayPartner, "id">> = {
-  "Ministère de la Communication, de la Culture, des Arts et du Tourisme": {
-    nom: "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
-    description: "Institution de tutelle et partenaire public de la filière culturelle et cinématographique au Burkina Faso.",
-  },
-  ABCA: {
-    nom: "ABCA",
-    description: "Organisation professionnelle de référence pour le cinéma et l'audiovisuel burkinabè.",
-  },
-  ISIS: {
-    nom: "ISIS",
-    description: "Institut supérieur de l'image et du son, structure burkinabè de formation aux métiers du cinéma et de l'audiovisuel.",
-  },
 };
 
 function PartnerCard({ partner, index }: { partner: DisplayPartner; index: number }) {
