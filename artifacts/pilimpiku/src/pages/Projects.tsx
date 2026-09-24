@@ -104,7 +104,7 @@ export default function Projects() {
                   : "bg-transparent border-border/50 text-muted-foreground hover:border-primary/50 hover:text-foreground"
               }`}
             >
-              {cat}
+              {cat === "Produit" ? "Production" : cat}
             </button>
           ))}
         </motion.div>
