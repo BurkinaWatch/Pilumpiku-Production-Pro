@@ -41,15 +41,23 @@ export function useAuth(): AuthState {
     };
   }, []);
 
-  const login = useCallback(() => {
-    const meta = import.meta as ImportMeta & { env?: { BASE_URL?: string } };
-    const base = (meta.env?.BASE_URL ?? "/").replace(/\/+$/, "") || "/";
-    window.location.href = `/api/login?returnTo=${encodeURIComponent(base)}`;
+  const navigateToAuth = useCallback((path: string) => {
+    if (window.self !== window.top) {
+      window.open(path, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    window.location.assign(path);
   }, []);
 
+  const login = useCallback(() => {
+    const returnTo = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    navigateToAuth(`/api/login?returnTo=${encodeURIComponent(returnTo)}`);
+  }, [navigateToAuth]);
+
   const logout = useCallback(() => {
-    window.location.href = "/api/logout";
-  }, []);
+    navigateToAuth("/api/logout");
+  }, [navigateToAuth]);
 
   return {
     user,
