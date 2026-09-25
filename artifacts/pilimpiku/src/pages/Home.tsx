@@ -66,7 +66,8 @@ function PartnerLogo({ name }: { name: string }) {
             name === "Ladybirds Films" ||
             name === "CNCM — Mali" ||
             name === "STEPS" ||
-            name === "Generation Africa"
+            name === "Generation Africa" ||
+            name === "The Kingdom"
               ? ""
               : "mix-blend-multiply"
           }`}
