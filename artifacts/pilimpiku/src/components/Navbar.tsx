@@ -110,6 +110,7 @@ const simpleNavLinks = [
   { name: "Projets", path: "/projets" },
   { name: "Actualités", path: "/actualites" },
   { name: "À propos", path: "/a-propos" },
+  { name: "Équipe", path: "/equipe" },
   { name: "Contact", path: "/contact" },
 ];
 

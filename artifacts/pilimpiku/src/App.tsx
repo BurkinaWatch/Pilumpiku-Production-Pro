@@ -10,6 +10,7 @@ import { Cursor } from "@/components/Cursor";
 
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
+const Team = lazy(() => import("@/pages/Team"));
 const Projects = lazy(() => import("@/pages/Projects"));
 const ProjectDetail = lazy(() => import("@/pages/ProjectDetail"));
 const Services = lazy(() => import("@/pages/Services"));
@@ -47,6 +48,7 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/a-propos" component={About} />
+          <Route path="/equipe" component={Team} />
           <Route path="/projets" component={Projects} />
           <Route path="/projets/:slug" component={ProjectDetail} />
           <Route path="/services" component={Services} />
