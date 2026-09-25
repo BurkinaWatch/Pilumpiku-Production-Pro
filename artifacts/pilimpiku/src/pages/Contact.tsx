@@ -123,20 +123,20 @@ export default function Contact() {
                   <h4 className="uppercase tracking-widest text-xs text-muted-foreground mb-1">
                     Téléphone
                   </h4>
-                  <p
-                    className="text-foreground font-serif text-lg sm:text-xl"
-                    data-testid="text-contact-phone"
-                  >
-                    {primaryPhone}
+                  <p className="text-foreground font-serif text-base sm:text-xl whitespace-nowrap">
+                    <span data-testid="text-contact-phone">{primaryPhone}</span>
+                    {secondaryPhone && (
+                      <>
+                        <span className="mx-2 text-muted-foreground">/</span>
+                        <span
+                          className="text-muted-foreground"
+                          data-testid="text-contact-phone-secondary"
+                        >
+                          {secondaryPhone}
+                        </span>
+                      </>
+                    )}
                   </p>
-                  {secondaryPhone && (
-                    <p
-                      className="mt-1 text-muted-foreground font-serif text-sm sm:text-base"
-                      data-testid="text-contact-phone-secondary"
-                    >
-                      {secondaryPhone}
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
