@@ -5,6 +5,8 @@ import { useState } from "react";
 
 const PARTNER_LOGOS: Record<string, string> = {
   "FESPACO": "/logos/fespaco.png",
+  "Ministère de la Communication, de la Culture, des Arts et du Tourisme":
+    "/logos/ministere-communication-burkina.jpg",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
