@@ -60,7 +60,8 @@ function PartnerLogo({ name }: { name: string }) {
             name === "FESPACO" ||
             name === "ABCA" ||
             name === "ISIS" ||
-            name === "Eurodoc"
+            name === "Eurodoc" ||
+            name === "Ouaga Film Lab"
               ? ""
               : "mix-blend-multiply"
           }`}

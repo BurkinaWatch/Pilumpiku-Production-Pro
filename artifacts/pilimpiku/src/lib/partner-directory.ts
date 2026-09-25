@@ -6,6 +6,7 @@ export const PARTNER_LOGOS: Record<string, string> = {
     "/logos/ministere-communication-burkina.jpg",
   "FNCA Burkina Faso": "/logos/fnca.png",
   Eurodoc: "/logos/eurodoc.png",
+  "Ouaga Film Lab": "/logos/ouaga-film-lab.png",
   Africalia: "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
