@@ -213,8 +213,8 @@ export default function Team() {
               <p className="mb-3 text-[0.68rem] uppercase tracking-[0.24em] text-primary">Sur le terrain</p>
               <h2 className="font-serif text-4xl leading-none text-foreground sm:text-6xl">Le plateau, au présent.</h2>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Des fragments de tournage, sans pose. Le travail se lit dans les détails.
+            <p className="max-w-xs text-sm italic leading-relaxed text-muted-foreground">
+              Avant le clap, le film se dessine déjà : une lumière qui glisse, un geste qui cherche, une équipe qui invente.
             </p>
           </div>
 
