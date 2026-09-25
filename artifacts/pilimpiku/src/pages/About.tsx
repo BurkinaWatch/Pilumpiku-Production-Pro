@@ -67,7 +67,9 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
               src={logoSrc}
               alt={partner.nom}
               className={`w-full h-full max-w-full max-h-full object-contain ${
-                partner.nom === "FESPACO" || partner.nom === "ABCA"
+                partner.nom === "FESPACO" ||
+                partner.nom === "ABCA" ||
+                partner.nom === "ISIS"
                   ? ""
                   : "mix-blend-multiply"
               }`}

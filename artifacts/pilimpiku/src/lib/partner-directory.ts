@@ -1,6 +1,7 @@
 export const PARTNER_LOGOS: Record<string, string> = {
   FESPACO: "/logos/fespaco.png",
   ABCA: "/logos/abca.png",
+  ISIS: "/logos/isis-se.png",
   "Ministère de la Communication, de la Culture, des Arts et du Tourisme":
     "/logos/ministere-communication-burkina.jpg",
   Africalia: "/logos/africalia.png",

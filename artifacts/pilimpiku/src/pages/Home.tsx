@@ -57,7 +57,9 @@ function PartnerLogo({ name }: { name: string }) {
           alt=""
           aria-hidden="true"
           className={`w-full h-full max-w-full max-h-full object-contain ${
-            name === "FESPACO" || name === "ABCA" ? "" : "mix-blend-multiply"
+            name === "FESPACO" || name === "ABCA" || name === "ISIS"
+              ? ""
+              : "mix-blend-multiply"
           }`}
         />
       ) : (
