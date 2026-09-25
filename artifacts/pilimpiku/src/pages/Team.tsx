@@ -195,7 +195,7 @@ export default function Team() {
               attentions de toutes les personnes présentes.
             </p>
             <a
-              href="#gestes"
+              href="#terrain"
               className="flex w-fit items-center gap-3 text-[0.68rem] uppercase tracking-[0.22em] text-primary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               data-testid="link-team-scroll"
             >
@@ -206,36 +206,7 @@ export default function Team() {
         </div>
       </section>
 
-      <section id="gestes" className="container mx-auto px-4 py-20 sm:px-6 sm:py-28 md:px-12">
-        <div className="grid gap-10 md:grid-cols-[0.72fr_1.28fr] md:gap-20">
-          <div>
-            <p className="mb-4 text-[0.68rem] uppercase tracking-[0.24em] text-primary">
-              Les gestes du cinéma
-            </p>
-            <h2 className="max-w-none whitespace-nowrap font-serif text-[clamp(1.125rem,2.25vw,2.25rem)] leading-none text-foreground">
-              Le film, une oeuvre collective
-            </h2>
-          </div>
-          <div className="max-w-2xl space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            <p>
-              Une caméra se déplace, une lumière s&apos;ouvre, une voix se pose. Autour d&apos;elle,
-              une équipe observe, propose, ajuste et recommence. C&apos;est cette circulation qui
-              donne sa force à chaque image.
-            </p>
-            <p>
-              Chez Pilumpiku, les films documentaires et de fiction naissent d&apos;un travail
-              attentif aux personnes et aux lieux. Les coulisses ne sont pas à côté du récit :
-              elles en sont la matière, le rythme et la mémoire.
-            </p>
-            <div className="flex items-center gap-3 pt-2 text-[0.68rem] uppercase tracking-[0.2em] text-primary/80">
-              <span className="h-px w-10 bg-primary/60" />
-              Une présence après l&apos;autre
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border/40 bg-[#21120b]/55">
+      <section id="terrain" className="border-y border-border/40 bg-[#21120b]/55">
         <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 md:px-12">
           <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-14 sm:flex-row sm:items-end">
             <div>
