@@ -123,7 +123,7 @@ export default function About() {
 
   const histoire = settings?.aboutHistoire || HISTOIRE_FALLBACK;
   const founderName = settings?.founderName || "Mamounata Nikiéma";
-  const founderTitle = settings?.founderTitle || "Fondatrice · Réalisatrice & Productrice · Présidente FNCA";
+  const founderTitle = settings?.founderTitle || "Fondatrice · Réalisatrice & Productrice · Entrepreuneure Culturelle";
   const founderBio = settings?.founderBio || FOUNDER_BIO_FALLBACK;
   const founderImage = settings?.founderImage || "/img/mamounata-spla.jpg";
 
