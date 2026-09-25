@@ -212,7 +212,7 @@ export default function Team() {
             <p className="mb-4 text-[0.68rem] uppercase tracking-[0.24em] text-primary">
               Les gestes du cinéma
             </p>
-            <h2 className="max-w-xs font-serif text-4xl leading-[0.95] text-foreground sm:text-5xl">
+            <h2 className="max-w-none whitespace-nowrap font-serif text-[clamp(1.125rem,2.25vw,2.25rem)] leading-none text-foreground">
               Le film, une oeuvre collective
             </h2>
           </div>
