@@ -286,28 +286,16 @@ export default function Team() {
         </div>
       </section>
 
-      <section className="border-t border-border/40 bg-[#140a06]">
-        <div className="container mx-auto px-4 py-20 sm:px-6 sm:py-28 md:px-12">
-          <div className="grid gap-8 md:grid-cols-[0.65fr_1.35fr] md:gap-16">
-            <div>
-              <p className="mb-4 text-[0.68rem] uppercase tracking-[0.24em] text-primary">La suite du cadre</p>
-              <h2 className="font-serif text-4xl leading-none text-foreground sm:text-5xl">
-                Les histoires continuent.
-              </h2>
-            </div>
-            <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
-              <Link
-                href="/contact"
-                className="group flex w-fit shrink-0 items-center gap-3 border-b border-primary/60 pb-2 text-[0.68rem] uppercase tracking-[0.2em] text-primary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                data-testid="link-team-contact"
-              >
-                Parlons d&apos;un projet
-                <ArrowUpRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="container mx-auto flex justify-end px-4 py-10 sm:px-6 md:px-12">
+        <Link
+          href="/contact"
+          className="group flex w-fit items-center gap-3 border-b border-primary/60 pb-2 text-[0.68rem] uppercase tracking-[0.2em] text-primary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          data-testid="link-team-contact"
+        >
+          Parlons d&apos;un projet
+          <ArrowUpRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </Link>
+      </div>
 
       <AnimatePresence>
         {selectedImage !== null && (
