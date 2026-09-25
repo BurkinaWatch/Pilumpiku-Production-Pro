@@ -2,6 +2,7 @@ import { useSeo } from "@/hooks/use-seo";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Camera, Clapperboard, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
 
 import imageLight from "@assets/download_1790322562405.png";
 import imageCamera from "@assets/download_1790322616731.png";
@@ -333,14 +334,14 @@ export default function Team() {
                 porté sur le monde. C&apos;est ce mouvement collectif que nous emportons vers le
                 prochain film.
               </p>
-              <a
+              <Link
                 href="/contact"
                 className="group flex w-fit shrink-0 items-center gap-3 border-b border-primary/60 pb-2 text-[0.68rem] uppercase tracking-[0.2em] text-primary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 data-testid="link-team-contact"
               >
                 Parlons d&apos;un projet
                 <ArrowUpRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
