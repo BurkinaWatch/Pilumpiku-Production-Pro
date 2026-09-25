@@ -92,8 +92,11 @@ export default function Partners() {
 
   const { data: partners, isLoading } = useListPartners();
 
-  const withLogos = (partners ?? []).filter((p) => PARTNER_LOGOS[p.nom]);
-  const withoutLogos = (partners ?? []).filter((p) => !PARTNER_LOGOS[p.nom]);
+  const visiblePartners = (partners ?? []).filter(
+    (partner) => partner.nom !== "Confédération AES du Cinéma",
+  );
+  const withLogos = visiblePartners.filter((p) => PARTNER_LOGOS[p.nom]);
+  const withoutLogos = visiblePartners.filter((p) => !PARTNER_LOGOS[p.nom]);
 
   return (
     <div className="flex flex-col w-full bg-background pt-32 pb-24 min-h-screen">
@@ -120,7 +123,7 @@ export default function Partners() {
           </div>
         )}
 
-        {!isLoading && (partners ?? []).length > 0 && (
+        {!isLoading && visiblePartners.length > 0 && (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
               {withLogos.map((partner, i) => (
