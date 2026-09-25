@@ -769,7 +769,7 @@ const SETTINGS = {
   aboutVision:
     "Faire du documentaire un espace d'écoute, de mémoire et de transmission. Mettre à l'honneur les voix des femmes, des jeunes et des oubliés de l'histoire officielle. Soutenir l'émergence d'une nouvelle génération de cinéastes burkinabè et sahéliens, libres dans leurs formes et exigeants dans leurs récits.",
   founderName: "Mamounata Nikiéma",
-  founderTitle: "Fondatrice · Réalisatrice & Productrice · Entrepreuneure Culturelle",
+  founderTitle: "Fondatrice · Réalisatrice · Productrice & Entrepreneure Culturelle",
   founderBio:
     "Spécialisée en réalisation documentaire de création et en Communication Pour le Développement (CPD), Mamounata Nikièma mène de front sa carrière de réalisatrice (depuis 2007) et celle de productrice (Pilumpiku Produdction depuis 2011). Elle est très impliquée dans les réseaux de cinéastes burkinabè (Africadoc Burkina, Guilde des scénaristes, Association des producteurs du Burkina Faso, Fédération Nationale du Cinéma et de l'Audiovisuel...), et a participé activement depuis plusieurs années au Fespaco, au sein de l'Espace Junior jusqu'en 2017. Depuis 2014 elle est également formatrice lors des résidences d’écriture documentaire de Bobo-Dioulasso et consultante, mentor dans les laboratoires de développement et de coproduction. En 2018 elle lance l'évènementiel Ciné-équipement et la plateforme digitale sur le cinéma Sulunsuku (www.sulunsuku.com ) en janvier 2019. Lors du Fespaco 2021 elle a été décorée du titre de Chevalier de l’Ordre de Mérite, des Arts, des Lettres et de la Communication avec Agrafe ‘’Cinématograpghie’’.",
   founderImage: "/img/mamounata-spla.jpg",
