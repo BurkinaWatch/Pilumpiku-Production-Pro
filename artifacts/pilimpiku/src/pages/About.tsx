@@ -66,7 +66,11 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
             <img
               src={logoSrc}
               alt={partner.nom}
-              className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
+              className={`w-full h-full max-w-full max-h-full object-contain ${
+                partner.nom === "FESPACO" || partner.nom === "ABCA"
+                  ? ""
+                  : "mix-blend-multiply"
+              }`}
               onError={() => setLogoError(true)}
             />
           </div>

@@ -56,7 +56,9 @@ function PartnerLogo({ name }: { name: string }) {
           src={logo}
           alt=""
           aria-hidden="true"
-          className="w-full h-full max-w-full max-h-full object-contain mix-blend-multiply"
+          className={`w-full h-full max-w-full max-h-full object-contain ${
+            name === "FESPACO" || name === "ABCA" ? "" : "mix-blend-multiply"
+          }`}
         />
       ) : (
         <span className="font-serif text-sm sm:text-base md:text-lg tracking-[0.12em] text-[#2B1305] text-center">

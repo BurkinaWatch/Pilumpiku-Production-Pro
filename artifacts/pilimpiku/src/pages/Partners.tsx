@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const PARTNER_LOGOS: Record<string, string> = {
   "FESPACO": "/logos/fespaco.png",
+  "ABCA": "/logos/abca.png",
   "Ministère de la Communication, de la Culture, des Arts et du Tourisme":
     "/logos/ministere-communication-burkina.jpg",
   "Africalia": "/logos/africalia.png",
@@ -56,7 +57,9 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
               src={logoSrc}
               alt={partner.nom}
               className={`w-full h-full max-w-full max-h-full object-contain ${
-                partner.nom === "FESPACO" ? "" : "mix-blend-multiply"
+                partner.nom === "FESPACO" || partner.nom === "ABCA"
+                  ? ""
+                  : "mix-blend-multiply"
               }`}
               onError={() => setLogoError(true)}
             />
