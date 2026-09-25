@@ -322,7 +322,7 @@ export default function Sulunsuku() {
               La plateforme de valorisation de l’expertise dans le cinéma et l’audiovisuel
             </p>
             <p className="text-muted-foreground text-base sm:text-lg font-light max-w-lg leading-relaxed">
-              Entreprise spécialisée dans la réalisation de films documentaires, au service du 7<sup>e</sup> art burkinabè et africain.
+              Sulunsuku est une plateforme en ligne dédiée à la promotion et au développement du cinéma et de l’audiovisuel africains. Elle rapproche les professionnels et les cinéphiles en facilitant l’accès à l’information et aux compétences du secteur grâce à son magazine « Avant-Première », à un répertoire de professionnels, de structures et d’écoles de cinéma, ainsi qu’à des contenus de formation vidéo. Elle vise aussi à soutenir la professionnalisation et à créer de nouvelles possibilités d’activités dans les industries creatives via le digital.
             </p>
           </motion.div>
           <motion.button onClick={scrollToContent} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }} className="mt-10 flex items-center gap-2 text-muted-foreground text-xs uppercase tracking-widest hover:text-primary transition-colors group">
