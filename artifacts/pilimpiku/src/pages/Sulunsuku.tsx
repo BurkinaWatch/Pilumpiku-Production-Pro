@@ -319,7 +319,7 @@ export default function Sulunsuku() {
               Sulun<span className="text-primary italic">suku</span>
             </h1>
             <p className="font-serif text-xl sm:text-2xl italic text-primary/90 max-w-2xl mb-4">
-              La plateforme de valorisation de l’expertise dans le cinéma et l’audiovisuel
+              La plateforme en ligne qui rapproche les professionnels et les cinéphiles, tout en valorisant l’expertise des industries créatives africaines.
             </p>
             <p className="text-muted-foreground text-base sm:text-lg font-light max-w-lg leading-relaxed">
               Sulunsuku est une plateforme en ligne dédiée à la promotion et au développement du cinéma et de l’audiovisuel africains. Elle rapproche les professionnels et les cinéphiles en facilitant l’accès à l’information et aux compétences du secteur grâce à son magazine « Avant-Première », à un répertoire de professionnels, de structures et d’écoles de cinéma, ainsi qu’à des contenus de formation vidéo. Elle vise aussi à soutenir la professionnalisation et à créer de nouvelles possibilités d’activités dans les industries creatives via le digital.
