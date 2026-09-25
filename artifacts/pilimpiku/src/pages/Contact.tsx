@@ -63,7 +63,13 @@ export default function Contact() {
   }
 
   const email = settings?.contactEmail ?? "contact@pilumpiku.bf";
-  const phone = settings?.contactPhone ?? "+226 00 00 00 00";
+  const primaryPhone = "+226 74 69 04 42";
+  const savedPhone = settings?.contactPhone?.trim();
+  const secondaryPhone =
+    savedPhone &&
+    savedPhone.replace(/\D/g, "") !== primaryPhone.replace(/\D/g, "")
+      ? savedPhone
+      : null;
 
   return (
     <div className="flex flex-col w-full bg-background pt-24 sm:pt-32 pb-16 sm:pb-24 min-h-screen">
@@ -121,8 +127,16 @@ export default function Contact() {
                     className="text-foreground font-serif text-lg sm:text-xl"
                     data-testid="text-contact-phone"
                   >
-                    {phone}
+                    {primaryPhone}
                   </p>
+                  {secondaryPhone && (
+                    <p
+                      className="mt-1 text-muted-foreground font-serif text-sm sm:text-base"
+                      data-testid="text-contact-phone-secondary"
+                    >
+                      {secondaryPhone}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
