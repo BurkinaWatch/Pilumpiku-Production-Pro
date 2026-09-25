@@ -36,8 +36,11 @@ export function Footer() {
             <h4 className="font-serif text-lg text-foreground mb-4 sm:mb-6">Contact & Réseaux</h4>
             <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-muted-foreground text-sm">
               <li><a href="mailto:pilumpikuproduction@gmail.com" className="hover:text-primary transition-colors break-all">pilumpikuproduction@gmail.com</a></li>
-              <li><a href="tel:+22674690442" className="hover:text-primary transition-colors">+226 74 69 04 42</a></li>
-              <li><a href="tel:+22678701232" className="hover:text-primary transition-colors">+226 78 70 12 32</a></li>
+              <li className="whitespace-nowrap">
+                <a href="tel:+22674690442" className="hover:text-primary transition-colors">+226 74 69 04 42</a>
+                <span className="mx-2">/</span>
+                <a href="tel:+22678701232" className="hover:text-primary transition-colors">+226 78 70 12 32</a>
+              </li>
             </ul>
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               <a href="https://www.instagram.com/mamounatan?igsh=MTZoaWZpYXdsaHE1Mw==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-11 sm:h-11 bg-foreground/10 border border-foreground/20 flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
