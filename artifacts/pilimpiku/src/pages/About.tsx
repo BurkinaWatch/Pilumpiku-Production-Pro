@@ -75,7 +75,8 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
                 partner.nom === "Eurodoc" ||
                 partner.nom === "Ouaga Film Lab" ||
                 partner.nom === "Visions du Réel — Nyon" ||
-                partner.nom === "Ladybirds Films"
+                partner.nom === "Ladybirds Films" ||
+                partner.nom === "CNCM — Mali"
                   ? ""
                   : "mix-blend-multiply"
               }`}

@@ -63,7 +63,8 @@ function PartnerLogo({ name }: { name: string }) {
             name === "Eurodoc" ||
             name === "Ouaga Film Lab" ||
             name === "Visions du Réel — Nyon" ||
-            name === "Ladybirds Films"
+            name === "Ladybirds Films" ||
+            name === "CNCM — Mali"
               ? ""
               : "mix-blend-multiply"
           }`}

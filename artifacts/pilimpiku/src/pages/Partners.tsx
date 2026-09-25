@@ -15,6 +15,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Ouaga Film Lab": "/logos/ouaga-film-lab.png",
   "Visions du Réel — Nyon": "/logos/visions-du-reel-nyon.png",
   "Ladybirds Films": "/logos/ladybirds-films.png",
+  "CNCM — Mali": "/logos/cncm-mali.png",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
@@ -71,7 +72,8 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
                 partner.nom === "Eurodoc" ||
                 partner.nom === "Ouaga Film Lab" ||
                 partner.nom === "Visions du Réel — Nyon" ||
-                partner.nom === "Ladybirds Films"
+                partner.nom === "Ladybirds Films" ||
+                partner.nom === "CNCM — Mali"
                   ? ""
                   : "mix-blend-multiply"
               }`}

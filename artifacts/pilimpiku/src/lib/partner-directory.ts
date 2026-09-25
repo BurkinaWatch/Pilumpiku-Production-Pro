@@ -9,6 +9,7 @@ export const PARTNER_LOGOS: Record<string, string> = {
   "Ouaga Film Lab": "/logos/ouaga-film-lab.png",
   "Visions du Réel — Nyon": "/logos/visions-du-reel-nyon.png",
   "Ladybirds Films": "/logos/ladybirds-films.png",
+  "CNCM — Mali": "/logos/cncm-mali.png",
   Africalia: "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
