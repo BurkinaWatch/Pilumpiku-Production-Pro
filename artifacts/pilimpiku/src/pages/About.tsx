@@ -77,7 +77,8 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
                 partner.nom === "Visions du Réel — Nyon" ||
                 partner.nom === "Ladybirds Films" ||
                 partner.nom === "CNCM — Mali" ||
-                partner.nom === "STEPS"
+                partner.nom === "STEPS" ||
+                partner.nom === "Generation Africa"
                   ? ""
                   : "mix-blend-multiply"
               }`}

@@ -65,7 +65,8 @@ function PartnerLogo({ name }: { name: string }) {
             name === "Visions du Réel — Nyon" ||
             name === "Ladybirds Films" ||
             name === "CNCM — Mali" ||
-            name === "STEPS"
+            name === "STEPS" ||
+            name === "Generation Africa"
               ? ""
               : "mix-blend-multiply"
           }`}

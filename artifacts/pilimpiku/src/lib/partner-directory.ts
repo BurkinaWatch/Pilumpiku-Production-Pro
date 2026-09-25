@@ -11,6 +11,7 @@ export const PARTNER_LOGOS: Record<string, string> = {
   "Ladybirds Films": "/logos/ladybirds-films.png",
   "CNCM — Mali": "/logos/cncm-mali.png",
   STEPS: "/logos/steps.svg",
+  "Generation Africa": "/logos/generation-africa.png",
   Africalia: "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
