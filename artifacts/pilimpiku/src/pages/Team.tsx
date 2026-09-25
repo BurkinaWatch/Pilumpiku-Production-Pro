@@ -182,11 +182,7 @@ export default function Team() {
             transition={{ duration: 0.75, delay: 0.2 }}
             className="max-w-4xl font-serif text-[3.6rem] leading-[0.86] text-foreground sm:text-7xl md:text-8xl lg:text-[9.2rem]"
           >
-            Le film
-            <br />
-            <span className="pl-[12vw] text-primary">se fait</span>
-            <br />
-            <span className="text-foreground/80">ensemble.</span>
+            Le film, une oeuvre collective
           </motion.h1>
           <motion.div
             initial={{ opacity: 0 }}
