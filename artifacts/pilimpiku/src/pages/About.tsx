@@ -49,6 +49,7 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
   const [logoError, setLogoError] = useState(false);
   const logoSrc = PARTNER_LOGOS[partner.nom];
   const hasLogo = !!logoSrc && !logoError;
+  const displayName = partner.nom === "ISIS" ? "ISIS/SE" : partner.nom;
 
   return (
     <motion.div
@@ -65,7 +66,7 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
           <div className="w-full aspect-[4/3] bg-[#e9dfd2] border-b border-border/30 flex items-center justify-center p-2.5 sm:p-3">
             <img
               src={logoSrc}
-              alt={partner.nom}
+              alt={displayName}
               className={`w-full h-full max-w-full max-h-full object-contain ${
                 partner.nom === "FESPACO" ||
                 partner.nom === "ABCA" ||
@@ -78,7 +79,7 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
           </div>
           <div className="px-5 py-4 flex flex-col items-center flex-1">
             <h3 className="font-serif text-base text-foreground mb-1.5 group-hover:text-primary transition-colors leading-snug">
-              {partner.nom}
+              {displayName}
             </h3>
             <p className="text-xs text-muted-foreground font-light leading-relaxed">
               {partner.description}
@@ -89,7 +90,7 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
         <div className="px-6 py-8 flex flex-col items-center justify-center flex-1 min-h-[160px]">
           <div className="w-10 h-px bg-primary/60 mb-5" />
           <h3 className="font-serif text-lg text-foreground mb-2.5 group-hover:text-primary transition-colors leading-snug">
-            {partner.nom}
+            {displayName}
           </h3>
           <p className="text-xs text-muted-foreground font-light leading-relaxed">
             {partner.description}
