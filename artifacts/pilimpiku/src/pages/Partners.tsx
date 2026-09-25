@@ -19,6 +19,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "STEPS": "/logos/steps.svg",
   "Generation Africa": "/logos/generation-africa.png",
   "The Kingdom": "/logos/the-kingdom.png",
+  "DS Productions": "/logos/ds-productions.png",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
@@ -79,7 +80,8 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
                 partner.nom === "CNCM — Mali" ||
                 partner.nom === "STEPS" ||
                 partner.nom === "Generation Africa" ||
-                partner.nom === "The Kingdom"
+                partner.nom === "The Kingdom" ||
+                partner.nom === "DS Productions"
                   ? ""
                   : "mix-blend-multiply"
               }`}

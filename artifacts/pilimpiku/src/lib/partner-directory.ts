@@ -13,6 +13,7 @@ export const PARTNER_LOGOS: Record<string, string> = {
   STEPS: "/logos/steps.svg",
   "Generation Africa": "/logos/generation-africa.png",
   "The Kingdom": "/logos/the-kingdom.png",
+  "DS Productions": "/logos/ds-productions.png",
   Africalia: "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",

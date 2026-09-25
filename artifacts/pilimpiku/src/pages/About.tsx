@@ -79,7 +79,8 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
                 partner.nom === "CNCM — Mali" ||
                 partner.nom === "STEPS" ||
                 partner.nom === "Generation Africa" ||
-                partner.nom === "The Kingdom"
+                partner.nom === "The Kingdom" ||
+                partner.nom === "DS Productions"
                   ? ""
                   : "mix-blend-multiply"
               }`}
