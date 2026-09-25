@@ -13,6 +13,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "FNCA Burkina Faso": "/logos/fnca.png",
   "Eurodoc": "/logos/eurodoc.png",
   "Ouaga Film Lab": "/logos/ouaga-film-lab.png",
+  "Visions du Réel — Nyon": "/logos/visions-du-reel-nyon.png",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
@@ -67,7 +68,8 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
                 partner.nom === "ABCA" ||
                 partner.nom === "ISIS" ||
                 partner.nom === "Eurodoc" ||
-                partner.nom === "Ouaga Film Lab"
+                partner.nom === "Ouaga Film Lab" ||
+                partner.nom === "Visions du Réel — Nyon"
                   ? ""
                   : "mix-blend-multiply"
               }`}

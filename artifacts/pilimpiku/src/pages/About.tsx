@@ -73,7 +73,8 @@ function PartnerCard({ partner, index }: { partner: DisplayPartner; index: numbe
                 partner.nom === "ABCA" ||
                 partner.nom === "ISIS" ||
                 partner.nom === "Eurodoc" ||
-                partner.nom === "Ouaga Film Lab"
+                partner.nom === "Ouaga Film Lab" ||
+                partner.nom === "Visions du Réel — Nyon"
                   ? ""
                   : "mix-blend-multiply"
               }`}

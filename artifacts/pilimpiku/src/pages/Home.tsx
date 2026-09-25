@@ -61,7 +61,8 @@ function PartnerLogo({ name }: { name: string }) {
             name === "ABCA" ||
             name === "ISIS" ||
             name === "Eurodoc" ||
-            name === "Ouaga Film Lab"
+            name === "Ouaga Film Lab" ||
+            name === "Visions du Réel — Nyon"
               ? ""
               : "mix-blend-multiply"
           }`}
