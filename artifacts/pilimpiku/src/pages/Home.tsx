@@ -47,7 +47,7 @@ function PartnerLogo({ name }: { name: string }) {
 
   return (
     <div
-      className="h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm bg-[#e9dfd2] border border-primary/15 p-2 sm:p-3 flex items-center justify-center shadow-sm"
+      className={`h-14 w-28 sm:h-16 sm:w-36 md:h-20 md:w-44 shrink-0 rounded-sm ${name === "STEPS" ? "bg-[#171717]" : "bg-[#e9dfd2]"} border border-primary/15 p-2 sm:p-3 flex items-center justify-center shadow-sm`}
       role="img"
       aria-label={name}
     >
@@ -64,7 +64,8 @@ function PartnerLogo({ name }: { name: string }) {
             name === "Ouaga Film Lab" ||
             name === "Visions du Réel — Nyon" ||
             name === "Ladybirds Films" ||
-            name === "CNCM — Mali"
+            name === "CNCM — Mali" ||
+            name === "STEPS"
               ? ""
               : "mix-blend-multiply"
           }`}

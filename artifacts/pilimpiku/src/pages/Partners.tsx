@@ -16,6 +16,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Visions du Réel — Nyon": "/logos/visions-du-reel-nyon.png",
   "Ladybirds Films": "/logos/ladybirds-films.png",
   "CNCM — Mali": "/logos/cncm-mali.png",
+  "STEPS": "/logos/steps.svg",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
@@ -61,7 +62,7 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
     >
       {hasLogo ? (
         <>
-          <div className="w-full aspect-[4/3] bg-[#e9dfd2] border-b border-border/30 flex items-center justify-center p-2.5 sm:p-3">
+          <div className={`w-full aspect-[4/3] ${partner.nom === "STEPS" ? "bg-[#171717]" : "bg-[#e9dfd2]"} border-b border-border/30 flex items-center justify-center p-2.5 sm:p-3`}>
             <img
               src={logoSrc}
               alt={displayName}
@@ -73,7 +74,8 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
                 partner.nom === "Ouaga Film Lab" ||
                 partner.nom === "Visions du Réel — Nyon" ||
                 partner.nom === "Ladybirds Films" ||
-                partner.nom === "CNCM — Mali"
+                partner.nom === "CNCM — Mali" ||
+                partner.nom === "STEPS"
                   ? ""
                   : "mix-blend-multiply"
               }`}
