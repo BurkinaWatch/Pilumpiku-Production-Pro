@@ -33,6 +33,10 @@ export const PARTNER_LOGOS: Record<string, string> = {
   "Les Films de la pluie": "/logos/filmsdelapluie.png",
 };
 
+export const EXCLUDED_PUBLIC_PARTNERS = new Set([
+  "Confédération AES du Cinéma",
+]);
+
 export const OFFICIAL_PARTNER_ORDER = [
   "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
   "ABCA",
@@ -71,12 +75,15 @@ export const OFFICIAL_INSTITUTION_DETAILS: Record<
 export function getAboutPartnerNames(
   partners: ReadonlyArray<{ nom: string }>,
 ): string[] {
-  const availableNames = new Set(partners.map(({ nom }) => nom));
+  const visiblePartners = partners.filter(
+    ({ nom }) => !EXCLUDED_PUBLIC_PARTNERS.has(nom),
+  );
+  const availableNames = new Set(visiblePartners.map(({ nom }) => nom));
   const officialNames = OFFICIAL_PARTNER_ORDER.filter(
     (name) => availableNames.has(name) || name in OFFICIAL_INSTITUTION_DETAILS,
   );
   const officialNameSet = new Set(officialNames);
-  const partnersWithLogos = partners
+  const partnersWithLogos = visiblePartners
     .filter(
       ({ nom }) => !officialNameSet.has(nom) && Boolean(PARTNER_LOGOS[nom]),
     )

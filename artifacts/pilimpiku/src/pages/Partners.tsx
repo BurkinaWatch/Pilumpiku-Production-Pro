@@ -2,6 +2,7 @@ import { useSeo } from "@/hooks/use-seo";
 import { motion } from "framer-motion";
 import { useListPartners } from "@workspace/api-client-react";
 import { useState } from "react";
+import { EXCLUDED_PUBLIC_PARTNERS } from "@/lib/partner-directory";
 
 const PARTNER_LOGOS: Record<string, string> = {
   "FESPACO": "/logos/fespaco.png",
@@ -105,7 +106,7 @@ export default function Partners() {
   const { data: partners, isLoading } = useListPartners();
 
   const visiblePartners = (partners ?? []).filter(
-    (partner) => partner.nom !== "Confédération AES du Cinéma",
+    (partner) => !EXCLUDED_PUBLIC_PARTNERS.has(partner.nom),
   );
   const withLogos = visiblePartners.filter((p) => PARTNER_LOGOS[p.nom]);
   const withoutLogos = visiblePartners.filter((p) => !PARTNER_LOGOS[p.nom]);

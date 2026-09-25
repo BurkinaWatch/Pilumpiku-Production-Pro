@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useGetSiteSettings, useListPartners } from "@workspace/api-client-react";
 import { useState } from "react";
 import {
+  EXCLUDED_PUBLIC_PARTNERS,
   OFFICIAL_INSTITUTION_DETAILS,
   OFFICIAL_PARTNER_ORDER,
   PARTNER_LOGOS,
@@ -118,8 +119,11 @@ export default function About() {
   const founderBio = settings?.founderBio || FOUNDER_BIO_FALLBACK;
   const founderImage = settings?.founderImage || "/img/mamounata-spla.jpg";
 
+  const visiblePartners = (partners ?? []).filter(
+    (partner) => !EXCLUDED_PUBLIC_PARTNERS.has(partner.nom),
+  );
   const partnersByName = new Map<string, DisplayPartner>();
-  (partners ?? []).forEach((partner) => partnersByName.set(partner.nom, partner));
+  visiblePartners.forEach((partner) => partnersByName.set(partner.nom, partner));
   const officialPartners: DisplayPartner[] = OFFICIAL_PARTNER_ORDER.flatMap<DisplayPartner>((name, index) => {
     const partner = partnersByName.get(name);
     if (partner) return [partner];
@@ -128,7 +132,7 @@ export default function About() {
     return fallback ? [{ id: `official-${index}`, ...fallback }] : [];
   });
   const officialNames = new Set(officialPartners.map((partner) => partner.nom));
-  const otherPartners = (partners ?? []).filter((partner) => !officialNames.has(partner.nom));
+  const otherPartners = visiblePartners.filter((partner) => !officialNames.has(partner.nom));
   const otherWithLogos = otherPartners.filter((partner) => PARTNER_LOGOS[partner.nom]);
   const otherWithoutLogos = otherPartners.filter((partner) => !PARTNER_LOGOS[partner.nom]);
 
