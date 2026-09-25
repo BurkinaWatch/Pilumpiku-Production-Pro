@@ -9,6 +9,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "ISIS": "/logos/isis-se.png",
   "Ministère de la Communication, de la Culture, des Arts et du Tourisme":
     "/logos/ministere-communication-burkina.jpg",
+  "FNCA Burkina Faso": "/logos/fnca.png",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
