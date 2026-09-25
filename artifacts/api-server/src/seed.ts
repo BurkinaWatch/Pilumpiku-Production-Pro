@@ -744,6 +744,12 @@ const PARTNERS = [
       "European Audiovisual Entrepreneurs, programme européen de formation et de développement pour les producteurs.",
     sortOrder: 330,
   },
+  {
+    nom: "Eurodoc",
+    description:
+      "Programme européen de formation et de développement pour les professionnels du documentaire.",
+    sortOrder: 340,
+  },
 ];
 
 const SETTINGS = {

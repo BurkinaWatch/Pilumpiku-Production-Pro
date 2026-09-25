@@ -10,6 +10,7 @@ const PARTNER_LOGOS: Record<string, string> = {
   "Ministère de la Communication, de la Culture, des Arts et du Tourisme":
     "/logos/ministere-communication-burkina.jpg",
   "FNCA Burkina Faso": "/logos/fnca.png",
+  "Eurodoc": "/logos/eurodoc.png",
   "Africalia": "/logos/africalia.png",
   "Confédération AES du Cinéma": "/logos/aes.png",
   "Sunuy Films": "/logos/sunuy.png",
@@ -62,7 +63,8 @@ function PartnerCard({ partner, index }: { partner: { id: number; nom: string; d
               className={`w-full h-full max-w-full max-h-full object-contain ${
                 partner.nom === "FESPACO" ||
                 partner.nom === "ABCA" ||
-                partner.nom === "ISIS"
+                partner.nom === "ISIS" ||
+                partner.nom === "Eurodoc"
                   ? ""
                   : "mix-blend-multiply"
               }`}
