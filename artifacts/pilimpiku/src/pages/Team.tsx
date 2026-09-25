@@ -296,11 +296,6 @@ export default function Team() {
               </h2>
             </div>
             <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
-              <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Chaque tournage laisse des traces : dans un lieu, dans une équipe, dans le regard
-                porté sur le monde. C&apos;est ce mouvement collectif que nous emportons vers le
-                prochain film.
-              </p>
               <Link
                 href="/contact"
                 className="group flex w-fit shrink-0 items-center gap-3 border-b border-primary/60 pb-2 text-[0.68rem] uppercase tracking-[0.2em] text-primary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
