@@ -82,7 +82,7 @@ const programmes: Programme[] = [
     bordure: "border-[#4A8BA0]/40",
     accentColor: "#5BA3BB",
     description:
-      "Maîtrisez l'art du pitch en anglais et conquérez les marchés internationaux. Un programme de formation spécialisé pour préparer les cinéastes burkinabè à présenter leurs projets sur les grandes scènes mondiales.",
+      "Maîtrisez l'art du pitch et conquérez les marchés internationaux. Un programme de formation spécialisé pour préparer les cinéastes burkinabè à présenter leurs projets sur les grandes scènes mondiales.",
     details: ["Pitch pour marchés internationaux", "Techniques de présentation de projets", "Préparation aux marchés & co-productions", "En partenariat avec le Salon CinémalEch"],
   },
 ];
