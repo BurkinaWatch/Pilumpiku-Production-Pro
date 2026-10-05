@@ -142,6 +142,81 @@
   --spacing: 0.25rem;
 }
 
+.light {
+  color-scheme: light;
+  --background: 39 43% 94%;
+  --foreground: 20 48% 12%;
+  --primary: 27 88% 33%;
+  --primary-foreground: 39 43% 96%;
+  --secondary: 24 44% 86%;
+  --secondary-foreground: 20 48% 12%;
+  --muted: 37 28% 88%;
+  --muted-foreground: 23 22% 36%;
+  --accent: 27 88% 33%;
+  --accent-foreground: 39 43% 96%;
+  --card: 40 40% 97%;
+  --card-foreground: 20 48% 12%;
+  --card-border: 28 27% 79%;
+  --border: 28 27% 79%;
+  --input: 28 27% 79%;
+  --ring: 27 88% 33%;
+  --destructive: 0 66% 42%;
+  --destructive-foreground: 39 43% 96%;
+  --popover: 40 40% 97%;
+  --popover-foreground: 20 48% 12%;
+  --popover-border: 28 27% 79%;
+  --sidebar: 39 43% 94%;
+  --sidebar-foreground: 20 48% 12%;
+  --sidebar-border: 28 27% 79%;
+  --sidebar-primary: 27 88% 33%;
+  --sidebar-primary-foreground: 39 43% 96%;
+  --sidebar-accent: 37 28% 88%;
+  --sidebar-accent-foreground: 20 48% 12%;
+  --sidebar-ring: 27 88% 33%;
+  --chart-1: 27 88% 33%;
+  --chart-2: 43 65% 39%;
+  --chart-3: 24 44% 48%;
+  --chart-4: 14 56% 43%;
+  --chart-5: 20 48% 12%;
+  --button-outline: rgba(47, 25, 13, .12);
+  --badge-outline: rgba(47, 25, 13, .08);
+  --elevate-1: rgba(47, 25, 13, .035);
+  --elevate-2: rgba(47, 25, 13, .07);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+html {
+  background: hsl(var(--background));
+}
+
+body {
+  transition: background-color .3s ease, color .3s ease;
+}
+
+/* Legacy cinematic surfaces, translated into warm paper rather than neutral white. */
+.light [class*="bg-[#1A0A00]"],
+.light [class*="bg-[#0A0400]"],
+.light [class*="bg-[#0F0600]"],
+.light [class*="bg-[#21120b]"] {
+  background-color: hsl(var(--background)) !important;
+}
+
+.light [class*="bg-[#24160f]"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+.light [class*="hover:bg-white/5"]:hover,
+.light [class*="hover:bg-white/10"]:hover {
+  background-color: hsl(var(--foreground) / .06) !important;
+}
+
 /* Butterfly cursor wing-flap animations — GPU-only, no JS overhead */
 @keyframes cursor-flap-left {
   from { transform: perspective(60px) rotateY(0deg); }
@@ -175,6 +250,10 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;

@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { ButterflyLogo } from "./ButterflyLogo";
-import { Menu, X, ShieldCheck, ChevronDown } from "lucide-react";
+import { Menu, X, ShieldCheck, ChevronDown, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@workspace/replit-auth-web";
+import { useTheme } from "next-themes";
 
 type ServiceItem = { name: string; path: string; description?: string; external?: boolean };
 
@@ -121,6 +122,10 @@ export function Navbar() {
   const [openMobileCategory, setOpenMobileCategory] = useState<string | null>(null);
   const [location, setLocation] = useLocation();
   const { user } = useAuth();
+  const { resolvedTheme, setTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
+  const toggleTheme = () => setTheme(isLight ? "dark" : "light");
+  const themeLabel = isLight ? "Activer le mode sombre" : "Activer le mode clair";
   const isAdmin = !!user?.isAdmin;
   const navRef = useRef<HTMLDivElement>(null);
 
@@ -209,7 +214,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 w-full z-40 transition-all duration-500 ease-in-out border-b border-transparent",
           isScrolled
-            ? "bg-[#1A0A00]/90 backdrop-blur-md border-border/50 py-3.5"
+             ? "bg-background/90 backdrop-blur-md border-border/50 py-3.5"
             : "bg-transparent py-5 md:py-7",
         )}
       >
@@ -394,6 +399,17 @@ export function Navbar() {
             </ul>
 
             <div className="flex items-center gap-3 shrink-0">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label={themeLabel}
+                title={themeLabel}
+                className="inline-flex items-center gap-2 border border-border/70 px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                data-testid="button-theme-toggle-desktop"
+              >
+                {isLight ? <Moon size={14} aria-hidden="true" /> : <Sun size={14} aria-hidden="true" />}
+                <span>{isLight ? "Sombre" : "Clair"}</span>
+              </button>
               {isAdmin && (
                 <a
                   href="/admin"
@@ -586,6 +602,16 @@ export function Navbar() {
               </ul>
 
               <div className="mt-8 text-center">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  aria-label={themeLabel}
+                  className="mx-auto mb-5 inline-flex items-center gap-3 border border-border/70 px-5 py-3 text-xs uppercase tracking-[0.18em] text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                  data-testid="button-theme-toggle-mobile"
+                >
+                  {isLight ? <Moon size={15} aria-hidden="true" /> : <Sun size={15} aria-hidden="true" />}
+                  <span>{isLight ? "Passer au mode sombre" : "Passer au mode clair"}</span>
+                </button>
                 <a
                   href="/contact"
                   onClick={(e) => handleNavClick(e, "/contact")}

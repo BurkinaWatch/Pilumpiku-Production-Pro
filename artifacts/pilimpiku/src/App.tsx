@@ -7,6 +7,7 @@ import { IntroScreen } from "@/components/IntroScreen";
 import { lazy, Suspense, useState } from "react";
 
 import { Cursor } from "@/components/Cursor";
+import { ThemeProvider } from "next-themes";
 
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
@@ -99,12 +100,14 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="pilimpiku-theme">
         <Cursor />
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
           <Router />
         </WouterRouter>
         <Toaster />
+        </ThemeProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

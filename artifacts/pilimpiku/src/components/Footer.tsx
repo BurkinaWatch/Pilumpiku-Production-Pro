@@ -4,7 +4,7 @@ import { Instagram, Linkedin, Video, Facebook } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0A0400] pt-16 sm:pt-24 pb-10 sm:pb-12 border-t border-border/50 relative z-10">
+    <footer className="bg-background pt-16 sm:pt-24 pb-10 sm:pb-12 border-t border-border/50 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           <div className="sm:col-span-2">
@@ -67,7 +67,7 @@ export function Footer() {
             <Link href="/politique-de-confidentialite" className="hover:text-foreground transition-colors">Politique de confidentialité</Link>
             <Link
               href="/admin"
-              className="text-muted-foreground/35 hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0400] transition-colors text-[10px] uppercase tracking-[0.14em]"
+              className="text-muted-foreground/60 hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors text-[10px] uppercase tracking-[0.14em]"
               aria-label="Administration"
               data-testid="link-admin-footer"
             >
