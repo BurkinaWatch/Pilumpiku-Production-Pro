@@ -124,6 +124,7 @@ export function Navbar() {
   const { user } = useAuth();
   const { resolvedTheme, setTheme } = useTheme();
   const isLight = resolvedTheme === "light";
+  const isDarkHeroVisible = isLight && location === "/equipe" && !isScrolled;
   const toggleTheme = () => setTheme(isLight ? "dark" : "light");
   const themeLabel = isLight ? "Activer le mode sombre" : "Activer le mode clair";
   const isAdmin = !!user?.isAdmin;
@@ -215,7 +216,9 @@ export function Navbar() {
           "fixed top-0 w-full z-40 transition-all duration-500 ease-in-out border-b border-transparent",
           isScrolled
              ? "bg-background/90 backdrop-blur-md border-border/50 py-3.5"
-            : "bg-transparent py-5 md:py-7",
+              : isDarkHeroVisible
+                ? "bg-black/35 backdrop-blur-sm py-5 md:py-7"
+                : "bg-transparent py-5 md:py-7",
         )}
       >
         <div
@@ -230,7 +233,7 @@ export function Navbar() {
             data-testid="link-logo-home"
           >
             <ButterflyLogo className="w-11 h-11 md:w-13 md:h-13 lg:w-15 lg:h-15" />
-            <div>
+            <div className={isDarkHeroVisible ? "text-white" : undefined}>
               <div className="font-serif text-lg md:text-2xl tracking-widest leading-none">
                 PILUMPIKU
               </div>
@@ -251,7 +254,11 @@ export function Navbar() {
                   onClick={(e) => handleNavClick(e, "/")}
                   className={cn(
                     "hover:text-primary transition-colors duration-300",
-                    location === "/" ? "text-primary" : "text-muted-foreground",
+                    location === "/"
+                      ? "text-primary"
+                      : isDarkHeroVisible
+                        ? "text-white/80"
+                        : "text-muted-foreground",
                   )}
                   data-testid="link-nav-accueil"
                 >
@@ -267,7 +274,9 @@ export function Navbar() {
                       "flex items-center gap-1 transition-colors duration-300",
                       isProductActive(cat) || openDropdown === cat.name
                         ? "text-primary"
-                        : "text-muted-foreground",
+                        : isDarkHeroVisible
+                          ? "text-white/80"
+                          : "text-muted-foreground",
                     )}
                   >
                     <a
@@ -388,7 +397,11 @@ export function Navbar() {
                     onClick={(e) => handleNavClick(e, link.path)}
                     className={cn(
                       "hover:text-primary transition-colors duration-300",
-                      location === link.path ? "text-primary" : "text-muted-foreground",
+                      location === link.path
+                        ? "text-primary"
+                        : isDarkHeroVisible
+                          ? "text-white/80"
+                          : "text-muted-foreground",
                     )}
                     data-testid={`link-nav-${link.path.slice(1)}`}
                   >
@@ -404,7 +417,12 @@ export function Navbar() {
                 onClick={toggleTheme}
                 aria-label={themeLabel}
                 title={themeLabel}
-                className="inline-flex items-center gap-2 border border-border/70 px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                className={cn(
+                  "inline-flex items-center gap-2 border px-3 py-2 text-[0.65rem] uppercase tracking-[0.12em] hover:text-primary hover:border-primary/50 transition-colors",
+                  isDarkHeroVisible
+                    ? "border-white/40 text-white/80"
+                    : "border-border/70 text-muted-foreground",
+                )}
                 data-testid="button-theme-toggle-desktop"
               >
                 {isLight ? <Moon size={14} aria-hidden="true" /> : <Sun size={14} aria-hidden="true" />}
@@ -433,7 +451,10 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden z-50 text-foreground p-1"
+            className={cn(
+              "lg:hidden z-50 p-1",
+              isDarkHeroVisible ? "text-white" : "text-foreground",
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             data-testid="button-mobile-menu-toggle"
@@ -606,7 +627,12 @@ export function Navbar() {
                   type="button"
                   onClick={toggleTheme}
                   aria-label={themeLabel}
-                  className="mx-auto mb-5 inline-flex items-center gap-3 border border-border/70 px-5 py-3 text-xs uppercase tracking-[0.18em] text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                  className={cn(
+                    "mx-auto mb-5 inline-flex items-center gap-3 border px-5 py-3 text-xs uppercase tracking-[0.18em] hover:text-primary hover:border-primary/50 transition-colors",
+                    isDarkHeroVisible && !isMobileMenuOpen
+                      ? "border-white/30 text-white/80"
+                      : "border-border/70 text-muted-foreground",
+                  )}
                   data-testid="button-theme-toggle-mobile"
                 >
                   {isLight ? <Moon size={15} aria-hidden="true" /> : <Sun size={15} aria-hidden="true" />}

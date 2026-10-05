@@ -1,5 +1,6 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import { Link } from "wouter";
 import { ChevronLeft, CheckCircle, type LucideIcon } from "lucide-react";
 
@@ -39,6 +40,9 @@ async function submitInscription(data: {
 }
 
 export function LaboServicePage({ cfg }: { cfg: LaboServiceConfig }) {
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
+
   const Icon = cfg.icon;
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
@@ -276,7 +280,10 @@ export function LaboServicePage({ cfg }: { cfg: LaboServiceConfig }) {
                       type="submit"
                       disabled={status === "loading"}
                       className="w-full py-3.5 text-xs uppercase tracking-widest font-medium rounded-sm transition-all duration-300 disabled:opacity-60"
-                      style={{ background: cfg.accentColor, color: "#fff" }}
+                      style={{
+                        background: isLight ? "hsl(var(--primary))" : cfg.accentColor,
+                        color: isLight ? "hsl(var(--primary-foreground))" : "#fff",
+                      }}
                     >
                       {status === "loading" ? "Envoi en cours…" : "Envoyer ma demande d'inscription"}
                     </button>
