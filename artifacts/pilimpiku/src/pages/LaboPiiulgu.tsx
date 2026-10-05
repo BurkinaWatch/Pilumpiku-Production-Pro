@@ -336,12 +336,12 @@ const evenementsRecents = [
 const evenements = [...evenementsRecents, ...evenementsArchives];
 
 const typeBadgeColors: Record<string, string> = {
-  Afterwork: "bg-[#E8921A]/20 text-[#E8921A] border-[#E8921A]/30",
-  "Be to Be": "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30",
-  Conférence: "bg-[#D4783A]/20 text-[#D4783A] border-[#D4783A]/30",
-  Tontine: "bg-[#E8921A]/20 text-[#E8921A] border-[#E8921A]/30",
-  Pitch: "bg-[#5BA3BB]/20 text-[#5BA3BB] border-[#5BA3BB]/30",
-  Espace: "bg-white/10 text-white/60 border-white/20",
+  Afterwork: "bg-[#E8921A]/20 text-primary border-[#E8921A]/30",
+  "Be to Be": "bg-[#C9A84C]/20 text-primary border-[#C9A84C]/30",
+  Conférence: "bg-[#D4783A]/20 text-primary border-[#D4783A]/30",
+  Tontine: "bg-[#E8921A]/20 text-primary border-[#E8921A]/30",
+  Pitch: "bg-[#5BA3BB]/20 text-primary border-[#5BA3BB]/30",
+  Espace: "bg-muted text-muted-foreground border-border",
 };
 
 export default function LaboPiiulgu() {

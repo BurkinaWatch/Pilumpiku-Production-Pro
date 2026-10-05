@@ -301,7 +301,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-[#1A0A00]/95 backdrop-blur-md border border-border/40 rounded-sm shadow-2xl overflow-hidden z-50"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-card/95 backdrop-blur-md border border-border/40 rounded-sm shadow-2xl overflow-hidden z-50"
                         style={{ width: cat.kind === "sectioned" ? "18rem" : "17rem" }}
                       >
                         {/* Category header */}
@@ -325,7 +325,7 @@ export function Navbar() {
                                   onClick={(e) => handleNavClick(e, service.path)}
                                   target={service.external ? "_blank" : undefined}
                                   rel={service.external ? "noopener noreferrer" : undefined}
-                                  className="block px-4 py-2.5 text-[0.75rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
+                                  className="block px-4 py-2.5 text-[0.75rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors duration-200"
                                 >
                                   {service.name}
                                   {service.description && (
@@ -358,7 +358,7 @@ export function Navbar() {
                                         onClick={(e) => handleNavClick(e, item.path)}
                                         target={item.external ? "_blank" : undefined}
                                         rel={item.external ? "noopener noreferrer" : undefined}
-                                        className="block px-4 py-2 text-[0.75rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors duration-200"
+                                        className="block px-4 py-2 text-[0.75rem] normal-case tracking-wide text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors duration-200"
                                       >
                                         {item.name}
                                         {item.description && (

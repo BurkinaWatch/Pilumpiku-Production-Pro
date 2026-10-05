@@ -200,23 +200,6 @@ body {
   transition: background-color .3s ease, color .3s ease;
 }
 
-/* Legacy cinematic surfaces, translated into warm paper rather than neutral white. */
-.light [class*="bg-[#1A0A00]"],
-.light [class*="bg-[#0A0400]"],
-.light [class*="bg-[#0F0600]"],
-.light [class*="bg-[#21120b]"] {
-  background-color: hsl(var(--background)) !important;
-}
-
-.light [class*="bg-[#24160f]"] {
-  background-color: hsl(var(--card)) !important;
-}
-
-.light [class*="hover:bg-white/5"]:hover,
-.light [class*="hover:bg-white/10"]:hover {
-  background-color: hsl(var(--foreground) / .06) !important;
-}
-
 /* Butterfly cursor wing-flap animations — GPU-only, no JS overhead */
 @keyframes cursor-flap-left {
   from { transform: perspective(60px) rotateY(0deg); }

@@ -269,7 +269,7 @@ export default function ProjectDetail() {
       )}
 
       {otherProjects.length > 0 && (
-        <section className="py-14 sm:py-24 bg-[#0F0600] border-t border-border/20">
+        <section className="py-14 sm:py-24 bg-background border-t border-border/20">
           <div className="container mx-auto px-4 sm:px-6 md:px-12">
             <div className="flex justify-between items-end mb-8 sm:mb-12">
               <h2 className="font-serif text-3xl sm:text-4xl text-foreground">

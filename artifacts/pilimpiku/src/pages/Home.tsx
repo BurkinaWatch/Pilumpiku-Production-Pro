@@ -267,7 +267,7 @@ export default function Home() {
 
       {/* Quote */}
       {quoteText && (
-        <section className="py-20 sm:py-32 lg:py-40 bg-[#0F0600] relative overflow-hidden border-y border-border/20">
+        <section className="py-20 sm:py-32 lg:py-40 bg-background relative overflow-hidden border-y border-border/20">
           <div
             className="absolute inset-0 opacity-20"
             style={{

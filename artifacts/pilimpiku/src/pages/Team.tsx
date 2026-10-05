@@ -95,7 +95,7 @@ function FrameImage({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-8% 0px" }}
       transition={{ duration: 0.65, delay: Math.min(index * 0.04, 0.24) }}
-      className="group relative block w-full overflow-hidden border border-foreground/10 bg-[#24160f] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+      className="group relative block w-full overflow-hidden border border-foreground/10 bg-card text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       data-testid={`button-team-image-${index + 1}`}
       aria-label={`Agrandir la photographie : ${image.label}`}
     >
@@ -108,7 +108,7 @@ function FrameImage({
       />
       <span className="absolute inset-0 bg-gradient-to-t from-[#150b07]/80 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
       <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 sm:p-5">
-        <span className="font-serif text-lg leading-none text-foreground sm:text-xl">{image.label}</span>
+      <span className="font-serif text-lg leading-none text-white sm:text-xl">{image.label}</span>
         <ArrowUpRight
           aria-hidden="true"
           className="shrink-0 text-primary transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
@@ -164,7 +164,7 @@ export default function Team() {
             className="h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-[#120905]/45" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-[#120905]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/15" />
         </div>
 
         <div className="container relative mx-auto flex min-h-[calc(100svh-5rem)] flex-col justify-end px-4 pb-12 sm:px-6 sm:pb-16 md:px-12 md:pb-20">
@@ -180,7 +180,7 @@ export default function Team() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.2 }}
-            className="max-w-4xl font-serif text-[3.6rem] leading-[0.86] text-foreground sm:text-7xl md:text-8xl lg:text-[9.2rem]"
+            className="max-w-4xl font-serif text-[3.6rem] leading-[0.86] text-white sm:text-7xl md:text-8xl lg:text-[9.2rem]"
           >
             La Team Pilumpiku
           </motion.h1>
@@ -190,13 +190,13 @@ export default function Team() {
             transition={{ duration: 0.7, delay: 0.58 }}
             className="mt-8 flex flex-col gap-6 border-t border-foreground/25 pt-5 sm:flex-row sm:items-end sm:justify-between"
           >
-            <p className="max-w-sm text-sm leading-relaxed text-foreground/75 sm:text-base">
+            <p className="max-w-sm text-sm leading-relaxed text-white/80 sm:text-base">
               Sur un plateau, une histoire prend forme dans les gestes, les regards et les
               attentions de toutes les personnes présentes.
             </p>
             <a
               href="#terrain"
-              className="flex w-fit items-center gap-3 text-[0.68rem] uppercase tracking-[0.22em] text-primary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="flex w-fit items-center gap-3 text-[0.68rem] uppercase tracking-[0.22em] text-primary transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               data-testid="link-team-scroll"
             >
               Entrer dans les coulisses
@@ -206,7 +206,7 @@ export default function Team() {
         </div>
       </section>
 
-      <section id="terrain" className="border-y border-border/40 bg-[#21120b]/55">
+      <section id="terrain" className="border-y border-border/40 bg-card/40">
         <div className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 md:px-12">
           <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-14 sm:flex-row sm:items-end">
             <div>
@@ -239,7 +239,7 @@ export default function Team() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative z-10 overflow-hidden border border-foreground/10 bg-[#24160f] p-2 sm:p-3"
+              className="relative z-10 overflow-hidden border border-foreground/10 bg-card p-2 sm:p-3"
             >
               <img
                 src={shootImages[7].src}
@@ -312,7 +312,7 @@ export default function Team() {
             <button
               type="button"
               onClick={closeLightbox}
-              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center border border-foreground/20 text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:right-8 sm:top-8"
+              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center border border-white/30 text-white transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:right-8 sm:top-8"
               aria-label="Fermer la photographie"
               data-testid="button-close-team-image"
             >
@@ -324,7 +324,7 @@ export default function Team() {
                 event.stopPropagation();
                 showPrevious();
               }}
-              className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 p-3 text-foreground/65 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:block"
+              className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 p-3 text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:block"
               aria-label="Photographie précédente"
               data-testid="button-previous-team-image"
             >
@@ -336,7 +336,7 @@ export default function Team() {
                 event.stopPropagation();
                 showNext();
               }}
-              className="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 p-3 text-foreground/65 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:block"
+              className="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 p-3 text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:block"
               aria-label="Photographie suivante"
               data-testid="button-next-team-image"
             >
@@ -355,8 +355,8 @@ export default function Team() {
                 alt={shootImages[selectedImage].alt}
                 className="max-h-[78svh] w-auto max-w-full object-contain"
               />
-              <figcaption className="mt-3 flex items-center justify-between gap-4 text-sm text-muted-foreground">
-                <span className="font-serif text-lg text-foreground">{shootImages[selectedImage].label}</span>
+              <figcaption className="mt-3 flex items-center justify-between gap-4 text-sm text-white/70">
+                <span className="font-serif text-lg text-white">{shootImages[selectedImage].label}</span>
                 <span>{String(selectedImage + 1).padStart(2, "0")} / {String(shootImages.length).padStart(2, "0")}</span>
               </figcaption>
             </motion.figure>

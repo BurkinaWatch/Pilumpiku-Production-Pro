@@ -207,7 +207,7 @@ export default function About() {
       </section>
 
       {/* Citation */}
-      <section className="py-14 sm:py-20 bg-[#0F0600] border-y border-border/20">
+      <section className="py-14 sm:py-20 bg-background border-y border-border/20">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 text-center">
           <motion.blockquote
             initial={{ opacity: 0, y: 20 }}
