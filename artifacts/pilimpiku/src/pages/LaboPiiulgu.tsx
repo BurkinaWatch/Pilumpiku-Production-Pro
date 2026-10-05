@@ -473,7 +473,7 @@ export default function LaboPiiulgu() {
                       {prog.label}
                     </h3>
                     {prog.sousLabel && (
-                      <p className="text-xs uppercase tracking-widest mb-4" style={{ color: prog.accentColor }}>
+                      <p className="text-primary text-xs uppercase tracking-widest mb-4">
                         {prog.sousLabel}
                       </p>
                     )}

@@ -402,7 +402,7 @@ export default function Sulunsuku() {
               <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="relative overflow-hidden bg-card border border-border/50 p-8 group">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(ellipse at top left, ${item.accent}10, transparent 70%)` }} />
                 <div className="relative z-10">
-                  <div className="font-serif text-5xl sm:text-6xl mb-3 font-light" style={{ color: item.accent }}>{item.chiffre}</div>
+                  <div className="font-serif text-5xl sm:text-6xl mb-3 font-light text-primary">{item.chiffre}</div>
                   <div className="text-foreground text-sm uppercase tracking-widest mb-3">{item.label}</div>
                   <div className="h-px w-8 mb-3" style={{ background: item.accent + "60" }} />
                   <p className="text-muted-foreground text-xs font-light leading-relaxed">{item.detail}</p>
@@ -416,10 +416,10 @@ export default function Sulunsuku() {
             <h3 className="font-serif text-2xl sm:text-3xl text-foreground mb-8 text-center">Les 9 rubriques</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {rubriques.map((r, i) => (
-                <motion.a key={i} href={r.url} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="flex items-start gap-3 px-4 py-3 border rounded-sm hover:bg-white/5 transition-all duration-200 group" style={{ borderColor: r.couleur + "40" }}>
+                <motion.a key={i} href={r.url} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="flex items-start gap-3 px-4 py-3 border rounded-sm hover:bg-foreground/5 transition-all duration-200 group" style={{ borderColor: r.couleur + "40" }}>
                   <div className="w-1 h-full min-h-[2rem] rounded-full mt-0.5 shrink-0" style={{ background: r.couleur }} />
                   <div>
-                    <span className="text-sm font-light text-foreground group-hover:text-primary transition-colors" style={{ color: r.couleur }}>{r.label}</span>
+                    <span className="text-sm font-light text-primary transition-colors">{r.label}</span>
                     <p className="text-[0.65rem] text-muted-foreground font-light mt-0.5 leading-snug">{r.description}</p>
                   </div>
                 </motion.a>
@@ -434,7 +434,7 @@ export default function Sulunsuku() {
               {articlesRecents.map((a, i) => (
                 <motion.a key={i} href={a.url} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group bg-card border border-border/40 p-6 hover:border-primary/40 hover:bg-card/80 transition-all duration-300 flex flex-col gap-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-[0.6rem] uppercase tracking-widest font-medium px-2 py-0.5 rounded-sm" style={{ color: a.couleur, background: a.couleur + "15", border: `1px solid ${a.couleur}30` }}>{a.rubrique}</span>
+                    <span className="text-primary text-[0.6rem] uppercase tracking-widest font-medium px-2 py-0.5 rounded-sm" style={{ background: a.couleur + "15", border: `1px solid ${a.couleur}30` }}>{a.rubrique}</span>
                   </div>
                   <h4 className="font-serif text-base text-foreground group-hover:text-primary transition-colors leading-snug">{a.titre}</h4>
                   <p className="text-xs text-muted-foreground font-light leading-relaxed flex-1">{a.description}</p>

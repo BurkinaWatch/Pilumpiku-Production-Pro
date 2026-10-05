@@ -92,7 +92,7 @@ export function LaboServicePage({ cfg }: { cfg: LaboServiceConfig }) {
 
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-10" style={{ background: cfg.accentColor + "90" }} />
-              <span className="text-xs uppercase tracking-[0.3em] font-light" style={{ color: cfg.accentColor }}>
+              <span className="text-primary text-xs uppercase tracking-[0.3em] font-light">
                 {cfg.subtitle}
               </span>
             </div>
@@ -161,13 +161,13 @@ export function LaboServicePage({ cfg }: { cfg: LaboServiceConfig }) {
                 <div className="flex flex-col gap-3 p-6 border border-border/50 rounded-sm bg-card/40">
                   {cfg.schedule && (
                     <div>
-                      <span className="text-[0.65rem] uppercase tracking-widest" style={{ color: cfg.accentColor }}>Horaires</span>
+                      <span className="text-primary text-[0.65rem] uppercase tracking-widest">Horaires</span>
                       <p className="text-foreground text-sm font-light mt-0.5">{cfg.schedule}</p>
                     </div>
                   )}
                   {cfg.pricing && (
                     <div>
-                      <span className="text-[0.65rem] uppercase tracking-widest" style={{ color: cfg.accentColor }}>Tarif</span>
+                      <span className="text-primary text-[0.65rem] uppercase tracking-widest">Tarif</span>
                       <p className="text-foreground text-sm font-light mt-0.5">{cfg.pricing}</p>
                     </div>
                   )}
@@ -216,7 +216,7 @@ export function LaboServicePage({ cfg }: { cfg: LaboServiceConfig }) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-[0.65rem] uppercase tracking-widest text-muted-foreground mb-1.5">
-                          Nom complet <span style={{ color: cfg.accentColor }}>*</span>
+                          Nom complet <span className="text-primary">*</span>
                         </label>
                         <input
                           type="text"
@@ -243,7 +243,7 @@ export function LaboServicePage({ cfg }: { cfg: LaboServiceConfig }) {
 
                     <div>
                       <label className="block text-[0.65rem] uppercase tracking-widest text-muted-foreground mb-1.5">
-                        Email <span style={{ color: cfg.accentColor }}>*</span>
+                        Email <span className="text-primary">*</span>
                       </label>
                       <input
                         type="email"

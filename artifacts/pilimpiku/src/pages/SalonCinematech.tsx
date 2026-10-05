@@ -173,7 +173,7 @@ export default function SalonCinematech() {
                   style={{ background: `radial-gradient(ellipse at top left, ${c.accent}12, transparent 70%)` }}
                 />
                 <div className="relative z-10">
-                  <div className="font-serif text-5xl sm:text-6xl mb-3 font-light" style={{ color: c.accent }}>
+                  <div className="font-serif text-5xl sm:text-6xl mb-3 font-light text-primary">
                     {c.valeur}
                   </div>
                   <div className="text-foreground text-sm uppercase tracking-widest mb-2">{c.label}</div>
@@ -290,7 +290,7 @@ export default function SalonCinematech() {
                   <div className="relative z-10">
                     <div
                       className="w-12 h-12 rounded-sm flex items-center justify-center mb-6 border"
-                      style={{ background: `${prog.accentColor}15`, borderColor: `${prog.accentColor}40`, color: prog.accentColor }}
+                      style={{ background: `${prog.accentColor}15`, borderColor: `${prog.accentColor}40` }}
                     >
                       <Icon size={20} />
                     </div>
