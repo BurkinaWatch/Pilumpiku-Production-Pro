@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
 
@@ -86,15 +86,17 @@ function translateSource(source: string, locale: Locale): string {
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
-  const currentLocale = useRef<Locale>("fr");
-  const originalTexts = useRef(new WeakMap<Text, string>());
-  const originalAttributes = useRef(new WeakMap<Element, Map<string, string>>());
+  const previousLocale = useRef<Locale>("fr");
+  const textStates = useRef(new WeakMap<Text, { source: string; rendered: string }>());
+  const attributeStates = useRef(
+    new WeakMap<Element, Map<string, { source: string; rendered: string }>>(),
+  );
   const [locale, setLocaleState] = useState<Locale>(() => {
     if (typeof window === "undefined") return "fr";
     const saved = window.localStorage.getItem("pilimpiku_locale");
     return validLocale(saved) ? saved : "fr";
   });
-  currentLocale.current = locale;
+  previousLocale.current = locale;
 
   const setLocale = useCallback((nextLocale: Locale) => {
     setLocaleState(nextLocale);
@@ -106,16 +108,27 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    void queryClient.invalidateQueries();
+    if (previousLocale.current !== locale) {
+      previousLocale.current = locale;
+      void queryClient.invalidateQueries();
+    }
     const root = document.body;
     const translateDom = (node: Node) => {
       if (node.nodeType === Node.TEXT_NODE) {
         const textNode = node as Text;
         const parent = textNode.parentElement;
         if (parent?.closest("script,style,textarea,code,pre,[data-no-translate]")) return;
-        const original = originalTexts.current.get(textNode) ?? textNode.data;
-        originalTexts.current.set(textNode, original);
-        const translated = translateSource(original, locale);
+        const current = textNode.data;
+        let state = textStates.current.get(textNode);
+        if (!state) {
+          state = { source: current, rendered: current };
+          textStates.current.set(textNode, state);
+        } else if (current !== state.rendered) {
+          // React or an API response replaced the source text; translate that new value.
+          state.source = current;
+        }
+        const translated = translateSource(state.source, locale);
+        state.rendered = translated;
         if (translated !== textNode.data) textNode.data = translated;
         return;
       }
@@ -124,14 +137,20 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       for (const name of attributes) {
         const current = node.getAttribute(name);
         if (current === null) continue;
-        let saved = originalAttributes.current.get(node);
+        let saved = attributeStates.current.get(node);
         if (!saved) {
           saved = new Map();
-          originalAttributes.current.set(node, saved);
+          attributeStates.current.set(node, saved);
         }
-        const original = saved.get(name) ?? current;
-        saved.set(name, original);
-        const translated = translateSource(original, locale);
+        let state = saved.get(name);
+        if (!state) {
+          state = { source: current, rendered: current };
+          saved.set(name, state);
+        } else if (current !== state.rendered) {
+          state.source = current;
+        }
+        const translated = translateSource(state.source, locale);
+        state.rendered = translated;
         if (translated !== current) node.setAttribute(name, translated);
       }
       node.childNodes.forEach(translateDom);
