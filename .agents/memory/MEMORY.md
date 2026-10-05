@@ -3,3 +3,4 @@
 - [GitHub publishing](github-publishing.md) — l’intégration GitHub peut publier via son SDK quand le remote HTTPS local refuse l’authentification
 - [Chromium headless CDP](chromium-cdp.md) — accepter le statut WebSocket 101 et autoriser l’origine locale pour les vérifications navigateur temporaires
 - [Direction du thème clair](light-theme-direction.md) — garder les surfaces crème et les accents terre cuite doux, sans toucher au thème sombre par défaut
+- [Seed au démarrage de l’API](api-startup-seed.md) — le seed automatique ne doit s’exécuter que sur une base vide afin de préserver les modifications CMS
