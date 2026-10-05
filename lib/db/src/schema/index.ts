@@ -5,3 +5,4 @@ export * from "./services";
 export * from "./partners";
 export * from "./settings";
 export * from "./inscriptions";
+export * from "./content-translations";

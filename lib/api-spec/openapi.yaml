@@ -430,6 +430,45 @@ paths:
               schema:
                 $ref: "#/components/schemas/SiteSettings"
 
+  # ---------- Content translations ----------
+  /content-translations:
+    get:
+      operationId: listContentTranslations
+      tags: [settings]
+      summary: List translations for a locale
+      parameters:
+        - in: query
+          name: locale
+          required: true
+          schema:
+            type: string
+            enum: [fr, en, es, pt, de, zh-CN, mos, dyu, ff]
+      responses:
+        "200":
+          description: Translations for the requested locale
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ContentTranslation"
+    put:
+      operationId: upsertContentTranslation
+      tags: [settings]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContentTranslationInput"
+      responses:
+        "200":
+          description: Saved translation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContentTranslation"
+
 components:
   schemas:
     HealthStatus:
@@ -832,3 +871,38 @@ components:
           type: string
         contactAddress:
           type: string
+    ContentTranslation:
+      type: object
+      required: [id, entityType, entityId, locale, fields]
+      properties:
+        id:
+          type: integer
+        entityType:
+          type: string
+          enum: [projects, news, services, partners, settings]
+        entityId:
+          type: integer
+        locale:
+          type: string
+          enum: [fr, en, es, pt, de, zh-CN, mos, dyu, ff]
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+    ContentTranslationInput:
+      type: object
+      required: [entityType, entityId, locale, fields]
+      properties:
+        entityType:
+          type: string
+          enum: [projects, news, services, partners, settings]
+        entityId:
+          type: integer
+          minimum: 1
+        locale:
+          type: string
+          enum: [en, es, pt, de, zh-CN, mos, dyu, ff]
+        fields:
+          type: object
+          additionalProperties:
+            type: string

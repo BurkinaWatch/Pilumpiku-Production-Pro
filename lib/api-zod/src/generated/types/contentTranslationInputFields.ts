@@ -6,8 +6,4 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface UpdatePartnerBody {
-  nom?: string;
-  description?: string;
-  sortOrder?: number;
-}
+export type ContentTranslationInputFields = {[key: string]: string};
