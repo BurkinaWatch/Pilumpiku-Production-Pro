@@ -6,6 +6,7 @@ import { Menu, X, ShieldCheck, ChevronDown, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@workspace/replit-auth-web";
 import { useTheme } from "next-themes";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 type ServiceItem = { name: string; path: string; description?: string; external?: boolean };
 
@@ -412,6 +413,7 @@ export function Navbar() {
             </ul>
 
             <div className="flex items-center gap-3 shrink-0">
+              <LanguageSelector testId="select-language-desktop" />
               <button
                 type="button"
                 onClick={toggleTheme}
@@ -623,6 +625,11 @@ export function Navbar() {
               </ul>
 
               <div className="mt-8 text-center">
+                <LanguageSelector
+                  compact
+                  className="mb-5 justify-center"
+                  testId="select-language-mobile"
+                />
                 <button
                   type="button"
                   onClick={toggleTheme}

@@ -9,6 +9,7 @@ import { NewsAdmin } from "@/components/admin/NewsAdmin";
 import { ServicesAdmin } from "@/components/admin/ServicesAdmin";
 import { PartnersAdmin } from "@/components/admin/PartnersAdmin";
 import { SettingsAdmin } from "@/components/admin/SettingsAdmin";
+import { TranslationsAdmin } from "@/components/admin/TranslationsAdmin";
 
 export default function Admin() {
   useSeo({ title: "Administration", description: "Espace d'administration" });
@@ -82,13 +83,14 @@ export default function Admin() {
         </div>
 
         <Tabs defaultValue="dashboard" className="w-full">
-          <TabsList className="mb-8 grid grid-cols-3 md:grid-cols-6 w-full">
+          <TabsList className="mb-8 grid grid-cols-3 md:grid-cols-7 w-full">
             <TabsTrigger value="dashboard" data-testid="tab-dashboard">Vue d'ensemble</TabsTrigger>
             <TabsTrigger value="projects" data-testid="tab-projects">Projets</TabsTrigger>
             <TabsTrigger value="news" data-testid="tab-news">Actualités</TabsTrigger>
             <TabsTrigger value="services" data-testid="tab-services">Services</TabsTrigger>
             <TabsTrigger value="partners" data-testid="tab-partners">Partenaires</TabsTrigger>
             <TabsTrigger value="settings" data-testid="tab-settings">Paramètres</TabsTrigger>
+            <TabsTrigger value="translations" data-testid="tab-translations">Traductions</TabsTrigger>
           </TabsList>
           <TabsContent value="dashboard"><DashboardAdmin /></TabsContent>
           <TabsContent value="projects"><ProjectsAdmin /></TabsContent>
@@ -96,6 +98,7 @@ export default function Admin() {
           <TabsContent value="services"><ServicesAdmin /></TabsContent>
           <TabsContent value="partners"><PartnersAdmin /></TabsContent>
           <TabsContent value="settings"><SettingsAdmin /></TabsContent>
+          <TabsContent value="translations"><TranslationsAdmin /></TabsContent>
         </Tabs>
       </div>
     </div>
