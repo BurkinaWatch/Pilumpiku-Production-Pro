@@ -2,7 +2,16 @@ import http from "http";
 import app from "./app";
 import { logger } from "./lib/logger";
 import { runMigrations } from "@workspace/db/migrate";
-import { pool } from "@workspace/db";
+import {
+  contentTranslationsTable,
+  db,
+  newsTable,
+  partnersTable,
+  pool,
+  projectsTable,
+  servicesTable,
+  siteSettingsTable,
+} from "@workspace/db";
 import { seed } from "./seed";
 
 const rawPort = process.env["PORT"];
@@ -20,6 +29,29 @@ if (Number.isNaN(port) || port <= 0) {
 }
 
 const server = http.createServer(app);
+
+async function seedIfDatabaseIsEmpty() {
+  const existingRows = await Promise.all([
+    db.select({ id: projectsTable.id }).from(projectsTable).limit(1),
+    db.select({ id: newsTable.id }).from(newsTable).limit(1),
+    db.select({ id: servicesTable.id }).from(servicesTable).limit(1),
+    db.select({ id: partnersTable.id }).from(partnersTable).limit(1),
+    db.select({ id: siteSettingsTable.id }).from(siteSettingsTable).limit(1),
+    db
+      .select({ id: contentTranslationsTable.id })
+      .from(contentTranslationsTable)
+      .limit(1),
+  ]);
+
+  if (existingRows.some((rows) => rows.length > 0)) {
+    logger.info(
+      "Startup seed skipped because content already exists; run the seed command manually to reset sample content.",
+    );
+    return;
+  }
+
+  await seed();
+}
 
 async function shutdown(signal: string) {
   logger.info({ signal }, "Shutdown signal received, closing gracefully");
@@ -59,7 +91,7 @@ async function main() {
   }
 
   try {
-    await seed();
+    await seedIfDatabaseIsEmpty();
   } catch (err) {
     logger.error({ err }, "Database seed failed");
     process.exit(1);
