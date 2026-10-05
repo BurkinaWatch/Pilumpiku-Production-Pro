@@ -10,15 +10,16 @@ import {
   ListServicesResponse,
 } from "@workspace/api-zod";
 import { requireAdmin } from "../middlewares/adminMiddleware";
+import { localizeRows } from "../lib/localize";
 
 const router: IRouter = Router();
 
-router.get("/services", async (_req, res): Promise<void> => {
+router.get("/services", async (req, res): Promise<void> => {
   const rows = await db
     .select()
     .from(servicesTable)
     .orderBy(asc(servicesTable.sortOrder), asc(servicesTable.id));
-  res.json(ListServicesResponse.parse(rows));
+  res.json(ListServicesResponse.parse(await localizeRows(req, "services", rows)));
 });
 
 router.post("/services", requireAdmin, async (req, res): Promise<void> => {

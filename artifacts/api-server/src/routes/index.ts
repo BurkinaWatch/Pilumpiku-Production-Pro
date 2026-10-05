@@ -7,6 +7,7 @@ import servicesRouter from "./services";
 import partnersRouter from "./partners";
 import settingsRouter from "./settings";
 import inscriptionsRouter from "./inscriptions";
+import contentTranslationsRouter from "./content-translations";
 
 const router: IRouter = Router();
 
@@ -18,5 +19,6 @@ router.use(servicesRouter);
 router.use(partnersRouter);
 router.use(settingsRouter);
 router.use(inscriptionsRouter);
+router.use(contentTranslationsRouter);
 
 export default router;

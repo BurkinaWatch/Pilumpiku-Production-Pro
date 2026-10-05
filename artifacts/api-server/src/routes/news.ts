@@ -12,6 +12,7 @@ import {
   ListNewsResponse,
 } from "@workspace/api-zod";
 import { requireAdmin } from "../middlewares/adminMiddleware";
+import { localizeRows } from "../lib/localize";
 
 const router: IRouter = Router();
 
@@ -20,7 +21,7 @@ router.get("/news", async (_req, res): Promise<void> => {
     .select()
     .from(newsTable)
     .orderBy(asc(newsTable.sortOrder), asc(newsTable.id));
-  res.json(ListNewsResponse.parse(rows));
+  res.json(ListNewsResponse.parse(await localizeRows(_req, "news", rows)));
 });
 
 router.get("/news/:id", async (req, res): Promise<void> => {
@@ -37,7 +38,8 @@ router.get("/news/:id", async (req, res): Promise<void> => {
     res.status(404).json({ error: "News article not found" });
     return;
   }
-  res.json(GetNewsResponse.parse(row));
+  const [localized] = await localizeRows(req, "news", [row]);
+  res.json(GetNewsResponse.parse(localized));
 });
 
 router.post("/news", requireAdmin, async (req, res): Promise<void> => {

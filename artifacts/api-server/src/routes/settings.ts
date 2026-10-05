@@ -7,6 +7,7 @@ import {
   UpdateSiteSettingsResponse,
 } from "@workspace/api-zod";
 import { requireAdmin } from "../middlewares/adminMiddleware";
+import { localizeRows } from "../lib/localize";
 
 const router: IRouter = Router();
 
@@ -17,9 +18,10 @@ async function getOrCreateSettings() {
   return created;
 }
 
-router.get("/settings", async (_req, res): Promise<void> => {
+router.get("/settings", async (req, res): Promise<void> => {
   const row = await getOrCreateSettings();
-  res.json(GetSiteSettingsResponse.parse(row));
+  const [localized] = await localizeRows(req, "settings", [row]);
+  res.json(GetSiteSettingsResponse.parse(localized));
 });
 
 router.patch("/settings", requireAdmin, async (req, res): Promise<void> => {

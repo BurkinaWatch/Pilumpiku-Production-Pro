@@ -14,6 +14,7 @@ import {
   ListProjectsResponse,
 } from "@workspace/api-zod";
 import { requireAdmin } from "../middlewares/adminMiddleware";
+import { localizeRows } from "../lib/localize";
 
 const router: IRouter = Router();
 
@@ -22,7 +23,7 @@ router.get("/projects", async (_req, res): Promise<void> => {
     .select()
     .from(projectsTable)
     .orderBy(asc(projectsTable.sortOrder), asc(projectsTable.id));
-  res.json(ListProjectsResponse.parse(rows));
+  res.json(ListProjectsResponse.parse(await localizeRows(_req, "projects", rows)));
 });
 
 router.get("/projects/by-slug/:slug", async (req, res): Promise<void> => {
@@ -39,7 +40,8 @@ router.get("/projects/by-slug/:slug", async (req, res): Promise<void> => {
     res.status(404).json({ error: "Project not found" });
     return;
   }
-  res.json(GetProjectBySlugResponse.parse(row));
+  const [localized] = await localizeRows(req, "projects", [row]);
+  res.json(GetProjectBySlugResponse.parse(localized));
 });
 
 router.get("/projects/:id", async (req, res): Promise<void> => {
@@ -56,7 +58,8 @@ router.get("/projects/:id", async (req, res): Promise<void> => {
     res.status(404).json({ error: "Project not found" });
     return;
   }
-  res.json(GetProjectResponse.parse(row));
+  const [localized] = await localizeRows(req, "projects", [row]);
+  res.json(GetProjectResponse.parse(localized));
 });
 
 router.post("/projects", requireAdmin, async (req, res): Promise<void> => {

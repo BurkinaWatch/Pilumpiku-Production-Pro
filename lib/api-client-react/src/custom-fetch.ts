@@ -349,6 +349,18 @@ export async function customFetch<T = unknown>(
     headers.set("accept", DEFAULT_JSON_ACCEPT);
   }
 
+  if (
+    typeof window !== "undefined" &&
+    typeof window.localStorage !== "undefined" &&
+    !headers.has("accept-language") &&
+    !window.location.pathname.endsWith("/admin")
+  ) {
+    headers.set(
+      "accept-language",
+      window.localStorage.getItem("pilimpiku_locale") ?? "fr",
+    );
+  }
+
   // Attach bearer token when an auth getter is configured and no
   // Authorization header has been explicitly provided.
   if (_authTokenGetter && !headers.has("authorization")) {
