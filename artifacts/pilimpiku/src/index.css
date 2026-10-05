@@ -144,6 +144,8 @@
 
 .light {
   color-scheme: light;
+  --font-weight-light: 400;
+  --font-weight-normal: 500;
   --background: 37 27% 90%;
   --foreground: 25 25% 21%;
   --primary: 27 63% 36%;
@@ -182,6 +184,10 @@
   --badge-outline: rgba(47, 25, 13, .06);
   --elevate-1: rgba(47, 25, 13, .025);
   --elevate-2: rgba(47, 25, 13, .05);
+}
+
+.light body {
+  font-weight: 500;
 }
 
 .dark {
