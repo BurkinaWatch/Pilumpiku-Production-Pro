@@ -38,7 +38,10 @@ const EMPTY: FormValues = { titre: "", description: "", icon: "Film", sortOrder:
 export function ServicesAdmin() {
   const { toast } = useToast();
   const qc = useQueryClient();
-  const { data: services } = useListServices();
+  const { data: services } = useListServices({
+    query: { queryKey: [...getListServicesQueryKey(), "admin-source-fr"] },
+    request: { headers: { "Accept-Language": "fr" } },
+  });
   const [editing, setEditing] = useState<Service | null>(null);
   const [open, setOpen] = useState(false);
 

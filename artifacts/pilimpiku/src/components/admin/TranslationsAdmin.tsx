@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import {
+  getGetSiteSettingsQueryKey,
+  getListNewsQueryKey,
+  getListPartnersQueryKey,
+  getListProjectsQueryKey,
+  getListServicesQueryKey,
   getListContentTranslationsQueryKey,
   useGetSiteSettings,
   useListContentTranslations,
@@ -111,11 +116,27 @@ export function TranslationsAdmin() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
-  const projectsQuery = useListProjects();
-  const newsQuery = useListNews();
-  const servicesQuery = useListServices();
-  const partnersQuery = useListPartners();
-  const settingsQuery = useGetSiteSettings();
+  const sourceOptions = { request: { headers: { "Accept-Language": "fr" } } };
+  const projectsQuery = useListProjects({
+    ...sourceOptions,
+    query: { queryKey: [...getListProjectsQueryKey(), "admin-source-fr"] },
+  });
+  const newsQuery = useListNews({
+    ...sourceOptions,
+    query: { queryKey: [...getListNewsQueryKey(), "admin-source-fr"] },
+  });
+  const servicesQuery = useListServices({
+    ...sourceOptions,
+    query: { queryKey: [...getListServicesQueryKey(), "admin-source-fr"] },
+  });
+  const partnersQuery = useListPartners({
+    ...sourceOptions,
+    query: { queryKey: [...getListPartnersQueryKey(), "admin-source-fr"] },
+  });
+  const settingsQuery = useGetSiteSettings({
+    ...sourceOptions,
+    query: { queryKey: [...getGetSiteSettingsQueryKey(), "admin-source-fr"] },
+  });
   const translationsQuery = useListContentTranslations({ locale });
   const upsert = useUpsertContentTranslation();
   const form = useForm<TranslationForm>({ defaultValues: {} });

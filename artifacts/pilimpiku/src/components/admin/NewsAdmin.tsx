@@ -47,7 +47,10 @@ const EMPTY: FormValues = {
 export function NewsAdmin() {
   const { toast } = useToast();
   const qc = useQueryClient();
-  const { data: news } = useListNews();
+  const { data: news } = useListNews({
+    query: { queryKey: [...getListNewsQueryKey(), "admin-source-fr"] },
+    request: { headers: { "Accept-Language": "fr" } },
+  });
   const [editing, setEditing] = useState<NewsArticle | null>(null);
   const [open, setOpen] = useState(false);
 

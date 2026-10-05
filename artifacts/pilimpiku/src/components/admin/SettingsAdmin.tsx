@@ -40,7 +40,10 @@ type FormValues = z.infer<typeof schema>;
 export function SettingsAdmin() {
   const { toast } = useToast();
   const qc = useQueryClient();
-  const { data: settings, isLoading } = useGetSiteSettings();
+  const { data: settings, isLoading } = useGetSiteSettings({
+    query: { queryKey: [...getGetSiteSettingsQueryKey(), "admin-source-fr"] },
+    request: { headers: { "Accept-Language": "fr" } },
+  });
   const update = useUpdateSiteSettings({
     mutation: {
       onSuccess: () => {

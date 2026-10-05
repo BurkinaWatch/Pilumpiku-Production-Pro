@@ -60,7 +60,10 @@ const EMPTY: FormValues = {
 export function ProjectsAdmin() {
   const { toast } = useToast();
   const qc = useQueryClient();
-  const { data: projects, isLoading } = useListProjects();
+  const { data: projects, isLoading } = useListProjects({
+    query: { queryKey: [...getListProjectsQueryKey(), "admin-source-fr"] },
+    request: { headers: { "Accept-Language": "fr" } },
+  });
   const [editing, setEditing] = useState<Project | null>(null);
   const [open, setOpen] = useState(false);
 

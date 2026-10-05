@@ -37,7 +37,10 @@ const EMPTY: FormValues = { nom: "", description: "", sortOrder: 0 };
 export function PartnersAdmin() {
   const { toast } = useToast();
   const qc = useQueryClient();
-  const { data: partners } = useListPartners();
+  const { data: partners } = useListPartners({
+    query: { queryKey: [...getListPartnersQueryKey(), "admin-source-fr"] },
+    request: { headers: { "Accept-Language": "fr" } },
+  });
   const [editing, setEditing] = useState<Partner | null>(null);
   const [open, setOpen] = useState(false);
 
