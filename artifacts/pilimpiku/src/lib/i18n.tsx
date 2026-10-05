@@ -1,4 +1,4 @@
-import { cloneElement, isValidElement, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
 
@@ -84,23 +84,17 @@ function translateSource(source: string, locale: Locale): string {
   return `${leading}${translated}${trailing}`;
 }
 
-function translateTree(node: ReactNode, locale: Locale): ReactNode {
-  if (typeof node === "string") return translateSource(node, locale);
-  if (Array.isArray(node)) return node.map((child) => translateTree(child, locale));
-  if (!isValidElement<{ children?: ReactNode }>(node)) return node;
-
-  const children = node.props.children;
-  if (children === undefined) return node;
-  return cloneElement(node, undefined, translateTree(children, locale));
-}
-
 export function I18nProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
+  const currentLocale = useRef<Locale>("fr");
+  const originalTexts = useRef(new WeakMap<Text, string>());
+  const originalAttributes = useRef(new WeakMap<Element, Map<string, string>>());
   const [locale, setLocaleState] = useState<Locale>(() => {
     if (typeof window === "undefined") return "fr";
     const saved = window.localStorage.getItem("pilimpiku_locale");
     return validLocale(saved) ? saved : "fr";
   });
+  currentLocale.current = locale;
 
   const setLocale = useCallback((nextLocale: Locale) => {
     setLocaleState(nextLocale);
@@ -113,6 +107,57 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = locale;
     void queryClient.invalidateQueries();
+    const root = document.body;
+    const translateDom = (node: Node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const textNode = node as Text;
+        const parent = textNode.parentElement;
+        if (parent?.closest("script,style,textarea,code,pre,[data-no-translate]")) return;
+        const original = originalTexts.current.get(textNode) ?? textNode.data;
+        originalTexts.current.set(textNode, original);
+        const translated = translateSource(original, locale);
+        if (translated !== textNode.data) textNode.data = translated;
+        return;
+      }
+      if (!(node instanceof Element)) return;
+      const attributes = ["aria-label", "title", "placeholder", "alt"];
+      for (const name of attributes) {
+        const current = node.getAttribute(name);
+        if (current === null) continue;
+        let saved = originalAttributes.current.get(node);
+        if (!saved) {
+          saved = new Map();
+          originalAttributes.current.set(node, saved);
+        }
+        const original = saved.get(name) ?? current;
+        saved.set(name, original);
+        const translated = translateSource(original, locale);
+        if (translated !== current) node.setAttribute(name, translated);
+      }
+      node.childNodes.forEach(translateDom);
+    };
+
+    translateDom(root);
+    const observer = new MutationObserver((records) => {
+      for (const record of records) {
+        if (record.type === "characterData" && record.target instanceof Text) {
+          translateDom(record.target);
+        } else {
+          record.addedNodes.forEach(translateDom);
+          if (record.type === "attributes" && record.target instanceof Element) {
+            translateDom(record.target);
+          }
+        }
+      }
+    });
+    observer.observe(root, {
+      subtree: true,
+      childList: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["aria-label", "title", "placeholder", "alt"],
+    });
+    return () => observer.disconnect();
   }, [locale, queryClient]);
 
   const translate = useCallback(
@@ -126,7 +171,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   return (
     <LocaleContext.Provider value={context}>
-      {translateTree(children, locale)}
+      {children}
     </LocaleContext.Provider>
   );
 }
