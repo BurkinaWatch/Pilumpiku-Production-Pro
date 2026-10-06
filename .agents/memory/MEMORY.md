@@ -4,3 +4,4 @@
 - [Chromium headless CDP](chromium-cdp.md) — accepter le statut WebSocket 101 et autoriser l’origine locale pour les vérifications navigateur temporaires
 - [Direction du thème clair](light-theme-direction.md) — garder les surfaces crème et les accents terre cuite doux, sans toucher au thème sombre par défaut
 - [Seed au démarrage de l’API](api-startup-seed.md) — le seed automatique ne doit s’exécuter que sur une base vide afin de préserver les modifications CMS
+- [Périmètre des traductions CMS](translation-import-scope.md) — Mooré, Dioula et Fulfulde restent en français jusqu’à une relecture native
