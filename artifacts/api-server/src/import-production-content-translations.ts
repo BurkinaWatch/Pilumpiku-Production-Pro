@@ -189,9 +189,7 @@ function sourceHash(entityType: EntityType, sourceRow: SourceRow): string {
   }
 
   const signedHash = BigInt.asIntN(64, hash);
-  const isNegative = signedHash < 0n;
-  const magnitude = (isNegative ? -signedHash : signedHash).toString(16).padStart(16, "0");
-  return `${isNegative ? "-" : ""}${magnitude}`;
+  return signedHash.toString(16).padStart(16, "0");
 }
 
 function recordKey(entityType: string, entityId: number, locale: string): string {
