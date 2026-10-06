@@ -8,6 +8,7 @@
     "build": "node ./build.mjs",
     "build:prod": "export NODE_ENV=production && node ./build.mjs",
     "start": "node --enable-source-maps ./dist/index.mjs",
+    "import:production-translations": "node ./dist/import-production-content-translations.mjs",
     "seed": "tsx ./src/seed.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

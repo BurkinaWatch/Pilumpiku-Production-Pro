@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { build as esbuild } from "esbuild";
 import esbuildPluginPino from "esbuild-plugin-pino";
-import { rm, cp } from "node:fs/promises";
+import { rm, cp, mkdir } from "node:fs/promises";
 
 // Plugins (e.g. 'esbuild-plugin-pino') may use `require` to resolve dependencies
 globalThis.require = createRequire(import.meta.url);
@@ -16,7 +16,10 @@ async function buildAll() {
   await rm(distDir, { recursive: true, force: true });
 
   await esbuild({
-    entryPoints: [path.resolve(artifactDir, "src/index.ts")],
+    entryPoints: [
+      path.resolve(artifactDir, "src/index.ts"),
+      path.resolve(artifactDir, "src/import-production-content-translations.ts"),
+    ],
     platform: "node",
     bundle: true,
     format: "esm",
@@ -135,6 +138,14 @@ process.stdout.write('[startup] process launched\\n');
   const migrationsDest = path.resolve(distDir, "migrations");
   await cp(migrationsSource, migrationsDest, { recursive: true });
   console.log("Copied migrations to dist/migrations");
+
+  const dataDest = path.resolve(distDir, "data");
+  await mkdir(dataDest, { recursive: true });
+  await cp(
+    path.resolve(artifactDir, "data/production-content-translations.json"),
+    path.resolve(dataDest, "production-content-translations.json"),
+  );
+  console.log("Copied production translations bundle to dist/data");
 }
 
 buildAll().catch((err) => {
