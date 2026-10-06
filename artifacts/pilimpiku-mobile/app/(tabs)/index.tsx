@@ -63,7 +63,9 @@ export default function HomeScreen() {
         {highlights.map((project) => <ProjectCard key={project.id} project={project} featured />)}
 
         <View style={[styles.laboBanner, { backgroundColor: colors.secondary, borderColor: colors.border }]}>
-          <View style={styles.laboIcon}><Ionicons name="sparkles-outline" size={23} color={colors.primary} /></View>
+          <View style={[styles.laboIcon, { backgroundColor: colors.primary }]}>
+            <Ionicons name="sparkles-outline" size={23} color={colors.primaryForeground} />
+          </View>
           <View style={styles.laboCopy}>
             <Text style={[styles.kicker, { color: colors.primary }]}>ESPACE DE CRÉATION</Text>
             <Text style={[styles.laboTitle, { color: colors.foreground }]}>Labo Piiulgu</Text>
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
   errorBox: { borderWidth: 1, borderRadius: 12, padding: 18, alignItems: 'center', gap: 10, marginBottom: 18 },
   errorText: { textAlign: 'center', fontSize: 13, lineHeight: 19 },
   laboBanner: { flexDirection: 'row', alignItems: 'center', gap: 12, borderWidth: 1, borderRadius: 14, padding: 16, marginTop: 30, marginBottom: 34 },
-  laboIcon: { width: 42, height: 42, borderRadius: 21, alignItems: 'center', justifyContent: 'center', backgroundColor: '#5A2B12' },
+  laboIcon: { width: 42, height: 42, borderRadius: 21, alignItems: 'center', justifyContent: 'center' },
   laboCopy: { flex: 1 },
   laboTitle: { fontFamily: 'Georgia', fontSize: 21, marginBottom: 3 },
   laboText: { fontSize: 12, lineHeight: 17 },

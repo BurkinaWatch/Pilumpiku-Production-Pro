@@ -32,7 +32,11 @@ export default function ProjectDetailScreen() {
     <View style={[styles.screen, { backgroundColor: colors.background }]}>
       <BrandHeader showBack />
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
-        <RemoteImage path={project.image} style={styles.heroImage} accessibilityLabel={project.titre} />
+        <RemoteImage
+          path={project.image}
+          style={[styles.heroImage, { backgroundColor: colors.card }]}
+          accessibilityLabel={project.titre}
+        />
         <Text style={[styles.category, { color: colors.primary }]}>{project.categorie}</Text>
         <Text style={[styles.title, { color: colors.foreground }]}>{project.titre}</Text>
         <Text style={[styles.status, { color: colors.mutedForeground }]}>{project.statut}</Text>
@@ -72,7 +76,7 @@ function Meta({ label, value, colors }: { label: string; value: string; colors: 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
   content: { paddingHorizontal: 20, paddingBottom: 80 },
-  heroImage: { width: '100%', height: 270, borderRadius: 15, backgroundColor: '#2A1408', marginTop: 22, marginBottom: 22 },
+  heroImage: { width: '100%', height: 270, borderRadius: 15, marginTop: 22, marginBottom: 22 },
   category: { fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', fontWeight: '700', marginBottom: 9 },
   title: { fontFamily: 'Georgia', fontSize: 38, lineHeight: 43, marginBottom: 9 },
   status: { fontSize: 13, lineHeight: 19, marginBottom: 22 },

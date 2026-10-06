@@ -26,7 +26,11 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
         featured && styles.featuredCard,
       ]}
     >
-      <RemoteImage path={project.image} style={[styles.image, featured && styles.featuredImage]} accessibilityLabel={project.titre} />
+      <RemoteImage
+        path={project.image}
+        style={[styles.image, { backgroundColor: colors.card }, featured && styles.featuredImage]}
+        accessibilityLabel={project.titre}
+      />
       <View style={styles.body}>
         <View style={styles.metaRow}>
           <Text style={[styles.category, { color: colors.primary }]}>{project.categorie}</Text>
@@ -42,7 +46,7 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
 const styles = StyleSheet.create({
   card: { borderWidth: 1, borderRadius: 14, overflow: 'hidden', marginBottom: 16 },
   featuredCard: { marginBottom: 8 },
-  image: { width: '100%', height: 170, backgroundColor: '#2A1408' },
+  image: { width: '100%', height: 170 },
   featuredImage: { height: 220 },
   body: { padding: 16 },
   metaRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },

@@ -8,7 +8,11 @@ export function NewsCard({ article }: { article: NewsArticle }) {
 
   return (
     <View style={[styles.card, { borderBottomColor: colors.border }]}>
-      <RemoteImage path={article.image} style={styles.image} accessibilityLabel={article.titre} />
+      <RemoteImage
+        path={article.image}
+        style={[styles.image, { backgroundColor: colors.card }]}
+        accessibilityLabel={article.titre}
+      />
       <View style={styles.content}>
         <Text style={[styles.date, { color: colors.primary }]}>{article.dateLabel} · {article.categorie}</Text>
         <Text style={[styles.title, { color: colors.foreground }]}>{article.titre}</Text>
@@ -20,7 +24,7 @@ export function NewsCard({ article }: { article: NewsArticle }) {
 
 const styles = StyleSheet.create({
   card: { flexDirection: 'row', gap: 14, paddingVertical: 16, borderBottomWidth: StyleSheet.hairlineWidth },
-  image: { width: 92, height: 92, borderRadius: 10, backgroundColor: '#2A1408' },
+  image: { width: 92, height: 92, borderRadius: 10 },
   content: { flex: 1, justifyContent: 'center' },
   date: { fontSize: 10, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 7 },
   title: { fontFamily: 'Georgia', fontSize: 18, lineHeight: 22, marginBottom: 6 },
