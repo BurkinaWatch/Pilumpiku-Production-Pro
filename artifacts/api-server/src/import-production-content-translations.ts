@@ -128,6 +128,12 @@ function validateBundle(value: unknown): asserts value is TranslationBundle {
 
   const seen = new Set<string>();
   const perLocaleCount = new Map(EXPECTED_LOCALES.map((locale) => [locale, 0]));
+  const perLocaleEntityCount = new Map(
+    EXPECTED_LOCALES.map((locale) => [
+      locale,
+      new Map(ENTITY_TYPES.map((entityType) => [entityType, 0])),
+    ]),
+  );
   for (const candidate of value.records) {
     if (!isPlainObject(candidate)) throw new Error("Translation bundle contains an invalid row.");
     const row = candidate as unknown as TranslationBundleRecord;
@@ -167,11 +173,19 @@ function validateBundle(value: unknown): asserts value is TranslationBundle {
     if (seen.has(key)) throw new Error(`Duplicate translation row: ${key}.`);
     seen.add(key);
     perLocaleCount.set(row.locale, (perLocaleCount.get(row.locale) ?? 0) + 1);
+    const entityCounts = perLocaleEntityCount.get(row.locale);
+    entityCounts?.set(row.entityType, (entityCounts.get(row.entityType) ?? 0) + 1);
   }
 
   for (const locale of EXPECTED_LOCALES) {
     if (perLocaleCount.get(locale) !== expectedRecordCount / EXPECTED_LOCALES.length) {
       throw new Error(`Incomplete translation coverage for ${locale}.`);
+    }
+    const entityCounts = perLocaleEntityCount.get(locale);
+    for (const entityType of ENTITY_TYPES) {
+      if (entityCounts?.get(entityType) !== EXPECTED_SOURCE_COUNTS[entityType]) {
+        throw new Error(`Incomplete ${entityType} translation coverage for ${locale}.`);
+      }
     }
   }
 }
